@@ -139,16 +139,16 @@ export default function HomePage() {
           )}
         </div>
         <header className="pt-[4rem] pb-10 lg:pt-16">
-          <section className="md:flex container items-center gap-20">
+          <section className="md:flex container justify-between items-center gap-20">
             <div className="text-start md:text-start">
-              <h1 className="mt-3 z-10 capitalize text-4xl lg:text-6xl font-extrabold tracking-tight text-primary-foreground">
-                Build your career {" "}
-                <br className="hidden md:block" />
-                with <span className="text-foreground">Expert mentors</span>.
+              <h1 className="text-start md:text-start mt-3 z-10 text-3xl tracking-tight lg:text-5xl font-semibold text-primary-foreground">
+                <span className="">Your code deserves a stage.</span>
+                <br />
+                <span className="text-primary">Your career deserves a guide.</span>
               </h1>
 
-              <section className="flex flex-col gap-5 text-muted-foreground my-12">
-                <div className="flex items-center gap-4">
+              <section className="flex flex-col gap-5 text-muted-foreground my-10">
+                {/* <div className="flex items-center gap-4">
                   <div className="rounded-lg p-1.5 bg-secondary border border-secondary-foreground">
                     <Check size={14} strokeWidth={4} className="text-secondary-foreground" />
                   </div>
@@ -165,18 +165,21 @@ export default function HomePage() {
                     <Check size={14} strokeWidth={4} className="text-secondary-foreground" />
                   </div>
                   <h2>A fraction of the cost of other platforms</h2>
-                </div>
+                </div> */}
+                <span className="text-lg">
+                  Create stunning portfolios to showcase your work <br /> and access expert-led courses to level up your skills.
+                </span>
               </section>
 
               <div className="z-10 flex flex-col md:flex-row items-center gap-5">
-                <Link to="/register" className="transition block md:inline-block text-sm text-center w-full md:w-max rounded-lg font-bold px-10 py-3 shadow-md text-[#FBE56D] bg-[#083156] hover:bg-gray-800">
+                <Link to="/register" className="transition block md:inline-block text-sm text-center w-full md:w-max rounded font-bold px-10 py-3 shadow-md text-[#FBE56D] bg-[#083156] hover:bg-gray-800">
                   GET STARTED
                 </Link>
                 <a
                   rel="noopener"
                   href="https://youtu.be/hBDECFvIk8w?si=G_1qfFhyCYJWwVv8"
                   target="_blank"
-                  className="block md:inline-block text-sm text-center w-full md:w-max rounded-lg font-bold px-10 py-3 outline outline-[#083156] text-[#083156] bg-white hover:shadow-lg"
+                  className="block md:inline-block text-sm text-center w-full md:w-max rounded font-bold px-10 py-3 outline outline-[#083156] text-[#083156] bg-white hover:shadow-lg"
                 >
                   Watch a video
                 </a>
@@ -384,7 +387,7 @@ export default function HomePage() {
               </div>
               <div>
                 <Link to="/register"
-                  className="inline-block w-full md:w-max bg-secondary-auxiliary text-black rounded-xl shadow font-bold px-6 py-3.5 hover:bg-gray-800 transition">
+                  className="inline-block w-full md:w-max bg-secondary-auxiliary bg-secondary text-black rounded-xl shadow font-bold px-6 py-3.5 hover:bg-gray-800 transition">
                   GET STARTED
                 </Link>
               </div>
