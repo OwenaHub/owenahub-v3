@@ -80,7 +80,7 @@ export default function HomePage() {
   return (
     <section className={`${busy && "opacity-50"} transition-all`}>
       <div className="bg-muted py-16 relative">
-        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 container px-4">
+        <div className="container -translate-x-1/2 fixed left-1/2 px-4 top-4 transform z-50">
           {/* Navbar */}
           <nav
             className={`transition-all duration-300 ease-in-out ${scrolled ? "bg-white shadow-[0_5px_35px_rgba(0,0,0,0.1)] py-2 px-3" : "bg-transparent py-0"
@@ -88,16 +88,16 @@ export default function HomePage() {
           >
             <div className="flex gap-2 items-center">
               <img src="/images/logos/logo.png" alt="logo" width={38} />
-              <Link to="/" className="md:text-lg font-black text-primary-foreground">
+              <Link to="/" className="text-primary-foreground font-bold md:text-lg">
                 <span>OwenaHub</span> <span className="font-light">the learner's hub</span>
               </Link>
             </div>
             <div className="hidden md:block">
-              <div className="flex items-center gap-2">
-                <Link to="/login" className="border border-secondary-foreground bg-white text-xs text-secondary-foreground font-extrabold rounded-[6px] uppercase hover:shadow-lg px-5 py-1.5">
+              <div className="flex gap-2 items-center">
+                <Link to="/login" className="bg-white border border-secondary-foreground rounded-[6px] text-secondary-foreground text-xs font-extrabold hover:shadow-lg px-5 py-1.5 uppercase">
                   Log in
                 </Link>
-                <Link to="/register" className="border border-[#083156] text-[#FBE56D] bg-[#083156] hover:bg-gray-800 text-xs font-bold rounded-[6px] uppercase px-5 py-1.5">
+                <Link to="/register" className="bg-[#083156] border border-[#083156] rounded-[6px] text-[#FBE56D] text-xs font-bold hover:bg-gray-800 px-5 py-1.5 uppercase">
                   Sign up
                 </Link>
               </div>
@@ -107,30 +107,30 @@ export default function HomePage() {
             </button>
           </nav>
           {menu && (
-            <div className="bg-white mt-1 z-50 py-4 px-4 mx-auto rounded-lg shadow-2xl block md:hidden">
+            <div className="bg-white rounded-lg shadow-2xl block md:hidden mt-1 mx-auto px-4 py-4 z-50">
               <div>
                 <div className="mb-3">
                   <div className="border-b py-4">
-                    <Link to={"/courses"} className="font-bold text-primary-foreground">
+                    <Link to={"/courses"} className="text-primary-foreground font-bold">
                       Courses
                     </Link>
                   </div>
                   <div className="border-b py-4">
-                    <Link to={"/classes"} className="font-bold text-primary-foreground">
+                    <Link to={"/classes"} className="text-primary-foreground font-bold">
                       Classes
                     </Link>
                   </div>
                   <div className="py-4">
-                    <a href="tel:+2348026658956" className="font-light text-sm text-foreground flex gap-2 items-center">
+                    <a href="tel:+2348026658956" className="flex text-foreground text-sm font-light gap-2 items-center">
                       <span>Contact support</span> <ChevronRight size={12} />
                     </a>
                   </div>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <Link to="/login" className="block w-full text-center border border-secondary-foreground bg-white text-sm text-secondary-foreground font-extrabold rounded-[6px] uppercase hover:shadow-lg py-2">
+                  <Link to="/login" className="bg-white border border-secondary-foreground rounded-[6px] text-center text-secondary-foreground text-sm w-full block font-extrabold hover:shadow-lg py-2 uppercase">
                     Log in
                   </Link>
-                  <Link to="/register" className="block w-full text-center border border-[#083156] text-[#FBE56D] bg-[#083156] hover:bg-gray-800 text-sm font-bold rounded-[6px] uppercase py-2">
+                  <Link to="/register" className="bg-[#083156] border border-[#083156] rounded-[6px] text-[#FBE56D] text-center text-sm w-full block font-bold hover:bg-gray-800 py-2 uppercase">
                     Sign up
                   </Link>
                 </div>
@@ -138,59 +138,42 @@ export default function HomePage() {
             </div>
           )}
         </div>
-        <header className="pt-[4rem] pb-10 lg:pt-16">
-          <section className="md:flex container justify-between items-center gap-20">
+        <header className="lg:pt-16 pb-10 pt-[4rem]">
+          <section className="container justify-between gap-20 items-center md:flex">
             <div className="text-start md:text-start">
-              <h1 className="text-start md:text-start mt-3 z-10 text-3xl tracking-tight lg:text-5xl font-semibold text-primary-foreground">
-                <span className="">Your code deserves a stage.</span>
-                <br />
+              <h1 className="text-4xl text-primary-foreground text-start font-extrabold lg:text-5xl md:text-start mt-3 tracking-tight z-10">
+                <span className="text-primary-foreground">Your code deserves a stage,</span>
+                <br className="hidden md:block" />{" "}
                 <span className="text-primary">Your career deserves a guide.</span>
               </h1>
 
-              <section className="flex flex-col gap-5 text-muted-foreground my-10">
-                {/* <div className="flex items-center gap-4">
-                  <div className="rounded-lg p-1.5 bg-secondary border border-secondary-foreground">
-                    <Check size={14} strokeWidth={4} className="text-secondary-foreground" />
-                  </div>
-                  <h2>Learn online, from professionals</h2>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="rounded-lg p-1.5 bg-secondary border border-secondary-foreground">
-                    <Check size={14} strokeWidth={4} className="text-secondary-foreground" />
-                  </div>
-                  <h2>Get results in 3 months</h2>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="rounded-lg p-1.5 bg-secondary border border-secondary-foreground">
-                    <Check size={14} strokeWidth={4} className="text-secondary-foreground" />
-                  </div>
-                  <h2>A fraction of the cost of other platforms</h2>
-                </div> */}
-                <span className="text-lg">
-                  Create stunning portfolios to showcase your work <br /> and access expert-led courses to level up your skills.
+              <section className="flex flex-col text-muted-foreground gap-5 mb-10 mt-5">
+                <span className="text-sm md:text-lg">
+                  Create stunning portfolios to showcase your work and access <br className="hidden md:block" />
+                  expert-led courses to level up your skills
                 </span>
               </section>
 
-              <div className="z-10 flex flex-col md:flex-row items-center gap-5">
-                <Link to="/register" className="transition block md:inline-block text-sm text-center w-full md:w-max rounded font-bold px-10 py-3 shadow-md text-[#FBE56D] bg-[#083156] hover:bg-gray-800">
+              <div className="flex flex-col gap-5 items-center md:flex-row z-10">
+                <Link to="/register" className="bg-[#083156] rounded shadow-md text-[#FBE56D] text-center text-sm w-full block font-bold hover:bg-gray-800 md:inline-block md:w-max px-10 py-2.5 transition">
                   GET STARTED
                 </Link>
                 <a
                   rel="noopener"
                   href="https://youtu.be/hBDECFvIk8w?si=G_1qfFhyCYJWwVv8"
                   target="_blank"
-                  className="block md:inline-block text-sm text-center w-full md:w-max rounded font-bold px-10 py-3 outline outline-[#083156] text-[#083156] bg-white hover:shadow-lg"
+                  className="bg-white rounded text-[#083156] text-center text-sm w-full block font-bold hover:shadow-lg md:inline-block md:w-max outline outline-[#083156] px-10 py-2.5"
                 >
-                  Watch a video
+                  Create portfolio
                 </a>
               </div>
 
             </div>
-            <div className="hidden md:block me-14 flex-1">
+            <div className="flex-1 hidden md:block me-14">
               <img
                 src="/images/personalised.png"
                 alt="Join OwenaHub"
-                className="block mx-auto w-[440px] h-[440px]pointer-events-none"
+                className="h-[440px]pointer-events-none w-[440px] block mx-auto"
               />
             </div>
           </section>
@@ -201,7 +184,7 @@ export default function HomePage() {
         <div className="container mx-auto">
           <div className="py-5">
             <div className="lg:text-start pb-5">
-              <h2 className="text-gray-800 pb-2 font-bold text-3xl md:text-4xl">
+              <h2 className="text-3xl text-gray-800 font-bold md:text-4xl pb-2">
                 Expand your skillset <br className="md:hidden" /> with <span className="text-foreground">OwenaHub</span>.
               </h2>
               <p className="text-gray-500">
@@ -209,7 +192,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <section className="flex flex-wrap mb-20 items-center gap-2 whitespace-nowrap">
+            <section className="flex flex-wrap gap-2 items-center mb-20 whitespace-nowrap">
               {categories.map((category, index) => (
                 <Badge
                   key={index}
@@ -221,22 +204,22 @@ export default function HomePage() {
 
             <section>
               <div className="mx-auto pb-10 sm:pb-16">
-                <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-6">
+                <div className="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-4 sm:grid-cols-2 xl:gap-x-6">
                   {tracks.map((track, index) => (
-                    <div key={index} className="group p-2 relative border border-gray-200 border-b-4 rounded-lg hover:border-b transition h-full flex flex-col">
+                    <div key={index} className="flex flex-col border border-b-4 border-gray-200 h-full p-2 rounded-lg group hover:border-b relative transition">
                       {/* Course Image */}
-                      <div className="aspect-video bg-slate-100 w-full rounded-lg group-hover:opacity-75 lg:aspect-auto lg:h-36 overflow-hidden">
+                      <div className="bg-slate-100 rounded-lg w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-36 overflow-hidden">
                         <img
                           src={track.image_path
                             ? `${track.image_path}`
                             : "/images/banners/default-course-img.png"}
                           alt={track.title}
-                          className="w-full h-full object-cover rounded"
+                          className="h-full rounded w-full object-cover"
                         />
                       </div>
 
                       {/* Content Wrapper */}
-                      <div className="flex flex-col justify-between flex-grow mt-2">
+                      <div className="flex flex-col flex-grow justify-between mt-2">
                         {/* Title & Description */}
                         <div className="flex flex-col gap-1.5 mb-1.5">
                           <div className="flex items-center">
@@ -247,21 +230,21 @@ export default function HomePage() {
                               </Link>
                             </h3>
                           </div>
-                          <div className="font-light text-xs">
+                          <div className="text-xs font-light">
                             {truncateText(track.description, 100)}
                           </div>
                         </div>
 
                         {/* Rating & Price - Pushed to the bottom */}
                         <div className="mt-auto">
-                          <div className="flex items-center gap-2">
-                            <p className="font-extrabold text-yellow-800">4.5</p>
+                          <div className="flex gap-2 items-center">
+                            <p className="text-yellow-800 font-extrabold">4.5</p>
                             <div className="flex gap-1">
                               <Rating rating={track.rating} />
                             </div>
                             <p>({track.enrollCount})</p>
                           </div>
-                          <div className="flex items-center gap-2">
+                          <div className="flex gap-2 items-center">
                             <p className="font-bold">₦{track.price}</p>
                             <p className="font-light line-through">₦{track.discount}</p>
                           </div>
@@ -276,8 +259,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="pb-20 lg:pb-9 container" id="learn-more">
-        <div className="md:flex items-center justify-evenly gap-5 pt-5">
+      <section className="container lg:pb-9 pb-20" id="learn-more">
+        <div className="justify-evenly gap-5 items-center md:flex pt-5">
           <div>
             <img
               src="/images/personalised.png"
@@ -288,9 +271,9 @@ export default function HomePage() {
           </div>
 
           <div>
-            <div className="text-gray-800 pt-5 lg:px-4">
+            <div className="text-gray-800 lg:px-4 pt-5">
               <div>
-                <h4 className="text-foreground text-3xl md:text-4xl font-bold mb-4">
+                <h4 className="text-3xl text-foreground font-bold mb-4 md:text-4xl">
                   Personalised learning
                 </h4>
                 <p className="text-base leading-snug mb-4">
@@ -298,7 +281,7 @@ export default function HomePage() {
                   Enroll in mentorship courses & learn at your own pace.
                 </p>
                 <Link to="/register" target="_blank"
-                  className="inline-block bg-[#FFE1BC] text-[#3D4D5C] rounded-xl px-6 py-2 font-bold hover:bg-gray-800 hover:text-white transition">
+                  className="bg-[#FFE1BC] rounded-xl text-[#3D4D5C] font-bold hover:bg-gray-800 hover:text-white inline-block px-6 py-2 transition">
                   Take a look
                 </Link>
               </div>
@@ -307,9 +290,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="pb-20 lg:pb-9 container">
-        <div className=" mx-auto">
-          <div className="md:flex items-center justify-evenly gap-5 flex-row-reverse">
+      <section className="container lg:pb-9 pb-20">
+        <div className="mx-auto">
+          <div className="flex-row-reverse justify-evenly gap-5 items-center md:flex">
             <div className="pt-5">
               <img
                 src="/images/long-term-goals.png"
@@ -318,18 +301,18 @@ export default function HomePage() {
                 loading="lazy"
               />
             </div>
-            <div className="text-gray-800 pt-5 lg:px-4">
+            <div className="text-gray-800 lg:px-4 pt-5">
               <div className="mb-5">
-                <span className="text-red-500 text-lg font-bold">Visions Into Reality</span>
-                <h4 className="text-4xl font-bold text-[#4B4B4B] mt-3 mb-4">
+                <span className="text-lg text-red-500 font-bold">Visions Into Reality</span>
+                <h4 className="text-[#4B4B4B] text-4xl font-bold mb-4 mt-3">
                   Stop dreaming, start achieving
                 </h4>
                 <p className="text-lg leading-relaxed mb-4">
                   Work towards long-term goals by connecting <br className="hidden lg:block" /> with mentors for private sessions.
                 </p>
                 <Link to="/register"
-                  className="inline-block bg-[#FFE1BC] text-[#3D4D5C] rounded-xl px-6 py-2 font-bold hover:bg-gray-800 hover:text-white transition">
-                  See mentors for you <ArrowRight className="inline-block relative ms-1" size={16} />
+                  className="bg-[#FFE1BC] rounded-xl text-[#3D4D5C] font-bold hover:bg-gray-800 hover:text-white inline-block px-6 py-2 transition">
+                  See mentors for you <ArrowRight className="inline-block ms-1 relative" size={16} />
                 </Link>
               </div>
             </div>
@@ -337,9 +320,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="pb-20 lg:pb-9 container">
+      <section className="container lg:pb-9 pb-20">
         <div className="mx-auto">
-          <div className="md:flex items-center justify-evenly gap-5">
+          <div className="justify-evenly gap-5 items-center md:flex">
             <div className="pt-5">
               <img
                 src="/images/get-access.png"
@@ -348,10 +331,10 @@ export default function HomePage() {
                 loading="lazy"
               />
             </div>
-            <div className="text-gray-800 py-5 lg:px-4">
+            <div className="text-gray-800 lg:px-4 py-5">
               <div className="mb-5">
                 <span className="text-[#F6A600] text-lg font-bold">Talk With Experts</span>
-                <h4 className="text-4xl font-bold text-[#4B4B4B] mt-3 mb-4">
+                <h4 className="text-[#4B4B4B] text-4xl font-bold mb-4 mt-3">
                   Easy access to the <br className="hidden lg:block" /> world’s best
                 </h4>
                 <p className="text-lg leading-relaxed mb-4">
@@ -362,7 +345,7 @@ export default function HomePage() {
                   href="https://youtube.com/@owenahub"
                   target="_blank"
                   rel="noopener"
-                  className="inline-block bg-[#FFE1BC] text-[#3D4D5C] rounded-xl px-6 py-2 font-bold hover:bg-gray-800 hover:text-white transition"
+                  className="bg-[#FFE1BC] rounded-xl text-[#3D4D5C] font-bold hover:bg-gray-800 hover:text-white inline-block px-6 py-2 transition"
                 >
                   Our YouTube
                 </a>
@@ -373,21 +356,21 @@ export default function HomePage() {
       </section>
 
       <div className="container mb-16">
-        <section className="bg-primary-foreground shadow-xl rounded-3xl mx-auto py-10">
+        <section className="bg-primary-foreground rounded-3xl shadow-xl mx-auto py-10">
           <div>
             <div className="text-center px-5">
-              <div className="mb-6 text-white">
-                <h4 className="text-2xl lg:text-4xl font-bold mb-5">
+              <div className="text-white mb-6">
+                <h4 className="text-2xl font-bold lg:text-4xl mb-5">
                   Get started
                 </h4>
-                <p className="my-3 text-sm leading-loose">
+                <p className="text-sm leading-loose my-3">
                   Sign up now and start acquiring in demand tech skills today. Start online anytime, anywhere. <br className="hidden md:block" />
                   Fill out the form and have mentor reach out. Start your learning journey.
                 </p>
               </div>
               <div>
                 <Link to="/register"
-                  className="inline-block w-full md:w-max bg-secondary-auxiliary bg-secondary text-black rounded-xl shadow font-bold px-6 py-3.5 hover:bg-gray-800 transition">
+                  className="bg-secondary bg-secondary-auxiliary rounded-xl shadow text-black w-full font-bold hover:bg-gray-800 inline-block md:w-max px-6 py-3.5 transition">
                   GET STARTED
                 </Link>
               </div>
@@ -396,28 +379,28 @@ export default function HomePage() {
         </section>
       </div>
 
-      <footer className="bg-gray-50 py-8 text-gray-700" id="footer">
+      <footer className="bg-gray-50 text-gray-700 py-8" id="footer">
         <div className="container text-sm">
-          <div className="block md:flex justify-between items-center">
+          <div className="justify-between block items-center md:flex">
             <div>
               <div className="flex items-center space-x-2">
-                <img src="/images/logos/logo.png" alt="..." className="w-6 h-6 relative top-[2px]" />
+                <img src="/images/logos/logo.png" alt="..." className="h-6 w-6 relative top-[2px]" />
                 <div className="font-bold relative top-[3px]">OwenaHub</div>
               </div>
             </div>
-            <p className="mt-6 md:mt-0">
+            <p className="md:mt-0 mt-6">
               <span className="font-semibold">The Learner's Hub</span> <br />
               <span className="text-xs"> Fostering global connections, leveraging experts <br /> to empower learners through mentorship.</span>
             </p>
           </div>
-          <hr className="my-8 border-gray-200" />
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-3">
+          <hr className="border-gray-200 my-8" />
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-4 mt-3">
             <div>
-              <h5 className="text-sm pb-2 font-semibold">SOCIALS</h5>
+              <h5 className="text-sm font-semibold pb-2">SOCIALS</h5>
               <a
                 href="https://instagram.com/owenahub?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"
                 target="_blank"
-                className="flex items-center gap-2 hover:underline text-xs pb-2"
+                className="flex text-xs gap-2 hover:underline items-center pb-2"
                 rel="noopener"
               >
                 <Instagram size={14} className="inline-block" /> <span>Instagram</span>
@@ -425,7 +408,7 @@ export default function HomePage() {
               <a
                 href="https://x.com/owenahub?t=i4-Iz4K9RaKJ4vWP1QuLlA&s=08"
                 target="_blank"
-                className="flex items-center gap-2 hover:underline text-xs pb-2"
+                className="flex text-xs gap-2 hover:underline items-center pb-2"
                 rel="noopener"
               >
                 <Twitter size={14} className="inline-block" /> <span>Twitter</span>
@@ -433,40 +416,40 @@ export default function HomePage() {
               <a
                 href="https://www.facebook.com/owenahub?mibextid=ZbWKwL"
                 target="_blank"
-                className="flex items-center gap-2 hover:underline text-xs pb-2"
+                className="flex text-xs gap-2 hover:underline items-center pb-2"
                 rel="noopener"
               >
                 <Facebook size={14} className="inline-block" /> <span>Facebook</span>
               </a>
             </div>
             <div>
-              <h5 className="text-sm pb-2 font-semibold">CONTACT</h5>
+              <h5 className="text-sm font-semibold pb-2">CONTACT</h5>
               <a href="mailto:hello@owenahub.com"
-                className="block hover:underline text-xs pb-2">hello@owenahub.com</a>
+                className="text-xs block hover:underline pb-2">hello@owenahub.com</a>
               <a href="mailto:ernest@owenahub.com"
-                className="block hover:underline text-xs pb-2">ernest@owenahub.com</a>
+                className="text-xs block hover:underline pb-2">ernest@owenahub.com</a>
               <a href="mailto:ernestharuna1@gmail.com"
-                className="block hover:underline text-xs pb-2">ernestharuna1@gmail.com</a>
+                className="text-xs block hover:underline pb-2">ernestharuna1@gmail.com</a>
             </div>
             <div>
-              <h5 className="text-sm pb-2 font-semibold">QUICK LINKS</h5>
-              <a href="#" className="block hover:underline text-xs pb-2">
+              <h5 className="text-sm font-semibold pb-2">QUICK LINKS</h5>
+              <a href="#" className="text-xs block hover:underline pb-2">
                 OwenaHub Blog
               </a>
               <a href="#"
-                className="block hover:underline text-xs pb-2">
+                className="text-xs block hover:underline pb-2">
                 Slices: <span className="text-theme font-semibold">Swift Swips</span>
               </a>
               <a href="#"
-                className="block hover:underline text-xs pb-2">
+                className="text-xs block hover:underline pb-2">
                 Private Sessions
               </a>
             </div>
             <div>
-              <h5 className="text-sm pb-2 font-semibold">COMMUNITIES</h5>
+              <h5 className="text-sm font-semibold pb-2">COMMUNITIES</h5>
               <a
                 href="https://linkedin.com/company/owenahub" target="_blank"
-                className="block hover:underline text-xs pb-2"
+                className="text-xs block hover:underline pb-2"
                 rel="noopener"
               >
                 LinkedIn Community
@@ -474,14 +457,14 @@ export default function HomePage() {
               <a
                 href="https://www.facebook.com/groups/896520008575738/?ref=share"
                 target="_blank"
-                className="block hover:underline text-xs pb-2"
+                className="text-xs block hover:underline pb-2"
                 rel="noopener"
               >
                 Facebook Community
               </a>
             </div>
           </div>
-          <div className="mt-6 block md:flex-row justify-between items-center text-xs text-gray-500">
+          <div className="justify-between text-gray-500 text-xs block items-center md:flex-row mt-6">
             <p className="m-0">&copy; 2025, OwenaHub. All Rights Reserved.</p>
             <p className="m-0">
               <Link to="#" className="hover:underline">Privacy Policy</Link> &middot; {" "}
