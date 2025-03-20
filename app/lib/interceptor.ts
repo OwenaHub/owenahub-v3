@@ -21,13 +21,13 @@ client.interceptors.response.use((response) => response,
             if (import.meta.env.DEV) console.log(error);
 
             if (error.response?.status === 500) {
-                toast("Server error 🔥", {
+                toast.error("Server error 🔥", {
                     description: "It's not you, it's us—contact support@owenahub.com",
                 })
             }
 
             if (error.response?.status === 419) {
-                toast("Session expired", {
+                toast.warning("Session expired", {
                     description: "Session timed out due to inactivity",
                     action: {
                         label: "Refresh",
@@ -38,7 +38,7 @@ client.interceptors.response.use((response) => response,
 
 
             if (error.code === "ERR_NETWORK") {
-                toast("No internet connection", {
+                toast.warning("No internet connection", {
                     description: "Please check your connection and try again",
                 })
             }
