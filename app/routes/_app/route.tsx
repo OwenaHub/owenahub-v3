@@ -19,13 +19,18 @@ export async function clientLoader() {
 
         return { user, notifications };
     } catch ({ response }: any) {
+        
         if (response.status === 401) {
-            toast("Your session has expired!", {
+            console.log(response);
+            toast.error("Your session has expired!", {
                 description: "Login again to continue using OwenaHub",
             })
         } else {
-            toast("Something went wrong", {
-                description: "Try reloading this page",
+            toast.error("Something went wrong", {
+                action: {
+                    label: "Reload",
+                    onClick: () => window.location.reload(),
+                },
             })
         }
 
@@ -86,7 +91,7 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                     <main className="flex-1 w-full transition">
                         <header className='flex justify-between items-center md:hidden py-5'>
                             <div className='flex gap-1 items-center'>
-                                <img src='/images/logos/logo.png' width={25} title='OwenaHub'/> <AppName size='base' />
+                                <img src='/images/logos/logo.png' width={25} title='OwenaHub' /> <AppName size='base' />
                             </div>
                             <AppNotification notifications={notifications} />
                         </header>

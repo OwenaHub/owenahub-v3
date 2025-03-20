@@ -1,15 +1,19 @@
 import {
   isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  type MetaFunction,
 } from "react-router";
 
 import type { Route } from "./+types/root";
 import "./app.css";
 import { Toaster } from "sonner"
+import ProgressBar from "./components/navigation/progress-bar";
+import { Button } from "./components/ui/button";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -24,6 +28,26 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+export const meta: MetaFunction = () => {
+  return [
+    { title: "OwenaHub" },
+    { name: "description", content: "Join OwenaHub and connect with top tech mentors to advance your career. Learn to code wtih guidance, career advice, and skill development." },
+    { name: "theme-color", content: "#FFE1BC" },
+    { name: "keywords", content: "mentorship, mentors, development, professional, tech, software, ai" },
+    { name: "author", content: "OwenaHub" },
+    { name: "robots", content: "index, follow" },
+    { property: "og:title", content: "OwenaHub | Build Your Career with Expert Mentors" },
+    { property: "og:description", content: "Join OwenaHub and connect with top tech mentors to advance your career" },
+    { property: "og:image", content: "https://owenahub.com/images/logos/banner_image.png" }, // image URL
+    { property: "og:url", content: "https://owenahub.com" },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: "OwenaHub | Build Your Career with Expert Mentors" },
+    { name: "twitter:description", content: "Join OwenaHub and connect with top tech mentors to advance your career" },
+    { name: "twitter:image", content: "https://owenahub.com/images/logos/banner_image.png" }, // image URL
+  ];
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -37,7 +61,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
-        <Toaster />
+        <Toaster
+          richColors
+          closeButton
+        />
+        <ProgressBar />
       </body>
     </html>
   );
@@ -64,14 +92,38 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <main className="w-max -translate-x-1/2 -translate-y-1/2 fixed left-1/2 top-1/2 transform">
+      <div className="">
+        <div>
+          <div className="flex justify-between items-center">
+            <h1 className="text-gray-400">{message}</h1>
+            <div className="text-2xl">
+              😵
+            </div>
+          </div>
+          <p>{details}</p>
+          {stack && (
+            <pre className="p-4 w-full overflow-x-auto">
+              <code>{stack}</code>
+            </pre>
+          )}
+
+          <div className="flex gap-5 items-center mt-3">
+            <Link to={"/"} >
+              <Button variant={"outline"} className="h-8 text-sm py-0">
+                Go home
+              </Button>
+            </Link>
+
+            <Button
+              onClick={() => window.location.reload()}
+              className="bg-gray-800 h-8 text-sm text-white px-5 py-1"
+            >
+              Reload
+            </Button>
+          </div>
+        </div>
+      </div>
+    </main >
   );
 }
