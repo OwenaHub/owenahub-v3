@@ -96,8 +96,8 @@ body {
   --primary-foreground: #083156;
 
   --secondary: #FFE1BC;
-  --secondary-200: #FBE56D;
   --secondary-foreground: #3C5D87;
+  --bleech: #FBE56D;
 
   --muted: #FFFAED;
   --muted-foreground: #3D4D5C;
@@ -175,6 +175,7 @@ body {
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
+  --color-bleech: var(--bleech);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);

@@ -123,7 +123,7 @@ export default function Register({ actionData }: Route.ComponentProps) {
                             </div>
                             <div className="mt-7">
                                 <Button
-                                    className="bg-primary-foreground text-secondary-auxiliary w-full font-semibold py-5 uppercase"
+                                    className="bg-primary-foreground text-bleech w-full font-semibold py-5 uppercase"
                                     disabled={busy}
                                 >
                                     {busy ? (<Loader className="animate-spin" />) : "Register"}

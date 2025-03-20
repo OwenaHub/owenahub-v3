@@ -82,7 +82,7 @@ export default function Login({ actionData }: Route.ComponentProps) {
                             <div className="mt-7">
                                 <Button
                                     disabled={busy}
-                                    className="bg-primary-foreground text-secondary-auxiliary w-full font-semibold py-5 uppercase"
+                                    className="bg-primary-foreground text-bleech w-full font-semibold py-5 uppercase"
                                 >
                                     {busy ? (<Loader className="animate-spin" />) : "Login"}
                                 </Button>
