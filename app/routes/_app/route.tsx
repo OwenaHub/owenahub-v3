@@ -16,7 +16,8 @@ export async function clientLoader() {
     try {
         const user = await validateSession();
         const notifications = getNotifications();
-
+        console.log(user);
+        
         return { user, notifications };
     } catch ({ response }: any) {
         
