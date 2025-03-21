@@ -1,8 +1,10 @@
 interface User extends Model {
     name: string;
+    username: string;
     email: string;
-    phone: string;
-    profile_picture_url: string;
-    email_verified_at: string;
-    account_type: 'admin' | 'vendor' | 'user';
+    profilePicture: string;
+    title: string;
+    biography: string;
+    accountType: 'admin' | 'vendor' | 'user';
+    emailVerifiedAt: string;
 }

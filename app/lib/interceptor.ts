@@ -22,7 +22,7 @@ client.interceptors.response.use((response) => response,
 
             if (error.response?.status === 500) {
                 toast.error("Server error 🔥", {
-                    description: "It's not you, it's us—contact support@owenahub.com",
+                    description: "It's not you, it's us",
                 })
             }
 
