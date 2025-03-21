@@ -1,5 +1,5 @@
-import { ChevronLeft } from "lucide-react";
-import { Form, Link, redirect } from "react-router";
+import { ArrowRight, ChevronLeft } from "lucide-react";
+import { Form, Link, redirect, useNavigate } from "react-router";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { Textarea } from "~/components/ui/textarea";
@@ -10,13 +10,22 @@ import InputError from "~/components/forms/input-error";
 
 export async function clientAction({ request }: Route.ClientActionArgs) {
     const formData = Object.fromEntries(await request.formData());
+    const navigate = useNavigate();
 
     try {
         await createCourse(formData);
-        toast.success("Course created",);
+        toast.success("Course created", {
+            description: "Proceed to adding Modules",
+            action: {
+                label: (<ArrowRight size={18} />),
+                onClick: () => navigate("/courses"),
+            },
+        });
         return redirect('/courses')
     } catch ({ response }: any) {
-        toast.error("Failed to create course");
+        toast.error("Failed to create course", {
+            description: "Review the form and try again",
+        });
         const error: any = response?.data?.errors;
         return error;
     }
@@ -86,6 +95,10 @@ export default function route({ actionData }: Route.ComponentProps) {
                         <Label htmlFor="end_date" className="mb-1">End date</Label>
                         <Input type="date" id="end_date" name="end_date" className="bg-white rounded" />
                         <InputError for="end_date" error={errors} />
+                    </div>
+
+                    <div className="mt-10">
+                        <button type="submit" className="bg-primary-foreground text-white w-full py-2 rounded">Create course</button>
                     </div>
                 </Form>
             </div >
