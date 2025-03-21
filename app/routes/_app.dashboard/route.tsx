@@ -24,7 +24,7 @@ export default function Dashboard() {
                     </div>
 
                     <Link to="/courses" viewTransition>
-                        <Button className="bg-secondary-foreground text-white text-xs w-full font-bold md:w-max px-5 py-0 uppercase">
+                        <Button className="bg-secondary-foreground text-white text-xs w-full rounded font-bold md:w-max px-5 py-0 uppercase">
                             buy now
                         </Button>
                     </Link>
@@ -52,7 +52,7 @@ export default function Dashboard() {
                 </div>
 
                 <div className="flex flex-col gap-6 md:flex-row md:items-stretch">
-                    <div className="flex flex-1 border p-3 rounded-lg gap-3 items-center">
+                    <div className="flex flex-1 border p-5 rounded-xl gap-3 items-center">
                         <div>
                             <Headset size={40} strokeWidth={1} />
                         </div>
@@ -65,7 +65,7 @@ export default function Dashboard() {
                             </p>
                         </div>
                     </div>
-                    <div className="flex flex-1 border p-3 rounded-lg gap-3 items-center">
+                    <div className="flex flex-1 border p-5 rounded-xl gap-3 items-center">
                         <div>
                             <SearchCheck size={40} strokeWidth={1} />
                         </div>

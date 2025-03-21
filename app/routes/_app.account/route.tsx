@@ -17,7 +17,7 @@ export default function Account() {
         <section className="md:px-10 mt-10">
             <div className=" md:mt-20 mb-8 flex justify-between items-start">
                 <div>
-                    <h4 className="text-xl text-primary-foreground mb-3 font-bold">
+                    <h4 className="text-2xl text-primary-foreground mb-3 font-bold">
                         Account
                     </h4>
                     <p className="text-sm leading-7">
