@@ -1,5 +1,5 @@
 import { ArrowRight, ChevronLeft } from "lucide-react";
-import { Form, Link, redirect, useNavigate } from "react-router";
+import { Form, Link, redirect } from "react-router";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { Textarea } from "~/components/ui/textarea";
@@ -49,23 +49,23 @@ export default function route({ actionData }: Route.ComponentProps) {
                 <Form encType="multipart/form-data" method="POST">
                     <div className="mb-5">
                         <Label htmlFor="title" className="mb-1">Course title</Label>
-                        <Input id="title" name="title" className="bg-white rounded" />
+                        <Input id="title" name="title" className="bg-white rounded" required />
                         <InputError for="title" error={errors} />
                     </div>
                     <div className="mb-5">
                         <Label htmlFor="about" className="mb-1">Course about</Label>
-                        <Input id="about" name="about" className="bg-white rounded" />
+                        <Input id="about" name="about" className="bg-white rounded" required />
                         <InputError for="about" error={errors} />
                     </div>
                     <div className="mb-5 md:flex gap-4">
                         <div className="flex-1">
                             <Label htmlFor="tags" className="mb-1">Tags (These can be related keywords)</Label>
-                            <Input id="tags" name="tags" className="bg-white rounded" />
+                            <Input id="tags" name="tags" className="bg-white rounded" required />
                             <InputError for="tags" error={errors} />
                         </div>
                         <div className="flex-1">
                             <Label htmlFor="thumbnail" className="mb-1">Thumbnail</Label>
-                            <Input type="file" id="thumbnail" name="thumbnail" className="inline-block !min-h-full bg-white rounded" />
+                            <Input type="file" id="thumbnail" name="thumbnail" className="bg-white rounded" />
                             <InputError for="thumbnail" error={errors} />
                         </div>
                     </div>
@@ -75,25 +75,27 @@ export default function route({ actionData }: Route.ComponentProps) {
                         <InputError for="learning_goals" error={errors} />
                     </div>
                     <div className="mb-5">
-                        <Label htmlFor="requiremnts" className="mb-1">Course requiremnts</Label>
-                        <Textarea id="requiremnts" name="requiremnts" className="bg-white rounded" />
+                        <Label htmlFor="requirements" className="mb-1">Course requirements</Label>
+                        <Textarea id="requirements" name="requirements" className="bg-white rounded" required />
                         <InputError for="requirements" error={errors} />
                     </div>
                     <div className="mb-5">
                         <Label htmlFor="description" className="mb-1">Overview/description</Label>
-                        <Textarea id="description" name="description" className="bg-white rounded" />
+                        <Textarea id="description" name="description" className="bg-white rounded" required />
                         <InputError for="description" error={errors} />
                     </div>
 
-                    <div className="mb-5">
-                        <Label htmlFor="start_date" className="mb-1">Start date</Label>
-                        <Input type="date" id="start_date" name="start_date" className="bg-white rounded" />
-                        <InputError for="start_date" error={errors} />
-                    </div>
-                    <div className="mb-5">
-                        <Label htmlFor="end_date" className="mb-1">End date</Label>
-                        <Input type="date" id="end_date" name="end_date" className="bg-white rounded" />
-                        <InputError for="end_date" error={errors} />
+                    <div className="mb-5 md:flex gap-4">
+                        <div className="flex-1">
+                            <Label htmlFor="start_date" className="mb-1">Start date</Label>
+                            <Input type="date" id="start_date" name="start_date" className="bg-white rounded" />
+                            <InputError for="start_date" error={errors} />
+                        </div>
+                        <div className="flex-1">
+                            <Label htmlFor="price" className="mb-1">Price</Label>
+                            <Input type="number" id="price" name="price" className="bg-white rounded" />
+                            <InputError for="price" error={errors} />
+                        </div>
                     </div>
 
                     <div className="mt-10">

@@ -43,7 +43,7 @@ export default function Account() {
 
                 <div className="">
                     <Form method="POST" action="logout" className="cursor-pointer" title="logout">
-                        <Button variant="outline" type="submit" className="rounded-md flex items-center gap-2 w-full">
+                        <Button variant="outline" type="submit" className="rounded-full px-10 flex items-center gap-2 w-full">
                             <span>Sign out</span>
                             <LogOut className="text-destructive" strokeWidth={1} />
                         </Button>
