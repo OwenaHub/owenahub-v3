@@ -10,7 +10,7 @@ export default function route({ }: Route.ComponentProps) {
     return (
         <section>
             <div className="pb-4 mt-10">
-                <TableCard header={course.title} cta="Edit course" ctaLink="edit">
+                <TableCard header={course.title} cta="Edit module" ctaLink="edit">
                     <CourseModule modules={course.modules} />
                     <div className="border border-gray-200 border-b-2 py-2 rounded-md hover:bg-gray-50">
                         <Link to={"module/create"} className="flex justify-center items-center gap-2 text-sm uppercase ">

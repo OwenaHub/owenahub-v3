@@ -10,8 +10,6 @@ import CardSkeleton from "~/components/skeletons/card-skeleton";
 export async function clientLoader({ }: Route.ClientLoaderArgs) {
     try {
         const courses = getCreatedCourses();
-        console.log(courses);
-
         return { courses };
     } catch ({ response }: any) {
         return {};

@@ -4,10 +4,10 @@ import { truncateText } from "~/lib/texts"
 
 export default function CourseModule({ modules }: any) {
     return (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 mb-5">
             {modules.length
-                ? modules.map((course: any) => (
-                    <CourseModuleCard module={module} key={course.id} />
+                ? modules.map((module: any) => (
+                    <CourseModuleCard module={module} key={module.id} />
                 ))
                 : <p className="text-gray-500 text-sm w-max rounded pb-3">
                     Nothing here yet
@@ -20,11 +20,11 @@ export default function CourseModule({ modules }: any) {
 function CourseModuleCard({ module }: any) {
     return (
         <div className="border border-gray-200 border-b-2 rounded-md">
-            <div className="flex justify-between items-center pe-2">
+            <div className="flex justify-between items-center gap-3 pe-2">
                 <div>
                     <div className="ml-3 py-4">
                         <h3 className="font-semibold text-lg">{module.title}</h3>
-                        <p className="text-sm text-gray-500">{truncateText(module.about)}</p>
+                        <p className="text-sm text-gray-500">{truncateText(module.description, 100)}</p>
                     </div>
                 </div>
                 <Link to={module.id} className="text-blue-600 p-3 rounded-full border">

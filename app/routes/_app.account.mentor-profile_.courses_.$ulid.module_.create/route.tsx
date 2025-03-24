@@ -8,6 +8,7 @@ import { createCourseModule } from "./create-course-module";
 import { toast } from "sonner";
 import { ArrowRight } from "lucide-react";
 import { Textarea } from "~/components/ui/textarea";
+import { Button } from "~/components/ui/button";
 
 export async function clientAction({ params, request }: Route.ClientActionArgs) {
   const formData = await request.formData();
@@ -16,16 +17,17 @@ export async function clientAction({ params, request }: Route.ClientActionArgs) 
   credentials.course_id = ulid;
 
   try {
-    await createCourseModule(credentials);
+    const { data } = await createCourseModule(credentials);
+    console.log(data);
+
     toast.success("Module created 🔥", {
       description: "Proceed to adding courses",
       action: {
-        actionButtonStyle: { borderRadius: "9999px" },
         label: (<ArrowRight size={18} />),
         onClick: () => redirect("/courses"),
       },
     });
-    return redirect('/account/mentor-profile/courses')
+    return redirect(`/account/mentor-profile/courses/${ulid}`);
   } catch ({ response }: any) {
     toast.error("Failed to create course", {
       description: "Review the form and try again",
@@ -61,8 +63,8 @@ export default function route({ actionData }: Route.ComponentProps) {
                 <Textarea id="description" name="description" className="bg-white rounded" required />
                 <InputError for="description" error={errors} />
               </div>
-              <div className="mt-10">
-                <button type="submit" className="bg-secondary-foreground uppercase text-sm text-white w-full py-2 rounded">Create course</button>
+              <div className="mt-5">
+                <Button type="submit" className="bg-secondary-foreground uppercase text-sm text-white w-full py-2 rounded-md cursor-pointer hover:bg-primary-foreground">Create course</Button>
               </div>
             </Form>
           </section>
