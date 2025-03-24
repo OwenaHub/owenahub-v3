@@ -10,7 +10,6 @@ import InputError from "~/components/forms/input-error";
 
 export async function clientAction({ request }: Route.ClientActionArgs) {
     const formData = Object.fromEntries(await request.formData());
-    const navigate = useNavigate();
 
     try {
         await createCourse(formData);
@@ -18,10 +17,10 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
             description: "Proceed to adding Modules",
             action: {
                 label: (<ArrowRight size={18} />),
-                onClick: () => navigate("/courses"),
+                onClick: () => redirect("/courses"),
             },
         });
-        return redirect('/courses')
+        return redirect('/account/mentor-profile/courses')
     } catch ({ response }: any) {
         toast.error("Failed to create course", {
             description: "Review the form and try again",
