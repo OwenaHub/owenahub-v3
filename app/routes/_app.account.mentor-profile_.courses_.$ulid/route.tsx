@@ -1,12 +1,9 @@
-import TableCard from "~/components/cards/table-card";
 import NavigateBack from "~/components/navigation/navigate-back";
-import { Link } from "react-router";
+import { Outlet } from "react-router";
 import type { Route } from "./+types/route";
-import { getCreatedCourse } from "./get-course";
-import { ArrowRight, Plus } from "lucide-react";
 import { truncateText } from "~/lib/texts";
 import { STORAGE_URL } from "~/lib/keys";
-import CourseModule from "./course-module";
+import { getCreatedCourse } from "./get-course";
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
@@ -25,14 +22,12 @@ export default function route({ loaderData }: Route.ComponentProps) {
 
     return (
         <section>
-            <NavigateBack to="account/mentor-profile" />
+            <NavigateBack to="courses" />
             <div>
                 <div
-                    className="rounded-xl h-[250px] px-4 py-4 bg-gray-100 relative flex items-end"
+                    className="rounded-2xl h-[250px] px-4 py-4 bg-gray-100 relative flex items-end bg-cover bg-center"
                     style={{
-                        backgroundImage: `url(${STORAGE_URL}/${course.thumbnail})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
+                        backgroundImage: course.thumbnail ? `url(${STORAGE_URL}/${course.thumbnail})` : "url(/images/banners/default-course-img.png)",
                     }}
                 >
                     <div className="absolute inset-0 bg-black/50 bg-opacity-50 rounded-lg"></div>
@@ -43,17 +38,7 @@ export default function route({ loaderData }: Route.ComponentProps) {
                 </div>
             </div>
 
-            <div className="pb-4 mt-10">
-                <TableCard header={course.title} cta="Edit course" ctaLink="edit">
-                    <CourseModule modules={course.modules} />
-                    <div className="border border-gray-200 border-b-2 py-2 rounded-md hover:bg-gray-50">
-                        <Link to={"module"} className="flex justify-center items-center gap-2 text-sm uppercase ">
-                            <span>Add module</span>
-                            <Plus size={18} />
-                        </Link>
-                    </div>
-                </TableCard>
-            </div>
+            <Outlet context={course} />
         </section>
     )
 }

@@ -1,12 +1,14 @@
 import { ChevronLeft } from 'lucide-react'
-import { Link } from 'react-router'
+import { useNavigate } from 'react-router'
 
-export default function NavigateBack({ to = "#" }: { to: string }) {
+export default function NavigateBack({ to = "back" }: { to: string }) {
+    const navigate = useNavigate();
+
     return (
         <div className="mb-4">
-            <Link to={"/" + to} aria-label="Go back" className="flex gap-1 text-xs items-center uppercase hover:underline hover:underline-offset-2">
-                <ChevronLeft size={18} strokeWidth={2} /> <span>back</span>
-            </Link>
+            <button onClick={() => navigate(-1)} aria-label="Go back" className="flex gap-1 text-xs items-center uppercase hover:underline hover:underline-offset-2">
+                <ChevronLeft size={18} strokeWidth={2} /> <span>{to}</span>
+            </button>
         </div>
     )
 }

@@ -16,6 +16,7 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
         toast.success("Course created", {
             description: "Proceed to adding Modules",
             action: {
+                actionButtonStyle: { borderRadius: "9999px" },
                 label: (<ArrowRight size={18} />),
                 onClick: () => redirect("/courses"),
             },

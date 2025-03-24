@@ -23,7 +23,7 @@ export default function route({ loaderData }: Route.ComponentProps) {
 
     return (
         <section>
-            <NavigateBack to="account/mentor-profile" />
+            <NavigateBack to="mentor profile" />
             <div className="pb-4">
                 <TableCard header="Courses" cta="Create course" ctaLink="create">
                     <Suspense fallback={<CardSkeleton />}>
