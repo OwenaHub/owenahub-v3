@@ -29,8 +29,12 @@ export async function clientAction({ params, request }: Route.ClientActionArgs) 
     });
     return redirect(`/account/mentor-profile/courses/${ulid}`);
   } catch ({ response }: any) {
-    toast.error("Failed to create course", {
-      description: "Review the form and try again",
+    toast.error("Failed to create module", {
+      description: response?.data?.error || "An error occurred",
+      action: {
+        label: (<ArrowRight size={18} />),
+        onClick: () => redirect("/courses"),
+      },
     });
     const error: any = response?.data?.errors;
     return error;

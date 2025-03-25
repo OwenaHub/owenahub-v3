@@ -155,14 +155,14 @@ export default function HomePage() {
               </section>
 
               <div className="flex flex-col gap-5 items-center md:flex-row z-10">
-                <Link to="/register" className="bg-[#083156] rounded shadow-md text-[#FBE56D] text-center text-sm w-full block font-bold hover:bg-gray-800 md:inline-block md:w-max px-10 py-2.5 transition">
+                <Link to="/register" className="bg-[#083156] rounded-md shadow-md text-[#FBE56D] text-center text-sm w-full block font-bold hover:bg-gray-800 md:inline-block md:w-max px-10 py-2.5 transition">
                   GET STARTED
                 </Link>
                 <a
                   rel="noopener"
                   href="https://youtu.be/hBDECFvIk8w?si=G_1qfFhyCYJWwVv8"
                   target="_blank"
-                  className="bg-white rounded text-[#083156] text-center text-sm w-full block font-bold hover:shadow-lg md:inline-block md:w-max outline outline-[#083156] px-10 py-2.5"
+                  className="bg-white rounded-md text-[#083156] text-center text-sm w-full block font-bold hover:shadow-lg md:inline-block md:w-max outline outline-[#083156] px-10 py-2.5"
                 >
                   Create portfolio
                 </a>

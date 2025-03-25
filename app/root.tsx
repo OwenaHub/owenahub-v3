@@ -64,6 +64,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Toaster
           richColors
           closeButton
+          position="top-right"
+          toastOptions={{
+            classNames: {
+              // toast: 'toast',
+              // title: 'title',
+              // description: 'description',
+              actionButton: '!px-2 !rounded-full !text-white',
+              // cancelButton: 'cancel-button',
+              // closeButton: 'close-button',
+            },
+          }}
         />
         <ProgressBar />
       </body>

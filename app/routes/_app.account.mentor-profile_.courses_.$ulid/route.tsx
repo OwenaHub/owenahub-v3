@@ -30,7 +30,7 @@ export default function route({ loaderData }: Route.ComponentProps) {
                         backgroundImage: course.thumbnail ? `url(${STORAGE_URL}/${course.thumbnail})` : "url(/images/banners/default-course-img.png)",
                     }}
                 >
-                    <div className="absolute inset-0 bg-black/50 bg-opacity-50 rounded-lg"></div>
+                    <div className="absolute inset-0 bg-black/50 bg-opacity-50 rounded-2xl"></div>
                     <div className="relative z-10 text-white">
                         <h1 className="text-2xl md:text-3xl font-semibold pb-2">{course.title}</h1>
                         <p className="text-gray-300 text-sm md:text-base">{truncateText(course.description, 200)}</p>
