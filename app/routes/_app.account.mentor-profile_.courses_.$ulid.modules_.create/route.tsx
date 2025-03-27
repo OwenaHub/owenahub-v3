@@ -1,6 +1,6 @@
 import { Form, redirect } from "react-router";
 import TableCard from "~/components/cards/table-card";
-import type { Route } from "../_app.account.mentor-profile_.courses_.$ulid.module_.create/+types/route";
+import type { Route } from "../_app.account.mentor-profile_.courses_.$ulid.modules_.create/+types/route";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import InputError from "~/components/forms/input-error";
@@ -24,17 +24,13 @@ export async function clientAction({ params, request }: Route.ClientActionArgs) 
       description: "Proceed to adding courses",
       action: {
         label: (<ArrowRight size={18} />),
-        onClick: () => redirect("/courses"),
+        onClick: () => redirect(`modules/`),
       },
     });
     return redirect(`/account/mentor-profile/courses/${ulid}`);
   } catch ({ response }: any) {
     toast.error("Failed to create module", {
       description: response?.data?.error || "An error occurred",
-      action: {
-        label: (<ArrowRight size={18} />),
-        onClick: () => redirect("/courses"),
-      },
     });
     const error: any = response?.data?.errors;
     return error;

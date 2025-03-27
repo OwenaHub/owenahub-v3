@@ -9,8 +9,6 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
         if (!params.ulid) throw new Error("Invalid request");
         const course = await getCreatedCourse(params.ulid);
-        console.log(course);
-
         return course;
     } catch ({ response }: any) {
         return {};
@@ -39,6 +37,7 @@ export default function route({ loaderData }: Route.ComponentProps) {
             </div>
 
             <Outlet context={course} />
+
         </section>
     )
 }

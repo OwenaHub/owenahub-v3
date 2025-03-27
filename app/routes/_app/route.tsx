@@ -21,7 +21,7 @@ export async function clientLoader() {
     } catch ({ response }: any) {
         
         if (response.status === 401) {
-            toast.error("Your session has expired!", {
+            toast.warning("Your session has expired!", {
                 description: "Login again to continue using OwenaHub",
             })
         } else {

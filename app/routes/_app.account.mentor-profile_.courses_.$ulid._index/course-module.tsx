@@ -27,7 +27,7 @@ function CourseModuleCard({ module }: any) {
                         <p className="text-sm text-gray-500">{truncateText(module.description, 100)}</p>
                     </div>
                 </div>
-                <Link to={module.id} className="text-blue-600 p-3 rounded-full border">
+                <Link to={`modules/${module.id}/lessons`} className="text-blue-600 p-3 rounded-full border">
                     <ArrowRight />
                 </Link>
             </div>
