@@ -1,6 +1,6 @@
 import { Form, redirect } from "react-router";
 import TableCard from "~/components/cards/table-card";
-import type { Route } from "../_app.account.mentor-profile_.courses_.$ulid.modules_.create/+types/route";
+import type { Route } from "../_app.account.mentor-profile_.courses_.$ulid.modules_.$id_.lessons_.create/+types/route";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import InputError from "~/components/forms/input-error";
@@ -13,17 +13,18 @@ import { TextEditor } from "~/components/custom/quill.client";
 export async function clientAction({ params, request }: Route.ClientActionArgs) {
   const formData = await request.formData();
   const credentials = Object.fromEntries(formData);
-  const { ulid } = params;
-  credentials.course_id = ulid;
+
+  const { ulid, id } = params;
+
+  credentials.courseId = ulid;
+  credentials.moduleId = id;
 
   try {
     const { data } = await createLesson(credentials);
-    console.log(data);
-
     toast.success("Course created ✅", {
       description: "You have successfully created a lesson",
     });
-    return redirect(`/account/mentor-profile/courses/${ulid}/modules/${data.id}/lessons`);
+    return redirect(`/account/mentor-profile/courses/${ulid}/modules/${id}/lessons`);
   } catch ({ response }: any) {
     toast.error("Failed to create module", {
       description: response?.data?.error || "An error occurred",
@@ -82,6 +83,7 @@ export default function CreateLesson({ actionData }: Route.ComponentProps) {
                     ]}
                   />
                 </div>
+                <input type="hidden" name="content" value={content} />
                 <InputError for="content" error={errors} />
               </div>
 

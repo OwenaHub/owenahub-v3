@@ -1,9 +1,10 @@
 import NavigateBack from "~/components/navigation/navigate-back";
-import { Outlet } from "react-router";
+import { Link, Outlet } from "react-router";
 import type { Route } from "./+types/route";
 import { truncateText } from "~/lib/texts";
 import { STORAGE_URL } from "~/lib/keys";
 import { getCreatedCourse } from "./get-course";
+import { Pencil } from "lucide-react";
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
@@ -30,8 +31,18 @@ export default function route({ loaderData }: Route.ComponentProps) {
                 >
                     <div className="absolute inset-0 bg-black/50 bg-opacity-50 rounded-2xl"></div>
                     <div className="relative z-10 text-white">
-                        <h1 className="text-2xl md:text-3xl font-semibold pb-2">{course.title}</h1>
-                        <p className="text-gray-300 text-sm md:text-base">{truncateText(course.description, 200)}</p>
+                        <h1 className="text-2xl md:text-3xl font-semibold pb-2 flex">
+                            {course.title}
+                        </h1>
+                        <p className="text-white text-sm md:text-base mb-4">
+                            {truncateText(course.description, 200)}
+                        </p>
+                        <Link to="edit" className="text-sm hover:bg-white cursor-pointer hover:text-black transition font-light mt-2 border rounded-full px-3 py-1 w-max flex items-center gap-2">
+                            <span>
+                                Update course
+                            </span>
+                            <Pencil size={16} />
+                        </Link>
                     </div>
                 </div>
             </div>

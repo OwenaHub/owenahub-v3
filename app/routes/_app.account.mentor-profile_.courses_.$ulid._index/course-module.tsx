@@ -1,13 +1,24 @@
-import { ArrowRight } from "lucide-react"
-import { Link } from "react-router"
+import { ArrowRight, Trash } from "lucide-react"
+import { Link, useFetcher } from "react-router"
 import { truncateText } from "~/lib/texts"
+import {
+    AlertDialog,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "~/components/ui/alert-dialog"
+import { Button } from "~/components/ui/button"
 
-export default function CourseModule({ modules }: any) {
+export default function CourseModule({ modules, params }: any) {
     return (
         <div className="flex flex-col gap-3 mb-5">
             {modules.length
                 ? modules.map((module: any) => (
-                    <CourseModuleCard module={module} key={module.id} />
+                    <CourseModuleCard module={module} key={module.id} params={params} />
                 ))
                 : <p className="text-gray-500 text-sm w-max rounded pb-3">
                     Nothing here yet
@@ -17,7 +28,7 @@ export default function CourseModule({ modules }: any) {
     )
 }
 
-function CourseModuleCard({ module }: any) {
+function CourseModuleCard({ module, params }: any) {
     return (
         <div className="border border-gray-200 border-b-2 rounded-md">
             <div className="flex justify-between items-center gap-3 pe-2">
@@ -25,6 +36,12 @@ function CourseModuleCard({ module }: any) {
                     <div className="ml-3 py-4">
                         <h3 className="font-semibold text-lg">{module.title}</h3>
                         <p className="text-sm text-gray-500">{truncateText(module.description, 100)}</p>
+                        <div className="flex items-stretch gap-2">
+                            <DeleteDialog module={module} params={params} />
+                            <span className="text-sm font-light mt-2 border rounded-full px-3 py-1 w-max">
+                                {module.lessons.length} lessons
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <Link to={`modules/${module.id}/lessons`} className="text-blue-600 p-3 rounded-full border">
@@ -32,5 +49,47 @@ function CourseModuleCard({ module }: any) {
                 </Link>
             </div>
         </div>
+    )
+}
+
+export function DeleteDialog({ module, params }: any) {
+    const fetcher = useFetcher();
+
+    return (
+        <AlertDialog>
+            <AlertDialogTrigger asChild>
+                <span className="text-sm font-light mt-2 bg-red-50 hover:bg-red-100 text-destructive rounded-full p-2 w-max transition cursor-pointer">
+                    <Trash size={18} />
+                </span>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+                <AlertDialogHeader>
+                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                        This action cannot be undone. This will permanently delete your
+                        account and remove your data from our servers.
+                        <Link to={`modules/${module.id}/delete`}>
+                        linjk
+                        </Link>
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <fetcher.Form
+                        method="POST"
+                        action={`modules/${module.id}/delete`}
+                        className="rounded-full hover:bg-gray-100 cursor-pointer"
+                    >
+                        <Button
+                            type="submit"
+                            disabled={fetcher.state !== "idle"}
+                            className="bg-destructive text-white px-4 py-2 rounded-md"
+                        >
+                            Delete
+                        </Button>
+                    </fetcher.Form>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
     )
 }
