@@ -4,6 +4,6 @@ export async function createCourseModule(props: { [k: string]: FormDataEntryValu
     return client.post(`api/mentor/courses/${props.course_id}/modules`, {
         title: props.title,
         description: props.description,
-        position: props.position,
+        position: Math.abs(parseInt(props.position as string)),
     });
 }

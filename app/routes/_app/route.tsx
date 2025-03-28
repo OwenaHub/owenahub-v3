@@ -20,7 +20,7 @@ export async function clientLoader() {
         return { user, notifications };
     } catch ({ response }: any) {
         
-        if (response.status === 401) {
+        if (response?.status === 401) {
             toast.warning("Your session has expired!", {
                 description: "Login again to continue using OwenaHub",
             })

@@ -21,7 +21,7 @@ export default function route({ loaderData }: Route.ComponentProps) {
     <div className="pb-4 mt-10">
       <div className="mb-8">
         <h4 className="font-semibold text-xl">
-          Module {module.position}
+          Module {Math.abs(module.position)}
         </h4>
         <p className="text-lg font-light">
           {module.title}

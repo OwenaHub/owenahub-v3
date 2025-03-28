@@ -35,7 +35,7 @@ export default function route({ loaderData }: Route.ComponentProps) {
                             {course.title}
                         </h1>
                         <p className="text-white text-sm md:text-base mb-4">
-                            {truncateText(course.description, 200)}
+                            {truncateText(course.about, 200)}
                         </p>
                         <Link to="edit" className="text-sm hover:bg-white cursor-pointer hover:text-black transition font-light mt-2 border rounded-full px-3 py-1 w-max flex items-center gap-2">
                             <span>
