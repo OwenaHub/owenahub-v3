@@ -8,6 +8,8 @@ import { createCourse } from "./create-course";
 import { toast } from "sonner";
 import InputError from "~/components/forms/input-error";
 import TableCard from "~/components/cards/table-card";
+import { TextEditor } from "~/components/custom/quill.client";
+import { useState } from "react";
 
 export async function clientAction({ request }: Route.ClientActionArgs) {
     const formData = Object.fromEntries(await request.formData());
@@ -34,6 +36,9 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
 
 export default function route({ actionData }: Route.ComponentProps) {
     let errors = actionData;
+    const [learningGoals, setLearningGoals] = useState("");
+    const [description, setDescription] = useState("");
+    const [requirements, setRequirements] = useState("");
 
     return (
         <div className="pb-10 pt-5">
@@ -60,7 +65,9 @@ export default function route({ actionData }: Route.ComponentProps) {
                         </div>
                         <div className="mb-5 md:flex gap-4">
                             <div className="flex-1">
-                                <Label htmlFor="tags" className="mb-1">Tags (These can be related keywords)</Label>
+                                <Label htmlFor="tags" className="mb-1">
+                                    Tags <span className="font-light">(These can be related keywords)</span>
+                                </Label>
                                 <Input id="tags" name="tags" className="bg-white rounded-md" required />
                                 <InputError for="tags" error={errors} />
                             </div>
@@ -72,17 +79,65 @@ export default function route({ actionData }: Route.ComponentProps) {
                         </div>
                         <div className="mb-5">
                             <Label htmlFor="learning_goals" className="mb-1">Students learning goal</Label>
-                            <Input id="learning_goals" name="learning_goals" className="bg-white rounded-md" />
+                            <TextEditor
+                                theme="snow"
+                                placeholder="What your students will accomplish after they finish your course"
+                                onChange={setLearningGoals}
+                                value={learningGoals}
+                                modulesConfig={[
+                                    "font-selection",
+                                    "headers",
+                                    "formatting",
+                                    "text-alignment",
+                                    "blockquote-code",
+                                    "lists-indentation",
+                                    "color-picker",
+                                    "remove-formatting",
+                                ]}
+                            />
+                            <input type="hidden" name="learning_goals" value={learningGoals} />
                             <InputError for="learning_goals" error={errors} />
                         </div>
                         <div className="mb-5">
                             <Label htmlFor="requirements" className="mb-1">Course requirements</Label>
-                            <Textarea id="requirements" name="requirements" className="bg-white rounded-md" required />
+                            <TextEditor
+                                theme="snow"
+                                placeholder="Define requirements for a student to enroll"
+                                onChange={setRequirements}
+                                value={requirements}
+                                modulesConfig={[
+                                    "font-selection",
+                                    "headers",
+                                    "formatting",
+                                    "text-alignment",
+                                    "blockquote-code",
+                                    "lists-indentation",
+                                    "color-picker",
+                                    "remove-formatting",
+                                ]}
+                            />
+                            <input type="hidden" name="requirements" value={requirements} />
                             <InputError for="requirements" error={errors} />
                         </div>
                         <div className="mb-5">
                             <Label htmlFor="description" className="mb-1">Overview/description</Label>
-                            <Textarea id="description" name="description" className="bg-white rounded-md" required />
+                            <TextEditor
+                                theme="snow"
+                                placeholder="Write a comprehensive course description"
+                                onChange={setDescription}
+                                value={description}
+                                modulesConfig={[
+                                    "font-selection",
+                                    "headers",
+                                    "formatting",
+                                    "text-alignment",
+                                    "blockquote-code",
+                                    "lists-indentation",
+                                    "color-picker",
+                                    "remove-formatting",
+                                ]}
+                            />
+                            <input type="hidden" name="description" value={description} />
                             <InputError for="description" error={errors} />
                         </div>
 
@@ -94,7 +149,14 @@ export default function route({ actionData }: Route.ComponentProps) {
                             </div>
                             <div className="flex-1">
                                 <Label htmlFor="price" className="mb-1">Price</Label>
-                                <Input type="number" id="price" name="price" className="bg-white rounded-md" required />
+                                <Input
+                                    type="number"
+                                    id="price"
+                                    name="price"
+                                    placeholder="0.00"
+                                    className="bg-white rounded-md"
+                                    required
+                                />
                                 <InputError for="price" error={errors} />
                             </div>
                         </div>

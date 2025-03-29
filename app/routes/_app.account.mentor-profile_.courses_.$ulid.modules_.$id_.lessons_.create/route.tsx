@@ -53,7 +53,7 @@ export default function CreateLesson({ actionData }: Route.ComponentProps) {
 
               <div className="mb-5">
                 <Label htmlFor="position" className="mb-1">Position</Label>
-                <Input id="position" name="position" type="number" className="bg-white rounded" required />
+                <Input id="position" name="position" type="number" className="bg-white rounded" />
                 <InputError for="position" error={errors} />
               </div>
 

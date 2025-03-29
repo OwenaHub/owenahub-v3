@@ -1,5 +1,7 @@
 interface Module extends Model {
-    content: string;
-    isRead: boolean;
-    source: string;
+    courseId: string,
+    title: string,
+    description: string,
+    lessons: Lesson[],
+    position: number,
 }
