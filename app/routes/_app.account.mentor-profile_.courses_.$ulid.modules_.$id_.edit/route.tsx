@@ -1,12 +1,11 @@
 import { Form, redirect } from "react-router";
 import TableCard from "~/components/cards/table-card";
-import type { Route } from "../_app.account.mentor-profile_.courses_.$ulid.modules_.$id_.edit/+types/route";
+import type { Route } from "./+types/route";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import InputError from "~/components/forms/input-error";
 import { getModule, updateModule } from "./update-module";
 import { toast } from "sonner";
-import { ArrowRight } from "lucide-react";
 import { Textarea } from "~/components/ui/textarea";
 import { Button } from "~/components/ui/button";
 
@@ -16,7 +15,9 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
         const module = await getModule(params.ulid, params.id);
         return module;
     } catch (error) {
-
+        console.log(error);
+        toast.warning('Failed to fetch resource');
+        return redirect(`account/mentor-profile/courses/${params.ulid}`)
     }
 }
 

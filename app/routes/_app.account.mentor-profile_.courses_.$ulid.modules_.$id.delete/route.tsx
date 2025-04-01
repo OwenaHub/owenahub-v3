@@ -1,5 +1,5 @@
 import client from "~/lib/interceptor";
-import type { Route } from "../_app.account.mentor-profile_.courses_.$ulid.modules_.$id.delete/+types/route";
+import type { Route } from "./+types/route";
 import { toast } from "sonner";
 
 export async function clientAction({ params }: Route.ClientActionArgs) {

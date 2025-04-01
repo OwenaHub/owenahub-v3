@@ -15,6 +15,8 @@ import "./global.css";
 import { Toaster } from "sonner"
 import ProgressBar from "./components/navigation/progress-bar";
 import { Button } from "./components/ui/button";
+import AppName from "./components/custom/app-name";
+import { Zap } from "lucide-react";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -64,8 +66,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Scripts />
         <Toaster
           richColors
-          closeButton
-          position="top-right"
+          // closeButton
+          position="top-center"
           toastOptions={{
             classNames: {
               // toast: 'toast',
@@ -86,6 +88,27 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return <Outlet />;
 }
+
+export function HydrateFallback() {
+  return (
+    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div>
+        <div className="flex flex-col gap-2 justify-center items-center">
+          <img src="/images/logos/logo.png" alt="..." width={30} />
+          <div className="text-center mb-3">
+            <AppName size="text-base" />
+          </div>
+        </div>
+        <span className="w-full h-1 animate-pulse bg-gray-300 rounded-md block mb-3" />
+        <p className="flex items-center gap-1 justify-center">
+          <Zap size={14} />
+          <span className="text-gray-700 text-xs font-light">Learn by doing</span>
+        </p>
+      </div>
+    </div>
+  );
+}
+
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "Oops!";
@@ -121,7 +144,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
           )}
 
           <div className="flex gap-5 items-center mt-3">
-            <Link to={"/"} >
+            <Link to={"/dashboard"}>
               <Button variant={"outline"} className="h-8 text-sm py-0">
                 Go home
               </Button>

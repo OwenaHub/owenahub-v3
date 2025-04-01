@@ -3,11 +3,13 @@ import { Form, Link, redirect } from "react-router";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { Textarea } from "~/components/ui/textarea";
-import type { Route } from "../_app.account.mentor-profile_.courses_.$ulid_.edit/+types/route";
+import type { Route } from "./+types/route";
 import { toast } from "sonner";
 import InputError from "~/components/forms/input-error";
 import TableCard from "~/components/cards/table-card";
 import { getCourse, updateCourse } from "./udpate-course";
+import { useState } from "react";
+import { TextEditor } from "~/components/custom/quill.client";
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
@@ -44,8 +46,11 @@ export async function clientAction({ request, params }: Route.ClientActionArgs) 
 
 export default function route({ loaderData, actionData }: Route.ComponentProps) {
     const errors = actionData;
-
     const course: Course | any = loaderData;
+
+    const [learningGoals, setLearningGoals] = useState(course.learningGoals);
+    const [description, setDescription] = useState(course.description);
+    const [requirements, setRequirements] = useState(course.requirements);
 
     return (
         <div className="pb-10 pt-5">
@@ -84,17 +89,65 @@ export default function route({ loaderData, actionData }: Route.ComponentProps) 
                         </div>
                         <div className="mb-5">
                             <Label htmlFor="learning_goals" className="mb-1">Students learning goal</Label>
-                            <Input defaultValue={course.learningGoals} id="learning_goals" name="learning_goals" className="bg-white rounded-md" />
+                            <TextEditor
+                                theme="snow"
+                                placeholder="What your students will accomplish after they finish your course"
+                                onChange={setLearningGoals}
+                                value={learningGoals}
+                                modulesConfig={[
+                                    "font-selection",
+                                    "headers",
+                                    "formatting",
+                                    "text-alignment",
+                                    "blockquote-code",
+                                    "lists-indentation",
+                                    "color-picker",
+                                    "remove-formatting",
+                                ]}
+                            />
+                            <input type="hidden" name="learning_goals" value={learningGoals} />
                             <InputError for="learning_goals" error={errors} />
                         </div>
                         <div className="mb-5">
                             <Label htmlFor="requirements" className="mb-1">Course requirements</Label>
-                            <Textarea defaultValue={course.requirements} id="requirements" name="requirements" className="bg-white rounded-md" required />
+                            <TextEditor
+                                theme="snow"
+                                placeholder="Define requirements for a student to enroll"
+                                onChange={setRequirements}
+                                value={requirements}
+                                modulesConfig={[
+                                    "font-selection",
+                                    "headers",
+                                    "formatting",
+                                    "text-alignment",
+                                    "blockquote-code",
+                                    "lists-indentation",
+                                    "color-picker",
+                                    "remove-formatting",
+                                ]}
+                            />
+                            <input type="hidden" name="requirements" value={requirements} />
                             <InputError for="requirements" error={errors} />
                         </div>
                         <div className="mb-5">
                             <Label htmlFor="description" className="mb-1">Overview/description</Label>
-                            <Textarea defaultValue={course.description} id="description" name="description" className="bg-white rounded-md" required />
+                            <TextEditor
+                                theme="snow"
+                                placeholder="Write a comprehensive course description"
+                                onChange={setDescription}
+                                value={description}
+                                modulesConfig={[
+                                    "font-selection",
+                                    "headers",
+                                    "formatting",
+                                    "text-alignment",
+                                    "blockquote-code",
+                                    "lists-indentation",
+                                    "color-picker",
+                                    "remove-formatting",
+                                ]}
+                            />
+                            <input type="hidden" name="description" value={description} />
                             <InputError for="description" error={errors} />
                         </div>
 

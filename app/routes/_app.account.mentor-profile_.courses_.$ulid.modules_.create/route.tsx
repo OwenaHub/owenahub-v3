@@ -1,6 +1,6 @@
 import { Form, redirect } from "react-router";
 import TableCard from "~/components/cards/table-card";
-import type { Route } from "../_app.account.mentor-profile_.courses_.$ulid.modules_.create/+types/route";
+import type { Route } from "./+types/route";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import InputError from "~/components/forms/input-error";

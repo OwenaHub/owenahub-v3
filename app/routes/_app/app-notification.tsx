@@ -80,10 +80,10 @@ export default function AppNotification({ className, notifications, ...props }: 
                                                                 && (<span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />)
                                                             }
                                                             <div className="space-y-1">
-                                                                <p className="text-sm font-medium leading-5">
+                                                                <p className="text-sm text-gray-800 font-medium leading-5">
                                                                     {notification.content}
                                                                 </p>
-                                                                <p className="text-sm text-gray-400">
+                                                                <p className="text-xs text-gray-500">
                                                                     {dayjs(notification.created_at).fromNow()}
                                                                 </p>
                                                             </div>
@@ -110,3 +110,5 @@ export default function AppNotification({ className, notifications, ...props }: 
         </Popover>
     )
 }
+
+

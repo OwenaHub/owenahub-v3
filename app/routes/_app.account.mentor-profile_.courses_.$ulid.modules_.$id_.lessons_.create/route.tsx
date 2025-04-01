@@ -1,6 +1,6 @@
 import { Form, redirect } from "react-router";
 import TableCard from "~/components/cards/table-card";
-import type { Route } from "../_app.account.mentor-profile_.courses_.$ulid.modules_.$id_.lessons_.create/+types/route";
+import type { Route } from "./+types/route";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import InputError from "~/components/forms/input-error";
@@ -20,13 +20,13 @@ export async function clientAction({ params, request }: Route.ClientActionArgs) 
   credentials.moduleId = id;
 
   try {
-    const { data } = await createLesson(credentials);
-    toast.success("Course created ✅", {
+    await createLesson(credentials);
+    toast.success("Lesson created", {
       description: "You have successfully created a lesson",
     });
     return redirect(`/account/mentor-profile/courses/${ulid}/modules/${id}/lessons`);
   } catch ({ response }: any) {
-    toast.error("Failed to create module", {
+    toast.error("Failed to create lesson", {
       description: response?.data?.error || "An error occurred",
     });
     const error: any = response?.data?.errors;

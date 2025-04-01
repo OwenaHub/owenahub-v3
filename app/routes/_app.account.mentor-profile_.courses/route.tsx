@@ -3,7 +3,7 @@ import NavigateBack from "~/components/navigation/navigate-back";
 import { getCreatedCourses } from "./get-courses";
 import { Suspense } from "react";
 import { Await } from "react-router";
-import type { Route } from "../_app.account.mentor-profile_.courses/+types/route";
+import type { Route } from "./+types/route";
 import Course from "./course";
 import CardSkeleton from "~/components/skeletons/card-skeleton";
 

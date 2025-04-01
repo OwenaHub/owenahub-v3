@@ -1,5 +1,5 @@
 import { Link, Outlet, redirect } from "react-router";
-import type { Route } from "../_auth/+types/route";
+import type { Route } from "./+types/route";
 import useSession from "~/lib/session";
 
 export async function clientLoader(_: Route.ClientLoaderArgs) {

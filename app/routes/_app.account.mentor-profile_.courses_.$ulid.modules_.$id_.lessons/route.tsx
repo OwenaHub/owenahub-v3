@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import type { Route } from "../_app.account.mentor-profile_.courses_.$ulid.modules_.$id_.lessons/+types/route";
+import type { Route } from "./+types/route";
 import { getLessons } from "./get-lessons";
 import LessonCard from "./lesson-card";
 import { Plus } from "lucide-react";
@@ -7,7 +7,6 @@ import { Plus } from "lucide-react";
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   if (!params.id) throw new Error("Invalid request");
   const module = await getLessons(params.ulid, params.id);
-  console.log(module.lessons)
   return {
     module: module,
     lessons: module.lessons,

@@ -12,14 +12,9 @@ const APP_TABS = [
         icon: <Shapes size={22} strokeWidth={1.7} />,
     },
     {
-        href: `/courses`,
+        href: `/my-courses`,
         title: 'Courses',
         icon: <GraduationCap size={22} strokeWidth={1.7} />,
-    },
-    {
-        href: `/payments`,
-        title: 'Payments',
-        icon: <Wallet size={22} strokeWidth={1.7} />,
     },
     {
         href: `/account`,

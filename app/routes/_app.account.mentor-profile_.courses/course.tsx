@@ -43,8 +43,8 @@ function CourseCard({ course }: { course: Course }) {
                         />
                     </div>
                     <div className="ml-3 py-2">
-                        <h3 className="font-semibold md:text-md">{course.title}</h3>
-                        <p className="text-sm md:text-base text-gray-500 font-light mb-1">
+                        <h3 className="font-semibold text-base md:text-md">{course.title}</h3>
+                        <p className="text-xs md:text-base text-gray-500 font-light mb-1">
                             {truncateText(course.about, 80)}
                         </p>
                         <div className="flex items-stretch gap-2">
@@ -91,7 +91,7 @@ export function DeleteDialog({ course }: { course: Course }) {
                         <Button
                             type="submit"
                             disabled={fetcher.state !== "idle"}
-                            className="bg-destructive text-white px-4 py-2 rounded-md"
+                            className="bg-destructive text-white px-4 py-2 rounded-md w-full"
                         >
                             Delete
                         </Button>

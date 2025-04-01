@@ -71,9 +71,6 @@ export function DeleteDialog({ module }: any) {
                     <AlertDialogDescription>
                         This action cannot be undone. This will permanently{" "}
                         <span className="font-semibold">delete this module and lessons</span> your data from our servers.
-                        <Link to={`modules/${module.id}/delete`}>
-                            linjk
-                        </Link>
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
