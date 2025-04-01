@@ -60,9 +60,9 @@ body::-webkit-scrollbar-thumb:hover {
     margin: 5px 0;
 }
 
-.reader_content ol,
+ ol,
 ul {
-    margin-left: 35px;
+    margin-left: 30px;
 }
 
 /* Text Formatting */

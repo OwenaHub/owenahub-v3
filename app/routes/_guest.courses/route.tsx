@@ -7,7 +7,7 @@ import CardSkeleton from "~/components/skeletons/card-skeleton copy"
 import type { Route } from "../_guest.courses/+types/route"
 import Courses from "./courses"
 
-export async function clientLoader() {
+export async function clientLoader(_: Route.ClientLoaderArgs) {
     try {
         const courses = getCourses();
         return { courses }

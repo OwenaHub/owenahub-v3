@@ -39,13 +39,13 @@ function CourseCard({ course }: { course: Course }) {
           <div className="flex items-center">
             <h3 className="text-gray-600 font-bold leading-5">
               <span className="leading-[-5px]">{course.title}</span>
-              <Link to="/courses">
+              <Link to={`/courses/${course.id}`}>
                 <span aria-hidden="true" className="absolute inset-0" />
               </Link>
             </h3>
           </div>
           <div className="text-xs font-light">
-            <div dangerouslySetInnerHTML={{ __html: truncateText(course.about, 100)}} />
+            <div dangerouslySetInnerHTML={{ __html: truncateText(course.about, 100) }} />
           </div>
         </div>
 
