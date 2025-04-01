@@ -51,8 +51,8 @@ export default function Dashboard() {
                     </p>
                 </div>
 
-                <div className="flex flex-col gap-6 md:flex-row md:items-stretch">
-                    <div className="flex flex-1 border p-5 rounded-xl gap-3 items-center">
+                <div className="flex flex-col gap-6 md:flex-row md:items-stretch pb-10">
+                    <div className="flex shadow flex-1 border p-5 rounded-xl gap-3 items-center">
                         <div>
                             <Headset size={40} strokeWidth={1} />
                         </div>
@@ -65,7 +65,7 @@ export default function Dashboard() {
                             </p>
                         </div>
                     </div>
-                    <div className="flex flex-1 border p-5 rounded-xl gap-3 items-center">
+                    <div className="flex shadow flex-1 border p-5 rounded-xl gap-3 items-center">
                         <div>
                             <SearchCheck size={40} strokeWidth={1} />
                         </div>
