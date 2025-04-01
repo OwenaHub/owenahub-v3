@@ -1,8 +1,28 @@
-import { Link, Outlet, useNavigation } from "react-router";
+import { Await, Link, Outlet, useNavigation } from "react-router";
 import { ChevronRight, Facebook, Instagram, Menu, Twitter } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import useSession from "~/lib/session";
+import type { Route } from "../_guest/+types/route";
 
-export default function HomePage() {
+export async function clientLoader() {
+    const { getUser } = useSession();
+
+    try {
+        const user = getUser();
+        let session;
+
+        if (user)
+            session = true;
+        else
+            session = false
+
+        return { session };
+    } catch ({ response }: any) {
+        console.log(response)
+    }
+}
+
+export default function HomePage({ loaderData }: Route.ComponentProps) {
     const { state } = useNavigation();
     let busy: boolean = state === "submitting" || state === "loading";
 
@@ -16,70 +36,94 @@ export default function HomePage() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const { session }: { session: boolean } = loaderData || { session: false };
+
     return (
         <section className={`${busy && "opacity-50"} transition-all`}>
-                <div className="container -translate-x-1/2 fixed left-1/2 px-4 top-4 transform z-50">
-                    {/* Navbar */}
-                    <nav
-                        className={`transition-all duration-300 ease-in-out ${scrolled ? "bg-white shadow-[0_5px_35px_rgba(0,0,0,0.1)] py-2 px-3" : "bg-transparent py-0"
-                            } border-gray-200 rounded-2xl flex justify-between items-center gap-2`}
-                    >
-                        <div className="flex gap-2 items-center">
-                            <img src="/images/logos/logo.png" alt="logo" width={38} />
-                            <Link to="/" className="text-primary-foreground font-bold md:text-lg">
-                                <span>OwenaHub</span> <span className="font-light">the learner's hub</span>
+            <div className="container -translate-x-1/2 fixed left-1/2 px-4 top-4 transform z-50">
+                {/* Navbar */}
+                <nav
+                    className={`transition-all duration-300 ease-in-out ${scrolled ? "bg-white shadow-[0_5px_35px_rgba(0,0,0,0.1)] py-2.5 px-3 outline-gray-100 outline" : "bg-transparent py-0"
+                        } border-gray-200 rounded-lg flex justify-between items-center gap-2`}
+                >
+                    <div className="flex gap-6 items-center">
+                        <div className="flex gap-1 items-center">
+                            <img src="/images/logos/logo.png" alt="logo" width={30} />
+                            <Link to="/" className="text-gray-900 font-bold">
+                                <span>OwenaHub</span>
                             </Link>
                         </div>
-                        <div className="hidden md:block">
-                            <div className="flex gap-2 items-center">
-                                <Link to="/login" className="bg-white border border-secondary-foreground rounded-[6px] text-secondary-foreground text-xs font-extrabold hover:shadow-lg px-5 py-1.5 uppercase">
+
+                        <div className="hidden text-sm md:flex gap-3 items-center text-gray-600">
+                            <Link to={"/courses"}>Courses</Link>
+                            <Link to={"#"}>Mentors</Link>
+                            <Link to={"#"}>Blog</Link>
+                        </div>
+                    </div>
+                    <div className="hidden md:block">
+                        <Suspense fallback={<div className="h-7 w-28 bg-gray-100 animate-pulse" />}>
+                            <Await resolve={session}>
+                                <div className="flex gap-2 items-center">
+                                    {session
+                                        ? (<Link to="/dashboard" className="bg-primary rounded-[6px] text-primary-foreground text-xs font-medium hover:shadow-lg px-5 py-1.5 uppercase">
+                                            Dashboard
+                                        </Link>)
+                                        : (<>
+                                            <Link to="/login" className="bg-white border border-secondary-foreground rounded-[6px] text-secondary-foreground text-xs font-extrabold hover:shadow-lg px-5 py-1.5 uppercase">
+                                                Log in
+                                            </Link>
+                                            <Link to="/register" className="bg-primary border border-[#083156] rounded-[6px] text-white text-xs font-bold hover:opacity-80 transition px-5 py-1.5 uppercase">
+                                                Sign up
+                                            </Link>
+                                        </>)
+                                    }
+                                </div>
+                            </Await>
+                        </Suspense>
+                    </div>
+                    <button aria-label="Menu" className="block md:hidden" type="button" onClick={() => setMenu(!menu)}>
+                        <Menu />
+                    </button>
+                </nav>
+                {menu && (
+                    <div className="bg-white rounded-lg shadow-2xl block md:hidden mt-1 mx-auto px-4 py-4 z-50">
+                        <div>
+                            <div className="mb-3">
+                                <div className="border-b py-4">
+                                    <Link to={"/courses"} className="text-primary font-bold">
+                                        Courses
+                                    </Link>
+                                </div>
+                                <div className="border-b py-4">
+                                    <Link to={"/mentors"} className="text-primary font-bold">
+                                        Mentors
+                                    </Link>
+                                </div>
+                                <div className="border-b py-4">
+                                    <Link to={"/blog"} className="text-primary font-bold">
+                                        Blog
+                                    </Link>
+                                </div>
+                                <div className="py-4">
+                                    <a href="tel:+2348026658956" className="flex text-foreground text-sm font-light gap-2 items-center">
+                                        <span>Contact support</span> <ChevronRight size={12} />
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-4">
+                                <Link to="/login" className="bg-white border border-secondary-foreground rounded-[6px] text-center text-secondary-foreground text-sm w-full block font-extrabold hover:shadow-lg py-2 uppercase">
                                     Log in
                                 </Link>
-                                <Link to="/register" className="bg-[#083156] border border-[#083156] rounded-[6px] text-[#FBE56D] text-xs font-bold hover:bg-gray-800 px-5 py-1.5 uppercase">
+                                <Link to="/register" className="bg-secondary-foreground rounded-[6px] text-primary-theme text-center text-sm w-full block font-bold hover:bg-gray-800 py-2 uppercase">
                                     Sign up
                                 </Link>
                             </div>
                         </div>
-                        <button aria-label="Menu" className="block md:hidden" type="button" onClick={() => setMenu(!menu)}>
-                            <Menu />
-                        </button>
-                    </nav>
-                    {menu && (
-                        <div className="bg-white rounded-lg shadow-2xl block md:hidden mt-1 mx-auto px-4 py-4 z-50">
-                            <div>
-                                <div className="mb-3">
-                                    <div className="border-b py-4">
-                                        <Link to={"/courses"} className="text-primary-foreground font-bold">
-                                            Courses
-                                        </Link>
-                                    </div>
-                                    <div className="border-b py-4">
-                                        <Link to={"/classes"} className="text-primary-foreground font-bold">
-                                            Classes
-                                        </Link>
-                                    </div>
-                                    <div className="py-4">
-                                        <a href="tel:+2348026658956" className="flex text-foreground text-sm font-light gap-2 items-center">
-                                            <span>Contact support</span> <ChevronRight size={12} />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col gap-4">
-                                    <Link to="/login" className="bg-white border border-secondary-foreground rounded-[6px] text-center text-secondary-foreground text-sm w-full block font-extrabold hover:shadow-lg py-2 uppercase">
-                                        Log in
-                                    </Link>
-                                    <Link to="/register" className="bg-[#083156] border border-[#083156] rounded-[6px] text-[#FBE56D] text-center text-sm w-full block font-bold hover:bg-gray-800 py-2 uppercase">
-                                        Sign up
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                </div>
+                    </div>
+                )}
+            </div>
 
-            <main>
-                <Outlet />
-            </main>
+            <Outlet />
 
             <footer className="bg-gray-50 text-gray-700 py-8" id="footer">
                 <div className="container text-sm">

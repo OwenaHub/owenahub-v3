@@ -11,7 +11,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import "./global.css";
+import "~/styles/shared.css";
 import { Toaster } from "sonner"
 import ProgressBar from "./components/navigation/progress-bar";
 import { Button } from "./components/ui/button";

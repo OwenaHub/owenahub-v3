@@ -13,7 +13,7 @@ function Card({ icon: Icon, title, description, link }: CardProps) {
     return (
         <div className="flex border relative border-b-2 p-3 rounded-lg gap-3 items-center hover:bg-gray-50 transition">
             <div>
-                <Icon size={40} strokeWidth={1} />
+                <Icon size={40} strokeWidth={1} className=""/>
             </div>
             <div>
                 <h5 className="font-semibold text-sm mb-1">{title}</h5>

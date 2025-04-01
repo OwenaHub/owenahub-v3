@@ -1,6 +1,8 @@
 body {
     scroll-behavior: smooth;
     --webkit-scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
 }
 
 body::-webkit-scrollbar {
@@ -19,6 +21,14 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-thumb:hover {
     background: #8d6000;
+}
+
+.primary-theme {
+    color: #F6A700;
+}
+
+.primary-bg {
+    background: #F6A700;
 }
 
 .ql-code-block-container {

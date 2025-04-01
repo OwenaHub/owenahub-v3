@@ -6,8 +6,6 @@ export default function useSession() {
     async function validateSession() {
         try {
             const response = await client.get(`api/user`);
-            console.log(response);
-            
             storeUser(response?.data);
             return response?.data;
         } catch (error) {
@@ -37,7 +35,7 @@ export default function useSession() {
         }
     }
 
-    async function getUser() {
+    function getUser() {
         try {
             let data = localStorage.getItem(storageKeys.user);
             const user = data ? JSON.parse(data) : null;
@@ -57,5 +55,5 @@ export default function useSession() {
         return route || '/dashboard';
     }
 
-    return { validateSession, getUserType, intendedRoute, getIntentedRoute };
+    return { validateSession, getUserType, intendedRoute, getIntentedRoute, getUser };
 }

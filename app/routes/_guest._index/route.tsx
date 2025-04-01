@@ -1,27 +1,10 @@
+import { Blocks, ClockArrowUp, Earth, Handshake, Settings, Users } from "lucide-react";
 import { Link } from "react-router";
-import { ArrowRight, Briefcase, Code, LayoutTemplate, Regex } from "lucide-react";
-import Badge from "~/components/custom/badge";
-import { truncateText } from "~/lib/texts";
 import Rating from "~/components/custom/rating";
-
-const categories = [
-  {
-    title: "Web Development",
-    icon: <LayoutTemplate size={15} />
-  },
-  {
-    title: "Data & Algorithms",
-    icon: <Code size={15} />
-  },
-  {
-    title: "Development methodologies",
-    icon: <Regex size={15} />
-  },
-  {
-    title: "Career Development",
-    icon: <Briefcase size={15} />
-  },
-]
+import { Button } from "~/components/ui/button";
+import { BrMd } from "~/components/utility/line-break";
+import { truncateText } from "~/lib/texts";
+import "~/styles/home.css"
 
 const tracks = [
   {
@@ -64,248 +47,237 @@ const tracks = [
 
 export default function HomePage() {
   return (
-    <section>
-      <div className="bg-muted py-16 relative">
-        <header className="lg:pt-16 pb-10 pt-[4rem]">
-          <section className="container justify-between gap-20 items-center md:flex">
-            <div className="text-start md:text-start">
-              <h1 className="text-4xl text-primary-foreground text-start font-extrabold lg:text-5xl md:text-start mt-3 tracking-tight z-10">
-                <span className="text-primary-foreground">Your code deserves a stage,</span>
-                <br className="hidden md:block" />{" "}
-                <span className="text-primary">Your career deserves a guide.</span>
-              </h1>
+    <>
+      <header className="py-[4rem] h-[60dvh] flex flex-col justify-center">
+        <section className="container">
+          <div className="text-start md:text-center">
+            <h1 className="text-4xl text-primary-theme font-extrabold lg:text-5xl mt-3 tracking-tight z-10">
+              <span className="text-primary-theme">Your code deserves a stage,</span>
+              <br className="hidden md:block" />{" "}
+              <span className="text-gray-800">Your career deserves a guide.</span>
+            </h1>
 
-              <section className="flex flex-col text-muted-foreground gap-5 mb-10 mt-5">
-                <span className="text-sm md:text-lg">
-                  Create stunning portfolios to showcase your work and access <br className="hidden md:block" />
-                  expert-led courses to level up your skills
-                </span>
-              </section>
-
-              <div className="flex flex-col gap-5 items-center md:flex-row z-10">
-                <Link to="/register" className="bg-[#083156] rounded-md shadow-md text-[#FBE56D] text-center text-sm w-full block font-bold hover:bg-gray-800 md:inline-block md:w-max px-10 py-2.5 transition">
-                  GET STARTED
-                </Link>
-                <a
-                  rel="noopener"
-                  href="https://youtu.be/hBDECFvIk8w?si=G_1qfFhyCYJWwVv8"
-                  target="_blank"
-                  className="bg-white rounded-md text-[#083156] text-center text-sm w-full block font-bold hover:shadow-lg md:inline-block md:w-max outline outline-[#083156] px-10 py-2.5"
-                >
-                  See Courses
-                </a>
-              </div>
-
-            </div>
-            <div className="flex-1 hidden md:block me-14">
-              <img
-                src="/images/personalised.png"
-                alt="Join OwenaHub"
-                className="h-[440px]pointer-events-none w-[440px] block mx-auto"
-              />
-            </div>
-          </section>
-        </header>
-      </div>
-
-      <section className="py-10">
-        <div className="container mx-auto">
-          <div className="py-5">
-            <div className="lg:text-start pb-5">
-              <h2 className="text-3xl text-gray-800 font-bold md:text-4xl pb-2">
-                Expand your skillset <br className="md:hidden" /> with <span className="text-foreground">OwenaHub</span>.
-              </h2>
-              <p className="text-gray-500">
-                Find resources curated by our team for Tech Enthusiasts.
-              </p>
-            </div>
-
-            <section className="flex flex-wrap gap-2 items-center mb-20 whitespace-nowrap">
-              {categories.map((category, index) => (
-                <Badge
-                  key={index}
-                  icon={category.icon}
-                  title={category.title}
-                />
-              ))}
+            <section className="flex flex-col text-muted-foreground gap-5 mb-10 mt-5">
+              <span className="text-sm md:text-base">
+                Create stunning portfolios to showcase your work and access <br className="hidden md:block" />
+                expert-led courses to level up your skills
+              </span>
             </section>
 
-            <section>
-              <div className="mx-auto pb-10 sm:pb-16">
-                <div className="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-4 sm:grid-cols-2 xl:gap-x-6">
-                  {tracks.map((track, index) => (
-                    <div key={index} className="flex flex-col border border-b-4 border-gray-200 h-full p-2 rounded-lg group hover:border-b relative transition">
-                      {/* Course Image */}
-                      <div className="bg-slate-100 rounded-lg w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-36 overflow-hidden">
-                        <img
-                          src={track.image_path
-                            ? `${track.image_path}`
-                            : "/images/banners/default-course-img.png"}
-                          alt={track.title}
-                          className="h-full rounded w-full object-cover"
-                        />
-                      </div>
-
-                      {/* Content Wrapper */}
-                      <div className="flex flex-col flex-grow justify-between mt-2">
-                        {/* Title & Description */}
-                        <div className="flex flex-col gap-1.5 mb-1.5">
-                          <div className="flex items-center">
-                            <h3 className="text-primary-foreground font-bold leading-5">
-                              <span className="leading-[-5px]">{track.title}</span>
-                              <Link to="/courses">
-                                <span aria-hidden="true" className="absolute inset-0" />
-                              </Link>
-                            </h3>
-                          </div>
-                          <div className="text-xs font-light">
-                            {truncateText(track.description, 100)}
-                          </div>
-                        </div>
-
-                        {/* Rating & Price - Pushed to the bottom */}
-                        <div className="mt-auto">
-                          <div className="flex gap-2 items-center">
-                            <p className="text-yellow-800 font-extrabold">4.5</p>
-                            <div className="flex gap-1">
-                              <Rating rating={track.rating} />
-                            </div>
-                            <p>({track.enrollCount})</p>
-                          </div>
-                          <div className="flex gap-2 items-center">
-                            <p className="font-bold">₦{track.price}</p>
-                            <p className="font-light line-through">₦{track.discount}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-      </section>
-
-      <section className="container lg:pb-9 pb-20" id="learn-more">
-        <div className="justify-evenly gap-5 items-center md:flex pt-5">
-          <div>
-            <img
-              src="/images/personalised.png"
-              alt="Personalized Learning"
-              className="w-full"
-              loading="lazy"
-            />
-          </div>
-
-          <div>
-            <div className="text-gray-800 lg:px-4 pt-5">
-              <div>
-                <h4 className="text-3xl text-foreground font-bold mb-4 md:text-4xl">
-                  Personalised learning
-                </h4>
-                <p className="text-base leading-snug mb-4">
-                  OwenaHub offers courses focused on mentorship. <br className="hidden lg:block" />
-                  Enroll in mentorship courses & learn at your own pace.
-                </p>
-                <Link to="/register" target="_blank"
-                  className="bg-[#FFE1BC] rounded-xl text-[#3D4D5C] font-bold hover:bg-gray-800 hover:text-white inline-block px-6 py-2 transition">
-                  Take a look
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="container lg:pb-9 pb-20">
-        <div className="mx-auto">
-          <div className="flex-row-reverse justify-evenly gap-5 items-center md:flex">
-            <div className="pt-5">
-              <img
-                src="/images/long-term-goals.png"
-                alt="Long-Term Goals"
-                className="w-full"
-                loading="lazy"
-              />
-            </div>
-            <div className="text-gray-800 lg:px-4 pt-5">
-              <div className="mb-5">
-                <span className="text-lg text-red-500 font-bold">Visions Into Reality</span>
-                <h4 className="text-[#4B4B4B] text-4xl font-bold mb-4 mt-3">
-                  Stop dreaming, start achieving
-                </h4>
-                <p className="text-lg leading-relaxed mb-4">
-                  Work towards long-term goals by connecting <br className="hidden lg:block" /> with mentors for private sessions.
-                </p>
-                <Link to="/register"
-                  className="bg-[#FFE1BC] rounded-xl text-[#3D4D5C] font-bold hover:bg-gray-800 hover:text-white inline-block px-6 py-2 transition">
-                  See mentors for you <ArrowRight className="inline-block ms-1 relative" size={16} />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="container lg:pb-9 pb-20">
-        <div className="mx-auto">
-          <div className="justify-evenly gap-5 items-center md:flex">
-            <div className="pt-5">
-              <img
-                src="/images/get-access.png"
-                alt="Get Access"
-                className="w-full"
-                loading="lazy"
-              />
-            </div>
-            <div className="text-gray-800 lg:px-4 py-5">
-              <div className="mb-5">
-                <span className="text-[#F6A600] text-lg font-bold">Talk With Experts</span>
-                <h4 className="text-[#4B4B4B] text-4xl font-bold mb-4 mt-3">
-                  Easy access to the <br className="hidden lg:block" /> world’s best
-                </h4>
-                <p className="text-lg leading-relaxed mb-4">
-                  From Web Development to Software Engineering, <br className="hidden lg:block" /> there are thousands of top
-                  experts, you can get access for free.
-                </p>
-                <a
-                  href="https://youtube.com/@owenahub"
-                  target="_blank"
-                  rel="noopener"
-                  className="bg-[#FFE1BC] rounded-xl text-[#3D4D5C] font-bold hover:bg-gray-800 hover:text-white inline-block px-6 py-2 transition"
-                >
-                  Our YouTube
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="container mb-16">
-        <section className="bg-primary-foreground rounded-3xl shadow-xl mx-auto py-10">
-          <div>
-            <div className="text-center px-5">
-              <div className="text-white mb-6">
-                <h4 className="text-2xl font-bold lg:text-4xl mb-5">
-                  Get started
-                </h4>
-                <p className="text-sm leading-loose my-3">
-                  Sign up now and start acquiring in demand tech skills today. Start online anytime, anywhere. <br className="hidden md:block" />
-                  Fill out the form and have mentor reach out. Start your learning journey.
-                </p>
-              </div>
-              <div>
-                <Link to="/register"
-                  className="bg-secondary bg-secondary-auxiliary rounded-xl shadow text-black w-full font-bold hover:bg-gray-800 inline-block md:w-max px-6 py-3.5 transition">
-                  GET STARTED
-                </Link>
-              </div>
+            <div className="flex flex-col gap-5 justify-center items-center md:flex-row z-10">
+              <Link to="/register" className="bg-primary-theme rounded-lg border-b-4 border-[#744f00] shadow text-center text-sm w-full block font-bold hover:opacity-50 md:inline-block md:w-max px-10 py-2.5 transition">
+                Register now!
+              </Link>
+              <Link
+                to="/courses"
+                className=" rounded-lg text-[#744f00] border-b-4 border-gray-300 text-center text-sm w-full block font-bold hover:bg-gray-100 md:inline-block md:w-max outline outline-gray-300 px-10 py-2.5"
+              >
+                See Courses
+              </Link>
             </div>
           </div>
         </section>
-      </div>
-    </section>
+      </header>
+
+      <main>
+        <div className="flex md:flex-row flex-col items-center justify-between gap-10 mb-20 container">
+          <div>
+            <h2 className="text-4xl font-semibold pb-5 text-gray-800">
+              Our Mission<span className="text-primary-theme font-black text-5xl animate-bounce inline-block">.</span>
+            </h2>
+            <p className="text-base text-gray-700">
+              To provide innovative and strategic IT services aimed at availing our clients with total IT solutions to enable them achieve their business
+              objectives and gain a competitive edge in today’s business environment.
+            </p>
+          </div>
+
+          <div className="flex md:flex-row flex-col items-stretch gap-3">
+            <div className="rounded-lg py-12 px-5 border border-gray-200 relative overflow-hidden">
+              <div className="absolute -top-10 right-0 opacity-30 bg-gray-100">
+                <Blocks className="h-36 w-36 text-primary-theme" strokeWidth={1} />
+              </div>
+              <h3 className="font-bold pb-3 text-gray-800">What we build</h3>
+              <p className="text-gray-700">
+                A suite of applications designed with usability goals in mind that focus on business process automation.
+              </p>
+            </div>
+            <div className="rounded-lg py-12 px-5 border border-gray-200 relative overflow-hidden">
+              <div className="absolute -top-10 right-0 opacity-30">
+                <Handshake className="h-36 w-36 text-primary-theme" strokeWidth={1} />
+              </div>
+              <h3 className="font-bold pb-3 text-gray-800">What we do</h3>
+              <p className="text-gray-700">
+                Our service offerings range from consultancy to software development / customization and biometric verification.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="container mb-8">
+            <h2 className="text-2xl md:text-3xl text-gray-800 font-bold mb-2">All tech skills you need all in one palce</h2>
+            <p className="text-gray-500 text-sm md:text-base">
+              From critical skills to technical topics, Udemy supports your professional development.
+            </p>
+          </div>
+
+          <section className="bg-gray-50">
+            <div className="mx-auto pt-10 sm:pb-16 container">
+              <div className="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-4 sm:grid-cols-2 xl:gap-x-6 mb-5">
+                {tracks.map((track, index) => (
+                  <div key={index} className="flex flex-col border border-gray-200 bg-white h-full p-2 rounded-lg group hover:border-b relative transition">
+                    {/* Course Image */}
+                    <div className="bg-slate-100 rounded-lg w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-36 overflow-hidden">
+                      <img
+                        src={track.image_path
+                          ? `${track.image_path}`
+                          : "/images/banners/default-course-img.png"}
+                        alt={track.title}
+                        className="h-full rounded w-full object-cover"
+                      />
+                    </div>
+
+                    {/* Content Wrapper */}
+                    <div className="flex flex-col flex-grow justify-between mt-2">
+                      {/* Title & Description */}
+                      <div className="flex flex-col gap-1.5 mb-1.5">
+                        <div className="flex items-center">
+                          <h3 className="text-gray-600 font-bold leading-5">
+                            <span className="leading-[-5px]">{track.title}</span>
+                            <Link to="/courses">
+                              <span aria-hidden="true" className="absolute inset-0" />
+                            </Link>
+                          </h3>
+                        </div>
+                        <div className="text-xs font-light">
+                          {truncateText(track.description, 100)}
+                        </div>
+                      </div>
+
+                      {/* Rating & Price - Pushed to the bottom */}
+                      <div className="mt-auto">
+                        <div className="flex gap-2 items-center">
+                          <p className="text-yellow-800 font-extrabold">4.5</p>
+                          <div className="flex gap-1">
+                            <Rating rating={track.rating} />
+                          </div>
+                          <p>({track.enrollCount})</p>
+                        </div>
+                        <div className="flex gap-2 items-center">
+                          <p className="font-bold">₦{track.price}</p>
+                          <p className="font-light line-through">₦{track.discount}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <Button variant={'outline'} className="px-6">
+                See all courses
+              </Button>
+            </div>
+          </section>
+
+          <div className="pb-20 pt-10 container">
+            <div>
+              <h2 className="font-bold pb-7 text-5xl md:text-center text-gray-800">
+                We create products that <BrMd />
+                <span className="text-primary-theme">shape our future</span>.
+              </h2>
+            </div>
+
+            <div className="flex md:flex-row flex-col gap-5 items-stretch my-7">
+              <div className="flex basis-1/3 rounded-xl p-5 flex-col gap-9 bg-secondary">
+                <div className="bg-primary-theme rounded-xl p-3 text-white inline-block w-max">
+                  <Users className="w-8 h-8 fill-white" />
+                </div>
+                <h4 className="text-2xl font-medium">
+                  200k+ users enjoy and use our <BrMd /> top products
+                </h4>
+                <div className="flex-grow-1"></div>
+                <Link to={"/"} className="underline underline-offset-2">
+                  Join us
+                </Link>
+              </div>
+
+              <div className="flex basis-2/3 rounded-xl p-5 flex-col gap-9 bg-primary-theme">
+                <div className="bg-white rounded-xl p-3 text-primary-theme inline-block w-max">
+                  <Earth className="w-8 h-8" />
+                </div>
+                <h4 className="text-2xl font-medium">
+                  Helping connecting businesses <BrMd /> in all 36 states of Nigeria.
+                </h4>
+                <p className="font-light">
+                  Keeping teams productive and connected, <BrMd />
+                  no matter where collaboration happens
+                </p>
+                <div className="flex-grow-1"></div>
+                <Link to={"/"} className="underline underline-offset-2">
+                  Join us
+                </Link>
+              </div>
+            </div>
+
+          </div>
+
+          <div className="mx-auto pt-10 sm:pb-16 container">
+            <div className="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-4 sm:grid-cols-2 xl:gap-x-6 mb-5">
+              {tracks.map((track, index) => (
+                <div key={index} className="flex flex-col border border-gray-200 bg-white h-full p-2 rounded-lg group hover:border-b relative transition">
+                  {/* Course Image */}
+                  <div className="bg-slate-100 rounded-lg w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-36 overflow-hidden">
+                    <img
+                      src={track.image_path
+                        ? `${track.image_path}`
+                        : "/images/banners/default-course-img.png"}
+                      alt={track.title}
+                      className="h-full rounded w-full object-cover"
+                    />
+                  </div>
+
+                  {/* Content Wrapper */}
+                  <div className="flex flex-col flex-grow justify-between mt-2">
+                    {/* Title & Description */}
+                    <div className="flex flex-col gap-1.5 mb-1.5">
+                      <div className="flex items-center">
+                        <h3 className="text-gray-600 font-bold leading-5">
+                          <span className="leading-[-5px]">{track.title}</span>
+                          <Link to="/courses">
+                            <span aria-hidden="true" className="absolute inset-0" />
+                          </Link>
+                        </h3>
+                      </div>
+                      <div className="text-xs font-light">
+                        {truncateText(track.description, 100)}
+                      </div>
+                    </div>
+
+                    {/* Rating & Price - Pushed to the bottom */}
+                    <div className="mt-auto">
+                      <div className="flex gap-2 items-center">
+                        <p className="text-yellow-800 font-extrabold">4.5</p>
+                        <div className="flex gap-1">
+                          <Rating rating={track.rating} />
+                        </div>
+                        <p>({track.enrollCount})</p>
+                      </div>
+                      <div className="flex gap-2 items-center">
+                        <p className="font-bold">₦{track.price}</p>
+                        <p className="font-light line-through">₦{track.discount}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <Button variant={'outline'} className="px-6">
+              See all courses
+            </Button>
+          </div>
+        </div>
+      </main>
+    </>
   )
 }

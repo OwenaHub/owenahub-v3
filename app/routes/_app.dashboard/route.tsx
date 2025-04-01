@@ -15,7 +15,7 @@ export default function Dashboard() {
             <div className="justify-between gap-5 items- md:flex">
                 <div>
                     <div className="mb-8">
-                        <h1 className="text-primary-foreground text-xl font-bold mb-3 md:mt-20 md:text-2xl">
+                        <h1 className="text-primary text-xl font-bold mb-3 md:mt-20 md:text-2xl">
                             Start your learning journey today!
                         </h1>
                         <p className="text-sm leading-7">
@@ -24,7 +24,7 @@ export default function Dashboard() {
                     </div>
 
                     <Link to="/courses" viewTransition>
-                        <Button className="bg-secondary-foreground text-white text-xs w-full rounded font-bold md:w-max px-5 py-0 uppercase">
+                        <Button className="text-sm font-bold bg-[#fff7eb] border border-primary-theme text-secondary-foreground uppercase hover:bg-white transition w-full rounded md:w-max px-5 py-0">
                             buy now
                         </Button>
                     </Link>
@@ -32,7 +32,7 @@ export default function Dashboard() {
 
                 <div className="hidden md:block">
                     <img
-                        src="/images/get-access.png"
+                        src="/images/schedule.svg"
                         alt="Home Page Mockup"
                         className="w-4/5 object-cover"
                     />
@@ -43,7 +43,7 @@ export default function Dashboard() {
 
             <div>
                 <div className="mb-5">
-                    <h4 className="text-primary-foreground text-xl font-bold mb-3 md:mt-20">
+                    <h4 className="text-primary text-xl font-bold mb-3 md:mt-20">
                         Not quite ready?
                     </h4>
                     <p className="text-sm leading-7">
@@ -57,9 +57,9 @@ export default function Dashboard() {
                             <Headset size={40} strokeWidth={1} />
                         </div>
                         <div>
-                            <h5 className="text-[#083156] font-bold mb-2">Talk to a mentor</h5>
+                            <h5 className="text-gray-600 font-bold mb-2">Talk to a mentor</h5>
                             <p className="text-sm">
-                                <a href="tel:+2348026658956" className="flex text-sky-600 text-xs font-bold gap-1 items-center uppercase">
+                                <a href="tel:+2348026658956" className="flex text-xs font-light gap-1 items-center uppercase">
                                     <span>Make a call </span> <ChevronRight strokeWidth={3} size={12} />
                                 </a>
                             </p>
@@ -70,9 +70,9 @@ export default function Dashboard() {
                             <SearchCheck size={40} strokeWidth={1} />
                         </div>
                         <div>
-                            <h5 className="text-[#083156] font-bold mb-2">Learn about the program</h5>
+                            <h5 className="text-gray-600 font-bold mb-2">Learn about the program</h5>
                             <p className="text-sm">
-                                <a href="https://youtu.be/hBDECFvIk8w?si=G_1qfFhyCYJWwVv8" className="flex text-sky-600 text-xs font-bold gap-1 items-center uppercase">
+                                <a href="https://youtu.be/hBDECFvIk8w?si=G_1qfFhyCYJWwVv8" className="flex text-xs font-light gap-1 items-center uppercase">
                                     <span>Learn more </span> <ChevronRight strokeWidth={3} size={12} />
                                 </a>
                             </p>

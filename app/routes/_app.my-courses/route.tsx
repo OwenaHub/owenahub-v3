@@ -13,9 +13,9 @@ export default function Courses() {
             <section>
                 <div className="md:mt-20 mb-8 flex gap-8 justify-between items-start">
                     <div>
-                        <h4 className="text-xl text-primary-foreground mb-3 font-bold">
-                            Courses
-                        </h4>
+                        <h1 className="text-xl md:text-2xl text-primary-theme mb-3 font-bold">
+                            My courses
+                        </h1>
                         <p className="text-sm leading-4">
                             Here are coureses you have enrolled in
                         </p>

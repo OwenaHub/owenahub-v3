@@ -40,30 +40,30 @@ export default function Register({ actionData }: Route.ComponentProps) {
         <section className="container">
             <div className="justify-center gap-10 items-start max-w-fit md:flex mx-auto py-10">
                 <div className="flex-1 hidden md:block">
-                    <h1 className="text-2xl text-primary-foreground font-bold my-5 pb-5">
+                    <h1 className="text-2xl text-primary font-bold my-5 pb-5">
                         Sign up for free, <br className="hidden md:block" />
                         unlimited practice!
                     </h1>
                     <div className="flex flex-col gap-5">
                         <div className="flex gap-3 items-center">
-                            <div className="bg-secondary border-2 border-white p-1 rounded-full outline-1 outline-dotted outline-offset-2 outline-secondary-foreground">
-                                <CheckCheck size="25" strokeWidth={"1.5"} className="text-secondary-foreground" />
+                            <div className="bg-[#fff7eb] border-2 border-white p-1 rounded-full outline-1 outline-dotted outline-offset-2 outline-primary-theme">
+                                <CheckCheck size="25" strokeWidth={"1.5"} className="text-primary" />
                             </div>
                             <p className="text-sm">
                                 Unlimited access to free courses
                             </p>
                         </div>
                         <div className="flex gap-3 items-center">
-                            <div className="bg-secondary border-2 border-white p-1 rounded-full outline-1 outline-dotted outline-offset-2 outline-secondary-foreground">
-                                <CheckCheck size="25" strokeWidth={"1.5"} className="text-secondary-foreground" />
+                            <div className="bg-[#fff7eb] border-2 border-white p-1 rounded-full outline-1 outline-dotted outline-offset-2 outline-primary-theme">
+                                <CheckCheck size="25" strokeWidth={"1.5"} className="text-primary" />
                             </div>
                             <p className="text-sm">
                                 Instant feedback on assignments
                             </p>
                         </div>
                         <div className="flex gap-3 items-center">
-                            <div className="bg-secondary border-2 border-white p-1 rounded-full outline-1 outline-dotted outline-offset-2 outline-secondary-foreground">
-                                <CheckCheck size="25" strokeWidth={"1.5"} className="text-secondary-foreground" />
+                            <div className="bg-[#fff7eb] border-2 border-white p-1 rounded-full outline-1 outline-dotted outline-offset-2 outline-primary-theme">
+                                <CheckCheck size="25" strokeWidth={"1.5"} className="text-primary" />
                             </div>
                             <p className="text-sm">
                                 Expert tips to help you succeed
@@ -123,7 +123,7 @@ export default function Register({ actionData }: Route.ComponentProps) {
                             </div>
                             <div className="mt-7">
                                 <Button
-                                    className="bg-primary-foreground text-bleech w-full font-semibold py-5 uppercase"
+                                    className="bg-[#fff7eb] border border-primary-theme text-primary hover:bg-white w-full font-semibold py-5 uppercase"
                                     disabled={busy}
                                 >
                                     {busy ? (<Loader className="animate-spin" />) : "Register"}
@@ -148,7 +148,7 @@ export default function Register({ actionData }: Route.ComponentProps) {
                         </p>
                     </div>
                     <div className="text-center text-foreground text-sm font-semibold py-5 uppercase">
-                        Have an account? <Link to="/login" className="text-primary-foreground" viewTransition>
+                        Have an account? <Link to="/login" className="text-gray-600 underline underline-offset-1" viewTransition>
                             Log in
                         </Link>
                     </div>

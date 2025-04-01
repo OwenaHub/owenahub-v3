@@ -45,7 +45,7 @@ export default function Login({ actionData }: Route.ComponentProps) {
                 <div className="flex-1">
                     <div className="border h-full rounded-xl md:px-8 px-5 py-6">
                         <div className="text-center pb-5">
-                            <p className="text-2xl text-primary-foreground font-bold">
+                            <p className="text-2xl text-primary font-bold">
                                 Log in to your account
                             </p>
                         </div>
@@ -82,7 +82,7 @@ export default function Login({ actionData }: Route.ComponentProps) {
                             <div className="mt-7">
                                 <Button
                                     disabled={busy}
-                                    className="bg-primary-foreground text-bleech w-full font-semibold py-5 uppercase"
+                                    className="bg-[#fff7eb] border border-primary-theme hover:bg-white text-primary w-full font-semibold py-5 uppercase"
                                 >
                                     {busy ? (<Loader className="animate-spin" />) : "Login"}
                                 </Button>
@@ -111,7 +111,7 @@ export default function Login({ actionData }: Route.ComponentProps) {
                         </div>
                     </div>
                     <div className="text-center text-foreground text-sm font-semibold py-5 uppercase">
-                        Need an account? <Link to="/register" className="text-primary-foreground" viewTransition>sign up</Link>
+                        Need an account? <Link to="/register" className="text-gray-600 underline underline-offset-1" viewTransition>sign up</Link>
                     </div>
                 </div>
             </div>
