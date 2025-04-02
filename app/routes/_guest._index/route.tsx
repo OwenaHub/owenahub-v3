@@ -1,4 +1,4 @@
-import { Blocks, ClockArrowUp, Earth, Handshake, Settings, Users } from "lucide-react";
+import { Blocks, Earth, Handshake, Users } from "lucide-react";
 import { Link } from "react-router";
 import Rating from "~/components/custom/rating";
 import { Button } from "~/components/ui/button";
@@ -65,12 +65,12 @@ export default function HomePage() {
             </section>
 
             <div className="flex flex-col gap-5 justify-center items-center md:flex-row z-10">
-              <Link to="/register" className="bg-primary-theme rounded-lg border-b-4 border-[#744f00] shadow text-center text-sm w-full block font-bold hover:opacity-50 md:inline-block md:w-max px-10 py-2.5 transition">
+              <Link to="/register" className="bg-primary-theme rounded-sm border-b-2 border-[#744f00] shadow text-center text-sm w-full block font-bold hover:opacity-50 md:inline-block md:w-max px-10 py-2.5 transition">
                 Register now!
               </Link>
               <Link
                 to="/courses"
-                className=" rounded-lg text-[#744f00] border-b-4 border-gray-300 text-center text-sm w-full block font-bold hover:bg-gray-100 md:inline-block md:w-max outline outline-gray-300 px-10 py-2.5"
+                className="rounded-sm text-[#744f00] border-b-2 border-gray-300 text-center text-sm w-full block font-bold hover:bg-gray-100 md:inline-block md:w-max outline outline-gray-300 px-10 py-2.5"
               >
                 See Courses
               </Link>

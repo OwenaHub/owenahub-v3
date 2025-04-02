@@ -31,7 +31,7 @@ export default function Classes() {
                         The classes you see here may or may not relate to your selected courses, but you have the option to oobtain a passkey from the mentor to participate and network with like minds.
                     </div>
                     <div className="px-5">
-                        <Link to="/courses" className="inline-block rounded-md px-6 py-2 text-sm font-bold bg-[#fff7eb] border border-primary-theme text-secondary-foreground uppercase hover:bg-white transition">
+                        <Link to="/courses" className="inline-block rounded px-6 py-2 text-sm font-bold bg-[#fff7eb] border border-primary-theme text-secondary-foreground uppercase hover:bg-white transition">
                             To Courses
                         </Link>
                     </div>

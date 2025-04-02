@@ -8,7 +8,7 @@ export default function Rating({ rating = 5 }: { rating?: number }) {
             {Array.from({ length: Math.round(rating) }).map((_, index) => (
                 <Star
                     key={index}
-                    className="text-yellow-300 fill-current"
+                    className="text-primary-theme fill-current"
                     size={14}
                 />
             ))}
@@ -16,7 +16,7 @@ export default function Rating({ rating = 5 }: { rating?: number }) {
             {emptyStars.map((_, index) => (
                 <Star
                     key={index + "empty"}
-                    className="text-yellow-300 fill-none"
+                    className="text-primary-theme fill-none"
                     size={14}
                 />
             ))}

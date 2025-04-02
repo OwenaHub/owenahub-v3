@@ -16,7 +16,7 @@ export async function clientLoader({ }: Route.ClientLoaderArgs) {
     }
 }
 
-export default function route({ loaderData }: Route.ComponentProps) {
+export default function MentorProfileCourses({ loaderData }: Route.ComponentProps) {
     const { courses } = loaderData;
 
     return (

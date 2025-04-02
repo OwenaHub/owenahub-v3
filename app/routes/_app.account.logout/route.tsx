@@ -6,9 +6,7 @@ import { toast } from "sonner";
 export async function clientAction({ }: Route.ClientActionArgs) {
     await client.post('/api/logout');
     
-    toast.info('You logged out', {
-        description: "Don't forget your password though"
-    });
+    toast.info('You logged out');
 
     return redirect('/login');
 }

@@ -13,7 +13,7 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   }
 }
 
-export default function route({ loaderData }: Route.ComponentProps) {
+export default function MentorLessons({ loaderData }: Route.ComponentProps) {
   let { module, lessons } = loaderData;
 
   return (

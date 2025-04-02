@@ -53,7 +53,7 @@ export default function AccountMenu({ user }: { user: User }) {
     ]
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
             {cards.map((card, index) => (
                 <Card key={index} {...card} />
             ))}

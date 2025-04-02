@@ -33,7 +33,7 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
     }
 }
 
-export default function route({ actionData }: Route.ComponentProps) {
+export default function MentorCreateCourse({ actionData }: Route.ComponentProps) {
     let errors = actionData;
     
     const [learningGoals, setLearningGoals] = useState("");
@@ -55,12 +55,12 @@ export default function route({ actionData }: Route.ComponentProps) {
                     <Form encType="multipart/form-data" method="POST">
                         <div className="mb-5">
                             <Label htmlFor="title" className="mb-1">Course title</Label>
-                            <Input id="title" name="title" className="bg-white rounded-md" required />
+                            <Input id="title" name="title" className="bg-white rounded" required />
                             <InputError for="title" error={errors} />
                         </div>
                         <div className="mb-5">
                             <Label htmlFor="about" className="mb-1">Course about</Label>
-                            <Input id="about" name="about" className="bg-white rounded-md" required />
+                            <Input id="about" name="about" className="bg-white rounded" required />
                             <InputError for="about" error={errors} />
                         </div>
                         <div className="mb-5 md:flex gap-4">
@@ -68,12 +68,12 @@ export default function route({ actionData }: Route.ComponentProps) {
                                 <Label htmlFor="tags" className="mb-1">
                                     Tags <span className="font-light">(These can be related keywords)</span>
                                 </Label>
-                                <Input id="tags" name="tags" className="bg-white rounded-md" required />
+                                <Input id="tags" name="tags" className="bg-white rounded" required />
                                 <InputError for="tags" error={errors} />
                             </div>
                             <div className="flex-1">
                                 <Label htmlFor="thumbnail" className="mb-1">Thumbnail</Label>
-                                <Input type="file" id="thumbnail" name="thumbnail" className="bg-white rounded-md" />
+                                <Input type="file" id="thumbnail" name="thumbnail" className="bg-white rounded" />
                                 <InputError for="thumbnail" error={errors} />
                             </div>
                         </div>

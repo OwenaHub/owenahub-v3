@@ -2,7 +2,6 @@ import { ChevronLeft } from "lucide-react";
 import { Form, Link, redirect } from "react-router";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
-import { Textarea } from "~/components/ui/textarea";
 import type { Route } from "./+types/route";
 import { toast } from "sonner";
 import InputError from "~/components/forms/input-error";
@@ -44,7 +43,7 @@ export async function clientAction({ request, params }: Route.ClientActionArgs) 
     }
 }
 
-export default function route({ loaderData, actionData }: Route.ComponentProps) {
+export default function MentorEditCourse({ loaderData, actionData }: Route.ComponentProps) {
     const errors = actionData;
     const course: Course | any = loaderData;
 

@@ -14,7 +14,7 @@ export async function clientLoader() {
         if (user)
             session = true;
         else
-            session = false
+            session = false;
 
         return { session };
     } catch ({ response }: any) {
@@ -22,7 +22,7 @@ export async function clientLoader() {
     }
 }
 
-export default function HomePage({ loaderData }: Route.ComponentProps) {
+export default function GuestLayout({ loaderData }: Route.ComponentProps) {
     const { state } = useNavigation();
     let busy: boolean = state === "submitting" || state === "loading";
 

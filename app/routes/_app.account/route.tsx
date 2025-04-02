@@ -10,7 +10,7 @@ export const meta: MetaFunction = () => {
     ];
 };
 
-export default function Account() {
+export default function AccountLayout() {
     const user: User = useOutletContext();
 
     return (

@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 
-export default function CustomAvatar({ name = "New User", styles }: { name: string, styles?: string }) {
+export default function CustomAvatar({ name = "New User", styles }: { name?: string, styles?: string }) {
     function stringToColor(string: string): string {
         let hash = 0;
         let i;

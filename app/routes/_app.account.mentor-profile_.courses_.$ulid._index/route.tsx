@@ -4,7 +4,7 @@ import type { Route } from "./+types/route";
 import { Plus } from "lucide-react";
 import CourseModule from "./course-module";
 
-export default function route({ }: Route.ComponentProps) {
+export default function MentorCourseModules({ }: Route.ComponentProps) {
     const course: Course = useOutletContext();
 
     return (
