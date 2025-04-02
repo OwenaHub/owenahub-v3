@@ -9,11 +9,11 @@ export default function CardSkeleton({ type }: { type?: "course" | "slice" }) {
         )
     } else {
         return (
-            <>
+            <div className="flex flex-col md:flex-row gap-3">
                 {Array.from({ length: 2 }).map((_, index) => (
-                    <div key={index} className="flex-1 h-20 bg-gray-100 animate-pulse rounded-lg" />
+                    <div key={index} className="flex-1 h-20 bg-gray-100 animate-pulse rounded-lg mb-2" />
                 ))}
-            </>
+            </div>
         )
     }
 }

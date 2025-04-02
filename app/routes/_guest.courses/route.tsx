@@ -3,7 +3,7 @@ import { Await, redirect } from "react-router"
 import Badge from "~/components/custom/badge"
 import { getCourses } from "./get-courses"
 import { Suspense } from "react"
-import CardSkeleton from "~/components/skeletons/card-skeleton copy"
+import CardSkeleton from "~/components/skeletons/card-skeleton-2"
 import type { Route } from "../_guest.courses/+types/route"
 import Courses from "./courses"
 

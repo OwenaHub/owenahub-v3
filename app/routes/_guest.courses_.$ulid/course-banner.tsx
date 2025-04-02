@@ -9,7 +9,7 @@ import EnrollCourse from './enroll-course';
 export default function CourseBanner({ course, isEnrolled }: { course: Course, isEnrolled: boolean }) {
     return (
         <>
-            <section className="bg-[#fff7eb] max-h-[46vh] pt-20 hidden md:block">
+            <section className="bg-[#fff7eb] max-h-[46vh] py-20 hidden md:block">
                 <div className="container flex mt-20 gap-10 overflow-auto h-screen">
                     <div className="flex basis-2/3 flex-col gap-4 items-start">
                         <h1 className="text-xl md:text-4xl font-bold">
@@ -94,7 +94,7 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                 ? <div>
                                     <Button
                                         disabled
-                                        variant="outline"
+                                        variant="secondary"
                                         className="w-full py-6 text-sm font-bold uppercase rounded">
                                         Already enrolled
                                     </Button>
@@ -187,7 +187,7 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                             <div className="flex-1 border-t" />
                         </div>
 
-                        <h4 className="font-bold text-2xl">
+                        <h4 className="font-bold text-2xl px-2">
                             {course.price !== "0.00"
                                 ? (<> ₦{parseInt(course.price).toLocaleString()}</>)
                                 : <span className='text-gray-700'>
@@ -197,11 +197,11 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                         </h4>
 
                         {isEnrolled
-                            ? <div>
+                            ? <div className='px-2'>
                                 <Button
                                     disabled
-                                    variant="outline"
-                                    className="w-full py-6 text-sm font-bold uppercase rounded-lg">
+                                    variant="secondary"
+                                    className="w-full py-6 text-sm font-bold uppercase rounded shadow">
                                     Already enrolled
                                 </Button>
                                 <Link
