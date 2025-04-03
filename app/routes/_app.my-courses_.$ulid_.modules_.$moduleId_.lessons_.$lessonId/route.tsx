@@ -24,7 +24,9 @@ export async function clientAction({ request, params }: Route.ClientActionArgs) 
 
     try {
         await markDone(credentials);
-        toast.success("Congratulations")
+        toast.success("Great Job! 🔥", {
+            description: "Keep up the effort"
+        })
         return redirect(`/my-courses/${params.ulid}`);
     } catch ({ response }: any) {
         toast.error("Oops!, action couldn't be done")
