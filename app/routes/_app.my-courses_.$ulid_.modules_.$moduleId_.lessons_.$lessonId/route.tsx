@@ -64,7 +64,7 @@ export default function ViewLesson({ loaderData }: Route.ComponentProps) {
                 </div>
             </div>
 
-            <div className="flex flex-col gap-2 items-start mb-14">
+            <div className="flex flex-col gap-2 items-start mb-10">
                 <h1 className="text-2xl md:text-3xl font-bold">
                     {lesson.title}
                 </h1>
@@ -79,14 +79,14 @@ export default function ViewLesson({ loaderData }: Route.ComponentProps) {
                     ? <Button
                         disabled
                         type="button"
-                        className="bg-secondary text-primary shadow font-light w-full md:w-max px-6 rounded"
+                        className="bg-secondary text-primary shadow font-light w-full md:w-max px-6 rounded-full"
                     >
                         Completed
                     </Button>
                     : <Form method="POST">
-                        <input type="hidden" name="completed" value="completed" />
+                        <input type="hidden" name="completed" value={1} />
                         <input type="hidden" name="lessonId" value={lesson.id} />
-                        <Button className="font-light w-full md:w-max px-6 rounded" variant="outline">
+                        <Button className="font-light w-full md:w-max px-6 rounded-full" variant="outline">
                             Mark complete <span className="text-xs">🎉</span>
                         </Button>
                     </Form>
