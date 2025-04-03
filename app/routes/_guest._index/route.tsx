@@ -1,4 +1,4 @@
-import { ArrowRight, Blocks, Earth, Handshake, Users } from "lucide-react";
+import { ArrowRight, Blocks, Earth, Handshake, MonitorSmartphone, Trophy, TvMinimalPlay, Users } from "lucide-react";
 import { Link } from "react-router";
 import Badge from "~/components/custom/badge";
 import Rating from "~/components/custom/rating";
@@ -202,9 +202,11 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <Button variant={'outline'} className="px-6 border-primary-theme hover:bg-white rounded bg-primary-bg flex items-center gap-2">
-                <span>See all courses</span> <ArrowRight size={18} />
-              </Button>
+              <Link to="/courses">
+                <Button variant={'outline'} className="px-6 border-primary-theme hover:bg-white rounded bg-primary-bg flex items-center gap-2">
+                  <span>See all courses</span> <ArrowRight size={18} />
+                </Button>
+              </Link>
             </div>
           </section>
 
@@ -230,9 +232,9 @@ export default function HomePage() {
                 </Link>
               </div>
 
-              <div className="flex basis-2/3 rounded-xl p-5 flex-col gap-9 bg-primary-bg border border-primary-theme hover:shadow-xl transition">
+              <div className="flex basis-2/3 rounded-xl p-5 flex-col gap-9 bg-primary-bg  hover:shadow-xl transition">
                 <div className="bg-primary-theme rounded-lg p-2 text-white inline-block w-max">
-                  <Earth className="w-10 h-10" strokeWidth={1}/>
+                  <Earth className="w-10 h-10" strokeWidth={1} />
                 </div>
                 <h4 className="text-2xl font-medium">
                   Helping connecting businesses <BrMd /> in all 36 states of Nigeria.
@@ -250,61 +252,79 @@ export default function HomePage() {
 
           </div>
 
-          <div className="mx-auto pt-10 sm:pb-16 container">
-            <div className="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-4 sm:grid-cols-2 xl:gap-x-6 mb-5">
-              {tracks.map((track, index) => (
-                <div key={index} className="flex flex-col border border-gray-200 bg-white h-full p-2 rounded-lg group hover:border-b relative transition">
-                  {/* Course Image */}
-                  <div className="bg-slate-100 rounded-lg w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-36 overflow-hidden">
-                    <img
-                      src={track.image_path
-                        ? `${track.image_path}`
-                        : "/images/banners/default-course-img.png"}
-                      alt={track.title}
-                      className="h-full rounded w-full object-cover"
-                    />
-                  </div>
+          <div className="container mb-8">
+            <h2 className="text-2xl md:text-3xl text-gray-800 font-bold mb-4">
+              Why <span className="text-primary-theme">Everyone</span> learns with OwenaHub
+            </h2>
 
-                  {/* Content Wrapper */}
-                  <div className="flex flex-col flex-grow justify-between mt-2">
-                    {/* Title & Description */}
-                    <div className="flex flex-col gap-1.5 mb-1.5">
-                      <div className="flex items-center">
-                        <h3 className="text-gray-600 font-bold leading-5">
-                          <span className="leading-[-5px]">{track.title}</span>
-                          <Link to="/courses">
-                            <span aria-hidden="true" className="absolute inset-0" />
-                          </Link>
-                        </h3>
+            <section className="pb-20 lg:pb-9">
+              <div className="md:flex items-center gap-20">
+                <div className="pt-5 flex flex-col gap-4 basis-3/6">
+                  <div className="border border-s-4 border-primary-theme bg-primary-bg rounded py-8 px-5 flex flex-col md:flex-row gap-5 md:items-center">
+                    <Users size={45} />
+                    <div className="flex flex-col gap-3">
+                      <div>
+                        <h5 className="font-bold text-lg">Professional mentors</h5>
+                        <p className="font-light">Learn from industry experts who guide you every step of the way, ensuring you gain the skills you need to succeed.</p>
                       </div>
-                      <div className="text-xs font-light">
-                        {truncateText(track.description, 100)}
-                      </div>
+                      <Link to="/register" className="text-primary-theme font-bold flex items-center gap-2">
+                        <span>Find out more</span>
+                        <ArrowRight size={18} />
+                      </Link>
                     </div>
-
-                    {/* Rating & Price - Pushed to the bottom */}
-                    <div className="mt-auto">
-                      <div className="flex gap-2 items-center">
-                        <p className="text-yellow-800 font-extrabold">4.5</p>
-                        <div className="flex gap-1">
-                          <Rating rating={track.rating} />
-                        </div>
-                        <p>({track.enrollCount})</p>
+                  </div>
+                  <div className="border border-s-4 border-primary-theme bg-primary-bg rounded py-8 px-5 flex flex-col md:flex-row gap-5 md:items-center">
+                    <Trophy size={45} />
+                    <div className="flex flex-col gap-3">
+                      <div>
+                        <h5 className="font-bold text-lg">Certificate of completion</h5>
+                        <p className="font-light">Earn a certificate to showcase your achievements and skills, helping you stand out in your career or academic pursuits.</p>
                       </div>
-                      <div className="flex gap-2 items-center">
-                        <p className="font-bold">₦{track.price}</p>
-                        <p className="font-light line-through">₦{track.discount}</p>
+                      <Link to="/register" className="text-primary-theme font-bold flex items-center gap-2">
+                        <span>Find out more</span>
+                        <ArrowRight size={18} />
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="border border-s-4 border-primary-theme bg-primary-bg rounded py-8 px-5 flex flex-col md:flex-row gap-5 md:items-center">
+                    <MonitorSmartphone size={45} />
+                    <div className="flex flex-col gap-3">
+                      <div>
+                        <h5 className="font-bold text-lg">Access on mobile and TV</h5>
+                        <p className="font-light">Learn anytime, anywhere with access on multiple devices, making it easier to fit learning into your busy schedule.</p>
                       </div>
+                      <Link to="/register" className="text-primary-theme font-bold flex items-center gap-2">
+                        <span>Find out more</span>
+                        <ArrowRight size={18} />
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="border border-s-4 border-primary-theme bg-primary-bg rounded py-8 px-5 flex flex-col md:flex-row gap-5 md:items-center">
+                    <TvMinimalPlay size={45} />
+                    <div className="flex flex-col gap-3">
+                      <div>
+                        <h5 className="font-bold text-lg">Hours of on-demand video</h5>
+                        <p className="font-light">Access a vast library of video content to enhance your learning, with topics ranging from beginner to advanced levels.</p>
+                      </div>
+                      <Link to="/register" className="text-primary-theme font-bold flex items-center gap-2">
+                        <span>Find out more</span>
+                        <ArrowRight size={18} />
+                      </Link>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <Button variant={'outline'} className="px-6">
-              See all courses
-            </Button>
+                <div className="pt-5 basis-3/6 hidden md:block">
+                  <img
+                    src="/images/schedule.svg"
+                    alt="Long-Term Goals"
+                    className="w-full"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </section>
           </div>
+
         </div>
       </main>
     </>

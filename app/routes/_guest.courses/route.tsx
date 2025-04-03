@@ -29,7 +29,7 @@ export default function GuestCourses({ loaderData }: Route.ComponentProps) {
                 </p>
 
                 <div className="flex gap-3 flex-col md:flex-row md:items-center justify-between">
-                    <div className="w-full md:w-max flex items-center p-1 ps-3 rounded-full outline shadow focus-within:outline group focus-within:outline-primary-theme">
+                    <div className="w-full shadow md:w-max flex items-center p-1 ps-5 rounded-full outline focus-within:outline group focus-within:outline-primary-theme">
                         <input
                             type="search"
                             className="py-2 w-full md:w-max outline-none"
@@ -44,7 +44,7 @@ export default function GuestCourses({ loaderData }: Route.ComponentProps) {
                         </div>
                     </div>
 
-                    <div className="flex flex-nowrap gap-1 items-center overflow-x-auto py-3">
+                    <div className="flex flex-nowrap gap-1.5 items-center overflow-x-auto py-3">
                         <Badge
                             title="JavaScript"
                             description="80+ learners"
