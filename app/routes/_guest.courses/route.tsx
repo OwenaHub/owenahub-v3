@@ -29,26 +29,46 @@ export default function GuestCourses({ loaderData }: Route.ComponentProps) {
                 </p>
 
                 <div className="flex gap-3 flex-col md:flex-row md:items-center justify-between">
-                    <div className="w-full md:w-max flex items-center px-3 rounded-sm outline shadow focus-within:outline group focus-within:outline-primary-theme">
+                    <div className="w-full md:w-max flex items-center p-1 ps-3 rounded-full outline shadow focus-within:outline group focus-within:outline-primary-theme">
                         <input
                             type="search"
-                            className="py-2 w-full md:w-max  outline-none"
+                            className="py-2 w-full md:w-max outline-none"
                             placeholder="Search courses"
                         />
-                        <Search
-                            strokeWidth={1.3}
-                            size={27}
-                            className="text-gray-500 group-focus-within:text-primary-theme"
-                        />
+                        <div className="text-gray-500 bg-primary-bg group-focus-within:text-primary-theme h-full p-2 rounded-full">
+                            <Search
+                                strokeWidth={1.3}
+                                size={27}
+                                className=""
+                            />
+                        </div>
                     </div>
 
                     <div className="flex flex-nowrap gap-1 items-center overflow-x-auto py-3">
-                        <Badge title="JavaScript" />
-                        <Badge title="Python" />
-                        <Badge title="Algorithms" />
-                        <Badge title="CSS" />
-                        <Badge title="Data science" />
-                        <Badge title="Engineering" />
+                        <Badge
+                            title="JavaScript"
+                            description="80+ learners"
+                        />
+                        <Badge
+                            title="Python"
+                            description="80+ learners"
+                        />
+                        <Badge
+                            title="Algorithms"
+                            description="80+ learners"
+                        />
+                        <Badge
+                            title="CSS"
+                            description="80+ learners"
+                        />
+                        <Badge
+                            title="Data science"
+                            description="80+ learners"
+                        />
+                        <Badge
+                            title="Engineering"
+                            description="80+ learners"
+                        />
                     </div>
                 </div>
             </div>

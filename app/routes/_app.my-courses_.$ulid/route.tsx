@@ -4,15 +4,16 @@ import { toast } from 'sonner';
 import { Link, redirect } from 'react-router';
 import { STORAGE_URL } from '~/lib/keys';
 import Rating from '~/components/custom/rating';
-import { Calendar, ChevronRight, Globe, Notebook } from 'lucide-react';
+import { Calendar, ChevronRight, CircleCheck, Globe, Notebook, Youtube } from 'lucide-react';
 import dayjs from 'dayjs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion';
+import { truncateText } from '~/lib/texts';
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
-        if (!params.id) throw new Error("Bad Request");
-        const courses = await getCourse(params.ulid);
-        return courses
+        if (!params.ulid) throw new Error("Bad Request");
+        const course = await getCourse(params.ulid);
+        return { course }
     } catch ({ response }: any) {
         console.log(response)
         toast.info('Content unavailable')
@@ -24,13 +25,13 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
     const { course }: { course: Course } = loaderData;
 
     return (
-        <div>
-            <div className='flex items-center gap-2 tex-sm mb-10'>
-                <Link to="/my-courses" className='flex items-center gap-2 underline underline-offset-1'>
+        <div className='mb-20'>
+            <div className='flex text-sm items-center gap-2 tex-sm mb-10 mt-10 md:px-5'>
+                <Link to="/my-courses" className='flex text-nowrap items-center gap-2 hover:underline underline-offset-1'>
                     <span>My courses</span> <ChevronRight size={16} />
                 </Link>
-                <div>
-                    {course.title}
+                <div className='text-nowrap'>
+                    {truncateText(course.title)}
                 </div>
             </div>
 
@@ -44,7 +45,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                 />
             </div>
 
-            <div className='container mt-7'>
+            <div className='md:px-[1.5rem] mt-7'>
                 <div className="flex flex-col gap-2 items-start mb-14">
                     <h1 className="text-2xl md:text-3xl font-bold">
                         {course.title}
@@ -97,11 +98,34 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                 <AccordionTrigger className="px-5 bg-muted rounded-none">{module.title}</AccordionTrigger>
                                 <AccordionContent className="p-5 flex flex-col gap-4">
                                     {module.lessons.map((lesson) => (
-                                        <div key={lesson.id} className="text-xs font-light flex items-center justify-between">
+                                        <div key={lesson.id} className="text-sm font-light flex items-start justify-between">
                                             <div className="font-light flex items-center gap-3">
-                                                <Notebook strokeWidth={1} size={18} /> <span>{lesson.title}</span>
+                                                {/* <Notebook strokeWidth={1} size={18} /> <span>{lesson.title}</span> */}
+                                                <div className="">
+                                                    {true
+                                                        ? <div className='bg-green-200 rounded-full'>
+                                                            <CircleCheck
+                                                                className="text-white bg-green-0 fill-green-500 rounded-full p-0.5"
+                                                                strokeWidth={1}
+                                                                size={40}
+                                                            />
+                                                        </div>
+
+                                                        : <CircleCheck
+                                                            className="text-foreground rounded-full p-1"
+                                                            strokeWidth={1}
+                                                            size={40}
+                                                        />}
+                                                </div>
+                                                <div>
+                                                    <h5>{lesson.title}</h5>
+                                                    <p className='text-xs text-gray-500 flex items-center gap-2'>
+                                                        <Youtube strokeWidth={1} size={18} /> <span>Video available</span>
+                                                    </p>
+                                                </div>
+
                                             </div>
-                                            <div>
+                                            <div className='mt-1'>
                                                 10:00 +
                                             </div>
                                         </div>

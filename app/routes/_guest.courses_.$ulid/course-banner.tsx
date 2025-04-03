@@ -10,14 +10,12 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
     return (
         <>
             <section className="bg-[#fff7eb] max-h-[46vh] py-20 hidden md:block">
-                <div className="container flex mt-20 gap-10 overflow-auto h-screen">
-                    <div className="flex basis-2/3 flex-col gap-4 items-start">
+                <div className="container flex mt-20 gap-10 h-screen">
+                    <div className="flex basis-2/3 flex-col gap-4 items-start overflow-auto">
                         <h1 className="text-xl md:text-4xl font-bold">
                             {course.title}
                         </h1>
-                        <p>
-                            {course.about}
-                        </p>
+                        <p>{course.about}</p>
                         <div className="flex items-center gap-2 font-semibold">
                             <span className="text-primary-theme">5.0</span>
                             <Rating />
@@ -42,13 +40,13 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                             </div>
                             <div className="flex gap-2 items-center">
                                 <Globe strokeWidth={1} size={18} />{" "}
-                                <span>
-                                    English
-                                </span>
+                                <span>English</span>
                             </div>
                         </div>
                     </div>
-                    <div className="basis-1/3 z-10 !sticky top-0">
+
+                    {/* Sticky Image Section */}
+                    <div className="basis-1/3 z-10 sticky top-20 self-start">
                         <div className="bg-slate-100 col-span-1 border-t shadow-lg md:col-span-4 w-full aspect-square group-hover:opacity-75 lg:aspect-auto lg:h-auto overflow-hidden">
                             <img
                                 src={course.thumbnail
@@ -63,7 +61,6 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                 <h3 className="font-semibold text-gray-800">
                                     Subscribe to OwenaHub's top courses
                                 </h3>
-
                                 <p className="text-sm font-light">
                                     Get this course, plus 12,000+ of our top-rated courses, with Personal Plan. Learn more
                                 </p>
@@ -88,10 +85,10 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                     : <span className='text-gray-700'>
                                         FREE COURSE
                                     </span>}
-
                             </h4>
-                            {isEnrolled
-                                ? <div>
+
+                            {isEnrolled ? (
+                                <div>
                                     <Button
                                         disabled
                                         variant="secondary"
@@ -99,17 +96,18 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                         Already enrolled
                                     </Button>
                                     <Link
-                                        to={`/courses/${course.id}/learn`}
+                                        to={`/my-courses/${course.id}`}
                                         className="mt-3 inline-block text-blue-500 text-center text-xs font-light uppercase w-full hover:underline underline-offset-2">
                                         Go to course
                                     </Link>
                                 </div>
-
-                                : <EnrollCourse course={course} />
-                            }
+                            ) : (
+                                <EnrollCourse course={course} />
+                            )}
                         </div>
                     </div>
                 </div>
+
             </section>
 
             <section className='md:hidden'>
@@ -205,7 +203,7 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                     Already enrolled
                                 </Button>
                                 <Link
-                                    to={`/courses/${course.id}/learn`}
+                                    to={`/my-courses/${course.id}`}
                                     className="mt-3 inline-block text-blue-500 text-center text-xs font-light uppercase w-full hover:underline underline-offset-2">
                                     Go to course
                                 </Link>

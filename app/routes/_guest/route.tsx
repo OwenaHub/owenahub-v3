@@ -3,8 +3,9 @@ import { ChevronRight, Facebook, Instagram, Menu, Twitter } from "lucide-react";
 import { Suspense, useEffect, useState } from "react";
 import useSession from "~/lib/session";
 import type { Route } from "../_guest/+types/route";
+import { toast } from "sonner";
 
-export async function clientLoader() {
+export async function clientLoader(_: Route.ClientLoaderArgs) {
     const { getUser } = useSession();
 
     try {
@@ -54,7 +55,7 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                             </Link>
                         </div>
 
-                        <div className="hidden text-sm md:flex gap-3 items-center text-gray-600">
+                        <div className="hidden text-xs md:flex gap-4 items-center text-gray-800 mt-1">
                             <Link to={"/courses"}>Courses</Link>
                             <Link to={"#"}>Mentors</Link>
                             <Link to={"#"}>Blog</Link>

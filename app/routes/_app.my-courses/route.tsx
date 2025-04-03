@@ -24,7 +24,7 @@ export async function clientLoader({ }: Route.ClientLoaderArgs) {
 
 export default function Courses({ loaderData }: Route.ComponentProps) {
     const { enrolledCourses } = loaderData;
-    console.log(enrolledCourses)
+    
 
     return (
         <section className="md:px-10 mt-10">
@@ -47,7 +47,7 @@ export default function Courses({ loaderData }: Route.ComponentProps) {
                                 ? (
                                     enrolledCourses.map((course: any) => (
                                         <div className="grid grid-cols-4 border border-gray-200 gap-2 border-b pb-5 bg-white h-full rounded group relative transition">
-                                            <div className="bg-slate-100 col-span-1 md:col-span-4 md:rounded w-full aspect-square group-hover:opacity-75 lg:aspect-auto lg:h-44 overflow-hidden">
+                                            <div className="bg-slate-100 col-span-4 md:col-span-4 md:rounded w-full aspect-square group-hover:opacity-75 lg:aspect-auto h-30 lg:h-44 overflow-hidden">
                                                 <img
                                                     src={course.thumbnail
                                                         ? `${STORAGE_URL}/${course.thumbnail}`

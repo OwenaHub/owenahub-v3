@@ -59,7 +59,7 @@ export default function CreateLesson({ actionData }: Route.ComponentProps) {
 
               <div className="mb-5">
                 <Label htmlFor="video_url" className="mb-1">Video URL</Label>
-                <Input id="video_url" name="video_url" type="url" className="bg-white rounded" required />
+                <Input id="video_url" name="video_url" type="url" className="bg-white rounded" />
                 <InputError for="video_url" error={errors} />
               </div>
 
@@ -88,7 +88,7 @@ export default function CreateLesson({ actionData }: Route.ComponentProps) {
               </div>
 
               <div className="mt-5">
-                <Button type="submit" className="bg-secondary-foreground uppercase w-full text-sm text-white py-2 px-10 rounded-md cursor-pointer hover:bg-primary-foreground">
+                <Button type="submit" className="bg-secondary-foreground uppercase w-full text-sm text-white py-2 px-10 rounded cursor-pointer hover:bg-primary-foreground">
                   Create lesson
                 </Button>
               </div>
