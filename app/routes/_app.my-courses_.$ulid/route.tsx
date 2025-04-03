@@ -4,7 +4,7 @@ import { toast } from 'sonner';
 import { Link, redirect } from 'react-router';
 import { STORAGE_URL } from '~/lib/keys';
 import Rating from '~/components/custom/rating';
-import { Calendar, ChevronRight, CircleCheck, Globe, Notebook, Youtube } from 'lucide-react';
+import { Calendar, ChevronRight, CircleCheck, Globe, Youtube } from 'lucide-react';
 import dayjs from 'dayjs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion';
 import { truncateText } from '~/lib/texts';
@@ -35,7 +35,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                 </div>
             </div>
 
-            <div className="bg-slate-100 col-span-1 md:col-span-4 w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-auto overflow-hidden">
+            <div className="bg-slate-100 col-span-1 md:col-span-4 w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-auto overflow-hidden md:mx-5">
                 <img
                     src={course.thumbnail
                         ? `${STORAGE_URL}/${course.thumbnail}`
@@ -65,7 +65,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                         </Link>
                     </div>
 
-                    <div className="flex flex-col gap-3 text-sm">
+                    <div className="flex flex-col md:flex-row gap-3 text-sm">
                         <div className="flex gap-2 items-center">
                             <Calendar strokeWidth={1} size={20} />{" "}
                             <span>
@@ -85,7 +85,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                     </div>
                 </div>
 
-                <div className="md:w-2/3">
+                <div className="">
                     <h4 className="font-bold text-xl mb-4">Course content</h4>
                     <div className="text-sm font-light mb-4">
                         {course.modules.length} modules • {" "}
@@ -98,7 +98,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                 <AccordionTrigger className="px-5 bg-muted rounded-none">{module.title}</AccordionTrigger>
                                 <AccordionContent className="p-5 flex flex-col gap-4">
                                     {module.lessons.map((lesson) => (
-                                        <div key={lesson.id} className="text-sm font-light flex items-start justify-between">
+                                        <div key={lesson.id} className="text-sm my-1 font-light flex items-start justify-between">
                                             <div className="font-light flex items-center gap-3">
                                                 {/* <Notebook strokeWidth={1} size={18} /> <span>{lesson.title}</span> */}
                                                 <div className="">
@@ -117,12 +117,12 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                             size={40}
                                                         />}
                                                 </div>
-                                                <div>
+                                                <Link to={`modules/${module.id}/lessons/${lesson.id}`}>
                                                     <h5>{lesson.title}</h5>
                                                     <p className='text-xs text-gray-500 flex items-center gap-2'>
                                                         <Youtube strokeWidth={1} size={18} /> <span>Video available</span>
                                                     </p>
-                                                </div>
+                                                </Link>
 
                                             </div>
                                             <div className='mt-1'>

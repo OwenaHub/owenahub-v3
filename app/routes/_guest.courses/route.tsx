@@ -21,7 +21,7 @@ export default function GuestCourses({ loaderData }: Route.ComponentProps) {
     const { courses } = loaderData;
 
     return (
-        <div className="py-[4rem] mt-15">
+        <div className="py-[4rem] mt-8">
             <div className="container mb-8">
                 <h2 className="text-2xl md:text-3xl text-gray-800 font-bold mb-2">Courses</h2>
                 <p className="text-gray-500 text-sm md:text-base mb-4">

@@ -188,17 +188,21 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                         </div>
                         <div>
                             <h5 className="text-sm font-semibold pb-2">QUICK LINKS</h5>
-                            <a href="#" className="text-xs block hover:underline pb-2">
+                            <Link to="/blog" className="text-xs block hover:underline pb-2">
                                 OwenaHub Blog
-                            </a>
-                            <a href="#"
+                            </Link>
+                            <Link to="/courses"
                                 className="text-xs block hover:underline pb-2">
                                 Courses: <span className="text-theme font-semibold">Mentorship tracks</span>
-                            </a>
-                            <a href="#"
+                            </Link>
+                            <Link to="classes"
                                 className="text-xs block hover:underline pb-2">
                                 Private Sessions
-                            </a>
+                            </Link>
+                            <Link to="#"
+                                className="text-xs block hover:underline pb-2">
+                                Profile builder <span className="rounded px-2 py-1 ms-1 bg-primary-theme text-white text-[10px] font-bold">Coming soon!</span>
+                            </Link>
                         </div>
                         <div>
                             <h5 className="text-sm font-semibold pb-2">COMMUNITIES</h5>
@@ -216,6 +220,14 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                                 rel="noopener"
                             >
                                 Facebook Community
+                            </a>
+                            <a
+                                href="https://chat.whatsapp.com/CclgnpXKrZrEp9Bc4O98cd"
+                                target="_blank"
+                                className="text-xs block hover:underline pb-2"
+                                rel="noopener"
+                            >
+                                WhatsApp Community
                             </a>
                         </div>
                     </div>

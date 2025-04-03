@@ -4,4 +4,5 @@ interface Lesson extends Model {
     position: number;
     content: string;
     videoUrl: string;
+    completed?: boolean
 }
