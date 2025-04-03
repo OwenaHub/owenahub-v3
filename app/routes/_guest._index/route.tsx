@@ -144,8 +144,8 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        <div className="absolute -bottom-40 md:-bottom-30 left-50 rotate-12 rounded-2xl h-70 w-70 border border-[#315E8B] bg-[#c9d0d7] opacity-45 md:opacity-85" />
-      </header>
+        <div className="absolute -bottom-40 md:-bottom-35 left-50 rotate-[20deg] rounded-2xl h-70 w-70 md:w-90 md:h-90 border border-[#315E8B] bg-[#c9d0d7] opacity-45 md:opacity-85" />
+      </header> 
 
       <main>
         <div className="container mb-8">
