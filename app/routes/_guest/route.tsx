@@ -87,7 +87,7 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                     </button>
                 </nav>
                 {menu && (
-                    <div className="bg-white rounded-lg shadow-2xl block md:hidden mt-1 mx-auto px-4 py-4 z-50">
+                    <div className="bg-white rounded-lg shadow-2xl block md:hidden mt-4 mx-auto px-4 py-4 z-50">
                         <div>
                             <div className="mb-3">
                                 <div className="border-b py-4">
@@ -112,17 +112,25 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                                 </div>
                             </div>
                             <div className="flex flex-col gap-4">
-                                <Link to="/login" className="bg-white border border-secondary-foreground rounded-[6px] text-center text-secondary-foreground text-sm w-full block font-extrabold hover:shadow-lg py-2 uppercase">
-                                    Log in
-                                </Link>
-                                <Link to="/register" className="bg-secondary-foreground rounded-[6px] text-primary-theme text-center text-sm w-full block font-bold hover:bg-gray-800 py-2 uppercase">
-                                    Sign up
-                                </Link>
+                                {session
+                                    ? (<Link to="/dashboard" className="bg-primary rounded-[6px] text-primary-foreground text-xs font-medium hover:shadow-lg py-3 text-center uppercase">
+                                        Dashboard
+                                    </Link>)
+                                    : (<>
+                                        <Link to="/login" className="bg-white border border-secondary-foreground rounded-[6px] text-center text-secondary-foreground text-sm w-full block font-extrabold hover:shadow-lg py-2 uppercase">
+                                            Log in
+                                        </Link>
+                                        <Link to="/register" className="bg-secondary-foreground rounded-[6px] text-white text-center text-sm w-full block font-bold hover:bg-gray-800 py-2 uppercase">
+                                            Sign up
+                                        </Link>
+                                    </>)
+                                }
                             </div>
                         </div>
                     </div>
-                )}
-            </div>
+                )
+                }
+            </div >
 
             <Outlet />
 
@@ -185,7 +193,7 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                             </a>
                             <a href="#"
                                 className="text-xs block hover:underline pb-2">
-                                Slices: <span className="text-theme font-semibold">Swift Swips</span>
+                                Courses: <span className="text-theme font-semibold">Mentorship tracks</span>
                             </a>
                             <a href="#"
                                 className="text-xs block hover:underline pb-2">
@@ -220,6 +228,6 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                     </div>
                 </div>
             </footer>
-        </section>
+        </section >
     )
 }

@@ -1,5 +1,5 @@
 #above-the-fold {
-    background-image: linear-gradient(rgba(50, 50, 50, 0.3), rgba(51, 51, 51, 0.3)), url('/images/banners/banner-img.jpg');
+    background-image: linear-gradient(rgba(50, 50, 50, 0.3), rgba(51, 51, 51, 0.3)), url('/images/rocket-bg.svg');
     background-position: right bottom, 70% 30%;
     background-blend-mode: normal;
     background-repeat: no-repeat, no-repeat;
