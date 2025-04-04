@@ -1,5 +1,5 @@
-import { Book, HandCoins, ShieldUser, SquareUser, User } from 'lucide-react'
-import { Link } from 'react-router'
+import { Book, HandCoins, LogOut, ShieldUser, SquareUser, User } from 'lucide-react'
+import { Form, Link } from 'react-router'
 import { IsMentor } from '~/components/permissions/roles'
 
 type CardProps = {
@@ -13,7 +13,7 @@ function Card({ icon: Icon, title, description, link }: CardProps) {
     return (
         <div className="flex border relative border-b-2 p-3 rounded-lg gap-3 items-center hover:bg-gray-50 transition">
             <div>
-                <Icon size={40} strokeWidth={1} className=""/>
+                <Icon size={40} strokeWidth={1} className="" />
             </div>
             <div>
                 <h5 className="font-semibold text-sm mb-1">{title}</h5>
@@ -57,6 +57,7 @@ export default function AccountMenu({ user }: { user: User }) {
             {cards.map((card, index) => (
                 <Card key={index} {...card} />
             ))}
+
             <IsMentor user={user}>
                 <Card
                     icon={ShieldUser}

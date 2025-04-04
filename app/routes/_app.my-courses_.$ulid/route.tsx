@@ -90,19 +90,19 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                     <div className="text-sm font-light mb-4">
                         {course.modules.length} modules • {" "}
                         {course.modules.reduce((count, module) => count + module.lessons.length, 0)} lessons •
-                        32h 23m total length
+                        43h total length
                     </div>
                     <Accordion type="single" collapsible defaultValue="item-1" className="w-full border">
-                        {course.modules.map((module, index) => (
+                        {course.modules.map((module: Module, index) => (
                             <AccordionItem value={`item-${index + 1}`} key={module.id}>
                                 <AccordionTrigger className="px-5 bg-muted rounded-none">{module.title}</AccordionTrigger>
                                 <AccordionContent className="p-5 flex flex-col gap-4">
-                                    {module.lessons.map((lesson) => (
+                                    {module.lessons.map((lesson: Lesson) => (
                                         <div key={lesson.id} className="text-sm my-1 font-light flex items-start justify-between">
                                             <div className="font-light flex items-center gap-3">
                                                 {/* <Notebook strokeWidth={1} size={18} /> <span>{lesson.title}</span> */}
                                                 <div className="">
-                                                    {true
+                                                    {lesson.completed
                                                         ? <div className='bg-green-200 rounded-full'>
                                                             <CircleCheck
                                                                 className="text-white bg-green-0 fill-green-500 rounded-full p-0.5"

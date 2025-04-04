@@ -24,7 +24,7 @@ export async function clientLoader({ }: Route.ClientLoaderArgs) {
 
 export default function Courses({ loaderData }: Route.ComponentProps) {
     const { enrolledCourses } = loaderData;
-    
+
 
     return (
         <section className="md:px-10 mt-10">
@@ -46,21 +46,24 @@ export default function Courses({ loaderData }: Route.ComponentProps) {
                             {enrolledCourses.length
                                 ? (
                                     enrolledCourses.map((course: any) => (
-                                        <div className="grid grid-cols-4 border border-gray-200 gap-2 border-b pb-5 bg-white h-full rounded group relative transition">
-                                            <div className="bg-slate-100 col-span-4 md:col-span-4 md:rounded w-full aspect-square group-hover:opacity-75 lg:aspect-auto h-30 lg:h-44 overflow-hidden">
+                                        <div
+                                            className="grid grid-cols-4 border border-gray-300 gap-2 border-b pb-5 bg-white h-full rounded group relative transition animated fadeIn"
+                                            key={course.id}
+                                        >
+                                            <div className="bg-slate-100 col-span-4 md:col-span-4 md:rounded-t w-full aspect-square group-hover:opacity-75 lg:aspect-auto h-30 lg:h-44 overflow-hidden">
                                                 <img
                                                     src={course.thumbnail
                                                         ? `${STORAGE_URL}/${course.thumbnail}`
                                                         : "/images/banners/default-course-img.png"}
                                                     alt={course.title}
-                                                    className="h-full rounded w-full object-cover"
+                                                    className="h-full rounded-t w-full object-cover"
                                                 />
                                             </div>
 
                                             {/* Content Wrapper */}
                                             <div className="flex flex-col col-span-4 px-2 flex-grow justify-between md:mt-2">
                                                 {/* Title & Description */}
-                                                <div className="flex flex-col gap-1.5 mb-5">
+                                                <div className="flex flex-col gap-1.5 mb-3">
                                                     <div className="flex items-center">
                                                         <h3 className="text-gray-600 font-bold leading-5">
                                                             <span className="leading-[-5px]">{course.title}</span>
@@ -71,11 +74,31 @@ export default function Courses({ loaderData }: Route.ComponentProps) {
                                                     </div>
                                                 </div>
 
-                                                {/* Rating & Price - Pushed to the bottom */}
+                                                {/* Course learning progress */}
                                                 <div className="mt-auto">
-                                                    <div className="bg-gray-100 rounded-lg">
-                                                        <div className="w-2/5 bg-gray-300 py-1 rounded-lg" />
-                                                    </div>
+                                                    {course.modules && course.modules.length ? (
+                                                        (() => {
+                                                            const totalLessons = course.modules.reduce((total: number, module: any) => total + module.lessons.length, 0);
+                                                            const completedLessons = course.modules.reduce((total: number, module: any) => total + module.lessons.filter((lesson: any) => lesson.completed).length, 0);
+                                                            const progressPercentage = Math.round((completedLessons / totalLessons) * 100);
+
+                                                            return (
+                                                                <div className="">
+                                                                    <div className="bg-gray-100 rounded-lg h-1 my-2">
+                                                                        <div
+                                                                            className="bg-[#315E8B] h-1 rounded-lg"
+                                                                            style={{ width: `${progressPercentage}%` }}
+                                                                        />
+                                                                    </div>
+                                                                    <p className="text-xs text-gray-500 mt-1">
+                                                                        {completedLessons} of {totalLessons} lessons completed ({progressPercentage}%)
+                                                                    </p>
+                                                                </div>
+                                                            );
+                                                        })()
+                                                    ) : (
+                                                        <p className="text-xs text-gray-500 mt-1">No lessons available</p>
+                                                    )}
                                                 </div>
                                             </div>
                                         </div>

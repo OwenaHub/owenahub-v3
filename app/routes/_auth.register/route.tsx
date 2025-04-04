@@ -75,7 +75,7 @@ export default function Register({ actionData }: Route.ComponentProps) {
                 <div className="flex-1">
                     <div className="border h-full rounded-xl md:px-8 px-5 py-6">
                         <div className="text-center block md:hidden pb-5">
-                            <p className="text-2xl text-primary-foreground font-bold">
+                            <p className="text-2xl text-primary font-bold">
                                 Create an acccount
                             </p>
                             <p className="text-muted-foreground text-sm">to access your free acount</p>

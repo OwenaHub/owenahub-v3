@@ -16,7 +16,7 @@ import { Toaster } from "sonner"
 import ProgressBar from "./components/navigation/progress-bar";
 import { Button } from "./components/ui/button";
 import AppName from "./components/custom/app-name";
-import { Zap } from "lucide-react";
+import { ArrowLeft, RotateCw, X, Zap } from "lucide-react";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -131,30 +131,33 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       <div className="">
         <div>
           <div className="flex justify-between items-center">
-            <h1 className="text-gray-400">{message}</h1>
+            <h1 className="text-primary font-bold">{message}</h1>
             <div className="text-2xl">
-              😵
+              <X size={20} strokeWidth={5} className="text-destructive" />
             </div>
           </div>
-          <p>{details}</p>
+          <p className="text-gray-400">{details}</p>
           {stack && (
-            <pre className="p-4 w-full overflow-x-auto">
+            <pre className="p-4 max-w-4/5 overflow-x-auto">
               <code>{stack}</code>
             </pre>
           )}
 
-          <div className="flex gap-5 items-center mt-3">
+          <div className="flex gap-5 items-center mt-8">
             <Link to={"/dashboard"}>
-              <Button variant={"outline"} className="h-8 text-sm py-0">
-                Go home
+              <Button
+                variant={"outline"}
+                onClick={() => window.history.back()}
+                className="rounded h-8 text-sm py-0 flex items-center gap-1">
+                <ArrowLeft size={18} /> <span>Back</span>
               </Button>
             </Link>
 
             <Button
               onClick={() => window.location.reload()}
-              className="bg-gray-800 h-8 text-sm text-white px-5 py-1"
+              className="bg-gray-800 rounded h-8 text-sm text-white px-10 py-1 flex items-center gap-1"
             >
-              Reload
+              <span>Reload</span> <RotateCw size={18} />
             </Button>
           </div>
         </div>

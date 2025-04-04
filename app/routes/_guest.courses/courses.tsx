@@ -9,7 +9,7 @@ export default function Courses({ courses }: { courses: Course[] }) {
       <div className="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-4 sm:grid-cols-2 xl:gap-x-6 mb-5 animated fadeIn">
         {courses.length
           ? courses.map((course) => (
-            <CourseCard course={course} />
+            <CourseCard course={course} key={course.id} />
           ))
           : <p className="text-gray-500 text-sm border px-3 py-1.5 w-max rounded">Nothing here yet</p>
         }
@@ -21,8 +21,8 @@ export default function Courses({ courses }: { courses: Course[] }) {
 
 function CourseCard({ course }: { course: Course }) {
   return (
-    <div className="grid grid-cols-4 shadow gap-2  border-t bg-white h-full p-2 rounded group relative transition">
-      <div className="bg-slate-100 border md:border-0 col-span-1 md:col-span-4 md:rounded w-full aspect-square group-hover:opacity-75 lg:aspect-auto lg:h-44 overflow-hidden">
+    <div className="grid grid-cols-4 shadow border-t bg-white h-full rounded-lg group relative transition">
+      <div className="bg-slate-100 ms-2 mt-2 md:ms-0 md:mt-0 col-span-1 md:col-span-4 md:rounded-t-lg w-full aspect-square group-hover:opacity-75 lg:aspect-auto lg:h-44 overflow-hidden">
         <img
           src={course.thumbnail
             ? `${STORAGE_URL}/${course.thumbnail}`
@@ -33,7 +33,7 @@ function CourseCard({ course }: { course: Course }) {
       </div>
 
       {/* Content Wrapper */}
-      <div className="flex flex-col col-span-3 flex-grow justify-between md:mt-2">
+      <div className="flex flex-col col-span-3 flex-grow justify-between px-4 py-2">
         {/* Title & Description */}
         <div className="flex flex-col gap-1.5 mb-1.5">
           <div className="flex items-center">
@@ -51,16 +51,16 @@ function CourseCard({ course }: { course: Course }) {
 
         {/* Rating & Price - Pushed to the bottom */}
         <div className="mt-auto">
-          <div className="flex gap-2 items-center">
-            <p className="text-yellow-800 font-extrabold">4.5</p>
+          <div className="flex gap-2 items-center text-xs mb-2">
+            <p className="text-yellow-800 font-extrabold">4.7</p>
             <div className="flex gap-1">
-              <Rating rating={5} />
+              <Rating rating={4.7} />
             </div>
-            <p>99+</p>
+            <p className="text-gray-400">(99+)</p>
           </div>
           <div className="flex gap-2 items-center">
             <p className="font-bold">₦{parseInt(course.price).toLocaleString()}</p>
-            <p className="font-light line-through">₦{(parseInt(course.price) + 12000).toLocaleString()}</p>
+            <p className="font-light text-gray-500 line-through">₦{(parseInt(course.price) + 12000).toLocaleString()}</p>
           </div>
         </div>
       </div>

@@ -115,7 +115,7 @@ const reviews = [
 export default function HomePage() {
   return (
     <>
-      <header className="py-[4rem] h-[70dvh] border-b-2 border-primary-theme bg-primary-bg mb-18 flex flex-col justify-center rounded-b-[50px] relative overflow-hidden">
+      <header className="py-[4rem] h-[70dvh] border-b-2 border-gray-100 bg-primary-bg mb-18 flex flex-col justify-center rounded-b-[50px] relative overflow-hidden">
         <section className="container">
           <div className="text-start md:text-center">
             <h1 className="text-4xl text-primary font-extrabold font-serif lg:text-7xl mt-3 tracking-[-2px] z-10">
@@ -126,26 +126,28 @@ export default function HomePage() {
 
             <section className="flex flex-col text-gray-800 gap-5 mb-10 mt-5">
               <span className="text-sm md:text-base">
-                Unlike typical online learning, our platform pairs comprehensive <BrMd />
-                curriculum with dedicated mentorship to ensure you never get stuck.
+                Unlike typical online learning, our platform pairs comprehensive
+                curriculum with <BrMd /> dedicated mentorship to ensure you never get stuck.
               </span>
             </section>
 
             <div className="flex flex-col gap-5 justify-center items-center md:flex-row z-10">
-              <Link to="/register" className="bg-primary-theme text-center text-primary-foreground border-b-2 border-gray-500 rounded text-sm w-full block font-bold hover:opacity-90 md:inline-block md:w-max px-10 py-2.5 transition">
-                Register now!
+              <Link
+                to="/register"
+                className="bg-primary-theme text-center text-primary-foreground border-b-2 border-amber-900 focus:border-b-0 focus:top-[2px] rounded text-base w-full block font-medium hover:opacity-90 md:inline-block md:w-max px-10 py-2.5 relative transition">
+                Register for free!
               </Link>
               <Link
                 to="/courses"
-                className="z-10 rounded text-[#744f00] border-b-2 border-gray-300 text-center text-sm w-full block font-bold bg-white hover:opacity-70 md:inline-block md:w-max outline outline-gray-300 px-10 py-2.5"
+                className="z-10 rounded text-[#744f00] border-b-2 border-gray-300 focus:border-b-0 relative focus:top-[2px] text-center text-base w-full block font-medium bg-white hover:opacity-70 md:inline-block md:w-max outline outline-gray-300 px-10 py-2.5"
               >
-                See Courses
+                Courses
               </Link>
             </div>
           </div>
         </section>
         <div className="absolute -bottom-40 md:-bottom-35 left-50 rotate-[20deg] rounded-2xl h-70 w-70 md:w-90 md:h-90 border border-[#315E8B] bg-[#c9d0d7] opacity-45 md:opacity-85" />
-      </header> 
+      </header>
 
       <main>
         <div className="container mb-8">
@@ -153,26 +155,26 @@ export default function HomePage() {
           <p className="text-gray-500 text-sm md:text-base">
             We offer courses on technical topics, OwenaHub supports your professional tech development.
           </p>
-          <div className="flex flex-nowrap gap-2 items-center overflow-x-auto py-3">
+          <div className="flex flex-nowrap gap-4 items-center overflow-x-auto py-3">
             <Badge
               title="JavaScript"
               description="80+ learners"
             />
             <Badge
               title="Python"
-              description="80+ learners"
+              description="20+ learners"
             />
             <Badge
               title="Algorithms"
-              description="80+ learners"
+              description="30+ learners"
             />
             <Badge
               title="CSS"
-              description="80+ learners"
+              description="120+ learners"
             />
             <Badge
               title="Data science"
-              description="80+ learners"
+              description="10+ learners"
             />
             <Badge
               title="Engineering"
@@ -185,9 +187,9 @@ export default function HomePage() {
           <div className="mx-auto py-10 sm:pb-16 container">
             <div className="flex flex-row items-stretch flex-nowrap gap-3 overflow-x-auto snap-x snap-proximity mb-5 pb-3">
               {tracks.map((track, index) => (
-                <div key={index} className="snap-center flex min-w-80 h-80 flex-col border border-gray-200 bg-white p-2 rounded-lg group hover:border-b relative transition">
+                <div key={index} className="snap-center flex min-w-80 h-84 flex-col border border-gray-200 bg-white rounded-lg group hover:border-b relative transition">
                   {/* Course Image */}
-                  <div className="bg-slate-100 rounded-lg w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-36 overflow-hidden">
+                  <div className="bg-slate-100 rounded-t-lg w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-40 overflow-hidden">
                     <img
                       src={track.image_path
                         ? `${track.image_path}`
@@ -198,34 +200,34 @@ export default function HomePage() {
                   </div>
 
                   {/* Content Wrapper */}
-                  <div className="flex flex-col flex-grow justify-between mt-2">
+                  <div className="flex flex-col flex-grow justify-between px-4 py-2">
                     {/* Title & Description */}
                     <div className="flex flex-col gap-1.5 mb-1.5">
                       <div className="flex items-center">
-                        <h3 className="text-gray-600 font-bold leading-5">
+                        <h3 className="text-primary font-bold leading-5 mb-1">
                           <span className="leading-[-5px]">{track.title}</span>
                           <Link to="/courses">
                             <span aria-hidden="true" className="absolute inset-0" />
                           </Link>
                         </h3>
                       </div>
-                      <div className="text-xs font-light">
-                        {truncateText(track.description, 100)}
+                      <div className="text-[13px] text-gray-500 font-">
+                        {truncateText(track.description, 80)}
                       </div>
                     </div>
 
                     {/* Rating & Price - Pushed to the bottom */}
                     <div className="mt-auto">
-                      <div className="flex gap-2 items-center">
+                      <div className="flex gap-2 items-center text-xs mb-2">
                         <p className="text-yellow-800 font-extrabold">4.5</p>
                         <div className="flex gap-1">
                           <Rating rating={track.rating} />
                         </div>
-                        <p>({track.enrollCount})</p>
+                        <p className="text-gray-400">({track.enrollCount})</p>
                       </div>
                       <div className="flex gap-2 items-center">
                         <p className="font-bold">₦{track.price}</p>
-                        <p className="font-light line-through">₦{track.discount}</p>
+                        <p className="font-light text-gray-500 line-through">₦{track.discount}</p>
                       </div>
                     </div>
                   </div>
@@ -250,7 +252,7 @@ export default function HomePage() {
           </div>
 
           <div className="flex md:flex-row flex-col gap-5 items-stretch my-7">
-            <div className="flex basis-1/3 rounded-xl p-5 flex-col gap-9 bg-primary-theme shadow-lg transition relative">
+            <div className="flex basis-1/3 rounded-xl p-5 flex-col gap-9 bg-primary-theme shadow-lg transition relative overflow-hidden">
               <div className="bg-primary-bg rounded-lg p-2 text-primary-theme inline-block w-max">
                 <Users className="w-10 h-10" strokeWidth={1} />
               </div>
@@ -258,12 +260,12 @@ export default function HomePage() {
                 2k+ students enjoy and use <BrMd /> OwenaHub
               </h4>
               <div className="flex-grow-1"></div>
-              <Link to={"/"} className="underline underline-offset-2 z-10">
+              <Link to={"/register"} className="underline underline-offset-2 z-10">
                 Join us
               </Link>
               <Shapes
                 strokeWidth={0.5}
-                className="absolute -bottom-40 md:-bottom-30 right-20 rounded-2xl h-80 w-80  text-primary-bg opacity-45 md:opacity-60"
+                className="absolute -bottom-40 md:-bottom-30 right-10 rounded-2xl h-96 w-96 text-primary-bg opacity-45 md:opacity-60"
               />
             </div>
 
@@ -279,12 +281,12 @@ export default function HomePage() {
                 no matter your skill level.
               </p>
               <div className="flex-grow-1"></div>
-              <Link to={"/"} className="underline underline-offset-2">
+              <Link to={"/register"} className="underline underline-offset-2">
                 Join us
               </Link>
               <Earth
                 strokeWidth={0.5}
-                className="absolute -bottom-40 md:-bottom-30 right-20 rounded-2xl h-80 w-80 -z-0 text-primary-theme opacity-45 md:opacity-60"
+                className="absolute -bottom-40 md:-bottom-30 right-20 rounded-2xl h-96 w-96 text-primary-theme opacity-45 md:opacity-60"
               />
             </div>
           </div>
@@ -374,11 +376,11 @@ export default function HomePage() {
                 Customer Reviews <span className="font-black text-6xl text-primary-theme">.</span>
               </h2>
             </div>
-            <div className="flex flex-row items-stretch flex-nowrap gap-3 overflow-x-auto snap-x snap-proximity mb-5 pb-3">
+            <div className="flex flex-row items-stretch flex-nowrap gap-6 overflow-x-auto snap-x snap-proximity mb-5 pb-3">
               {reviews.map((review, index) => (
-                <div key={index} className="snap-center flex min-w-80 h-max flex-col border border-gray-200 bg-white p-7 rounded group hover:border-b !overflow-visible relative transition">
+                <div key={index} className="snap-center flex min-w-80 h-max flex-col border border-gray-200 bg-white p-7 rounded-md group hover:border-b !overflow-visible relative transition">
                   <div className="absolute right-4 -top-0">
-                    <Quote className="opacity-20 text-primary-theme h-10 w-10" />
+                    <Quote className="opacity-20 text-muted-foreground h-10 w-10" />
                   </div>
                   <div className="flex flex-col flex-grow justify-between">
                     <div className="flex flex-col gap-1.5 mb-4">
@@ -390,7 +392,7 @@ export default function HomePage() {
                     <div className="mt-auto">
                       <div className="flex gap-2 items-center">
                         <CustomAvatar name={review.username} styles="h-10 w-10" />
-                        <div className="text-xs">
+                        <div className="text-sm">
                           <p className="">{review.username}</p>
                           <p className="text-gray-400">{review.career}</p>
                         </div>

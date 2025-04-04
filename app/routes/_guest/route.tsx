@@ -1,9 +1,8 @@
-import { Await, Link, Outlet, useNavigation } from "react-router";
+import { Await, Link, NavLink, Outlet, useNavigation } from "react-router";
 import { ChevronRight, Facebook, Instagram, Menu, Twitter } from "lucide-react";
 import { Suspense, useEffect, useState } from "react";
 import useSession from "~/lib/session";
 import type { Route } from "../_guest/+types/route";
-import { toast } from "sonner";
 
 export async function clientLoader(_: Route.ClientLoaderArgs) {
     const { getUser } = useSession();
@@ -40,7 +39,7 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
     const { session }: { session: boolean } = loaderData || { session: false };
 
     return (
-        <section className={`${busy && "opacity-50"} transition-all`}>
+        <section className={`${busy && "opacity-50"} transition-all animated fadeIn`}>
             <div className="container -translate-x-1/2 fixed left-1/2 px-4 top-4 transform z-50">
                 {/* Navbar */}
                 <nav
@@ -55,26 +54,33 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                             </Link>
                         </div>
 
-                        <div className="hidden text-xs md:flex gap-4 items-center text-gray-800 mt-1">
-                            <Link to={"/courses"}>Courses</Link>
-                            <Link to={"#"}>Mentors</Link>
-                            <Link to={"#"}>Blog</Link>
-                        </div>
+                    </div>
+                    <div className="hidden text-xs md:flex gap-4 items-center text-gray-800 mt-1">
+                        {[
+                            { name: "Courses", path: "/courses" },
+                            { name: "Mentors", path: "/mentors" },
+                            { name: "Blog", path: "/blog" },
+                        ].map((link) => (
+                            <NavLink
+                                key={link.name}
+                                className={({ isActive }) => (isActive ? "font-bold" : "text-gray-500")}
+                                to={link.path}
+                            >
+                                {link.name}
+                            </NavLink>
+                        ))}
                     </div>
                     <div className="hidden md:block">
                         <Suspense fallback={<div className="h-7 w-28 bg-gray-100 animate-pulse" />}>
                             <Await resolve={session}>
                                 <div className="flex gap-2 items-center">
                                     {session
-                                        ? (<Link to="/dashboard" className="bg-primary rounded-[6px] text-primary-foreground text-xs font-medium hover:shadow-lg px-5 py-1.5 uppercase">
+                                        ? (<Link to="/dashboard" className="bg-white border rounded text-secondary-foreground text-xs hover:shadow-lg px-5 py-1.5 uppercase">
                                             Dashboard
                                         </Link>)
                                         : (<>
-                                            <Link to="/login" className="bg-white border border-secondary-foreground rounded-[6px] text-secondary-foreground text-xs font-extrabold hover:shadow-lg px-5 py-1.5 uppercase">
+                                            <Link to="/login" className="bg-white border rounded text-secondary-foreground text-xs hover:shadow-lg px-5 py-1.5 uppercase">
                                                 Log in
-                                            </Link>
-                                            <Link to="/register" className="bg-primary border border-[#083156] rounded-[6px] text-white text-xs font-bold hover:opacity-80 transition px-5 py-1.5 uppercase">
-                                                Sign up
                                             </Link>
                                         </>)
                                     }
@@ -90,21 +96,20 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                     <div className="bg-white rounded-lg shadow-2xl block md:hidden mt-4 mx-auto px-4 py-4 z-50">
                         <div>
                             <div className="mb-3">
-                                <div className="border-b py-4">
-                                    <Link to={"/courses"} className="text-primary font-bold">
-                                        Courses
-                                    </Link>
-                                </div>
-                                <div className="border-b py-4">
-                                    <Link to={"/mentors"} className="text-primary font-bold">
-                                        Mentors
-                                    </Link>
-                                </div>
-                                <div className="border-b py-4">
-                                    <Link to={"/blog"} className="text-primary font-bold">
-                                        Blog
-                                    </Link>
-                                </div>
+                                {[
+                                    { name: "Courses", path: "/courses" },
+                                    { name: "Mentors", path: "/mentors" },
+                                    { name: "Blog", path: "/blog" },
+                                ].map((link) => (
+                                    <div key={link.name} className="border-b py-4">
+                                        <NavLink
+                                            to={link.path}
+                                            className={({ isActive }) => isActive ? "text-primary font-bold" : "text-gray-500"}
+                                        >
+                                            {link.name}
+                                        </NavLink>
+                                    </div>
+                                ))}
                                 <div className="py-4">
                                     <a href="tel:+2348026658956" className="flex text-foreground text-sm font-light gap-2 items-center">
                                         <span>Contact support</span> <ChevronRight size={12} />
@@ -117,10 +122,10 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                                         Dashboard
                                     </Link>)
                                     : (<>
-                                        <Link to="/login" className="bg-white border border-secondary-foreground rounded-[6px] text-center text-secondary-foreground text-sm w-full block font-extrabold hover:shadow-lg py-2 uppercase">
+                                        <Link to="/login" className="bg-white border border-secondary-foreground rounded-[6px] text-center text-secondary-foreground text-sm w-full block font-bold hover:shadow-lg py-2 uppercase">
                                             Log in
                                         </Link>
-                                        <Link to="/register" className="bg-secondary-foreground rounded-[6px] text-white text-center text-sm w-full block font-bold hover:bg-gray-800 py-2 uppercase">
+                                        <Link to="/register" className="bg-primary rounded-[6px] text-white text-center text-sm w-full block font-bold hover:bg-gray-800 py-2 uppercase">
                                             Sign up
                                         </Link>
                                     </>)
