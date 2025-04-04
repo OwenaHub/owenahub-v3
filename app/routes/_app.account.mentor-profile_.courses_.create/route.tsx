@@ -25,9 +25,10 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
         });
         return redirect('/account/mentor-profile/courses')
     } catch ({ response }: any) {
-        toast.error("Failed to create course", {
-            description: "Review the form and try again",
-        });
+        if (response?.status !== 422)
+            toast.error("Something went wrong", {
+                description: response?.data?.error || "Please try again",
+            });
         const error: any = response?.data?.errors;
         return error;
     }
@@ -35,7 +36,7 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
 
 export default function MentorCreateCourse({ actionData }: Route.ComponentProps) {
     let errors = actionData;
-    
+
     const [learningGoals, setLearningGoals] = useState("");
     const [description, setDescription] = useState("");
     const [requirements, setRequirements] = useState("");
@@ -63,7 +64,7 @@ export default function MentorCreateCourse({ actionData }: Route.ComponentProps)
                             <Input id="about" name="about" className="bg-white rounded" required />
                             <InputError for="about" error={errors} />
                         </div>
-                        <div className="mb-5 md:flex gap-4">
+                        <div className="mb-5 flex flex-col md:flex-row gap-4">
                             <div className="flex-1">
                                 <Label htmlFor="tags" className="mb-1">
                                     Tags <span className="font-light">(These can be related keywords)</span>
@@ -85,13 +86,8 @@ export default function MentorCreateCourse({ actionData }: Route.ComponentProps)
                                 onChange={setLearningGoals}
                                 value={learningGoals}
                                 modulesConfig={[
-                                    "font-selection",
-                                    "headers",
                                     "formatting",
-                                    "text-alignment",
-                                    "blockquote-code",
                                     "lists-indentation",
-                                    "color-picker",
                                     "remove-formatting",
                                 ]}
                             />
@@ -106,13 +102,8 @@ export default function MentorCreateCourse({ actionData }: Route.ComponentProps)
                                 onChange={setRequirements}
                                 value={requirements}
                                 modulesConfig={[
-                                    "font-selection",
-                                    "headers",
                                     "formatting",
-                                    "text-alignment",
-                                    "blockquote-code",
                                     "lists-indentation",
-                                    "color-picker",
                                     "remove-formatting",
                                 ]}
                             />
@@ -141,7 +132,7 @@ export default function MentorCreateCourse({ actionData }: Route.ComponentProps)
                             <InputError for="description" error={errors} />
                         </div>
 
-                        <div className="mb-5 md:flex gap-4">
+                        <div className="mb-5 flex flex-col md:flex-row gap-4">
                             <div className="flex-1">
                                 <Label htmlFor="start_date" className="mb-1">Start date</Label>
                                 <Input type="date" id="start_date" name="start_date" className="bg-white rounded-md" />

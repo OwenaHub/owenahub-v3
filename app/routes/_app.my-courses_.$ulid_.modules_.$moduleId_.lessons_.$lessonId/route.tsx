@@ -13,7 +13,7 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
         return lesson;
     } catch ({ response }: any) {
         console.log(response);
-        toast.warning(response.data.error || "Something went wrong");
+        toast.warning(response.data.error || response.data.message || "Something went wrong");
         return redirect(`/my-courses/${params.ulid}`)
     }
 }

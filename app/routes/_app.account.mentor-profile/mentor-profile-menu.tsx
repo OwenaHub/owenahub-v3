@@ -1,4 +1,4 @@
-import { Book, User } from 'lucide-react'
+import { Book, ScrollText, User } from 'lucide-react'
 import { Link } from 'react-router'
 
 type CardProps = {
@@ -37,10 +37,16 @@ export default function Menu() {
             description: 'See reviews on your profile and courses',
             link: 'reviews',
         },
+        {
+            icon: ScrollText,
+            title: 'Voucher codes',
+            description: 'Create and manage voucher codes',
+            link: 'voucher-codes',
+        },
     ]
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
             {cards.map((card, index) => (
                 <Card key={index} {...card} />
             ))}

@@ -127,40 +127,34 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="max-w-[80vw] -translate-x-1/2 -translate-y-1/2 fixed left-1/2 top-1/2 transform">
-      <div className="">
-        <div>
-          <div className="flex justify-between items-center">
-            <h1 className="text-primary font-bold">{message}</h1>
-            <div className="text-2xl">
-              <X size={20} strokeWidth={5} className="text-destructive" />
-            </div>
-          </div>
-          <p className="text-gray-400">{details}</p>
-          {stack && (
-            <pre className="p-4 max-w-4/5 overflow-x-auto">
-              <code>{stack}</code>
-            </pre>
-          )}
-
-          <div className="flex gap-5 items-center mt-8">
-            <Link to={"/dashboard"}>
-              <Button
-                variant={"outline"}
-                onClick={() => window.history.back()}
-                className="rounded h-8 text-sm py-0 flex items-center gap-1">
-                <ArrowLeft size={18} /> <span>Back</span>
-              </Button>
-            </Link>
-
-            <Button
-              onClick={() => window.location.reload()}
-              className="bg-gray-800 rounded h-8 text-sm text-white px-10 py-1 flex items-center gap-1"
-            >
-              <span>Reload</span> <RotateCw size={18} />
-            </Button>
-          </div>
+    <main className="w-full max-w-5xl container -translate-x-1/2 -translate-y-1/2 fixed left-1/2 top-1/2 transform">
+      <div className="flex justify-between items-center">
+        <h1 className="text-primary font-bold">{message}</h1>
+        <div className="text-2xl">
+          <X size={20} strokeWidth={5} className="text-destructive" />
         </div>
+      </div>
+      <p className="text-gray-400">{details}</p>
+      {stack && (
+        <pre className="p-4 max-w-4/5 overflow-x-auto">
+          <code>{stack}</code>
+        </pre>
+      )}
+
+      <div className="flex flex-col md:flex-row items-stretch md:items-center gap-5 mt-8">
+        <Button
+          variant={"outline"}
+          onClick={() => window.history.back()}
+          className="rounded h-8 text-sm py-0 flex items-center gap-1">
+          <ArrowLeft size={18} /> <span>Back</span>
+        </Button>
+
+        <Button
+          onClick={() => window.location.reload()}
+          className="bg-gray-800 rounded h-8 text-sm text-white px-10 py-1 flex items-center gap-1"
+        >
+          <span>Reload</span> <RotateCw size={18} />
+        </Button>
       </div>
     </main >
   );

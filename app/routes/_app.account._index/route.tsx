@@ -5,7 +5,7 @@ export default function Account() {
     const user: User = useOutletContext();
 
     return (
-        <div>
+        <div className='mb-20'>
             <AccountMenu user={user} />
         </div>
     )

@@ -29,9 +29,12 @@ export async function clientAction({ params, request }: Route.ClientActionArgs) 
     });
     return redirect(`/account/mentor-profile/courses/${ulid}`);
   } catch ({ response }: any) {
-    toast.error("Failed to create module", {
-      description: response?.data?.error || "An error occurred",
-    });
+
+    if (response?.status !== 422)
+      toast.error("Failed to create module", {
+        description: response?.data?.error || "An error occurred",
+      });
+
     const error: any = response?.data?.errors;
     return error;
   }
@@ -66,7 +69,7 @@ export default function route({ actionData }: Route.ComponentProps) {
               <div className="mt-5">
                 <Button type="submit" className="bg-secondary-foreground uppercase text-sm text-white w-full py-2 rounded-md cursor-pointer hover:bg-primary-foreground">
                   Create module
-                  </Button>
+                </Button>
               </div>
             </Form>
           </section>

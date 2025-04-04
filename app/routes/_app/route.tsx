@@ -22,7 +22,7 @@ export async function clientLoader() {
         
         if (response?.status === 401) {
             toast.warning("Your session has expired!", {
-                description: "Login again to continue using OwenaHub",
+                description: "Login to continue using OwenaHub",
             })
         } else {
             toast.error("Something went wrong", {
@@ -70,7 +70,7 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                                     <p className="text-xs pb-3">
                                         Get full access to all courses offered on OwenaHub with a one time payment.
                                     </p>
-                                    <button className="bg-white border border-b-2 rounded-md text-secondary-foreground text-xs w-full font-bold px-4 py-2 uppercase">
+                                    <button className="bg-muted-foreground rounded text-muted text-xs w-full font-bold px-4 py-2 uppercase">
                                         Subscribe
                                     </button>
                                 </div>

@@ -4,7 +4,7 @@ import { toast } from 'sonner';
 import { Link, redirect } from 'react-router';
 import { STORAGE_URL } from '~/lib/keys';
 import Rating from '~/components/custom/rating';
-import { Calendar, ChevronRight, CircleCheck, Globe, Youtube } from 'lucide-react';
+import { ArrowUpRight, Calendar, ChevronRight, CircleCheck, Globe, Youtube } from 'lucide-react';
 import dayjs from 'dayjs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion';
 import { truncateText } from '~/lib/texts';
@@ -46,25 +46,13 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
             </div>
 
             <div className='md:px-[1.5rem] mt-7'>
-                <div className="flex flex-col gap-2 items-start mb-14">
+                <div className="flex flex-col gap-2 items-start mb-5">
                     <h1 className="text-2xl md:text-3xl font-bold">
                         {course.title}
                     </h1>
-                    <p className='text-base'>
+                    <p className='text-base mb-4'>
                         {course.about}
                     </p>
-                    <div className="mt-3 flex text-sm items-center gap-2 font-semibold">
-                        <span className="text-primary-theme">5.0</span>
-                        <Rating />
-                        <span>(99+ ratings) 2,394 students</span>
-                    </div>
-                    <div className='text-sm mb-4'>
-                        Created by {" "}
-                        <Link to="#" className="text-primary-theme underline underline-offset-2">
-                            {course.creator?.name}
-                        </Link>
-                    </div>
-
                     <div className="flex flex-col md:flex-row gap-3 text-sm">
                         <div className="flex gap-2 items-center">
                             <Calendar strokeWidth={1} size={20} />{" "}
@@ -83,6 +71,18 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                             </span>
                         </div>
                     </div>
+                    <div className='text-sm my-4'>
+                        Created by {" "}
+                        <Link to="#" className="text-primary-theme underline underline-offset-2">
+                            {course.creator?.name}
+                        </Link>
+                    </div>
+                    <div>
+                        <Link to={`/courses/${course.id}`} className="flex gap-2 items-center text-sm text-primary-theme hover:underline underline-offset-2">
+                            <span>See more</span>
+                            <ArrowUpRight size={16} />
+                        </Link>
+                    </div>
                 </div>
 
                 <div className="">
@@ -92,7 +92,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                         {course.modules.reduce((count, module) => count + module.lessons.length, 0)} lessons •
                         43h total length
                     </div>
-                    <Accordion type="single" collapsible defaultValue="item-1" className="w-full border">
+                    <Accordion type="multiple" className="w-full border" defaultValue={course.modules.map((_, index) => `item-${index + 1}`)}>
                         {course.modules.map((module: Module, index) => (
                             <AccordionItem value={`item-${index + 1}`} key={module.id}>
                                 <AccordionTrigger className="px-5 bg-muted rounded-none">{module.title}</AccordionTrigger>
@@ -100,7 +100,6 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                     {module.lessons.map((lesson: Lesson) => (
                                         <div key={lesson.id} className="text-sm my-1 font-light flex items-start justify-between">
                                             <div className="font-light flex items-center gap-3">
-                                                {/* <Notebook strokeWidth={1} size={18} /> <span>{lesson.title}</span> */}
                                                 <div className="">
                                                     {lesson.completed
                                                         ? <div className='bg-green-200 rounded-full'>
@@ -110,7 +109,6 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                                 size={40}
                                                             />
                                                         </div>
-
                                                         : <CircleCheck
                                                             className="text-foreground rounded-full p-1"
                                                             strokeWidth={1}
@@ -123,7 +121,6 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                         <Youtube strokeWidth={1} size={18} /> <span>Video available</span>
                                                     </p>
                                                 </Link>
-
                                             </div>
                                             <div className='mt-1'>
                                                 10:00 +

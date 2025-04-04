@@ -2,7 +2,6 @@ import client from "~/lib/interceptor";
 
 export async function getLesson(ulid: string, moduleId: string, lessonId: string) {
     const response = await client.get(`api/user/enrollment/courses/${ulid}/modules/${moduleId}/lessons/${lessonId}`);
-    console.log(response)
     return response.data;
 }
 
