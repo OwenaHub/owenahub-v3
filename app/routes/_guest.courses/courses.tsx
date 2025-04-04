@@ -35,9 +35,9 @@ function CourseCard({ course }: { course: Course }) {
       {/* Content Wrapper */}
       <div className="flex flex-col col-span-3 flex-grow justify-between px-4 py-2">
         {/* Title & Description */}
-        <div className="flex flex-col gap-1.5 mb-1.5">
+        <div className="flex flex-col gap-1.5 mb-5">
           <div className="flex items-center">
-            <h3 className="text-gray-600 font-bold leading-5">
+            <h3 className="text-primary font-bold leading-5 mb-1">
               <span className="leading-[-5px]">{course.title}</span>
               <Link to={`/courses/${course.id}`}>
                 <span aria-hidden="true" className="absolute inset-0" />

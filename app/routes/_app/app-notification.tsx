@@ -84,7 +84,7 @@ export default function AppNotification({ className, notifications, ...props }: 
                                                                     {notification.content}
                                                                 </p>
                                                                 <p className="text-xs text-gray-500">
-                                                                    {dayjs(notification.created_at).fromNow()}
+                                                                    {dayjs(notification.createdAt).fromNow()}
                                                                 </p>
                                                             </div>
                                                         </div>

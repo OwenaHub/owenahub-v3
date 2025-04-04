@@ -4,7 +4,7 @@ import { toast } from 'sonner';
 import { Link, redirect } from 'react-router';
 import { STORAGE_URL } from '~/lib/keys';
 import Rating from '~/components/custom/rating';
-import { ArrowUpRight, Calendar, ChevronRight, CircleCheck, Globe, Youtube } from 'lucide-react';
+import { ArrowUpRight, Calendar, ChevronLeft, ChevronRight, CircleCheck, Globe, Youtube } from 'lucide-react';
 import dayjs from 'dayjs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion';
 import { truncateText } from '~/lib/texts';
@@ -28,14 +28,12 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
         <div className='mb-20'>
             <div className='flex text-sm items-center gap-2 tex-sm mb-10 mt-10 md:px-5'>
                 <Link to="/my-courses" className='flex text-nowrap items-center gap-2 hover:underline underline-offset-1'>
-                    <span>My courses</span> <ChevronRight size={16} />
+                    <ChevronLeft size={16} />
+                    <span>My courses</span>
                 </Link>
-                <div className='text-nowrap'>
-                    {truncateText(course.title)}
-                </div>
             </div>
 
-            <div className="bg-slate-100 col-span-1 md:col-span-4 w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-auto overflow-hidden md:mx-5">
+            {/* <div className="bg-slate-100 col-span-1 md:col-span-4 w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-auto overflow-hidden md:mx-5">
                 <img
                     src={course.thumbnail
                         ? `${STORAGE_URL}/${course.thumbnail}`
@@ -43,7 +41,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                     alt={course.title}
                     className="h-full w-full object-cover"
                 />
-            </div>
+            </div> */}
 
             <div className='md:px-[1.5rem] mt-7'>
                 <div className="flex flex-col gap-2 items-start mb-5">
