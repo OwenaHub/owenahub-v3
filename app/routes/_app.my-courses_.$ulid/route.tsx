@@ -2,12 +2,9 @@ import type { Route } from '../_app.my-courses_.$ulid/+types/route';
 import { getCourse } from './get-course';
 import { toast } from 'sonner';
 import { Link, redirect } from 'react-router';
-import { STORAGE_URL } from '~/lib/keys';
-import Rating from '~/components/custom/rating';
-import { ArrowUpRight, Calendar, ChevronLeft, ChevronRight, CircleCheck, Globe, SquarePlay, Text, Youtube } from 'lucide-react';
+import { ArrowUpRight, Calendar, ChevronLeft, CircleCheck, Globe, SquarePlay, Text } from 'lucide-react';
 import dayjs from 'dayjs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion';
-import { truncateText } from '~/lib/texts';
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
@@ -32,16 +29,6 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                     <span>My courses</span>
                 </Link>
             </div>
-
-            {/* <div className="bg-slate-100 col-span-1 md:col-span-4 w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-auto overflow-hidden md:mx-5">
-                <img
-                    src={course.thumbnail
-                        ? `${STORAGE_URL}/${course.thumbnail}`
-                        : "/images/banners/default-course-img.png"}
-                    alt={course.title}
-                    className="h-full w-full object-cover"
-                />
-            </div> */}
 
             <div className='md:px-[1.5rem] mt-7'>
                 <div className="flex flex-col gap-2 items-start mb-5">

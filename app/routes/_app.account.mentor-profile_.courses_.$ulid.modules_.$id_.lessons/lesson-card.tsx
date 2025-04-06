@@ -1,4 +1,4 @@
-import { ArrowRight, Pencil, Trash } from "lucide-react"
+import { Pencil, Trash } from "lucide-react"
 import { Link, useFetcher } from "react-router"
 import {
     AlertDialog,
