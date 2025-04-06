@@ -133,11 +133,12 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                             </div>
                         </div>
                     </div>
-                )
-                }
+                )}
             </div >
 
-            <Outlet />
+            <div className={`${busy && "opacity-50"} transition-all`}>
+                <Outlet />
+            </div>
 
             <footer className="bg-gray-50 text-gray-700 py-8" id="footer">
                 <div className="container text-sm">

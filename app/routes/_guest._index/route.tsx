@@ -118,10 +118,10 @@ export default function HomePage() {
       <header className="py-[4rem] h-[70dvh] border-b-2 border-gray-200 bg-primary-bg mb-18 flex flex-col justify-center rounded-b-[50px] relative overflow-hidden">
         <section className="container">
           <div className="text-start md:text-center">
-            <h1 className="text-4xl text-primary font-extrabold font-serif lg:text-7xl mt-3 tracking-[-2px] z-10">
+            <h1 className="text-4xl text-primary capitalize font-extrabold font-serif lg:text-7xl mt-3 tracking-[-2px] z-10">
               <span className="text-[#315E8B]">Build your career with </span>
               <br className="hidden md:block" />{" "}
-              <span className="text-primary-theme">Expert Mentors</span>
+              <span className="text-primary-theme">expert mentors</span>
             </h1>
 
             <section className="flex flex-col text-gray-800 gap-5 mb-10 mt-5">

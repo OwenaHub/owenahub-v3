@@ -3,7 +3,7 @@ import Menu from "./mentor-profile-menu";
 
 export default function MentorProfileMenu() {
     return (
-        <section>
+        <section className="animated fadeIn">
             <NavigateBack to="account" />
             <Menu />
         </section>

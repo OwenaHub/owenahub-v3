@@ -17,7 +17,7 @@ export async function clientAction({ params, request }: Route.ClientActionArgs) 
         })
         return redirect(`/my-courses/${params.ulid}`);
     } catch ({ response: { data } }: any) {
-        toast.error("Something went wrong", {
+        toast.error("Enrollment failed", {
             description: `${data.error}`
         });
         return redirect(`/courses/${params.ulid}`)

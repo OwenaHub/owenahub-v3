@@ -33,17 +33,15 @@ export default function CustomAvatar({ name = "New User", styles }: { name?: str
     }
 
     return (
-        <div>
-            <Avatar className={`p-1 text-sm ${styles}`}>
-                <AvatarImage src="https://github.com/shadcn.png" className={`rounded-full`} />
-                <AvatarFallback
-                    style={{ backgroundColor: stringToColor(name) }}
-                    className="font-semibold"
-                >
-                    {stringAvatar(name)}
-                </AvatarFallback>
-            </Avatar>
-        </div>
+        <Avatar className={`p-1 text-sm ${styles}`}>
+            <AvatarImage src="https://github.com/shadcn.png" className={`rounded-full`} />
+            <AvatarFallback
+                style={{ backgroundColor: stringToColor(name) }}
+                className="font-semibold"
+            >
+                {stringAvatar(name)}
+            </AvatarFallback>
+        </Avatar>
     );
 }
 

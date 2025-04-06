@@ -16,10 +16,10 @@ export async function clientLoader() {
     try {
         const user = await validateSession();
         const notifications = getNotifications();
-        
+
         return { user, notifications };
     } catch ({ response }: any) {
-        
+
         if (response?.status === 401) {
             toast.warning("Your session has expired!", {
                 description: "Login to continue using OwenaHub",
@@ -65,7 +65,7 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                                 </nav>
                             </div>
                             <section>
-                                <div className="border p-3 rounded-md text-sm mb-4">
+                                <div className="border p-3 rounded text-sm mb-4">
                                     <div className="text-base font-bold pb-2">Upgrade to premium</div>
                                     <p className="text-xs pb-3">
                                         Get full access to all courses offered on OwenaHub with a one time payment.
@@ -75,8 +75,8 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                                     </button>
                                 </div>
                                 <div className="rounded-md text-sm py-3">
-                                    <div className="flex gap-2 items-start">
-                                        <CustomAvatar name={user?.name} />
+                                    <div className="flex gap-2 items-center">
+                                        <CustomAvatar name={user?.name} styles="w-[3rem] h-[3rem]" />
                                         <div>
                                             <h3 className="text-[#001836] font-bold">{user?.name}</h3>
                                             <p className="text-black text-xs">{user?.email}</p>

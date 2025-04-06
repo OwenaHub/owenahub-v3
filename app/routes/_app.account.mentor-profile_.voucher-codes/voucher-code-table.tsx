@@ -116,7 +116,7 @@ export function PopoverMenu({ voucherCode }: { voucherCode: VoucherCode }) {
                         <span>Copy code</span>
                     </button>
                 </div>
-                <Form method="POST" action={`${voucherCode.id}/delete`} className="">
+                <Form method="POST" action={`${voucherCode.id}/delete`} className="hover:bg-red-50">
                     <Button type="submit" variant={"ghost"} className="flex items-center rounded-t-none gap-2 p-2 hover:bg-destructive-foreground !text-destructive">
                         <Trash2 size={18} />
                         <span>Remove code</span>

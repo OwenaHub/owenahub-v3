@@ -1,6 +1,6 @@
 import client from "~/lib/interceptor";
 import { toast } from "sonner";
-import type { Route } from "../_app.account.mentor-profile_.voucher-codes._$codeId_.delete/+types/route";
+import type { Route } from "../_app.account.mentor-profile_.voucher-codes.$codeId.delete/+types/route";
 
 export async function clientAction({ params }: Route.ClientActionArgs) {
     const promise = new Promise(async (resolve, reject) => {

@@ -1,5 +1,5 @@
-import { Book, HandCoins, LogOut, ShieldUser, SquareUser, User } from 'lucide-react'
-import { Form, Link } from 'react-router'
+import { ShieldUser, SquareUser, User, UserRoundCog, Wallet } from 'lucide-react'
+import { Link } from 'react-router'
 import { IsMentor } from '~/components/permissions/roles'
 
 type CardProps = {
@@ -27,20 +27,14 @@ function Card({ icon: Icon, title, description, link }: CardProps) {
 export default function AccountMenu({ user }: { user: User }) {
     const cards = [
         {
-            icon: Book,
-            title: 'Enrollments',
-            description: 'View and manage courses you have enrolled in',
-            link: 'enrollments',
-        },
-        {
-            icon: User,
+            icon: UserRoundCog,
             title: 'Account settings',
             description: 'Find settings related to your account',
             link: 'settings',
         },
         {
-            icon: HandCoins,
-            title: 'Payments',
+            icon: Wallet,
+            title: 'Plans & billings',
             description: 'Manage your subscriptions and payments here',
             link: 'payments',
         },

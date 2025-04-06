@@ -74,12 +74,12 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                         <Link to="#" className="text-primary-theme underline underline-offset-2">
                             {course.creator?.name}
                         </Link>
-                    </div>
-                    <div>
-                        <Link to={`/courses/${course.id}`} className="flex gap-2 items-center text-sm text-primary-theme hover:underline underline-offset-2">
-                            <span>See more</span>
-                            <ArrowUpRight size={16} />
-                        </Link>
+                        <div>
+                            <Link to={`/courses/${course.id}`} className="mt-2 flex gap-2 items-center text-sm text-primary-theme hover:underline underline-offset-2">
+                                <span>See more</span>
+                                <ArrowUpRight size={16} />
+                            </Link>
+                        </div>
                     </div>
                 </div>
 

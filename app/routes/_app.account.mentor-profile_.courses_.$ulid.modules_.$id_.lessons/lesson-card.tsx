@@ -64,7 +64,7 @@ export function DeleteDialog({ lesson }: { lesson: Lesson }) {
                         <Button
                             type="submit"
                             disabled={fetcher.state !== "idle"}
-                            className="bg-destructive text-white px-4 py-2 rounded-md"
+                            className="bg-destructive w-full text-white px-4 py-2 rounded-md"
                         >
                             Delete
                         </Button>
