@@ -8,7 +8,7 @@ import {
 } from "~/components/ui/dialog"
 import { Button } from "../ui/button"
 import { Facebook, Link, Linkedin, MessageCircle, Share2, Twitter } from "lucide-react"
-import { toast } from "~/hooks/use-toast";
+import { toast } from "sonner";
 
 export default function SharePage() {
     const pageLink = window.location.href;
@@ -35,10 +35,10 @@ export default function SharePage() {
 
     function copyToClipboard() {
         navigator.clipboard.writeText(window.location.href)
-            .then(() => toast({ description: "Copied to clipboard" }))
+            .then(() => toast("Copied to clipboard!"))
             .catch(err => {
                 console.error(err);
-                toast({ variant: "warning", description: "Copying unavailable" })
+                toast.info("Copying unavailable")
             });
     }
 

@@ -6,11 +6,12 @@ import { Button } from '~/components/ui/button';
 import { Link } from 'react-router';
 import EnrollCourse from './enroll-course';
 import { BrMd } from '~/components/utility/line-break';
+import SharePage from '~/components/navigation/share-page';
 
 export default function CourseBanner({ course, isEnrolled }: { course: Course, isEnrolled: boolean }) {
     return (
         <>
-            <section className="bg-[#fff7eb] max-h-[46vh] py-20 hidden md:block">
+            <section className="bg-[#fff7eb] max-h-[55vh] py-20 hidden md:block">
                 <div className="container flex mt-20 gap-10 h-screen">
                     <div className="flex basis-2/3 flex-col gap-4 items-start overflow-auto">
                         <h1 className="text-xl md:text-4xl font-bold">
@@ -43,6 +44,9 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                 <Globe strokeWidth={1} size={18} />{" "}
                                 <span>English</span>
                             </div>
+                        </div>
+                        <div className='mt-5'>
+                            <SharePage />
                         </div>
                     </div>
 
@@ -159,6 +163,10 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                     English
                                 </span>
                             </div>
+                        </div>
+
+                        <div className='mt-5'>
+                            <SharePage />
                         </div>
                     </div>
 
