@@ -15,17 +15,6 @@ export async function updateCourse(props: { [k: string]: FormDataEntryValue }) {
         headers: { "Content-Type": "multipart/form-data" },
     });
 
-    // const response = await client.patch(`api/mentor/courses/${props.courseId}`, {
-    //     title: props.title,
-    //     about: props.about,
-    //     tags: props.tags,
-    //     learning_goals: props.learning_goals,
-    //     requirements: props.requirements,
-    //     description: props.description,
-    //     start_date: props.start_date,
-    //     price: props.price,
-    // });
-
     return response;
 }
 

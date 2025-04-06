@@ -1,4 +1,4 @@
-import { ShieldUser, SquareUser, User, UserRoundCog, Wallet } from 'lucide-react'
+import { ShieldUser, SquareUser, UserRoundCog, Wallet } from 'lucide-react'
 import { Link } from 'react-router'
 import { IsMentor } from '~/components/permissions/roles'
 

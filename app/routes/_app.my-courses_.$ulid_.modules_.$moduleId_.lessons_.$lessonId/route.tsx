@@ -96,7 +96,7 @@ export default function ViewLesson({ loaderData }: Route.ComponentProps) {
                     {lesson.title}
                 </h1>
 
-                <div id="html-content">
+                <div id="course-content">
                     <div dangerouslySetInnerHTML={{ __html: lesson.content }} />
                 </div>
             </div>
