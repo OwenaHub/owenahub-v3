@@ -22,6 +22,11 @@
     background: #8d6000;
 }
 
+#html-content h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
 .primary-theme {
     color: #F6A700;
 }
@@ -223,4 +228,64 @@ blockquote {
 #social .linkedin {
     color: #fff;
     background: #0077B5;
+}
+
+#html-content {
+    max-width: 1200px;
+    margin: 5rem auto;
+    padding: 3rem 1.5rem;
+}
+
+#html-content h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    line-height: 2.4rem;
+    /* text-align: center; */
+}
+
+#html-content p {
+    font-size: 1rem;
+    color: #4b5563;
+    /* Medium gray */
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+}
+
+#html-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    /* Dark gray */
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#html-content strong {
+    font-weight: 700;
+}
+
+#html-content ul {
+    list-style-type: disc;
+    margin-left: 1.25rem;
+    padding-left: 0;
+}
+
+#html-content li {
+    font-size: 1rem;
+    color: #4b5563;
+    /* Medium gray */
+    margin-bottom: 0.75rem;
+}
+
+#html-content em {
+    font-style: italic;
+}
+
+#html-content hr {
+    border: 0;
+    border-top: 1px solid #e5e7eb;
+    /* Light gray */
+    margin: 2rem 0;
 }

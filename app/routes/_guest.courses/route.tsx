@@ -23,8 +23,10 @@ export default function GuestCourses({ loaderData }: Route.ComponentProps) {
     return (
         <div className="py-[4rem] mt-8">
             <div className="container mb-8">
-                <h2 className="text-2xl md:text-3xl text-gray-800 font-bold mb-2">Courses</h2>
-                <p className="text-gray-500 text-sm md:text-base mb-4">
+                <h1 className="text-2xl md:text-3xl mb-2">
+                    <span className="font-light">OwenaHub</span> <span className="font-bold">Courses</span>
+                </h1>
+                <p className="text-gray-500 text-xs md:text-base mb-4">
                     From critical skills to technical topics, OwenaHub supports your professional development.
                 </p>
 
@@ -44,26 +46,26 @@ export default function GuestCourses({ loaderData }: Route.ComponentProps) {
                         </div>
                     </div>
 
-                    <div className="flex flex-nowrap gap-1.5 items-center overflow-x-auto py-3">
+                    <div className="flex flex-nowrap gap-3 items-center overflow-x-auto py-3">
                         <Badge
                             title="JavaScript"
                             description="80+ learners"
                         />
                         <Badge
                             title="Python"
-                            description="80+ learners"
+                            description="20+ learners"
                         />
                         <Badge
                             title="Algorithms"
-                            description="80+ learners"
+                            description="30+ learners"
                         />
                         <Badge
                             title="CSS"
-                            description="80+ learners"
+                            description="120+ learners"
                         />
                         <Badge
                             title="Data science"
-                            description="80+ learners"
+                            description="10+ learners"
                         />
                         <Badge
                             title="Engineering"

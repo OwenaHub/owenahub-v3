@@ -155,7 +155,7 @@ export default function HomePage() {
           <p className="text-gray-500 text-sm md:text-base">
             We offer courses on technical topics, OwenaHub supports your professional tech development.
           </p>
-          <div className="flex flex-nowrap gap-4 items-center overflow-x-auto py-3">
+          <div className="flex flex-nowrap gap-3 items-center overflow-x-auto py-3">
             <Badge
               title="JavaScript"
               description="80+ learners"

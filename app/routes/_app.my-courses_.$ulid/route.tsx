@@ -4,7 +4,7 @@ import { toast } from 'sonner';
 import { Link, redirect } from 'react-router';
 import { STORAGE_URL } from '~/lib/keys';
 import Rating from '~/components/custom/rating';
-import { ArrowUpRight, Calendar, ChevronLeft, ChevronRight, CircleCheck, Globe, Youtube } from 'lucide-react';
+import { ArrowUpRight, Calendar, ChevronLeft, ChevronRight, CircleCheck, Globe, SquarePlay, Text, Youtube } from 'lucide-react';
 import dayjs from 'dayjs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion';
 import { truncateText } from '~/lib/texts';
@@ -115,13 +115,23 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                 </div>
                                                 <Link to={`modules/${module.id}/lessons/${lesson.id}`}>
                                                     <h5>{lesson.title}</h5>
-                                                    <p className='text-xs text-gray-500 flex items-center gap-2'>
-                                                        <Youtube strokeWidth={1} size={18} /> <span>Video available</span>
+                                                    <p className='text-xs text-gray-500 flex items-center gap-1'>
+                                                        {lesson.videoUrl
+                                                            ? (<>
+                                                                <SquarePlay strokeWidth={1} size={18} />
+                                                                <span>Video lesson</span>
+                                                            </>
+                                                            )
+                                                            : (<>
+                                                                <Text strokeWidth={1} size={18} />
+                                                                <span>Text lesson</span>
+                                                            </>)
+                                                        }
                                                     </p>
                                                 </Link>
                                             </div>
-                                            <div className='mt-1'>
-                                                10:00 +
+                                            <div className='mt-1 text-gray-500'>
+                                                5:00 +
                                             </div>
                                         </div>
                                     ))}

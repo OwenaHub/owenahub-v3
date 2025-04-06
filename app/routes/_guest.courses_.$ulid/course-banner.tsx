@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import { Button } from '~/components/ui/button';
 import { Link } from 'react-router';
 import EnrollCourse from './enroll-course';
+import { BrMd } from '~/components/utility/line-break';
 
 export default function CourseBanner({ course, isEnrolled }: { course: Course, isEnrolled: boolean }) {
     return (
@@ -27,7 +28,7 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                 {course.creator?.name}
                             </Link>
                         </div>
-                        <div className="flex gap-2 items-center">
+                        <div className="flex gap-6 items-center">
                             <div className="flex gap-2 items-center">
                                 <Calendar strokeWidth={1} size={18} />{" "}
                                 <span>
@@ -57,19 +58,19 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                             />
                         </div>
                         <div className="bg-white shadow-lg text-xl p-5 font-bold flex flex-col gap-2">
-                            <div className="mb-2">
-                                <h3 className="font-semibold text-gray-800">
+                            <div className="mb-4">
+                                <h3 className="font-semibold text-gray-800 mb-2">
                                     Subscribe to OwenaHub's top courses
                                 </h3>
                                 <p className="text-sm font-light">
-                                    Get this course, plus 12,000+ of our top-rated courses, with Personal Plan. Learn more
+                                    Get this course, plus all of our top-rated courses, <BrMd /> with Personal Plan.
                                 </p>
                             </div>
-                            <Button className="w-full rounded py-6 text-lg">
+                            <Button className="w-full rounded py-6 text-lg mb-2">
                                 Try personal plan today
                             </Button>
                             <div className="text-center text-xs max-w-xl font-light">
-                                Starting at ₦7,500 per month after trial
+                                Starting at ₦5,500 per month after trial  <BrMd />
                                 Cancel anytime
                             </div>
 
@@ -122,8 +123,8 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                 </div>
 
                 <div className='container mt-7'>
-                    <div className="flex flex-col gap-2 items-start mb-14">
-                        <h1 className="text-2xl md:text-3xl font-bold">
+                    <div className="flex flex-col gap-3 items-start mb-14">
+                        <h1 className="text-2xl leading-7 md:text-3xl font-bold">
                             {course.title}
                         </h1>
                         <p className='text-base'>
@@ -162,16 +163,16 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                     </div>
 
                     <div className="bg-white shadow text-xl font-bold flex flex-col gap-2">
-                        <div className="mb-2">
-                            <h3 className="font-semibold text-gray-800">
+                        <div className="mb-4">
+                            <h3 className="font-semibold text-gray-800 mb-2">
                                 Subscribe to OwenaHub's top courses
                             </h3>
 
                             <p className="text-sm font-light">
-                                Get this course, plus 12,000+ of our top-rated courses, with Personal Plan. Learn more
+                                Get this course, plus all of our top-rated courses, with Personal Plan.
                             </p>
                         </div>
-                        <Button className="w-full rounded py-6 text-lg">
+                        <Button className="w-full rounded py-6 text-lg mb-2">
                             Try personal plan today
                         </Button>
                         <div className="text-center text-xs max-w-xl font-light">

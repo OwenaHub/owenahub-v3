@@ -9,7 +9,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "~/components/ui/accordion"
-import { MonitorSmartphone, Notebook, Trophy, TvMinimalPlay, Users, Wrench } from "lucide-react";
+import { MonitorSmartphone, SquarePlay, Text, Trophy, TvMinimalPlay, Users, Wrench } from "lucide-react";
 import CustomAvatar from "~/components/custom/custom-avatar";
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
@@ -82,12 +82,21 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
                                 <AccordionTrigger className="px-5 bg-muted rounded-none">{module.title}</AccordionTrigger>
                                 <AccordionContent className="p-5 flex flex-col gap-4">
                                     {module.lessons.map((lesson) => (
-                                        <div key={lesson.id} className="text-xs font-light flex items-center justify-between">
+                                        <div key={lesson.id} className="text-xs my-1 font-light flex items-center justify-between">
                                             <div className="font-light flex items-center gap-3">
-                                                <Notebook strokeWidth={1} size={18} /> <span>{lesson.title}</span>
+                                                {lesson.videoUrl
+                                                    ? (<>
+                                                        <SquarePlay strokeWidth={1} size={18} />
+                                                    </>
+                                                    )
+                                                    : (<>
+                                                        <Text strokeWidth={1} size={18} />
+                                                    </>)
+                                                }
+                                                <span>{lesson.title}</span>
                                             </div>
                                             <div>
-                                                10:00 +
+                                                5:00 +
                                             </div>
                                         </div>
                                     ))}

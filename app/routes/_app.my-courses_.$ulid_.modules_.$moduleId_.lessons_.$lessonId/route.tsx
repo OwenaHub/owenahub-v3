@@ -1,4 +1,4 @@
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, RotateCw } from 'lucide-react'
 import { Form, Link, redirect, useParams } from 'react-router'
 import type { Route } from '../_app.my-courses_.$ulid_.modules_.$moduleId_.lessons_.$lessonId/+types/route'
 import { truncateText } from '~/lib/texts'
@@ -41,7 +41,7 @@ export default function ViewLesson({ loaderData }: Route.ComponentProps) {
     const params = useParams();
 
     return (
-        <div className='md:px-6'>
+        <div className='md:px-6 mb-20'>
             <div className='mb-14'>
                 <div className='flex text-xs md:text-sm items-center gap-2 tex-sm mb-10 mt-10'>
                     <Link to="/my-courses" className='flex text-nowrap items-center gap-2 hover:underline underline-offset-1'>
@@ -55,15 +55,40 @@ export default function ViewLesson({ loaderData }: Route.ComponentProps) {
                     </div>
                 </div>
 
-                <div className="bg-slate-100 col-span-1 md:col-span-4 w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-auto overflow-hidden">
-                    <img
-                        src={lesson.videoUrl
-                            ? `${STORAGE_URL}/${lesson.videoUrl}`
-                            : "/images/banners/default-course-img.png"}
-                        alt={lesson.title}
-                        className="h-full w-full object-cover"
-                    />
-                </div>
+                {lesson.videoUrl && (
+                    <div className="bg-slate-100 col-span-1 md:col-span-4 w-full aspect-video group-hover:opacity-75 lg:aspect-video lg:h-full overflow-hidden">
+                        {lesson.videoUrl.includes("youtube.com") || lesson.videoUrl.includes("youtu.be") ? (
+                            <iframe
+                                src={`https://www.youtube.com/embed/${lesson.videoUrl.includes("youtube.com")
+                                    ? new URLSearchParams(new URL(lesson.videoUrl).search).get("v")
+                                    : lesson.videoUrl.split("youtu.be/")[1]?.split("?")[0]
+                                    }`
+                                }
+                                title={lesson.title}
+                                className="h-full w-full"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                onError={() => toast.error("An error occurred while loading the video.", {
+                                    description: "Try reloading or contacting support.",
+                                    action: {
+                                        label: (<RotateCw size={18} />),
+                                        onClick: () => window.location.reload(),
+                                    },
+                                })}
+                            />
+                        ) : (
+                            <img
+                                src={`${STORAGE_URL}/${lesson.videoUrl}`}
+                                alt={lesson.title}
+                                className="h-full w-full object-cover"
+                                onError={(e) => {
+                                    e.currentTarget.src = "/fallback-image.jpg";
+                                    toast.error("An error occurred while loading the image.");
+                                }}
+                            />
+                        )}
+                    </div>
+                )}
             </div>
 
             <div className="flex flex-col gap-2 items-start mb-10">

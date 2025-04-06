@@ -185,12 +185,10 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                         </div>
                         <div>
                             <h5 className="text-sm font-semibold pb-2">CONTACT</h5>
-                            <a href="mailto:hello@owenahub.com"
-                                className="text-xs block hover:underline pb-2">hello@owenahub.com</a>
-                            <a href="mailto:ernest@owenahub.com"
-                                className="text-xs block hover:underline pb-2">ernest@owenahub.com</a>
-                            <a href="mailto:ernestharuna1@gmail.com"
-                                className="text-xs block hover:underline pb-2">ernestharuna1@gmail.com</a>
+                            <a href="mailto:admin@owenahub.com"
+                                className="text-xs block hover:underline pb-2">admin@owenahub.com</a>
+                            <a href="mailto:support@owenahub.com"
+                                className="text-xs block hover:underline pb-2">support@owenahub.com</a>
                         </div>
                         <div>
                             <h5 className="text-sm font-semibold pb-2">QUICK LINKS</h5>
