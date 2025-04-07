@@ -1,6 +1,5 @@
 import {
   isRouteErrorResponse,
-  Link,
   Links,
   Meta,
   Outlet,
@@ -35,7 +34,7 @@ export const meta: MetaFunction = () => {
   return [
     { title: "OwenaHub" },
     { name: "description", content: "Join OwenaHub and connect with top tech mentors to advance your career. Learn to code wtih guidance, career advice, and skill development." },
-    { name: "theme-color", content: "#FFE1BC" },
+    { name: "theme-color", content: "#F6A700" },
     { name: "keywords", content: "mentorship, mentors, development, professional, tech, software, ai" },
     { name: "author", content: "OwenaHub" },
     { name: "robots", content: "index, follow" },
@@ -66,7 +65,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Scripts />
         <Toaster
           richColors
-          // closeButton
+          closeButton
           position="top-center"
           toastOptions={{
             classNames: {

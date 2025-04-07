@@ -126,8 +126,8 @@ export default function HomePage() {
 
             <section className="flex flex-col text-gray-800 gap-5 mb-10 mt-5">
               <span className="text-sm md:text-base">
-                Unlike typical online learning, our platform pairs comprehensive
-                curriculum with <BrMd /> dedicated mentorship to ensure you never get stuck.
+                OwenaHub pairs comprehensive courses with dedicated <BrMd />
+                mentorship to ensure you never get stuck.
               </span>
             </section>
 
