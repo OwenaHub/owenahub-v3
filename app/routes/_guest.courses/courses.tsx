@@ -1,5 +1,6 @@
 import { Link } from 'react-router'
 import Rating from '~/components/custom/rating'
+import EmptyState from '~/components/skeletons/empty-state'
 import { STORAGE_URL } from '~/lib/keys'
 import { truncateText } from '~/lib/texts'
 
@@ -11,10 +12,9 @@ export default function Courses({ courses }: { courses: Course[] }) {
           ? courses.map((course) => (
             <CourseCard course={course} key={course.id} />
           ))
-          : <p className="text-gray-500 text-sm border px-3 py-1.5 w-max rounded">Nothing here yet</p>
+          : <EmptyState resource="courses" />
         }
       </div>
-
     </div>
   )
 }

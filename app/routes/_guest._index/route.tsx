@@ -204,12 +204,12 @@ export default function HomePage() {
                     {/* Title & Description */}
                     <div className="flex flex-col gap-1.5 mb-1.5">
                       <div className="flex items-center">
-                        <h3 className="text-primary font-bold leading-5 mb-1">
+                        <div className="text-primary font-bold leading-5 mb-1">
                           <span className="leading-[-5px]">{track.title}</span>
                           <Link to="/courses">
                             <span aria-hidden="true" className="absolute inset-0" />
                           </Link>
-                        </h3>
+                        </div>
                       </div>
                       <div className="text-[13px] text-gray-500 font-">
                         {truncateText(track.description, 80)}
@@ -256,9 +256,9 @@ export default function HomePage() {
               <div className="bg-primary-bg rounded-lg p-2 text-primary-theme inline-block w-max">
                 <Users className="w-10 h-10" strokeWidth={1} />
               </div>
-              <h4 className="text-2xl font-medium z-10">
+              <h3 className="text-2xl font-medium z-10">
                 2k+ students enjoy and use <BrMd /> OwenaHub
-              </h4>
+              </h3>
               <div className="flex-grow-1"></div>
               <Link to={"/register"} className="underline underline-offset-2 z-10">
                 Join us
@@ -273,9 +273,9 @@ export default function HomePage() {
               <div className="bg-primary-theme rounded-lg p-2 text-white inline-block w-max">
                 <Earth className="w-10 h-10" strokeWidth={1} />
               </div>
-              <h4 className="text-2xl font-medium">
+              <h3 className="text-2xl font-medium">
                 Helping connecting mentors and tech professionals <BrMd /> around the world.
-              </h4>
+              </h3>
               <p className="font-light z-10">
                 Keeping tech enthusiasts productive and connected, <BrMd />
                 no matter your skill level.
@@ -308,7 +308,7 @@ export default function HomePage() {
                   <Users size={45} />
                   <div className="flex flex-col gap-3">
                     <div>
-                      <h5 className="font-bold text-lg">Professional mentors</h5>
+                      <h3 className="font-bold text-lg">Professional mentors</h3>
                       <p className="font-light">Learn from industry experts who guide you every step of the way, ensuring you gain the skills you need to succeed.</p>
                     </div>
                     <Link to="/register" className="text-primary-theme font-bold flex items-center gap-2">
@@ -321,7 +321,7 @@ export default function HomePage() {
                   <Trophy size={45} />
                   <div className="flex flex-col gap-3">
                     <div>
-                      <h5 className="font-bold text-lg">Certificate of completion</h5>
+                      <h3 className="font-bold text-lg">Certificate of completion</h3>
                       <p className="font-light">Earn a certificate to showcase your achievements and skills, helping you stand out in your career or academic pursuits.</p>
                     </div>
                     <Link to="/register" className="text-primary-theme font-bold flex items-center gap-2">
@@ -334,7 +334,7 @@ export default function HomePage() {
                   <MonitorSmartphone size={45} />
                   <div className="flex flex-col gap-3">
                     <div>
-                      <h5 className="font-bold text-lg">Access on mobile and TV</h5>
+                      <h3 className="font-bold text-lg">Access on mobile and TV</h3>
                       <p className="font-light">Learn anytime, anywhere with access on multiple devices, making it easier to fit learning into your busy schedule.</p>
                     </div>
                     <Link to="/register" className="text-primary-theme font-bold flex items-center gap-2">
@@ -347,7 +347,7 @@ export default function HomePage() {
                   <TvMinimalPlay size={45} />
                   <div className="flex flex-col gap-3">
                     <div>
-                      <h5 className="font-bold text-lg">Hours of on-demand video</h5>
+                      <h3 className="font-bold text-lg">Hours of on-demand video</h3>
                       <p className="font-light">Access a vast library of video content to enhance your learning, with topics ranging from beginner to advanced levels.</p>
                     </div>
                     <Link to="/register" className="text-primary-theme font-bold flex items-center gap-2">

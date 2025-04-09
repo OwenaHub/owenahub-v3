@@ -76,22 +76,12 @@ export default function ViewLesson({ loaderData }: Route.ComponentProps) {
                                     },
                                 })}
                             />
-                        ) : (
-                            <img
-                                src={`${STORAGE_URL}/${lesson.videoUrl}`}
-                                alt={lesson.title}
-                                className="h-full w-full object-cover"
-                                onError={(e) => {
-                                    e.currentTarget.src = "/fallback-image.jpg";
-                                    toast.error("An error occurred while loading the image.");
-                                }}
-                            />
-                        )}
+                        ) : ("Video unavailable — report this to support@owenahub.com")}
                     </div>
                 )}
             </div>
 
-            <div className="flex flex-col gap-2 items-start mb-10">
+            <div className="flex flex-col gap-2 items-start mb-10 mt-8">
                 <h1 className="text-2xl md:text-3xl font-bold">
                     {lesson.title}
                 </h1>

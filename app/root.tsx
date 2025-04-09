@@ -93,7 +93,7 @@ export function HydrateFallback() {
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
       <div>
         <div className="flex flex-col gap-2 justify-center items-center">
-          <img src="/images/logos/logo.png" alt="..." width={30} />
+          <img src="/images/logos/logo.png" alt="OwenaHub" width={30} />
           <div className="text-center mb-3">
             <AppName size="text-base" />
           </div>
@@ -127,12 +127,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   return (
     <main className="w-full max-w-5xl container -translate-x-1/2 -translate-y-1/2 fixed left-1/2 top-1/2 transform">
-      <div className="flex justify-between items-center">
-        <h1 className="text-primary font-bold">{message}</h1>
-        <div className="text-2xl">
-          <X size={20} strokeWidth={5} className="text-destructive" />
-        </div>
-      </div>
+      <h1 className="text-primary font-bold">{message}</h1>
       <p className="text-gray-400">{details}</p>
       {stack && (
         <pre className="p-4 max-w-4/5 overflow-x-auto">
@@ -144,13 +139,13 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         <Button
           variant={"outline"}
           onClick={() => window.history.back()}
-          className="rounded h-8 text-sm py-0 flex items-center gap-1">
+          className="rounded h-8 text-sm md:py-4 py-5 flex items-center gap-1">
           <ArrowLeft size={18} /> <span>Back</span>
         </Button>
 
         <Button
           onClick={() => window.location.reload()}
-          className="bg-gray-800 rounded h-8 text-sm text-white px-10 py-1 flex items-center gap-1"
+          className="bg-gray-800 rounded h-8 text-sm text-white px-10 md:py-4 py-5 flex items-center gap-1"
         >
           <span>Reload</span> <RotateCw size={18} />
         </Button>

@@ -24,7 +24,7 @@ export default function Dashboard() {
                     </div>
 
                     <Link to="/courses" viewTransition>
-                        <Button className="text-sm font-bold bg-[#fff7eb] border border-primary-theme text-secondary-foreground uppercase hover:bg-white transition w-full rounded md:w-max px-5 py-0">
+                        <Button className="text-sm font-bold bg-[#fff7eb] border border-primary-theme text-secondary-foreground uppercase hover:bg-white transition w-full rounded md:w-max px-5 py-5 md:py-0">
                             buy now
                         </Button>
                     </Link>

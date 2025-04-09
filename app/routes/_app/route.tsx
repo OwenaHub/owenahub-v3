@@ -70,7 +70,7 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                                     <p className="text-xs pb-3">
                                         Get full access to all courses offered on OwenaHub with a one time payment.
                                     </p>
-                                    <button className="bg-muted-foreground rounded text-muted text-xs w-full font-bold px-4 py-2 uppercase">
+                                    <button className="bg-[#315E8B] border border-[#1B324B] rounded text-muted text-xs w-full font-bold px-4 py-2 uppercase">
                                         Subscribe
                                     </button>
                                 </div>
