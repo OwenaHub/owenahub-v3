@@ -124,9 +124,9 @@ export default function HomePage() {
               <span className="text-primary-theme">expert mentors</span>
             </h1>
 
-            <section className="flex flex-col text-gray-800 gap-5 mb-10 mt-5">
+            <section className="flex flex-col text-gray-800 gap-5 mb-10 mt-8">
               <span className="text-sm md:text-base">
-                OwenaHub pairs comprehensive courses with dedicated <BrMd />
+                We offer comprehensive courses and dedicated <BrMd />
                 mentorship to ensure you never get stuck.
               </span>
             </section>
@@ -151,7 +151,7 @@ export default function HomePage() {
 
       <main>
         <div className="container mb-8">
-          <h2 className="text-2xl md:text-3xl text-gray-800 font-bold mb-2 font-serif tracking-tighter">All tech skills you need all in one palce</h2>
+          <h2 className="text-2xl md:text-3xl text-gray-800 font-bold mb-2 font-serif tracking-tighter">All tech skills you need all in one place</h2>
           <p className="text-gray-500 text-sm md:text-base">
             We offer courses on technical topics, OwenaHub supports your professional tech development.
           </p>

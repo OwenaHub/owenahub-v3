@@ -74,7 +74,7 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
                     <div className="text-sm font-light mb-4">
                         {course.modules.length} modules • {" "}
                         {course.modules.reduce((count, module) => count + module.lessons.length, 0)} lessons •
-                        32h 23m total length
+                        5h+ course total length
                     </div>
                     <Accordion type="single" collapsible defaultValue="item-1" className="w-full border">
                         {course.modules.map((module, index) => (
@@ -83,7 +83,7 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
                                 <AccordionContent className="p-5 flex flex-col gap-4">
                                     {module.lessons.map((lesson) => (
                                         <div key={lesson.id} className="text-xs my-1 font-light flex items-center justify-between">
-                                            <div className="font-light flex items-center gap-3">
+                                            <div className="font-light flex items-center gap-6">
                                                 {lesson.videoUrl
                                                     ? (<>
                                                         <SquarePlay strokeWidth={1} size={18} />
@@ -95,7 +95,7 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
                                                 }
                                                 <span>{lesson.title}</span>
                                             </div>
-                                            <div>
+                                            <div className="text-nowrap">
                                                 5:00 +
                                             </div>
                                         </div>

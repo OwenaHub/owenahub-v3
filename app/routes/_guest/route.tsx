@@ -43,8 +43,8 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
             <div className="container -translate-x-1/2 fixed left-1/2 px-4 top-4 transform z-50">
                 {/* Navbar */}
                 <nav
-                    className={`transition-all duration-300 ease-in-out ${scrolled ? "bg-white shadow-[0_5px_35px_rgba(0,0,0,0.1)] py-2.5 px-3 outline-gray-100 outline" : "bg-transparent py-0"
-                        } border-gray-200 rounded-lg flex justify-between items-center gap-2`}
+                    className={`transition-all duration-300 ease-in-out ${scrolled ? "bg-white/80 backdrop-blur shadow-[0_5px_35px_rgba(0,0,0,0.1)] py-3 px-3 outline-gray-100 outline" : "bg-transparent py-0"
+                        } border-gray-200 rounded flex justify-between items-center gap-2`}
                 >
                     <div className="flex gap-6 items-center">
                         <div className="flex gap-1 items-center">

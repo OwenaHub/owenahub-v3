@@ -32,7 +32,7 @@ export const links: Route.LinksFunction = () => [
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "OwenaHub" },
+    { title: "OwenaHub | Build your career with expert mentors" },
     { name: "description", content: "Join OwenaHub and connect with top tech mentors to advance your career. Learn to code wtih guidance, career advice, and skill development." },
     { name: "theme-color", content: "#F6A700" },
     { name: "keywords", content: "mentorship, mentors, development, professional, tech, software, ai" },

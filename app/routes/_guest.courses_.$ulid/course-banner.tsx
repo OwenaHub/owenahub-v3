@@ -170,7 +170,7 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                         </div>
                     </div>
 
-                    <div className="bg-white shadow text-xl font-bold flex flex-col gap-2">
+                    <div className="bg-white text-xl font-bold flex flex-col gap-2">
                         <div className="mb-4">
                             <h3 className="font-semibold text-gray-800 mb-2">
                                 Subscribe to OwenaHub's top courses
