@@ -43,7 +43,7 @@ export default function ViewLesson({ loaderData }: Route.ComponentProps) {
     return (
         <div className='md:px-6 mb-20'>
             <div className='mb-14'>
-                <div className='flex text-xs md:text-sm items-center gap-2 tex-sm mb-10 mt-10'>
+                <div className='flex text-xs md:text-sm items-center gap-2 tex-sm mb-5 mt-10'>
                     <Link to="/my-courses" className='flex text-nowrap items-center gap-2 hover:underline underline-offset-1'>
                         <span>My courses</span> <ChevronRight size={16} />
                     </Link>

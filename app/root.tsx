@@ -58,6 +58,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        {/* Google Analytics Tag */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSLS7K2448"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-HSLS7K2448');
+            `,
+          }}
+        />
       </head>
       <body>
         {children}
@@ -69,12 +81,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           position="top-center"
           toastOptions={{
             classNames: {
-              // toast: 'toast',
-              // title: 'title',
-              // description: 'description',
               actionButton: '!px-2 !rounded-full !text-white',
-              // cancelButton: 'cancel-button',
-              // closeButton: 'close-button',
             },
           }}
         />
