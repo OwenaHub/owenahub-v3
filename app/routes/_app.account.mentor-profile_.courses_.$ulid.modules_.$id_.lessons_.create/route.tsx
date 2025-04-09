@@ -88,7 +88,7 @@ export default function CreateLesson({ actionData }: Route.ComponentProps) {
               </div>
 
               <div className="mt-5">
-                <Button type="submit" className="bg-secondary-foreground uppercase w-full text-sm text-white py-2 px-10 rounded cursor-pointer hover:bg-primary-foreground">
+                <Button type="submit" className="bg-secondary-foreground uppercase w-full text-sm text-white py-2 px-10 rounded cursor-pointer hover:opacity-60">
                   Create lesson
                 </Button>
               </div>

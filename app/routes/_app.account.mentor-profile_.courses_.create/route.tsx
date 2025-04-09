@@ -153,7 +153,7 @@ export default function MentorCreateCourse({ actionData }: Route.ComponentProps)
                         </div>
 
                         <div className="mt-10">
-                            <button type="submit" className="bg-secondary-foreground hover:bg-primary-foreground text-white w-full py-2 rounded-md">Create course</button>
+                            <button type="submit" className="bg-secondary-foreground hover:opacity-60 text-white w-full py-2 rounded">Create course</button>
                         </div>
                     </Form>
                 </TableCard>

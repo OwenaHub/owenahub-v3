@@ -73,7 +73,7 @@ export default function route({ loaderData, actionData }: Route.ComponentProps) 
                                 <InputError for="description" error={errors} />
                             </div>
                             <div className="mt-5">
-                                <Button type="submit" className="bg-secondary-foreground uppercase text-sm text-white w-full py-2 rounded-md cursor-pointer hover:bg-primary-foreground">
+                                <Button type="submit" className="bg-secondary-foreground uppercase text-sm text-white w-full py-2 rounded cursor-pointer hover:opacity-60">
                                     Update module
                                 </Button>
                             </div>

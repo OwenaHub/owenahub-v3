@@ -100,7 +100,7 @@ export default function EditLesson({ loaderData, actionData }: Route.ComponentPr
                             </div>
 
                             <div className="mt-5">
-                                <Button type="submit" className="bg-secondary-foreground uppercase w-full text-sm text-white py-2 px-10 rounded-md cursor-pointer hover:bg-primary-foreground">
+                                <Button type="submit" className="bg-secondary-foreground uppercase w-full text-sm text-white py-2 px-10 rounded cursor-pointer hover:opacity-60">
                                     Update lesson
                                 </Button>
                             </div>

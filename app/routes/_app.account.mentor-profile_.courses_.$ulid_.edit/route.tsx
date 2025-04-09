@@ -164,7 +164,7 @@ export default function MentorEditCourse({ loaderData, actionData }: Route.Compo
                         </div>
 
                         <div className="mt-10">
-                            <button type="submit" className="bg-secondary-foreground hover:bg-primary-foreground text-white w-full py-2 rounded-md">Update course</button>
+                            <button type="submit" className="bg-secondary-foreground hover:opacity-60 text-white w-full py-2 rounded">Update course</button>
                         </div>
                     </Form>
                 </TableCard>
