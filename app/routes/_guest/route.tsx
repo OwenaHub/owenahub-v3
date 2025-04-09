@@ -1,5 +1,5 @@
 import { Await, Link, NavLink, Outlet, useNavigation } from "react-router";
-import { ChevronRight, Facebook, Instagram, Menu, Twitter } from "lucide-react";
+import { ChevronRight, Facebook, Instagram, Menu, Twitter, X } from "lucide-react";
 import { Suspense, useEffect, useState } from "react";
 import useSession from "~/lib/session";
 import type { Route } from "../_guest/+types/route";
@@ -43,7 +43,7 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
             <div className="container -translate-x-1/2 fixed left-1/2 px-4 top-4 transform z-50">
                 {/* Navbar */}
                 <nav
-                    className={`transition-all duration-300 ease-in-out ${scrolled ? "bg-white/80 backdrop-blur shadow-[0_5px_35px_rgba(0,0,0,0.1)] py-3 px-3 outline-gray-100 outline" : "bg-transparent py-0"
+                    className={`transition-all duration-300 ease-in-out ${scrolled ? "bg-white/80 backdrop-blur-md shadow-[0_5px_35px_rgba(0,0,0,0.1)] py-3 px-3 outline-gray-100 outline" : "bg-transparent py-0"
                         } border-gray-200 rounded flex justify-between items-center gap-2`}
                 >
                     <div className="flex gap-6 items-center">
@@ -89,11 +89,11 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                         </Suspense>
                     </div>
                     <button aria-label="Menu" className="block md:hidden" type="button" onClick={() => setMenu(!menu)}>
-                        <Menu />
+                        {!menu ? <Menu /> : <X />}
                     </button>
                 </nav>
                 {menu && (
-                    <div className="bg-white rounded-lg shadow-2xl block md:hidden mt-4 mx-auto px-4 py-4 z-50">
+                    <div className="bg-white animated fadeIn rounded-lg shadow-2xl block md:hidden mt-4 mx-auto px-4 py-4 z-50">
                         <div>
                             <div className="mb-3">
                                 {[
@@ -103,6 +103,7 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                                 ].map((link) => (
                                     <div key={link.name} className="border-b py-4">
                                         <NavLink
+                                            onClick={() => setMenu(!menu)}
                                             to={link.path}
                                             className={({ isActive }) => isActive ? "text-primary font-bold" : "text-gray-500"}
                                         >
@@ -117,19 +118,38 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                                 </div>
                             </div>
                             <div className="flex flex-col gap-4">
-                                {session
-                                    ? (<Link to="/dashboard" className="bg-primary rounded-[6px] text-primary-foreground text-xs font-medium hover:shadow-lg py-3 text-center uppercase">
-                                        Dashboard
-                                    </Link>)
-                                    : (<>
-                                        <Link to="/login" className="bg-white border border-secondary-foreground rounded-[6px] text-center text-secondary-foreground text-sm w-full block font-bold hover:shadow-lg py-2 uppercase">
-                                            Log in
-                                        </Link>
-                                        <Link to="/register" className="bg-primary rounded-[6px] text-white text-center text-sm w-full block font-bold hover:bg-gray-800 py-2 uppercase">
-                                            Sign up
-                                        </Link>
-                                    </>)
-                                }
+                                <Suspense fallback={<div className="h-10 w-full rounded bg-gray-100 animate-pulse" />}>
+                                    <Await resolve={session}>
+                                        {(session: boolean) =>
+                                            session ? (
+                                                <Link
+                                                    onClick={() => setMenu(!menu)}
+                                                    to="/dashboard"
+                                                    className="bg-primary rounded-[6px] text-primary-foreground text-xs font-medium hover:shadow-lg py-3 text-center uppercase"
+                                                >
+                                                    Dashboard
+                                                </Link>
+                                            ) : (
+                                                <>
+                                                    <Link
+                                                        onClick={() => setMenu(!menu)}
+                                                        to="/login"
+                                                        className="bg-white border border-secondary-foreground rounded-[6px] text-center text-secondary-foreground text-sm w-full block font-bold hover:shadow-lg py-2 uppercase"
+                                                    >
+                                                        Log in
+                                                    </Link>
+                                                    <Link
+                                                        onClick={() => setMenu(!menu)}
+                                                        to="/register"
+                                                        className="bg-primary rounded-[6px] text-white text-center text-sm w-full block font-bold hover:bg-gray-800 py-2 uppercase"
+                                                    >
+                                                        Sign up
+                                                    </Link>
+                                                </>
+                                            )
+                                        }
+                                    </Await>
+                                </Suspense>
                             </div>
                         </div>
                     </div>

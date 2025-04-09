@@ -3,6 +3,7 @@ import { Link } from "react-router";
 
 import * as Post1 from "~/content/posts/laravel-react-combo.mdx";
 import * as Post2 from "~/content/posts/highly-effective-devs.mdx";
+import PostCard from "./post-card";
 
 const posts = [Post1, Post2];
 
@@ -32,30 +33,16 @@ export default function Blog() {
                 </div>
 
                 {/* Blog Cards Grid */}
-                <div className="grid gap-6 md:grid-cols-2  lg:grid-cols-4">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {posts.map((post: any, idx: number) => (
-                        <div
-                            key={idx}
-                            className="bg-white relative rounded shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col"
-                        >
-                            <img
-                                src={post.meta.image}
-                                alt={post.meta.title}
-                                className="w-full max-h-48 aspect-video object-cover"
+                        <>
+                            <PostCard
+                                key={idx}
+                                title={post.meta.title}
+                                image={post.meta.image}
+                                slug={post.meta.slug}
                             />
-                            <div className="p-4 flex flex-col flex-1">
-                                <h3 className="text-lg font-semibold text-gray-800 mb-1">
-                                    {post.meta.title}
-                                </h3>
-                                <p className="text-sm text-gray-500 mb-3 flex-1">{post.meta.excerpt}</p>
-                                <span className="text-xs text-gray-400 mt-auto">{post.meta.date}</span>
-                            </div>
-                            <Link
-                                to={`/blog/${post.meta.slug}`}
-                                aria-hidden="true"
-                                className="absolute inset-0"
-                            />
-                        </div>
+                        </>
                     ))}
                 </div>
             </div>
