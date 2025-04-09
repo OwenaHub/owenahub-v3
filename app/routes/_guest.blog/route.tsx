@@ -1,11 +1,12 @@
 import { Search } from "lucide-react";
-import { Link } from "react-router";
 
-import * as Post1 from "~/content/posts/laravel-react-combo.mdx";
+import * as Post1 from "~/content/posts/owenahub-mentorship-courses.mdx";
 import * as Post2 from "~/content/posts/highly-effective-devs.mdx";
+import * as Post3 from "~/content/posts/laravel-react-combo.mdx";
+
 import PostCard from "./post-card";
 
-const posts = [Post1, Post2];
+const posts = [Post1, Post2, Post3];
 
 export default function Blog() {
 

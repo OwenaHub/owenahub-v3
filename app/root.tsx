@@ -15,7 +15,7 @@ import { Toaster } from "sonner"
 import ProgressBar from "./components/navigation/progress-bar";
 import { Button } from "./components/ui/button";
 import AppName from "./components/custom/app-name";
-import { ArrowLeft, RotateCw, X, Zap } from "lucide-react";
+import { ArrowLeft, RotateCw, Zap } from "lucide-react";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },

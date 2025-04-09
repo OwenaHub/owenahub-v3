@@ -1,7 +1,7 @@
 import { ChevronLeft } from 'lucide-react'
 import { useNavigate } from 'react-router'
 
-export default function NavigateBack({ to = "back" }: { to: string }) {
+export default function NavigateBack({ to = "back" }: { to?: string }) {
     const navigate = useNavigate();
 
     return (
