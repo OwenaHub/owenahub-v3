@@ -177,7 +177,7 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                     <hr className="border-gray-200 my-8" />
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-4 mt-3">
                         <div>
-                            <h5 className="text-sm font-semibold pb-2">SOCIALS</h5>
+                            <h3 className="text-sm font-semibold pb-2">SOCIALS</h3>
                             <a
                                 href="https://instagram.com/owenahub?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"
                                 target="_blank"
@@ -204,14 +204,14 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                             </a>
                         </div>
                         <div>
-                            <h5 className="text-sm font-semibold pb-2">CONTACT</h5>
+                            <h3 className="text-sm font-semibold pb-2">CONTACT</h3>
                             <a href="mailto:admin@owenahub.com"
                                 className="text-xs block hover:underline pb-2">admin@owenahub.com</a>
                             <a href="mailto:support@owenahub.com"
                                 className="text-xs block hover:underline pb-2">support@owenahub.com</a>
                         </div>
                         <div>
-                            <h5 className="text-sm font-semibold pb-2">QUICK LINKS</h5>
+                            <h3 className="text-sm font-semibold pb-2">QUICK LINKS</h3>
                             <Link to="/blog" className="text-xs block hover:underline pb-2">
                                 OwenaHub Blog
                             </Link>
@@ -229,7 +229,7 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                             </Link>
                         </div>
                         <div>
-                            <h5 className="text-sm font-semibold pb-2">COMMUNITIES</h5>
+                            <h3 className="text-sm font-semibold pb-2">COMMUNITIES</h3>
                             <a
                                 href="https://linkedin.com/company/owenahub" target="_blank"
                                 className="text-xs block hover:underline pb-2"

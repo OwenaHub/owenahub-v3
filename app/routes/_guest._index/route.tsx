@@ -206,9 +206,7 @@ export default function HomePage() {
                       <div className="flex items-center">
                         <div className="text-primary font-bold leading-5 mb-1">
                           <span className="leading-[-5px]">{track.title}</span>
-                          <Link to="/courses">
-                            <span aria-hidden="true" className="absolute inset-0" />
-                          </Link>
+                          <Link to="/courses" aria-hidden="true" className="absolute inset-0" />
                         </div>
                       </div>
                       <div className="text-[13px] text-gray-500 font-">
@@ -394,7 +392,7 @@ export default function HomePage() {
                         <CustomAvatar name={review.username} styles="h-10 w-10" />
                         <div className="text-sm">
                           <p className="">{review.username}</p>
-                          <p className="text-gray-400">{review.career}</p>
+                          <p className="text-gray-700">{review.career}</p>
                         </div>
                       </div>
                     </div>
