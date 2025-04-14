@@ -11,6 +11,7 @@ import {
 } from "~/components/ui/accordion"
 import { MonitorSmartphone, SquarePlay, Text, Trophy, TvMinimalPlay, Users, Wrench } from "lucide-react";
 import CustomAvatar from "~/components/custom/custom-avatar";
+import { FormatLineBreaks } from "~/components/utility/format-text";
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
@@ -81,25 +82,31 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
                             <AccordionItem value={`item-${index + 1}`} key={module.id}>
                                 <AccordionTrigger className="px-5 bg-muted rounded-none">{module.title}</AccordionTrigger>
                                 <AccordionContent className="p-5 flex flex-col gap-4">
-                                    {module.lessons.map((lesson) => (
-                                        <div key={lesson.id} className="text-xs my-1 font-light flex items-center justify-between">
-                                            <div className="font-light flex items-center gap-6">
-                                                {lesson.videoUrl
-                                                    ? (<>
-                                                        <SquarePlay strokeWidth={1} size={18} />
-                                                    </>
-                                                    )
-                                                    : (<>
-                                                        <Text strokeWidth={1} size={18} />
-                                                    </>)
-                                                }
-                                                <span>{lesson.title}</span>
+                                    {module.lessons.map((lesson: Lesson) => {
+                                        const wordsPerMinute = 150; // Average reading speed
+                                        const wordCount = lesson.content?.split(' ').length || 0;
+                                        const estimatedMinutes = Math.ceil(wordCount / wordsPerMinute);
+
+                                        return (
+                                            <div key={lesson.id} className="text-xs my-1 font-light flex items-center justify-between">
+                                                <div className="font-light flex items-center gap-3">
+                                                    {lesson.videoUrl
+                                                        ? (<>
+                                                            <SquarePlay strokeWidth={1} size={18} />
+                                                        </>
+                                                        )
+                                                        : (<>
+                                                            <Text strokeWidth={1} size={18} />
+                                                        </>)
+                                                    }
+                                                    <span>{lesson.title}</span>
+                                                </div>
+                                                <div className="text-nowrap text-gray-400">
+                                                    {estimatedMinutes}:00
+                                                </div>
                                             </div>
-                                            <div className="text-nowrap">
-                                                5:00 +
-                                            </div>
-                                        </div>
-                                    ))}
+                                        );
+                                    })}
                                 </AccordionContent>
                             </AccordionItem>
                         ))}
@@ -118,11 +125,11 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
 
                 <div className="md:w-2/3 mb-20">
                     <h4 className="font-bold text-xl mb-4">Instructor</h4>
-                    <div className="flex gap-5 items-start" id="creator">
+                    <div className="flex gap-5 items-center" id="creator">
                         <CustomAvatar name={course.creator?.name} styles="w-[5rem] h-[5rem] text-2xl" />
-                        <div>
+                        <div className=" max-w-full">
                             <h5 className="flex flex-col gap-2">
-                                <h3 className="font-semibold text-primary-theme underline underline-offset-2">
+                                <h3 className="font-semibold text-primary-theme">
                                     {course.creator?.name}
                                 </h3>
                                 <p className="text-gray-500 text-sm">
@@ -131,11 +138,15 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
                                         : (course.creator?.email)
                                     }
                                 </p>
-                                <div className="text-sm mt-4">
-                                    {course.creator?.biography}
-                                </div>
                             </h5>
                         </div>
+                    </div>
+
+                    <div className="text-sm mt-4">
+                        {course.creator?.biography?.split('\n').map((line, index) => (
+                            <p key={index} className="mb-2 text-wrap">{line}</p>
+                        ))}
+                        <FormatLineBreaks input={course.creator?.biography} />
                     </div>
                 </div>
             </div>

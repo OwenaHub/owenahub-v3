@@ -117,16 +117,6 @@ export default function MentorCreateCourse({ actionData }: Route.ComponentProps)
                                 placeholder="Write a comprehensive course description"
                                 onChange={setDescription}
                                 value={description}
-                                modulesConfig={[
-                                    "font-selection",
-                                    "headers",
-                                    "formatting",
-                                    "text-alignment",
-                                    "blockquote-code",
-                                    "lists-indentation",
-                                    "color-picker",
-                                    "remove-formatting",
-                                ]}
                             />
                             <input type="hidden" name="description" value={description} />
                             <InputError for="description" error={errors} />

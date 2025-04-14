@@ -81,8 +81,9 @@ export default function ViewLesson({ loaderData }: Route.ComponentProps) {
                 )}
             </div>
 
-            <div className="flex flex-col gap-2 items-start mb-10 mt-8">
-                <h1 className="text-2xl md:text-3xl font-bold">
+            <div className="flex flex-col gap-2 items-start mb-10">
+                <p>Lesson {lesson.position}</p>
+                <h1 className="text-2xl md:text-3xl font-bold mb-5">
                     {lesson.title}
                 </h1>
 

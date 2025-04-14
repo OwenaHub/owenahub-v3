@@ -47,7 +47,7 @@ export default function Courses({ loaderData }: Route.ComponentProps) {
                                 ? (
                                     enrolledCourses.map((course: any) => (
                                         <div
-                                            className="grid grid-cols-4 border border-gray-300 gap-2 border-b pb-5 bg-white h-full rounded group relative transition animated fadeIn"
+                                            className="grid grid-cols-4 border border-gray-300 gap-3 border-b pb-5 bg-white h-full rounded group relative transition animated fadeIn"
                                             key={course.id}
                                         >
                                             <div className="bg-slate-100 col-span-4 md:col-span-4 md:rounded-t w-full aspect-square group-hover:opacity-75 lg:aspect-auto h-30 lg:h-44 overflow-hidden">
@@ -61,7 +61,7 @@ export default function Courses({ loaderData }: Route.ComponentProps) {
                                             </div>
 
                                             {/* Content Wrapper */}
-                                            <div className="flex flex-col col-span-4 px-2 flex-grow justify-between md:mt-2">
+                                            <div className="flex flex-col col-span-4 px-3 flex-grow justify-between md:mt-2">
                                                 {/* Title & Description */}
                                                 <div className="flex flex-col gap-1.5 mb-3">
                                                     <div className="flex items-center">
@@ -79,7 +79,10 @@ export default function Courses({ loaderData }: Route.ComponentProps) {
                                                     {course.modules && course.modules.length ? (
                                                         (() => {
                                                             const totalLessons = course.modules.reduce((total: number, module: any) => total + module.lessons.length, 0);
-                                                            const completedLessons = course.modules.reduce((total: number, module: any) => total + module.lessons.filter((lesson: any) => lesson.completed).length, 0);
+
+                                                            const completedLessons = course.modules.reduce((total: number, module: any) =>
+                                                                total + module.lessons.filter((lesson: any) => lesson.completed).length, 0);
+
                                                             const progressPercentage = Math.round((completedLessons / totalLessons) * 100);
 
                                                             return (

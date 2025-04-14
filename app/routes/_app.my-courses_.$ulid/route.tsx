@@ -82,46 +82,54 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                             <AccordionItem value={`item-${index + 1}`} key={module.id}>
                                 <AccordionTrigger className="px-5 bg-muted rounded-none">{module.title}</AccordionTrigger>
                                 <AccordionContent className="p-5 flex flex-col gap-4">
-                                    {module.lessons.map((lesson: Lesson) => (
-                                        <div key={lesson.id} className="text-sm my-1 font-light flex items-start justify-between">
-                                            <div className="font-light flex items-center gap-3">
-                                                <div className="">
-                                                    {lesson.completed
-                                                        ? <div className='bg-green-200 rounded-full'>
-                                                            <CircleCheck
-                                                                className="text-white bg-green-0 fill-green-500 rounded-full p-0.5"
+                                    {module.lessons.map((lesson: Lesson) => {
+                                        const wordsPerMinute = 150; // Average reading speed
+                                        const wordCount = lesson.content?.split(' ').length || 0;
+                                        const estimatedMinutes = Math.ceil(wordCount / wordsPerMinute);
+
+                                        return (
+                                            <div key={lesson.id} className="text-sm my-1 font-light flex items-start justify-between">
+                                                <div className="font-light flex justify-between w-full gap-3">
+                                                    <Link to={`modules/${module.id}/lessons/${lesson.id}`}>
+                                                        <h5 className='leading-4 mb-2'>{lesson.title}</h5>
+                                                        <div className='flex gap-5 items-center text-xs text-gray-400'>
+                                                            <p className='flex items-center gap-1'>
+                                                                {lesson.videoUrl
+                                                                    ? (<>
+                                                                        <SquarePlay strokeWidth={1} size={18} />
+                                                                        <span>Video lesson</span>
+                                                                    </>
+                                                                    )
+                                                                    : (<>
+                                                                        <Text strokeWidth={1} size={18} />
+                                                                        <span>Text lesson</span>
+                                                                    </>)
+                                                                }
+                                                            </p>
+                                                            <p className='font-medium'>{estimatedMinutes}:00</p>
+                                                        </div>
+                                                    </Link>
+
+                                                    <div className="">
+                                                        {lesson.completed
+                                                            ? <div className='bg-green-200 rounded-full'>
+                                                                <CircleCheck
+                                                                    className="text-white bg-green-0 fill-green-500 rounded-full p-0.5"
+                                                                    strokeWidth={1}
+                                                                    size={40}
+                                                                />
+                                                            </div>
+                                                            : <CircleCheck
+                                                                className="text-foreground rounded-full p-1"
                                                                 strokeWidth={1}
                                                                 size={40}
-                                                            />
-                                                        </div>
-                                                        : <CircleCheck
-                                                            className="text-foreground rounded-full p-1"
-                                                            strokeWidth={1}
-                                                            size={40}
-                                                        />}
+                                                            />}
+                                                    </div>
                                                 </div>
-                                                <Link to={`modules/${module.id}/lessons/${lesson.id}`}>
-                                                    <h5>{lesson.title}</h5>
-                                                    <p className='text-xs text-gray-500 flex items-center gap-1'>
-                                                        {lesson.videoUrl
-                                                            ? (<>
-                                                                <SquarePlay strokeWidth={1} size={18} />
-                                                                <span>Video lesson</span>
-                                                            </>
-                                                            )
-                                                            : (<>
-                                                                <Text strokeWidth={1} size={18} />
-                                                                <span>Text lesson</span>
-                                                            </>)
-                                                        }
-                                                    </p>
-                                                </Link>
                                             </div>
-                                            <div className='mt-1 text-gray-500'>
-                                                5:00 +
-                                            </div>
-                                        </div>
-                                    ))}
+                                        )
+                                    }
+                                    )}
                                 </AccordionContent>
                             </AccordionItem>
                         ))}

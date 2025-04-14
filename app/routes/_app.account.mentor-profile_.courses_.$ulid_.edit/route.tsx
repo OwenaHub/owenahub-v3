@@ -93,16 +93,6 @@ export default function MentorEditCourse({ loaderData, actionData }: Route.Compo
                                 placeholder="What your students will accomplish after they finish your course"
                                 onChange={setLearningGoals}
                                 value={learningGoals}
-                                modulesConfig={[
-                                    "font-selection",
-                                    "headers",
-                                    "formatting",
-                                    "text-alignment",
-                                    "blockquote-code",
-                                    "lists-indentation",
-                                    "color-picker",
-                                    "remove-formatting",
-                                ]}
                             />
                             <input type="hidden" name="learning_goals" value={learningGoals} />
                             <InputError for="learning_goals" error={errors} />

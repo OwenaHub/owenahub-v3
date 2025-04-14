@@ -54,33 +54,6 @@ const tracks = [
     enrollCount: 120,
     description: "Build full-stack applications using MongoDB, Express, React, and Node.js.",
   },
-  {
-    title: "Python for Data Science",
-    price: "20,000",
-    discount: "28,000",
-    image_path: null,
-    rating: 4.7,
-    enrollCount: 150,
-    description: "Learn Python programming and its application in data analysis and visualization.",
-  },
-  {
-    title: "Cloud Computing with AWS",
-    price: "40,000",
-    discount: "55,000",
-    image_path: null,
-    rating: 4.6,
-    enrollCount: 90,
-    description: "Master AWS services and deploy scalable applications in the cloud.",
-  },
-  {
-    title: "UI/UX Design Fundamentals",
-    price: "18,000",
-    discount: "25,000",
-    image_path: null,
-    rating: 4.3,
-    enrollCount: 110,
-    description: "Learn the principles of user interface and user experience design.",
-  },
 ];
 
 const reviews = [
@@ -220,6 +193,7 @@ export default function HomePage() {
                         : "/images/banners/default-course-img.png"}
                       alt={track.title}
                       className="h-full rounded w-full object-cover"
+                      loading="lazy"
                     />
                   </div>
 
