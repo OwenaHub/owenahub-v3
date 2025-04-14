@@ -59,7 +59,6 @@ export default function Login({ actionData }: Route.ComponentProps) {
                                     name="email"
                                     placeholder="m@example.com"
                                     required
-                                    autoFocus
                                 />
                                 <InputError for="email" error={errors} />
                             </div>

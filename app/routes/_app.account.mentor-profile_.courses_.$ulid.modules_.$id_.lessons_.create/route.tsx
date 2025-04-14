@@ -71,16 +71,6 @@ export default function CreateLesson({ actionData }: Route.ComponentProps) {
                     placeholder="Write your lesson content"
                     onChange={setContent}
                     value={content}
-                    modulesConfig={[
-                      "font-selection",
-                      "headers",
-                      "formatting",
-                      "text-alignment",
-                      "blockquote-code",
-                      "lists-indentation",
-                      "color-picker",
-                      "remove-formatting",
-                    ]}
                   />
                 </div>
                 <input type="hidden" name="content" value={content} />

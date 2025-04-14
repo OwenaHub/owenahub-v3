@@ -118,16 +118,22 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
 
                 <div className="md:w-2/3 mb-20">
                     <h4 className="font-bold text-xl mb-4">Instructor</h4>
-                    <div className="flex gap-5 items-center">
+                    <div className="flex gap-5 items-start" id="creator">
                         <CustomAvatar name={course.creator?.name} styles="w-[5rem] h-[5rem] text-2xl" />
                         <div>
-                            <h5 className="flex flex-col gap-3">
+                            <h5 className="flex flex-col gap-2">
                                 <h3 className="font-semibold text-primary-theme underline underline-offset-2">
                                     {course.creator?.name}
                                 </h3>
-                                <p className="text-black text-xs">
-                                    {course.creator?.email}
+                                <p className="text-gray-500 text-sm">
+                                    {course.creator?.title
+                                        ? (course.creator?.title)
+                                        : (course.creator?.email)
+                                    }
                                 </p>
+                                <div className="text-sm mt-4">
+                                    {course.creator?.biography}
+                                </div>
                             </h5>
                         </div>
                     </div>

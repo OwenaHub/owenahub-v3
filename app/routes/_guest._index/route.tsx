@@ -1,4 +1,4 @@
-import { ArrowRight, Earth, MonitorSmartphone, Quote, Shapes, Trophy, TvMinimalPlay, Users } from "lucide-react";
+import { ArrowRight, Check, Earth, MonitorSmartphone, Quote, Shapes, Trophy, TvMinimalPlay, Users } from "lucide-react";
 import { Link } from "react-router";
 import Badge from "~/components/custom/badge";
 import CustomAvatar from "~/components/custom/custom-avatar";
@@ -118,23 +118,47 @@ export default function HomePage() {
       <header className="py-[4rem] h-[70dvh] border-b-2 border-gray-200 bg-primary-bg mb-18 flex flex-col justify-center rounded-b-[50px] relative overflow-hidden">
         <section className="container">
           <div className="text-start md:text-center">
-            <h1 className="text-4xl text-primary capitalize font-extrabold font-serif lg:text-7xl mt-3 tracking-[-2px] z-10">
-              <span className="text-[#315E8B]">Build your career with </span>
+            <h1 className="text-4xl text-[#315E8B] capitalize font-extrabold font-serif lg:text-7xl mt-3 tracking-[-2px] z-10">
+              <span className="">Build your career with </span>
               <br className="hidden md:block" />{" "}
-              <span className="text-primary-theme">expert mentors</span>
+              <span className="relative">
+                <span className="relative z-10"> expert mentors</span>
+                <span className="absolute h-4 md:h-8 w-full bg-amber-100 right-0 bottom-0" />
+              </span>
             </h1>
 
             <section className="flex flex-col text-gray-800 gap-5 mb-10 mt-8">
-              <span className="text-sm md:text-base">
+              <span className="hidden md:block text-sm md:text-base">
                 We offer comprehensive courses and dedicated <BrMd />
                 mentorship to ensure you never get stuck.
               </span>
+
+              <div className="md:hidden flex flex-col gap-3">
+                <div className="flex items-center gap-4">
+                  <div className="rounded-lg p-1.5 border border-primary-theme">
+                    <Check size={14} strokeWidth={4} className="text-primary-theme" />
+                  </div>
+                  <h2 className="text-secondary-foreground">Learn online, from professionals</h2>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="rounded-lg p-1.5 border border-primary-theme">
+                    <Check size={14} strokeWidth={4} className="text-primary-theme" />
+                  </div>
+                  <h2 className="text-secondary-foreground">Get results in 3 months</h2>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="rounded-lg p-1.5 border border-primary-theme">
+                    <Check size={14} strokeWidth={4} className="text-primary-theme" />
+                  </div>
+                  <h2 className="text-secondary-foreground">A fraction of the cost of other platforms</h2>
+                </div>
+              </div>
             </section>
 
             <div className="flex flex-col gap-5 justify-center items-center md:flex-row z-10">
               <Link
                 to="/register"
-                className="bg-primary-theme text-center text-primary-foreground border-b-2 border-amber-900 focus:border-b-0 focus:top-[2px] rounded text-base w-full block font-medium hover:opacity-90 md:inline-block md:w-max px-10 py-2.5 relative transition">
+                className="z-10 bg-primary-theme text-center text-primary-foreground border-b-2 border-amber-900 focus:border-b-0 focus:top-[2px] rounded text-base w-full block font-medium hover:opacity-90 md:inline-block md:w-max px-10 py-2.5 relative transition">
                 Register for free!
               </Link>
               <Link

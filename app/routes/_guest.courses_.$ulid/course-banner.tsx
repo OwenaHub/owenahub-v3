@@ -25,7 +25,7 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                         </div>
                         <div>
                             Created by {" "}
-                            <Link to="#" className="text-primary-theme underline underline-offset-2">
+                            <Link to="#creator" className="text-primary-theme underline underline-offset-2">
                                 {course.creator?.name}
                             </Link>
                         </div>

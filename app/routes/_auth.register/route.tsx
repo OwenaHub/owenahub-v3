@@ -87,7 +87,6 @@ export default function Register({ actionData }: Route.ComponentProps) {
                                     type="text"
                                     name="name"
                                     placeholder="Full name"
-                                    autoFocus
                                     required
                                 />
                                 <InputError for="name" error={errors} />

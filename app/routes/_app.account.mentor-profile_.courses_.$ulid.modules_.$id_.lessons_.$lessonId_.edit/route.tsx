@@ -71,7 +71,7 @@ export default function EditLesson({ loaderData, actionData }: Route.ComponentPr
 
                             <div className="mb-5">
                                 <Label htmlFor="video_url" className="mb-1">Video URL</Label>
-                                <Input defaultValue={lesson.videoUrl} id="video_url" name="video_url" type="url" className="bg-white rounded" required />
+                                <Input defaultValue={lesson.videoUrl} id="video_url" name="video_url" type="url" className="bg-white rounded" />
                                 <InputError for="video_url" error={errors} />
                             </div>
 
@@ -83,16 +83,6 @@ export default function EditLesson({ loaderData, actionData }: Route.ComponentPr
                                         placeholder="Write your lesson content"
                                         onChange={setContent}
                                         value={content}
-                                        modulesConfig={[
-                                            "font-selection",
-                                            "headers",
-                                            "formatting",
-                                            "text-alignment",
-                                            "blockquote-code",
-                                            "lists-indentation",
-                                            "color-picker",
-                                            "remove-formatting",
-                                        ]}
                                     />
                                 </div>
                                 <input type="hidden" name="content" value={content} />

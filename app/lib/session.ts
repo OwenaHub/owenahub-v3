@@ -1,4 +1,5 @@
 import client from "~/lib/interceptor";
+import Cookies from "js-cookie";
 import { storageKeys } from "./keys";
 
 export default function useSession() {
@@ -9,18 +10,18 @@ export default function useSession() {
             storeUser(response?.data);
             return response?.data;
         } catch (error) {
-            localStorage.removeItem(storageKeys.user);
+            Cookies.remove(storageKeys.user);
             throw error;
         }
     }
 
     async function getUserType() {
         try {
-            const user = await getUser();
+            const user: User = await getUser();
 
             if (!user) return null;
 
-            return user.account_type;
+            return user.accountType;
         } catch (error) {
             throw error;
         }
@@ -28,8 +29,8 @@ export default function useSession() {
 
     async function storeUser(user: User) {
         try {
-            let data = JSON.stringify(user)
-            localStorage.setItem(storageKeys.user, data)
+            const data = JSON.stringify(user);
+            Cookies.set(storageKeys.user, data);
         } catch (error) {
             throw error;
         }
@@ -37,7 +38,7 @@ export default function useSession() {
 
     function getUser() {
         try {
-            let data = localStorage.getItem(storageKeys.user);
+            const data = Cookies.get(storageKeys.user);
             const user = data ? JSON.parse(data) : null;
             return user;
         } catch (error) {
@@ -46,12 +47,13 @@ export default function useSession() {
     }
 
     async function intendedRoute(path: string) {
-        sessionStorage.setItem(storageKeys.route, path);
+        if (path === "/") path = "/dashboard";
+        Cookies.set(storageKeys.route, path);
     }
 
     async function getIntentedRoute(): Promise<string> {
-        const route = sessionStorage.getItem(storageKeys.route);
-        sessionStorage.removeItem(storageKeys.route);
+        const route = Cookies.get(storageKeys.route);
+        Cookies.remove(storageKeys.route);
         return route || '/dashboard';
     }
 

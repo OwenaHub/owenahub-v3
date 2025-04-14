@@ -59,7 +59,13 @@ function CourseCard({ course }: { course: Course }) {
             <p className="text-gray-400">(99+)</p>
           </div>
           <div className="flex gap-2 items-center">
-            <p className="font-bold">₦{parseInt(course.price).toLocaleString()}</p>
+            <p className="font-bold">
+              {parseFloat(course.price) === 0
+                ? (<span className='px-2 py-1 bg-primary-theme text-white font-medium uppercase text-sm rounded'>Free</span>)
+                : (<>₦{parseInt(course.price).toLocaleString()}</>)
+              }
+
+            </p>
             <p className="font-light text-gray-500 line-through">₦{(parseInt(course.price) + 12000).toLocaleString()}</p>
           </div>
         </div>

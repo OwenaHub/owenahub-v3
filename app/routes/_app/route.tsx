@@ -32,7 +32,7 @@ export async function clientLoader() {
                 },
             })
         }
-
+        // * Registers users intended route in sessionStorage
         intendedRoute(window.location.pathname);
         return redirect('/login');
     }
