@@ -14,7 +14,7 @@ export default function MobileNav() {
                         {APP_TABS.map((item) => (
                             <NavLink key={item.href} to={item.href}
                                 className={({ isActive, isPending }) =>
-                                    isActive ? "flex-1 block rounded-lg py-2 text-[#001836] bg-gray-100 border border-gray-200"
+                                    isActive ? "flex-1 block rounded-lg py-2 text-[#315E8B] bg-gray-100 border border-gray-200"
                                         : isPending
                                             ? "flex-1 block rounded-lg py-2 opacity-50"
                                             : "flex-1 block rounded-lg py-2"

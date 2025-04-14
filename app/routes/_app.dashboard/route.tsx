@@ -1,4 +1,4 @@
-import { ChevronRight, Headset, SearchCheck } from "lucide-react";
+import { ArrowRight, ChevronRight, Headset, SearchCheck } from "lucide-react";
 import { Link, type MetaFunction } from "react-router";
 import { Button } from "~/components/ui/button";
 
@@ -28,6 +28,34 @@ export default function Dashboard() {
                             buy now
                         </Button>
                     </Link>
+
+                    <section className="mt-10 md:hidden">
+                        <div className="bg-slate-100 col-span-1 md:col-span-4 rounded-t w-full group-hover:opacity-75 lg:aspect-video lg:h-44 overflow-hidden">
+                            <img
+                                src="/images/banners/owenahub-community-banner.png"
+                                alt="Owenahub community"
+                                className="h-50 w-full object-cover"
+                            />
+                        </div>
+                        <div className="border p-3 rounded text-sm mb-4">
+                            <div className="text-base font-bold pb-2">Join the community</div>
+                            <p className="text-xs pb-3">
+                                Our WhatsApp community is a great place to get updates and network with like minds
+                            </p>
+
+                            <a
+                                href="https://chat.whatsapp.com/CclgnpXKrZrEp9Bc4O98cd"
+                                target="_blank"
+                                className="text-xs block pb-2"
+                                rel="noopener"
+                            >
+                                <button className="text-center flex items-center justify-center gap-2 bg-green-100 border border-green-600 rounded text-green-600 text-xs w-full font-bold px-4 py-2 uppercase hover:bg-green-500 hover:text-white transition cursor-pointer">
+                                    <span>Join Community</span>
+                                    <ArrowRight size={17} />
+                                </button>
+                            </a>
+                        </div>
+                    </section>
                 </div>
 
                 <div className="hidden md:block">
@@ -47,7 +75,7 @@ export default function Dashboard() {
                         Not quite ready?
                     </h4>
                     <p className="text-sm leading-7">
-                        No problem! Prepare with our collection of reference materials and practice exercises.
+                        You can talk with a mentor right now! Or watch an explainer video 🔥
                     </p>
                 </div>
 
