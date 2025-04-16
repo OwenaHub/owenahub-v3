@@ -6,7 +6,6 @@ import Rating from "~/components/custom/rating";
 import { Button } from "~/components/ui/button";
 import { BrMd } from "~/components/utility/line-break";
 import { truncateText } from "~/lib/texts";
-import "~/styles/home.css"
 
 const tracks = [
   {
