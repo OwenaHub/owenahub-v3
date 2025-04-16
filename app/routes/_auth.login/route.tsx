@@ -8,6 +8,7 @@ import { Loader } from "lucide-react";
 import InputError from "~/components/forms/input-error";
 import useSession from "~/lib/session";
 import { toast } from "sonner";
+import { API_URL } from "~/lib/keys";
 
 export const meta: MetaFunction = () => {
     return [
@@ -39,16 +40,32 @@ export default function Login({ actionData }: Route.ComponentProps) {
     const { state } = useNavigation();
     const busy: boolean = state === "submitting" || state === "loading";
 
+    const handleGoogleSignIn = () => {
+        window.location.href = `${API_URL}/api/auth/google/redirect`;
+    };
+
     return (
         <section className="container animated fadeIn">
             <div className="justify-center gap-10 items-center max-w-sm md:flex mx-auto py-10">
                 <div className="flex-1">
                     <div className="border h-full rounded-xl md:px-8 px-5 py-6">
-                        <div className="text-center pb-5">
+                        <div className="text-center pb-8">
                             <p className="text-2xl text-primary font-bold">
                                 Log in to your account
                             </p>
                         </div>
+
+                        <Button onClick={handleGoogleSignIn} variant={"outline"} className="flex p-5 w-full gap-2 items-center cursor-pointer">
+                            <img src="/images/logos/google.png" alt="..." width="18" />
+                            <span className="text-secondary-foreground font-bold">Sign In with Google</span>
+                        </Button>
+
+                        <div className="flex items-center py-5 mt-3">
+                            <div className="flex-1 border-t" />
+                            <div className="text-gray-400 text-xs font-bold mx-4">OR</div>
+                            <div className="flex-1 border-t" />
+                        </div>
+
                         <Form method="POST">
                             <div className="mb-5">
                                 <Label className="text-xs pb-1">Email address</Label>
@@ -89,16 +106,6 @@ export default function Login({ actionData }: Route.ComponentProps) {
                         </Form>
 
 
-                        <div className="flex items-center py-5">
-                            <div className="flex-1 border-t" />
-                            <div className="text-gray-400 text-xs font-bold mx-4">OR</div>
-                            <div className="flex-1 border-t" />
-                        </div>
-
-                        <Button variant={"outline"} className="flex p-5 w-full gap-2 items-center">
-                            <img src="/images/logos/google.png" alt="..." width="18" />
-                            <span className="text-secondary-foreground font-bold">Sign up with Google</span>
-                        </Button>
 
                         <div className="flex flex-col gap-3">
                             <p className="p-5 text-center text-pretty text-xs">

@@ -8,6 +8,6 @@ export async function updateAccount(props: { [k: string]: FormDataEntryValue }) 
         formData.append(key, props[key]);
     }
 
-    const response = await client.post(`api/user/account`, formData);
+    const response = await client.post(`api/account`, formData);
     return response
 }

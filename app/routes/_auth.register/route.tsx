@@ -6,6 +6,7 @@ import type { Route } from "../../+types/root";
 import registerUser from "./register";
 import InputError from "~/components/forms/input-error";
 import { toast } from "sonner";
+import { API_URL } from "~/lib/keys";
 
 export const meta: MetaFunction = () => {
     return [
@@ -35,6 +36,10 @@ export default function Register({ actionData }: Route.ComponentProps) {
     let errors = actionData;
     const { state } = useNavigation();
     const busy: boolean = state === "submitting" || state === "loading";
+
+    const handleGoogleSignIn = () => {
+        window.location.href = `${API_URL}/api/auth/google/redirect`;
+    };
 
     return (
         <section className="container">
@@ -74,12 +79,24 @@ export default function Register({ actionData }: Route.ComponentProps) {
 
                 <div className="flex-1">
                     <div className="border h-full rounded-xl md:px-8 px-5 py-6">
-                        <div className="text-center block md:hidden pb-5">
+                        <div className="text-center block md:hidden pb-8">
                             <p className="text-2xl text-primary font-bold">
                                 Create an acccount
                             </p>
                             <p className="text-muted-foreground text-sm">to access your free acount</p>
                         </div>
+
+                        <Button onClick={handleGoogleSignIn} variant={"outline"} className="flex p-5 w-full gap-2 items-center cursor-pointer">
+                            <img src="/images/logos/google.png" alt="..." width="18" />
+                            <span className="text-secondary-foreground font-bold">Register with Google</span>
+                        </Button>
+
+                        <div className="flex items-center py-5">
+                            <div className="flex-1 border-t" />
+                            <div className="text-gray-400 text-xs font-bold mx-4">OR</div>
+                            <div className="flex-1 border-t" />
+                        </div>
+
                         <Form method="POST">
                             <div className="mb-5">
                                 <Input
@@ -129,18 +146,6 @@ export default function Register({ actionData }: Route.ComponentProps) {
                                 </Button>
                             </div>
                         </Form>
-
-
-                        <div className="flex items-center py-5">
-                            <div className="flex-1 border-t" />
-                            <div className="text-gray-400 text-xs font-bold mx-4">OR</div>
-                            <div className="flex-1 border-t" />
-                        </div>
-
-                        <Button variant={"outline"} className="flex p-5 w-full gap-2 items-center">
-                            <img src="/images/logos/google.png" alt="..." width="18" />
-                            <span className="text-secondary-foreground font-bold">Sign up with Google</span>
-                        </Button>
 
                         <p className="p-4 text-center text-pretty text-xs">
                             By continuing, you agree to our {" "}
