@@ -88,15 +88,15 @@ const reviews = [
 export default function HomePage() {
   return (
     <>
-      <header className="py-[4rem] h-[70dvh] border-b-2 border-gray-200 bg-primary-bg mb-18 flex flex-col justify-center rounded-b-[50px] relative overflow-hidden">
+      <header className="py-[4rem] min-h-[70vh] shadow bg-primary-bg mb-18 flex flex-col justify-center rounded-b-[50px] relative overflow-hidden">
         <section className="container">
           <div className="text-start md:text-center">
-            <h1 className="text-4xl text-[#315E8B] capitalize font-extrabold font-serif lg:text-7xl mt-3 tracking-[-2px] z-10">
+            <h1 className="text-4xl text-[#315E8B] capitalize font-extrabold font-serif lg:text-7xl mt-10 tracking-[-2px] z-10">
               <span className="">Build your career with </span>
               <br className="hidden md:block" />{" "}
               <span className="relative">
                 <span className="relative z-10"> expert mentors</span>
-                <span className="absolute h-4 md:h-8 w-full bg-amber-100 right-0 bottom-0" />
+                <span className="absolute h-4 md:h-5 w-full bg-primary-theme right-0 bottom-0 md:bottom-2 opacity-20" />
               </span>
             </h1>
 
@@ -108,20 +108,20 @@ export default function HomePage() {
 
               <div className="md:hidden flex flex-col gap-3">
                 <div className="flex items-center gap-4">
-                  <div className="rounded-lg p-1.5 border border-primary-theme">
-                    <Check size={14} strokeWidth={4} className="text-primary-theme" />
+                  <div className="rounded-lg p-1.5 bg-primary-theme">
+                    <Check size={14} strokeWidth={4} className="text-white" />
                   </div>
                   <h2 className="text-secondary-foreground">Learn online, from professionals</h2>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="rounded-lg p-1.5 border border-primary-theme">
-                    <Check size={14} strokeWidth={4} className="text-primary-theme" />
+                  <div className="rounded-lg p-1.5 bg-primary-theme">
+                    <Check size={14} strokeWidth={4} className="text-white" />
                   </div>
                   <h2 className="text-secondary-foreground">Get results in 3 months</h2>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="rounded-lg p-1.5 border border-primary-theme">
-                    <Check size={14} strokeWidth={4} className="text-primary-theme" />
+                  <div className="rounded-lg p-1.5 bg-primary-theme">
+                    <Check size={14} strokeWidth={4} className="text-white" />
                   </div>
                   <h2 className="text-secondary-foreground">A fraction of the cost of other platforms</h2>
                 </div>

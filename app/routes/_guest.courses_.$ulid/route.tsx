@@ -143,9 +143,6 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
                     </div>
 
                     <div className="text-sm mt-4">
-                        {course.creator?.biography?.split('\n').map((line, index) => (
-                            <p key={index} className="mb-2 text-wrap">{line}</p>
-                        ))}
                         <FormatLineBreaks input={course.creator?.biography} />
                     </div>
                 </div>
