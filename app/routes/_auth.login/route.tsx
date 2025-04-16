@@ -103,9 +103,9 @@ export default function Login({ actionData }: Route.ComponentProps) {
                         <div className="flex flex-col gap-3">
                             <p className="p-5 text-center text-pretty text-xs">
                                 By continuing, you agree to our {" "}
-                                <Link to="#" target="_blank" data-bypass>Terms</Link>
+                                <Link to="/terms-of-service">Terms</Link>
                                 {" "}and{" "}
-                                <Link to="/privacy" target="_blank">Privacy Policy</Link>.
+                                <Link to="/privacy-policy">Privacy Policy</Link>.
                             </p>
                         </div>
                     </div>

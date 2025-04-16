@@ -142,8 +142,11 @@ export default function Register({ actionData }: Route.ComponentProps) {
                             <span className="text-secondary-foreground font-bold">Sign up with Google</span>
                         </Button>
 
-                        <p className="p-4 text-center text-xs">
-                            By continuing, you agree to our Terms and Privacy Policy.
+                        <p className="p-4 text-center text-pretty text-xs">
+                            By continuing, you agree to our {" "}
+                            <Link to="/terms-of-service">Terms</Link>
+                            {" "}and{" "}
+                            <Link to="/privacy-policy">Privacy Policy</Link>.
                         </p>
                     </div>
                     <div className="text-center text-foreground text-sm font-semibold py-5 uppercase">

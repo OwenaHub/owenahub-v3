@@ -6,6 +6,14 @@ import { Suspense } from "react"
 import CardSkeleton from "~/components/skeletons/card-skeleton-2"
 import type { Route } from "../_guest.courses/+types/route"
 import Courses from "./courses"
+import { type MetaFunction } from "react-router";
+
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Courses | OwenaHub" },
+        { name: "description", content: "The Learner's Hub" },
+    ];
+};
 
 export async function clientLoader(_: Route.ClientLoaderArgs) {
     try {

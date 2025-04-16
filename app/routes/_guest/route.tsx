@@ -258,8 +258,8 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                     <div className="justify-between text-gray-500 text-xs block items-center md:flex-row mt-6">
                         <p className="m-0">&copy; {new Date().getFullYear()}, OwenaHub. All Rights Reserved.</p>
                         <p className="m-0">
-                            <Link to="#" className="hover:underline">Privacy Policy</Link> &middot; {" "}
-                            <Link to="#" className="hover:underline">Terms of Service</Link>
+                            <Link to="/privacy-policy" className="hover:underline">Privacy Policy</Link> &middot; {" "}
+                            <Link to="/terms-of-service" className="hover:underline">Terms of Service</Link>
                         </p>
                     </div>
                 </div>

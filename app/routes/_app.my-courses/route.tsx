@@ -7,7 +7,7 @@ import { STORAGE_URL } from "~/lib/keys";
 
 export const meta: MetaFunction = () => {
     return [
-        { title: "Courses | OwenaHub" },
+        { title: "My Courses | OwenaHub" },
         { name: "description", content: "The Learner's Hub" },
     ];
 };
