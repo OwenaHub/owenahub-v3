@@ -1,7 +1,7 @@
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
-import { Form, redirect } from "react-router";
+import { Form, redirect, useSearchParams } from "react-router";
 import type { Route } from "../_app.account.mentor-profile_.voucher-codes_.create/+types/route";
 import { toast } from "sonner";
 import InputError from "~/components/forms/input-error";
@@ -32,6 +32,7 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
 
 export default function CreateVoucherCode({ actionData }: Route.ComponentProps) {
     const errors = actionData;
+    const [searchParams, _] = useSearchParams();
 
     return (
         <div className="pb-10 pt-5">
@@ -54,6 +55,7 @@ export default function CreateVoucherCode({ actionData }: Route.ComponentProps) 
                                 type="email"
                                 name="issued_to"
                                 placeholder="user@email.com"
+                                defaultValue={searchParams.get('email') || ""}
                             />
                             <InputError for="issued_to" error={errors} />
                         </div>

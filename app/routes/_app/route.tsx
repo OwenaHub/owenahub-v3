@@ -90,18 +90,18 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                                         >
                                             <button className="text-center flex items-center justify-center gap-2 bg-green-100 border border-green-600 rounded text-green-600 text-xs w-full font-bold px-4 py-2 uppercase hover:bg-green-500 hover:text-white transition cursor-pointer">
                                                 <span>Join Community</span>
-                                                <ArrowRight size={17}/>
+                                                <ArrowRight size={17} />
                                             </button>
                                         </a>
                                     </div>
                                 </section>
 
-                                <div className="p-3 rounded text-sm mb-4 bg-primary-bg">
+                                <div className="p-3 rounded text-sm mb-4 bg-primary-bg border border-primary-theme">
                                     <div className="text-base font-bold pb-2">Upgrade to premium</div>
                                     <p className="text-xs pb-3">
                                         Get full access to all courses offered on OwenaHub with a one time payment.
                                     </p>
-                                    <button className="bg-primary-theme rounded text-muted text-xs w-full font-bold px-4 py-2 uppercase">
+                                    <button className="bg-primary-theme rounded text-muted text-xs w-full font-bold px-4 py-2 uppercase cursor-pointer">
                                         Subscribe
                                     </button>
                                 </div>

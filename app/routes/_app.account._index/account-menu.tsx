@@ -1,6 +1,6 @@
-import { ShieldUser, SquareUser, UserRoundCog, Wallet } from 'lucide-react'
+import { CircleUser, ShieldUser, SquareUser, UserRoundCog, Wallet } from 'lucide-react'
 import { Link } from 'react-router'
-import { IsMentor } from '~/components/permissions/roles'
+import { IsAdmin, IsMentor } from '~/components/permissions/roles'
 
 type CardProps = {
     icon: React.ElementType
@@ -54,12 +54,21 @@ export default function AccountMenu({ user }: { user: User }) {
 
             <IsMentor user={user}>
                 <Card
-                    icon={ShieldUser}
+                    icon={CircleUser}
                     title="Mentor profile"
                     description="Manage your mentor profile and mentor actions"
                     link="mentor-profile"
                 />
             </IsMentor>
+
+            <IsAdmin user={user}>
+                <Card
+                    icon={ShieldUser}
+                    title="Administrator"
+                    description="Manage OwenaHub"
+                    link="admin"
+                />
+            </IsAdmin>
         </div>
     )
 }

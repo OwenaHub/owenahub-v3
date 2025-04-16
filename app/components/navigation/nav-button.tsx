@@ -10,10 +10,10 @@ export default function NavButton({ href, label, icon }: {
             to={href}
             className={({ isActive, isPending }) =>
                 isActive
-                    ? "block mb-2 text-[#315E8B] outline outline-gray-300 outline-offset-1 bg-gray-100 rounded"
+                    ? "block mb-2 text-[#315E8B] bg-gray-100 rounded"
                     : isPending
-                        ? "block mb-2 rounded  hover:bg-gray-100 text-[#67737E]"
-                        : "block mb-2 rounded hover:bg-gray-100 text-[#67737E]"
+                        ? "block mb-2 rounded  hover:bg-gray-50 text-[#67737E]"
+                        : "block mb-2 rounded hover:bg-gray-50 text-[#67737E]"
             }
             viewTransition
         >
