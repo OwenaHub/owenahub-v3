@@ -1,12 +1,6 @@
 import { Search } from "lucide-react";
-
-import * as Post1 from "~/content/posts/owenahub-mentorship-courses.mdx";
-import * as Post2 from "~/content/posts/highly-effective-devs.mdx";
-import * as Post3 from "~/content/posts/laravel-react-combo.mdx";
-
+import { posts } from "~/content";
 import PostCard from "./post-card";
-
-const posts = [Post1, Post2, Post3];
 
 export default function Blog() {
 
@@ -41,6 +35,7 @@ export default function Blog() {
                                 key={idx}
                                 title={post.meta.title}
                                 image={post.meta.image}
+                                date={post.meta.date}
                                 slug={post.meta.slug}
                             />
                         </>

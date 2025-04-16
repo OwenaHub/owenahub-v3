@@ -11,6 +11,7 @@ import SharePage from '~/components/navigation/share-page';
 export default function CourseBanner({ course, isEnrolled }: { course: Course, isEnrolled: boolean }) {
     return (
         <>
+            {/* Desktop banner */}
             <section className="bg-[#fff7eb] max-h-[55vh] py-20 hidden md:block">
                 <div className="container flex mt-20 gap-10 h-screen">
                     <div className="flex basis-2/3 flex-col gap-4 items-start overflow-auto">
@@ -112,17 +113,17 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                         </div>
                     </div>
                 </div>
-
             </section>
 
+            {/* Mobile Banner */}
             <section className='md:hidden'>
-                <div className="bg-slate-100 col-span-1 md:col-span-4 w-full aspect-video group-hover:opacity-75 lg:aspect-auto lg:h-auto overflow-hidden">
+                <div className="bg-slate-100 col-span-1 md:col-span-4 h-60 w-full aspect-video group-hover:opacity-75 lg:h-auto overflow-hidden">
                     <img
                         src={course.thumbnail
                             ? `${STORAGE_URL}/${course.thumbnail}`
                             : "/images/banners/default-course-img.png"}
                         alt={course.title}
-                        className="h-full w-full object-cover"
+                        className="h-60 w-full object-cover"
                     />
                 </div>
 

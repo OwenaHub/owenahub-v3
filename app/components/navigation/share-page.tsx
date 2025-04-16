@@ -45,7 +45,7 @@ export default function SharePage() {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button className="flex items-center gap-1 rounded-full w-full md:w-max px-6 py-5" variant={"outline"}>
+                <Button className="flex items-center gap-1 rounded w-full md:w-max px-6 py-5" variant={"outline"}>
                     <Share2 /> <span>Share this course</span>
                 </Button>
             </DialogTrigger>

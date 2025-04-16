@@ -22,6 +22,7 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
         return redirect('/')
     }
 }
+
 export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
     const { course, isEnrolled }: { course: Course, isEnrolled: boolean } = loaderData;
 
@@ -124,11 +125,11 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
                 </div>
 
                 <div className="md:w-2/3 mb-20">
-                    <h4 className="font-bold text-xl mb-4">Instructor</h4>
+                    <h4 className="font-bold text-xl mb-4">Your Mentor</h4>
                     <div className="flex gap-5 items-center" id="creator">
                         <CustomAvatar name={course.creator?.name} styles="w-[5rem] h-[5rem] text-2xl" />
                         <div className=" max-w-full">
-                            <h5 className="flex flex-col gap-2">
+                            <h5 className="flex flex-col">
                                 <h3 className="font-semibold text-primary-theme">
                                     {course.creator?.name}
                                 </h3>

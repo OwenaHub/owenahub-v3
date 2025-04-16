@@ -1,8 +1,8 @@
 import { Link } from 'react-router'
 import CustomAvatar from '~/components/custom/custom-avatar'
 
-export default function PostCard({ title, image, slug }: {
-    title: string, slug: string, image: string
+export default function PostCard({ title, image, slug, date }: {
+    title: string, slug: string, image: string, date: string
 }) {
     return (
         <div
@@ -13,10 +13,10 @@ export default function PostCard({ title, image, slug }: {
                 backgroundPosition: 'center',
             }}
         >
-            <div className="absolute inset-0 bg-black/60 bg-opacity-50"/>
+            <div className="absolute inset-0 bg-black/60 bg-opacity-50" />
             <div className="relative z-10">
                 <span className="text-xs md:text-sm text-gray-200 font-light">
-                    8 minutes read — 31 Jan 2024
+                    8 minutes read — {date}
                 </span>
                 <h2 className="text-xl md:text-2xl font-bold text-white pt-3">
                     {title}
