@@ -2,8 +2,6 @@ import { EllipsisVertical, LogOut, } from "lucide-react";
 import { Form, Outlet, useOutletContext, type MetaFunction } from "react-router"
 import CustomAvatar from "~/components/custom/custom-avatar";
 import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input"
-import { Label } from "~/components/ui/label"
 import {
     Popover,
     PopoverContent,
