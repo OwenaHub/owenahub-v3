@@ -99,30 +99,30 @@ export default function HomePage() {
               </span>
             </h1>
 
-            <section className="flex flex-col text-gray-800 gap-5 mb-10 mt-8">
+            <section className="flex flex-col text-gray-800 gap-5 my-10">
               <span className="hidden md:block text-sm md:text-base">
                 We offer comprehensive courses and dedicated <BrMd />
                 mentorship to ensure you never get stuck.
               </span>
 
-              <div className="md:hidden flex flex-col gap-3">
-                <div className="flex items-center gap-4">
-                  <div className="rounded-lg p-1.5 bg-primary-theme">
+              <div className="md:hidden mb-5 flex flex-col gap-6">
+                <div className="flex items-center gap-3">
+                  <div className="rounded -rotate-6 p-1 shadow opacity-70 bg-primary-theme">
                     <Check size={14} strokeWidth={4} className="text-white" />
                   </div>
-                  <h2 className="text-secondary-foreground">Learn online, from professionals</h2>
+                  <h2 className="text-gray-700">Learn online, from professionals</h2>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="rounded-lg p-1.5 bg-primary-theme">
+                <div className="flex items-center gap-3">
+                  <div className="rounded -rotate-6 p-1 shadow opacity-70 bg-primary-theme">
                     <Check size={14} strokeWidth={4} className="text-white" />
                   </div>
-                  <h2 className="text-secondary-foreground">Get results in 3 months</h2>
+                  <h2 className="text-gray-700">Get results in 3 months</h2>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="rounded-lg p-1.5 bg-primary-theme">
+                <div className="flex items-center gap-3">
+                  <div className="rounded -rotate-6 p-1 shadow opacity-70 bg-primary-theme">
                     <Check size={14} strokeWidth={4} className="text-white" />
                   </div>
-                  <h2 className="text-secondary-foreground">A fraction of the cost of other platforms</h2>
+                  <h2 className="text-gray-700">A fraction of the cost of other platforms</h2>
                 </div>
               </div>
             </section>
@@ -384,12 +384,12 @@ export default function HomePage() {
                       </div>
                     </div>
 
-                    <div className="mt-auto">
+                    <div className="mt-3">
                       <div className="flex gap-2 items-center">
-                        <CustomAvatar name={review.username} styles="h-10 w-10" />
+                        <CustomAvatar name={review.username} styles="h-11 w-11" />
                         <div className="text-sm">
-                          <p className="">{review.username}</p>
-                          <p className="text-gray-700">{review.career}</p>
+                          <p className="text-gray-700">{review.username}</p>
+                          <p className="text-gray-600">{review.career}</p>
                         </div>
                       </div>
                     </div>
