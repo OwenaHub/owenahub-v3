@@ -99,13 +99,13 @@ export default function HomePage() {
               </span>
             </h1>
 
-            <section className="flex flex-col text-gray-800 gap-5 my-10">
-              <span className="hidden md:block text-sm md:text-base">
+            <section className="flex flex-col gap-5 my-10">
+              <span className="hidden md:block text-xl text-gray-700">
                 We offer comprehensive courses and dedicated <BrMd />
                 mentorship to ensure you never get stuck.
               </span>
 
-              <div className="md:hidden mb-5 flex flex-col gap-6">
+              <div className="md:hidden mb-5 flex flex-col gap-5">
                 <div className="flex items-center gap-3">
                   <div className="rounded -rotate-6 p-1 shadow opacity-70 bg-primary-theme">
                     <Check size={14} strokeWidth={4} className="text-white" />
