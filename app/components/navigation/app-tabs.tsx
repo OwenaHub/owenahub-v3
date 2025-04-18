@@ -1,4 +1,4 @@
-import { UserRound, Wallet, GraduationCap, Shapes, LayoutGrid } from 'lucide-react';
+import { UserRound, GraduationCap, Shapes, LayoutGrid } from 'lucide-react';
 
 const APP_TABS = [
     {

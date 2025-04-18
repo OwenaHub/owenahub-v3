@@ -99,17 +99,15 @@ export function HydrateFallback() {
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
       <div>
-        <div className="flex flex-col gap-2 justify-center items-center">
-          <img src="/images/logos/logo.png" alt="OwenaHub" width={30} />
-          <div className="text-center mb-3">
+        <div className="flex flex-row gap-3 mb-7 items-center">
+          <img src="/images/logos/logo.png" alt="OwenaHub" width={40} />
+          <div className="text-center leading-3">
             <AppName size="text-base" />
+            <span className="text-gray-700 text-xs font-light">Learn by doing</span>
           </div>
         </div>
-        <span className="w-full h-1 animate-pulse bg-gray-300 rounded-md block mb-3" />
-        <p className="flex items-center gap-1 justify-center">
-          <Zap size={14} />
-          <span className="text-gray-700 text-xs font-light">Learn by doing</span>
-        </p>
+        
+        <span className="w-full h-1 animate-pulse bg-gray-400 rounded-md block mt-3" />
       </div>
     </div>
   );
