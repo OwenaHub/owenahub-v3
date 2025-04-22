@@ -1,4 +1,4 @@
-import { UserRound, GraduationCap, Shapes, LayoutGrid, BookMarked } from 'lucide-react';
+import { UserRound, Shapes, LayoutGrid, BookMarked } from 'lucide-react';
 
 const APP_TABS = [
     {
