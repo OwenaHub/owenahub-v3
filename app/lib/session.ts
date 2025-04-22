@@ -30,7 +30,7 @@ export default function useSession() {
     async function storeUser(user: User) {
         try {
             const data = JSON.stringify(user);
-            Cookies.set(storageKeys.user, data);
+            Cookies.set(storageKeys.user, data, { expires: 1 });
         } catch (error) {
             throw error;
         }
@@ -48,7 +48,7 @@ export default function useSession() {
 
     async function intendedRoute(path: string) {
         if (path === "/") path = "/dashboard";
-        Cookies.set(storageKeys.route, path);
+        Cookies.set(storageKeys.route, path, { expires: 1 });
     }
 
     async function getIntentedRoute(): Promise<string> {

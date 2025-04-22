@@ -31,16 +31,17 @@
 }
 
 .ql-code-block-container {
-    background-color: #1e1e1e; /* Darker background for better contrast */
-    color: #d4d4d4; /* Softer white for less strain on eyes */
-    padding: 1rem; /* Increased padding for better readability */
+    background-color: #1e1e1e;
+    color: #d4d4d4; 
+    padding: 1rem; 
     overflow-x: auto;
-    border-radius: 8px; /* Slightly smaller border radius for a cleaner look */
-    font-family: "Courier New", monospace;
+    border-radius: 10px; 
+    font-family: monospace;
+    white-space: pre;
     font-size: 14px;
-    border: 1px solid #333; /* Changed outline to border for consistency */
-    margin: 1.5rem 0; /* Adjusted margin for better spacing */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border: 1px solid #333; 
+    margin: 1.5rem 0; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .ql-font-serif {
@@ -88,7 +89,7 @@ blockquote {
     margin: 10px 0;
     font-size: 14px;
     font-style: italic;
-    color: #8f8f8f;
+    color: #7b7b85;
 }
 
 /* Text Alignment */

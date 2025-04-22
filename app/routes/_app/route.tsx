@@ -120,7 +120,7 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                     </aside>
 
                     <main className="flex-1 w-full transition">
-                        <header className='flex justify-between items-center md:hidden pt-5 sticky top-0 bg-white/50 backdrop-blur-md'>
+                        <header className='flex justify-between items-center md:hidden py-3 sticky top-0 bg-white/80 backdrop-blur-md z-50'>
                             <Link to={'/dashboard'} className='flex gap-1 items-center'>
                                 <img src='/images/logos/logo.png' width={25} title='OwenaHub' /> <AppName size='base' />
                             </Link>

@@ -1,4 +1,4 @@
-import { UserRound, GraduationCap, Shapes, LayoutGrid } from 'lucide-react';
+import { UserRound, GraduationCap, Shapes, LayoutGrid, BookMarked } from 'lucide-react';
 
 const APP_TABS = [
     {
@@ -7,14 +7,14 @@ const APP_TABS = [
         icon: <LayoutGrid size={22} strokeWidth={1.7} />,
     },
     {
+        href: `/my-courses`,
+        title: 'Courses',
+        icon: <BookMarked size={22} strokeWidth={1.7} />,
+    },
+    {
         href: `/classes`,
         title: 'Classes',
         icon: <Shapes size={22} strokeWidth={1.7} />,
-    },
-    {
-        href: `/my-courses`,
-        title: 'Courses',
-        icon: <GraduationCap size={22} strokeWidth={1.7} />,
     },
     {
         href: `/account`,
