@@ -1,16 +1,34 @@
-import { ChevronRight, RotateCw } from 'lucide-react'
+import { Check, ChevronRight, RotateCw, Zap } from 'lucide-react'
 import { Form, Link, redirect, useParams } from 'react-router'
 import type { Route } from '../_app.my-courses_.$ulid_.modules_.$moduleId_.lessons_.$lessonId/+types/route'
 import { truncateText } from '~/lib/texts'
 import { toast } from 'sonner'
 import { getLesson, markDone } from './get-lesson'
 import { Button } from '~/components/ui/button'
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "~/components/ui/alert-dialog"
+
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "~/components/ui/accordion"
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
         const lesson = await getLesson(params.ulid, params.moduleId, params.lessonId);
         console.log(lesson);
-        
+
         return lesson;
     } catch ({ response }: any) {
         console.log(response);
@@ -43,7 +61,7 @@ export default function ViewLesson({ loaderData }: Route.ComponentProps) {
 
     return (
         <div className='md:px-6 mb-20'>
-            <div className='mb-14'>
+            <div className='mb-10'>
                 <div className='flex text-xs md:text-sm items-center gap-2 tex-sm mb-5 mt-10'>
                     <Link to="/my-courses" className='flex text-nowrap items-center gap-2 hover:underline underline-offset-1'>
                         <span>My courses</span> <ChevronRight size={16} />
@@ -94,22 +112,71 @@ export default function ViewLesson({ loaderData }: Route.ComponentProps) {
             </div>
 
             <div className="my-8">
-                {lesson.completed
-                    ? <Button
-                        disabled
-                        type="button"
-                        className="bg-secondary text-primary shadow font-light w-full md:w-max px-6 rounded-full"
-                    >
-                        Completed
-                    </Button>
-                    : <Form method="POST">
-                        <input type="hidden" name="completed" value={1} />
-                        <input type="hidden" name="lessonId" value={lesson.id} />
-                        <Button className="font-light w-full md:w-max px-6 rounded-full" variant="outline">
-                            Mark complete <span className="text-xs">🎉</span>
+                <div className="flex flex-col w-full md:flex-row items-stretch gap-y-6 gap-x-3">
+
+                    <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                            <Button variant="secondary" className='rounded-full bg-[#315E8B] text-white'>
+                                <span>Lesson task</span>
+                                <Zap size={18} />
+                            </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                            <AlertDialogHeader>
+                                <AlertDialogTitle>Lesson Tasks</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                    Ensure to complete the following tasks before marking the lesson as complete:
+                                </AlertDialogDescription>
+                            </AlertDialogHeader>
+
+
+                            <Accordion type="single" collapsible className="w-full">
+                                {lesson?.tasks?.map((task: Task, index) => (
+                                    <AccordionItem value={`item-${index + 1}`} key={task.id}>
+                                        <AccordionTrigger className='bg-muted px-3 rounded font-semibold'>
+                                            <div>
+                                                <div className="text-xs font-light">
+                                                    Task {index + 1}
+                                                </div>
+                                                <div>{task.name}</div>
+                                            </div>
+                                        </AccordionTrigger>
+                                        <AccordionContent className='pt-3 px-3 bg-gray-50'>
+                                            <div id="course-content" className='text-xs'>
+                                                <div dangerouslySetInnerHTML={{ __html: task.instruction }} />
+                                            </div>
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+
+                            <AlertDialogFooter>
+                                <AlertDialogCancel>Close</AlertDialogCancel>
+                                {/* <AlertDialogAction>Continue</AlertDialogAction> */}
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
+
+                    {lesson.completed
+                        ? <Button
+                            disabled
+                            type="button"
+                            className="bg-green-200 text-primary shadow font-light w-full md:w-max px-6 rounded-full"
+                        >
+                            Completed
                         </Button>
-                    </Form>
-                }
+                        : <Form method="POST">
+                            <input type="hidden" name="completed" value={1} />
+                            <input type="hidden" name="lessonId" value={lesson.id} />
+                            <Button className="flex items-center font-light w-full border md:w-max px-6 rounded-full" variant="secondary">
+                                <span>
+                                    Mark complete
+                                </span>
+                                <Check className="ml-1 text-primary-theme" size={16} strokeWidth={3} />
+                            </Button>
+                        </Form>
+                    }
+                </div>
             </div>
         </div>
     )

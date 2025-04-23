@@ -13,6 +13,7 @@ import { MonitorSmartphone, SquarePlay, Text, Trophy, TvMinimalPlay, Users, Wren
 import CustomAvatar from "~/components/custom/custom-avatar";
 import { FormatLineBreaks } from "~/components/utility/format-text";
 
+
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
         const { data, isEnrolled } = await getCourse(params.ulid);
