@@ -1,4 +1,4 @@
-import { Pencil, Trash } from "lucide-react"
+import { Pencil, Plus, Trash } from "lucide-react"
 import { Link, useFetcher } from "react-router"
 import {
     AlertDialog,
@@ -21,8 +21,21 @@ export default function LessonCard({ lesson }: { lesson: Lesson }) {
                         <p className="text-sm font-light">
                             Lesson {lesson.position}
                         </p>
-                        <h3 className="font-semibold text-lg">{lesson.title}</h3>
+                        <h3 className="font-semibold text-lg mb-2">{lesson.title}</h3>
+                        <section className="flex items-center gap-2">
+                            <Link to={`${lesson.id}/tasks/create`} className="flex items-center gap-1 border rounded-full w-max px-2 py-1 text-xs hover:bg-gray-100 transition">
+                                <span>Add task</span>
+                                <Plus size={16} />
+                            </Link>
 
+                            <span className="flex items-center gap-1">
+                                {lesson.tasks?.map((task: Task) => (
+                                    <Link to={`${lesson.id}/tasks/edit`} className="flex items-center gap-1 rounded-full w-max px-2 py-1 text-xs bg-amber-200 hover:bg-gray-100 transition">
+                                        <span>{task.name}</span>
+                                    </Link>
+                                ))}
+                            </span>
+                        </section>
                     </div>
                 </div>
                 <div className="flex items-stretch gap-4">

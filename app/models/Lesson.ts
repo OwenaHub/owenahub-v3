@@ -5,4 +5,5 @@ interface Lesson extends Model {
     content: string;
     videoUrl: string;
     completed?: boolean
+    tasks?: Task[];
 }
