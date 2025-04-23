@@ -13,6 +13,7 @@ import {
 import { Button } from "~/components/ui/button"
 
 export default function LessonCard({ lesson }: { lesson: Lesson }) {
+    let fetcher = useFetcher()
     return (
         <div className="border border-gray-200 border-b-2 py-4 rounded-md">
             <div className="flex justify-between items-center gap-3 pe-2">
@@ -23,16 +24,30 @@ export default function LessonCard({ lesson }: { lesson: Lesson }) {
                         </p>
                         <h3 className="font-semibold text-lg mb-2">{lesson.title}</h3>
                         <section className="flex items-center gap-2">
-                            <Link to={`${lesson.id}/tasks/create`} className="flex items-center gap-1 border rounded-full w-max px-2 py-1 text-xs hover:bg-gray-100 transition">
-                                <span>Add task</span>
-                                <Plus size={16} />
-                            </Link>
+                            {(lesson?.tasks ?? []).length < 2 && (
+                                <Link to={`${lesson.id}/tasks/create`} className="flex items-center gap-1 border rounded-full w-max px-2 py-1 text-xs hover:bg-gray-100 transition">
+                                    <span>Add task</span>
+                                    <Plus size={14} />
+                                </Link>
+                            )}
 
-                            <span className="flex items-center gap-1">
+                            <span className="flex items-center gap-4">
                                 {lesson.tasks?.map((task: Task) => (
-                                    <Link to={`${lesson.id}/tasks/edit`} className="flex items-center gap-1 rounded-full w-max px-2 py-1 text-xs bg-amber-200 hover:bg-gray-100 transition">
-                                        <span>{task.name}</span>
-                                    </Link>
+                                    <div className="flex items-center gap-1">
+                                        <Link key={task.id} to={`${lesson.id}/tasks/${task.id}/edit`} className="flex items-center gap-1 rounded-full w-max px-2 py-1 text-xs bg-sky-100 outline outline-sky-600 hover:bg-gray-100 transition">
+                                            <span>{task.name}</span>
+                                        </Link>
+                                        <fetcher.Form
+                                            method="POST"
+                                            title="Delete task"
+                                            action={`${lesson.id}/tasks/${task.id}/delete`}
+                                            className="rounded-full px-1.5 py-0.5 bg-red-50 hover:bg-red-100 text-destructive cursor-pointer"
+                                        >
+                                            <button type="submit" title="Delete task">
+                                                <Trash size={16} className="relative top-0.5" />
+                                            </button>
+                                        </fetcher.Form>
+                                    </div>
                                 ))}
                             </span>
                         </section>

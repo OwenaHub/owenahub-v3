@@ -8,7 +8,7 @@ import { getTask, updateTask } from "./edit-task";
 import { toast } from "sonner";
 import { TextEditor } from "~/components/custom/quill.client";
 import { useState } from "react";
-import type { Route } from "../_app.account.mentor-profile_.courses_.$ulid.modules_.$id_.lessons_.$lessonId_.tasks_.taskId_.edit/+types/route";
+import type { Route } from "../_app.account.mentor-profile_.courses_.$ulid.modules_.$id_.lessons_.$lessonId_.tasks_.$taskId_.edit/+types/route";
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
@@ -25,10 +25,10 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
 export async function clientAction({ params, request }: Route.ClientActionArgs) {
     const formData = await request.formData();
     const credentials = Object.fromEntries(formData);
-
+    credentials.taskId = params.taskId;
+    
     try {
-        const { data } = await updateTask(credentials);
-        console.log(data);
+        await updateTask(credentials);
 
         toast.success("Task updated");
         return redirect(`/account/mentor-profile/courses/${params.ulid}/modules/${params.id}/lessons`);
@@ -96,7 +96,7 @@ export default function EditTask({ loaderData, actionData, params }: Route.Compo
 
                             <div className="mt-5">
                                 <Button type="submit" className="bg-secondary-foreground uppercase text-sm text-white w-full py-2 rounded cursor-pointer hover:opacity-60">
-                                    Create Task
+                                    Update Task
                                 </Button>
                             </div>
                         </Form>

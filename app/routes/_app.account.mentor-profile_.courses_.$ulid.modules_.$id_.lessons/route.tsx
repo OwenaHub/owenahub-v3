@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import type { Route } from "./+types/route";
+import type { Route } from "../_app.account.mentor-profile_.courses_.$ulid.modules_.$id_.lessons/+types/route";
 import { getLessons } from "./get-lessons";
 import LessonCard from "./lesson-card";
 import { Plus } from "lucide-react";
@@ -30,7 +30,7 @@ export default function MentorLessons({ loaderData }: Route.ComponentProps) {
       <div>
         {lessons.length
           ? lessons.map((lesson: any) => (
-            <div className="flex flex-col mb-5">
+            <div key={lesson.id} className="flex flex-col mb-5">
               <LessonCard lesson={lesson} />
             </div>
           ))
