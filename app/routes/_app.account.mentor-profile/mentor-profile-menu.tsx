@@ -1,4 +1,4 @@
-import { Book, ScrollText, Star } from 'lucide-react'
+import { Book, LibraryBig, ScrollText, Star } from 'lucide-react'
 import { Link } from 'react-router'
 
 type CardProps = {
@@ -32,10 +32,10 @@ export default function Menu() {
             link: 'courses',
         },
         {
-            icon: Star,
-            title: 'Reviews',
-            description: 'See reviews on your profile and courses',
-            link: 'reviews',
+            icon: LibraryBig,
+            title: 'Task submision',
+            description: 'See submissions on your tasks',
+            link: 'task-submissions',
         },
         {
             icon: ScrollText,

@@ -4,12 +4,13 @@ import type { Route } from '../_app.my-courses_.$ulid_.modules_.$moduleId_.lesso
 import { truncateText } from '~/lib/texts'
 import { toast } from 'sonner'
 import { getLesson, markDone } from './get-lesson'
-import { STORAGE_URL } from '~/lib/keys'
 import { Button } from '~/components/ui/button'
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
         const lesson = await getLesson(params.ulid, params.moduleId, params.lessonId);
+        console.log(lesson);
+        
         return lesson;
     } catch ({ response }: any) {
         console.log(response);
