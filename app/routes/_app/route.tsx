@@ -124,7 +124,10 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                             <Link to={'/dashboard'} className='flex gap-1 items-center'>
                                 <img src='/images/logos/logo.png' width={25} title='OwenaHub' /> <AppName size='base' />
                             </Link>
-                            <AppNotification notifications={notifications} />
+                            <div className='flex gap-2 items-center'>
+                                <AppNotification notifications={notifications} />
+                                <CustomAvatar name={user?.name} styles="w-[3rem] h-[3rem]" />
+                            </div>
                         </header>
                         <div className={`${busy && "opacity-35"} transition overflow-x-hidden`}>
                             <Outlet context={user} />

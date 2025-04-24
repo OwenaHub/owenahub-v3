@@ -87,9 +87,9 @@ export default function Courses({ loaderData }: Route.ComponentProps) {
 
                                                             return (
                                                                 <div className="">
-                                                                    <div className="bg-gray-100 rounded-lg h-1 my-2">
+                                                                    <div className="bg-gray-100 rounded-lg h-1.5 mb-2">
                                                                         <div
-                                                                            className="bg-[#315E8B] h-1 rounded-lg"
+                                                                            className="bg-[#315E8B] h-1.5 rounded-lg"
                                                                             style={{ width: `${progressPercentage}%` }}
                                                                         />
                                                                     </div>

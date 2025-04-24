@@ -103,11 +103,9 @@ export function HydrateFallback() {
           <img src="/images/logos/logo.png" alt="OwenaHub" width={40} />
           <div className="text-center leading-3">
             <AppName size="text-base" />
-            <span className="text-gray-700 text-xs font-light">Learn by doing</span>
+            <span className="text-gray-700 text-xs font-light animate-pulse">Learn by doing</span>
           </div>
         </div>
-        
-        <span className="w-full h-1 animate-pulse bg-gray-400 rounded-md block mt-3" />
       </div>
     </div>
   );
