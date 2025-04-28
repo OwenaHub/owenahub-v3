@@ -30,7 +30,7 @@ export default function useSession() {
     async function storeUser(user: User) {
         try {
             const data = JSON.stringify(user);
-            Cookies.set(storageKeys.user, data, { expires: 1 });
+            Cookies.set(storageKeys.user, data, { expires: 1, sameSite: 'Lax', secure: true });
         } catch (error) {
             throw error;
         }
@@ -39,7 +39,7 @@ export default function useSession() {
     function getUser() {
         try {
             const data = Cookies.get(storageKeys.user);
-            const user = data ? JSON.parse(data) : null;
+            const user = data ? JSON.parse(data) : validateSession();
             return user;
         } catch (error) {
             throw error;
@@ -48,7 +48,7 @@ export default function useSession() {
 
     async function intendedRoute(path: string) {
         if (path === "/") path = "/dashboard";
-        Cookies.set(storageKeys.route, path, { expires: 1 });
+        Cookies.set(storageKeys.route, path, { expires: 1, sameSite: 'Lax', secure: true });
     }
 
     async function getIntentedRoute(): Promise<string> {

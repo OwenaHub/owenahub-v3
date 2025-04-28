@@ -3,20 +3,21 @@ import { ChevronRight, Facebook, Instagram, Menu, Twitter, X } from "lucide-reac
 import { Suspense, useEffect, useState } from "react";
 import useSession from "~/lib/session";
 import type { Route } from "../_guest/+types/route";
+import CustomAvatar from "~/components/custom/custom-avatar";
 
 export async function clientLoader(_: Route.ClientLoaderArgs) {
     const { getUser } = useSession();
 
     try {
-        const user = getUser();
-        let session;
+        const user: User = getUser();
+        let session: boolean;
 
-        if (user)
+        if (user.name)
             session = true;
         else
             session = false;
 
-        return { session };
+        return { session, user };
     } catch ({ response }: any) {
         console.log(response)
     }
@@ -36,7 +37,7 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const { session }: { session: boolean } = loaderData || { session: false };
+    const { session, user }: { session: boolean, user: User } = loaderData ?? { session: false, user: { name: "" } as User };
 
     return (
         <section className={`${busy && "opacity-50"} transition-all animated fadeIn`}>
@@ -75,9 +76,14 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                             <Await resolve={session}>
                                 <div className="flex gap-2 items-center">
                                     {session
-                                        ? (<Link to="/dashboard" className="bg-white border rounded text-secondary-foreground text-xs hover:shadow-lg px-5 py-1.5 uppercase">
-                                            Dashboard
-                                        </Link>)
+                                        ? (
+                                            <div className="flex gap-2 items-center">
+                                                <Link to="/dashboard">
+                                                    <span className="text-sm font-light text-gray-800">{user.name}</span>
+                                                </Link>
+                                                <CustomAvatar name={user.name || ""} styles="h-10 w-10" />
+                                            </div>
+                                        )
                                         : (<>
                                             <Link to="/login" className="bg-white border rounded text-secondary-foreground text-xs hover:shadow-lg px-5 py-1.5 uppercase">
                                                 Log in
@@ -89,7 +95,10 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                         </Suspense>
                     </div>
                     <button aria-label="Menu" className="block md:hidden" type="button" onClick={() => setMenu(!menu)}>
-                        {!menu ? <Menu /> : <X />}
+                        {!menu
+                            ? <Menu />
+                            : <X />
+                        }
                     </button>
                 </nav>
                 {menu && (
@@ -125,7 +134,7 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                                                 <Link
                                                     onClick={() => setMenu(!menu)}
                                                     to="/dashboard"
-                                                    className="bg-primary rounded-[6px] text-primary-foreground text-xs font-medium hover:shadow-lg py-3 text-center uppercase"
+                                                    className="bg-secondary rounded-[6px] text-secondary-foreground text-xs font-medium hover:shadow-lg py-3 text-center uppercase"
                                                 >
                                                     Dashboard
                                                 </Link>

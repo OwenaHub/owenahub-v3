@@ -1,4 +1,4 @@
-import { Check, RotateCw, Zap } from 'lucide-react'
+import { Check, RotateCw, X, Zap } from 'lucide-react'
 import { Form, redirect } from 'react-router'
 import type { Route } from '../_app.my-courses_.$ulid_.modules_.$moduleId_.lessons_.$lessonId/+types/route'
 import { toast } from 'sonner'
@@ -40,10 +40,7 @@ export async function clientAction({ request, params }: Route.ClientActionArgs) 
 
     try {
         await markDone(credentials);
-        toast.success("Great Job! 🔥", {
-            description: "Keep up the effort"
-        })
-        return redirect(`/my-courses/${params.ulid}`);
+        return redirect(`/my-courses/${params.ulid}/?moduleId=${params.moduleId}&lessonId=${params.lessonId}&completed=true`);
     } catch ({ response }: any) {
         toast.error("Oops!, action couldn't be done")
         const error: any = response?.data?.errors;
@@ -100,84 +97,81 @@ export default function ViewLesson({ loaderData }: Route.ComponentProps) {
             </div>
 
             <div className="my-8">
-                <div className="flex flex-col w-full md:flex-row items-stretch gap-y-6 gap-x-3">
+                <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                        <Button className='bg-[#315E8B] border border-[#1d3c5a] border-b-4 py-6 mx-auto w-full md:w-xs'>
+                            <span className='uppercase font-light'>Finish lesson</span>
+                            <Zap size={20} />
+                        </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader className='text-start'>
+                            <AlertDialogTitle className='flex items-center justify-between'>
+                                <div>Lesson Tasks</div>
+                                <AlertDialogCancel className='rounded border-0 p-0 px-0'>
+                                    <X size={14} />
+                                </AlertDialogCancel>
+                            </AlertDialogTitle>
+                            <AlertDialogDescription className='font-light !text-black'>
+                                Ensure to complete the following tasks before marking the lesson as complete:
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
 
-                    <AlertDialog>
-                        <AlertDialogTrigger asChild>
-                            <Button className='text-start rounded-full bg-[#315E8B] text-white cursor-pointer'>
-                                <span>Lesson task</span>
-                                <Zap size={18} />
-                            </Button>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent>
-                            <AlertDialogHeader className='text-start'>
-                                <AlertDialogTitle>Lesson Tasks</AlertDialogTitle>
-                                <AlertDialogDescription className='font-light !text-black'>
-                                    Ensure to complete the following tasks before marking the lesson as complete:
-                                </AlertDialogDescription>
-                            </AlertDialogHeader>
-
-
-                            <Accordion type="single" collapsible className="w-full">
-                                {(lesson?.tasks ?? []).length > 0 ? (
-                                    lesson.tasks?.map((task: Task, index) => (
-                                        <AccordionItem value={`item-${index + 1}`} key={task.id}>
-                                            <>
-                                                <AccordionTrigger className='bg-muted px-3 rounded font-semibold'>
-                                                    <div>
-                                                        <div className="text-xs font-light">
-                                                            Task {index + 1}
-                                                        </div>
-                                                        <div>{task.name}</div>
+                        <Accordion type="single" collapsible className="w-full">
+                            {(lesson?.tasks ?? []).length > 0 ? (
+                                lesson.tasks?.map((task: Task, index) => (
+                                    <AccordionItem value={`item-${index + 1}`} key={task.id}>
+                                        <>
+                                            <AccordionTrigger className='bg-muted px-3 rounded font-semibold'>
+                                                <div>
+                                                    <div className="text-xs font-light">
+                                                        Task {index + 1}
                                                     </div>
-                                                </AccordionTrigger>
-                                                <AccordionContent className='pt-3 px-3 bg-gray-50'>
-                                                    <div id="course-content" className='text-xs'>
-                                                        <div dangerouslySetInnerHTML={{ __html: task.instruction }} />
-                                                    </div>
-                                                </AccordionContent>
-                                            </>
-                                        </AccordionItem>
-                                    ))
-                                ) : (
-                                    <div className="text-sm text-muted-foreground py-2">
-                                        No tasks available
-                                    </div>
-                                )}
-                            </Accordion>
+                                                    <div>{task.name}</div>
+                                                </div>
+                                            </AccordionTrigger>
+                                            <AccordionContent className='pt-3 px-3 bg-gray-50'>
+                                                <div id="course-content" className='text-xs'>
+                                                    <div dangerouslySetInnerHTML={{ __html: task.instruction }} />
+                                                </div>
+                                            </AccordionContent>
+                                        </>
+                                    </AccordionItem>
+                                ))
+                            ) : (
+                                <div className="text-sm text-muted-foreground py-2">
+                                    No tasks available
+                                </div>
+                            )}
+                        </Accordion>
 
-                            <AlertDialogFooter className='flex !flex-row justify-between'>
-                                <AlertDialogCancel>Close</AlertDialogCancel>
-
-                                {/* <AlertDialogAction> */}
-                                {lesson.completed
-                                    ? <Button
-                                        disabled
-                                        type="button"
-                                        className="bg-primary-theme text-white shadow flex items-center font-light w-max cursor-pointer"
+                        <AlertDialogFooter className='flex flex-row gap-10 !justify-between'>
+                            {lesson.completed
+                                ? <Button
+                                    disabled
+                                    type="button"
+                                    className="rounded bg-secondary text-secondary-foreground shadow flex items-center font-light w-max cursor-pointer"
+                                >
+                                    <span>Completed</span> <Check size={18} />
+                                </Button>
+                                : <Form method="POST">
+                                    <input type="hidden" name="completed" value={1} />
+                                    <input type="hidden" name="lessonId" value={lesson.id} />
+                                    <Button
+                                        className="rounded bg-primary-bg border hover:opacity-55 hover:bg-primary-bg border-primary-theme text-primary cursor-pointer flex items-center font-light w-full md:w-max px-6"
                                     >
-                                        <span>Completed</span> <Check size={18} />
+                                        <span>
+                                            Mark complete
+                                        </span>
+                                        <Check className="ml-1 text-primary-theme" size={16} strokeWidth={3} />
                                     </Button>
-                                    : <Form method="POST">
-                                        <input type="hidden" name="completed" value={1} />
-                                        <input type="hidden" name="lessonId" value={lesson.id} />
-                                        <Button
-                                            className="bg-primary-bg border hover:opacity-55 hover:bg-primary-bg border-primary-theme text-primary cursor-pointer flex items-center font-light w-full md:w-max px-6"
-                                        >
-                                            <span>
-                                                Mark complete
-                                            </span>
-                                            <Check className="ml-1 text-primary-theme" size={16} strokeWidth={3} />
-                                        </Button>
-                                    </Form>
-                                }
-                                {/* </AlertDialogAction> */}
-                            </AlertDialogFooter>
-                        </AlertDialogContent>
-                    </AlertDialog>
+                                </Form>
+                            }
 
 
-                </div>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
             </div>
         </div >
     )

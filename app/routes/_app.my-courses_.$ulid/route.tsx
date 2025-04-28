@@ -1,7 +1,7 @@
 import type { Route } from '../_app.my-courses_.$ulid/+types/route';
 import { getCourse } from './get-course';
 import { toast } from 'sonner';
-import { Link, redirect } from 'react-router';
+import { Link, redirect, useSearchParams } from 'react-router';
 import { ChevronLeft, CircleCheck, Clock, Send, SquarePlay, Text, Zap } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion';
 import { Button } from "~/components/ui/button"
@@ -15,6 +15,19 @@ import {
     DialogTrigger,
 } from "~/components/ui/dialog"
 import CustomAvatar from '~/components/custom/custom-avatar';
+import CerticateCard from '~/components/cards/certificate-card';
+
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "~/components/ui/alert-dialog"
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
@@ -32,9 +45,45 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
 
 export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
     const { course }: { course: Course } = loaderData;
+    const [params, setParams] = useSearchParams();
 
     return (
         <div className='mb-20'>
+            <>
+                {String(params.get('completed')) === 'true' && (
+                    <AlertDialog open={true} onOpenChange={() => {
+                        const newParams = new URLSearchParams(params);
+                        newParams.delete('completed');
+                        setParams(newParams);
+                    }}>
+                        <AlertDialogContent className='bg-primary-bg border border-primary-theme'>
+                            <AlertDialogHeader>
+                                <AlertDialogTitle>
+                                    Lesson completed 🎉
+                                </AlertDialogTitle>
+                                <AlertDialogDescription>
+                                    <div className='flex flex-col gap-2'>
+                                        <p className='text-sm font-light'>You have completed this lesson.</p>
+                                        <p className='text-sm font-light'>Keep up the great work!</p>
+                                    </div>
+                                </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                                <AlertDialogCancel
+                                    className='bg-[#315E8B] text-white hover:bg-[#315E8B] hover:text-white'
+                                    onClick={() => setParams((prev) => {
+                                        prev.delete('completed');
+                                        return prev;
+                                    })}
+                                >
+                                    Continue
+                                </AlertDialogCancel>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
+                )}
+            </>
+
             <div className='flex text-sm items-center gap-2 tex-sm mb-3 mt-10 md:px-5'>
                 <Link to="/my-courses" className='flex text-nowrap items-center gap-2 hover:underline underline-offset-1'>
                     <ChevronLeft size={16} />
@@ -44,7 +93,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
 
             <div className='md:px-[1.5rem] mt-7'>
                 <div className='bg-muted rounded text-muted-foreground px-4 py-6 sticky'>
-                    <h1 className="text-2xl md:text-3xl font-bold mb-5">
+                    <h1 className="text-xl md:text-3xl font-bold mb-5">
                         {course.title}
                     </h1>
                     <div className="">
@@ -59,10 +108,10 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
 
                                 return (
                                     <div className="">
-                                        <div className="bg-white rounded-lg h-2 mb-2">
+                                        <div className="bg-white rounded h-3 mb-3">
                                             <div
-                                                className="progress-bar"
-                                                style={{ '--progress-width': `${progressPercentage}%` } as React.CSSProperties}
+                                                className="bg-[#315E8B] h-3 rounded"
+                                                style={{ width: `${progressPercentage}%` }}
                                             />
                                         </div>
                                         <p className="text-xs text-gray-500 mt-1">
@@ -138,7 +187,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                 <div className="">
                     <Accordion type="multiple" className="w-full" defaultValue={course.modules.map((_, index) => `item-${index + 1}`)}>
                         {course.modules.map((module: Module, index) => (
-                            <AccordionItem value={`item-${index + 1}`} key={module.id} className='mb-5 border-0'>
+                            <AccordionItem value={`item-${index + 1}`} key={module.id} className='mb-5 border-0 border-b pb-5'>
                                 <AccordionTrigger className="rounded-none">
                                     <div>
                                         <div className="text-sm font-light">Module {module.position}</div>
@@ -153,11 +202,12 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
 
                                         return (
                                             <div key={lesson.id} className="text-sm rounded p-4 bg-gray-50 border border-gray-100 flex items-start justify-between">
-                                                <div className="flex justify-between items-center w-full gap-3">
+                                                <div className="flex justify-between w-full gap-3">
                                                     <Link to={`modules/${module.id}/lessons/${lesson.id}`}>
                                                         <div className="font-light text-xs mb-1">Lesson {lesson.position}</div>
                                                         <h5 className='leading-4 mb-2'>{lesson.title}</h5>
-                                                        <div className='flex gap-2 items-center text-xs'>
+
+                                                        <div className='flex gap-2 items-center text-xs mb-2.5'>
                                                             <p className='flex items-center gap-1 mr-4 text-gray-500'>
                                                                 {lesson.videoUrl
                                                                     ? (<>
@@ -171,6 +221,9 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                                     </>)
                                                                 }
                                                             </p>
+                                                        </div>
+
+                                                        <div className='flex gap-2 items-center text-xs'>
                                                             <div className='flex items-center gap-2 px-2 py-0.5 border border-gray-600 bg-gray-100 text-xs text-gray-600 rounded-full'>
                                                                 <Clock size={14} />
                                                                 <span>{estimatedMinutes}:00</span>
@@ -179,6 +232,9 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                                 <div className='flex items-center gap-1 px-2 py-0.5 border border-sky-800 bg-sky-100 text-xs text-sky-800 rounded-full'>
                                                                     <span>Task</span>
                                                                     <Zap size={14} />
+                                                                    <span>
+                                                                        ({lesson.tasks?.length})
+                                                                    </span>
                                                                 </div>
                                                             )}
                                                         </div>
@@ -188,15 +244,15 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                         {lesson.completed
                                                             ? <div className=''>
                                                                 <CircleCheck
-                                                                    className="text-white bg-green-0 fill-green-500 rounded-full p-0.5"
+                                                                    className="text-white bg-green-0 fill-green-500 rounded-full p-0.5 animate-pulse"
                                                                     strokeWidth={1}
-                                                                    size={40}
+                                                                    size={50}
                                                                 />
                                                             </div>
                                                             : <CircleCheck
-                                                                className="text-foreground rounded-full p-1"
-                                                                strokeWidth={1}
-                                                                size={40}
+                                                                className="text-muted-foreground rounded-full p-1"
+                                                                strokeWidth={0.5}
+                                                                size={50}
                                                             />}
                                                     </div>
                                                 </div>
@@ -208,6 +264,10 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                             </AccordionItem>
                         ))}
                     </Accordion>
+
+                    <section>
+                        <CerticateCard />
+                    </section>
                 </div>
             </div>
 

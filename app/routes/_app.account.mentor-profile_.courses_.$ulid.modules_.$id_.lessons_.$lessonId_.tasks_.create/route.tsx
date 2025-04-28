@@ -73,6 +73,10 @@ export default function CreateTask({ actionData, params }: Route.ComponentProps)
                                         "formatting",
                                         "lists-indentation",
                                         "remove-formatting",
+                                        "blockquote-code",
+                                        "color-picker",
+                                        "size",
+                                        "blockquote-code"
                                     ]}
                                 />
                                 <input type="hidden" name="instruction" value={instruction} />

@@ -26,7 +26,7 @@ export async function clientAction({ params, request }: Route.ClientActionArgs) 
     const formData = await request.formData();
     const credentials = Object.fromEntries(formData);
     credentials.taskId = params.taskId;
-    
+
     try {
         await updateTask(credentials);
 
@@ -88,6 +88,10 @@ export default function EditTask({ loaderData, actionData, params }: Route.Compo
                                         "formatting",
                                         "lists-indentation",
                                         "remove-formatting",
+                                        "blockquote-code",
+                                        "color-picker",
+                                        "size",
+                                        "blockquote-code"
                                     ]}
                                 />
                                 <input type="hidden" name="instruction" value={instruction} />

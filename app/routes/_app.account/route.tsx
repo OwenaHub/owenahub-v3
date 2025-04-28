@@ -46,7 +46,7 @@ export default function AccountLayout() {
                     </div>
                 </div>
 
-                <div className="bg-primary-bg border border-primary-theme cursor-pointer hover:bg-gray-200 p-3 rounded-full">
+                    <div className="bg-primary-bg border border-primary-theme cursor-pointer hover:bg-white p-1.5 rounded-full">
                     <Popover>
                         <PopoverTrigger asChild>
                             <EllipsisVertical />

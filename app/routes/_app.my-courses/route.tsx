@@ -4,6 +4,7 @@ import { getEnrolledCourses } from "./course";
 import { Suspense } from "react";
 import CardSkeleton from "~/components/skeletons/card-skeleton-2";
 import { STORAGE_URL } from "~/lib/keys";
+import { Book, BookMarked, ChevronRight } from "lucide-react";
 
 export const meta: MetaFunction = () => {
     return [
@@ -39,73 +40,71 @@ export default function Courses({ loaderData }: Route.ComponentProps) {
                 </div>
             </div>
 
+            <section className="my-8">
+                <Link to="/courses" className="flex items-center gap-2 uppercase w-max px-2 py-1 border border-b-2 border-sky-600 text-sky-600 font-semibold rounded bg-sky-50 focus:border-b relative focus:top-0.5 hover:bg-white transition-all">
+                    <span className="text-xs">Explore courses</span>
+                    <ChevronRight size={14} />
+                </Link>
+            </section>
+
             <Suspense fallback={<CardSkeleton type='course' />}>
                 <Await resolve={enrolledCourses}>
                     {(enrolledCourses) =>
-                        <div className="grid grid-cols-1 gap-x-3 gap-y-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-3">
+                        <div className="grid grid-cols-1 gap-x-3 gap-y-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-3 mb-10">
                             {enrolledCourses.length
-                                ? (
-                                    enrolledCourses.map((course: any) => (
-                                        <div
-                                            className="grid grid-cols-4 border border-gray-300 gap-3 border-b pb-5 bg-white h-full rounded group relative transition animated fadeIn"
-                                            key={course.id}
-                                        >
-                                            <div className="bg-slate-100 col-span-4 md:col-span-4 md:rounded-t w-full aspect-square group-hover:opacity-75 lg:aspect-auto h-30 lg:h-44 overflow-hidden">
-                                                <img
-                                                    src={course.thumbnail
-                                                        ? `${STORAGE_URL}/${course.thumbnail}`
-                                                        : "/images/banners/default-course-img.png"}
-                                                    alt={course.title}
-                                                    className="h-full rounded-t w-full object-cover"
-                                                />
-                                            </div>
+                                ? (enrolledCourses.map((course: any) => (
+                                    <div
+                                        className="grid grid-cols-4 shadow-xs bg-gray-100 gap-3 border-b py-3.5 px-1 h-full rounded group relative transition animated fadeIn"
+                                        key={course.id}
+                                    >
+                                        <div className="flex flex-col col-span-4 px-3 flex-grow justify-between">
+                                            <section className="flex items-start gap-3">
+                                                <BookMarked className="h-10 w-10" strokeWidth={1} />
+                                                <div>
+                                                    <div className="flex flex-col gap-1.5 mb-3">
+                                                        <div className="flex items-center">
+                                                            <h3 className="text-gray-600 font-bold leading-5">
+                                                                <span className="leading-[-5px]">{course.title}</span>
+                                                                <Link to={`/my-courses/${course.id}`}>
+                                                                    <span aria-hidden="true" className="absolute inset-0" />
+                                                                </Link>
+                                                            </h3>
+                                                        </div>
+                                                    </div>
 
-                                            {/* Content Wrapper */}
-                                            <div className="flex flex-col col-span-4 px-3 flex-grow justify-between md:mt-2">
-                                                {/* Title & Description */}
-                                                <div className="flex flex-col gap-1.5 mb-3">
-                                                    <div className="flex items-center">
-                                                        <h3 className="text-gray-600 font-bold leading-5">
-                                                            <span className="leading-[-5px]">{course.title}</span>
-                                                            <Link to={`/my-courses/${course.id}`}>
-                                                                <span aria-hidden="true" className="absolute inset-0" />
-                                                            </Link>
-                                                        </h3>
+                                                    <div className="mt-auto">
+                                                        {course.modules && course.modules.length ? (
+                                                            (() => {
+                                                                const totalLessons = course.modules.reduce((total: number, module: any) => total + module.lessons.length, 0);
+
+                                                                const completedLessons = course.modules.reduce((total: number, module: any) =>
+                                                                    total + module.lessons.filter((lesson: any) => lesson.completed).length, 0);
+
+                                                                const progressPercentage = Math.round((completedLessons / totalLessons) * 100);
+
+                                                                return (
+                                                                    <div className="">
+                                                                        <div className="bg-white rounded-lg h-1.5 mb-2">
+                                                                            <div
+                                                                                className="bg-[#315E8B] h-1.5 rounded-lg"
+                                                                                style={{ width: `${progressPercentage}%` }}
+                                                                            />
+                                                                        </div>
+                                                                        <p className="text-xs text-gray-500 mt-1">
+                                                                            {completedLessons} of {totalLessons} lessons completed ({progressPercentage}%)
+                                                                        </p>
+                                                                    </div>
+                                                                );
+                                                            })()
+                                                        ) : (
+                                                            <p className="text-xs text-gray-500 mt-1">No lessons available</p>
+                                                        )}
                                                     </div>
                                                 </div>
-
-                                                {/* Course learning progress */}
-                                                <div className="mt-auto">
-                                                    {course.modules && course.modules.length ? (
-                                                        (() => {
-                                                            const totalLessons = course.modules.reduce((total: number, module: any) => total + module.lessons.length, 0);
-
-                                                            const completedLessons = course.modules.reduce((total: number, module: any) =>
-                                                                total + module.lessons.filter((lesson: any) => lesson.completed).length, 0);
-
-                                                            const progressPercentage = Math.round((completedLessons / totalLessons) * 100);
-
-                                                            return (
-                                                                <div className="">
-                                                                    <div className="bg-gray-100 rounded-lg h-1.5 mb-2">
-                                                                        <div
-                                                                            className="bg-[#315E8B] h-1.5 rounded-lg"
-                                                                            style={{ width: `${progressPercentage}%` }}
-                                                                        />
-                                                                    </div>
-                                                                    <p className="text-xs text-gray-500 mt-1">
-                                                                        {completedLessons} of {totalLessons} lessons completed ({progressPercentage}%)
-                                                                    </p>
-                                                                </div>
-                                                            );
-                                                        })()
-                                                    ) : (
-                                                        <p className="text-xs text-gray-500 mt-1">No lessons available</p>
-                                                    )}
-                                                </div>
-                                            </div>
+                                            </section>
                                         </div>
-                                    ))
+                                    </div>
+                                ))
                                 )
                                 : <p className="text-gray-500 text-sm py-1.5 w-max rounded">
                                     You haven't enrolled in any courses, <Link to="/courses" className="font-bold underline">see courses</Link>
