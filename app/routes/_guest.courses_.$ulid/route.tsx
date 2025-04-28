@@ -125,9 +125,9 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
                     <div className="text-sm" dangerouslySetInnerHTML={{ __html: course.description || "" }} />
                 </div>
 
-                <div className="md:w-2/3 mb-20">
+                <div className="md:w-2/3 mb-20" id="creator">
                     <h4 className="font-bold text-xl mb-4">Your Mentor</h4>
-                    <div className="flex gap-5 items-center" id="creator">
+                    <div className="flex gap-5 items-center">
                         <CustomAvatar name={course.creator?.name} styles="w-[5rem] h-[5rem] text-2xl" />
                         <div className=" max-w-full">
                             <h5 className="flex flex-col">

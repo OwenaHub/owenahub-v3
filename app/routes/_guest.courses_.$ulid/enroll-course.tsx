@@ -51,6 +51,7 @@ export default function EnrollCourse({ course }: { course: Course }) {
 function EnrollDialog({ course }: { course: Course }) {
     const navigation = useNavigation();
     const busy = navigation.formAction === `/courses/enroll/${course.id}`;
+    
     return (
         <>
             {course.price !== "0.00"

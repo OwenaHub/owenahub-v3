@@ -2,7 +2,7 @@ import type { Route } from '../_app.my-courses_.$ulid/+types/route';
 import { getCourse } from './get-course';
 import { toast } from 'sonner';
 import { Link, redirect } from 'react-router';
-import { ChevronLeft, CircleCheck, Clock, SquarePlay, Text, Zap } from 'lucide-react';
+import { ChevronLeft, CircleCheck, Clock, Send, SquarePlay, Text, Zap } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion';
 import { Button } from "~/components/ui/button"
 import {
@@ -23,7 +23,9 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
         return { course }
     } catch ({ response }: any) {
         console.log(response)
-        toast.info('Content unavailable')
+        toast.info('Content unavailable', {
+            description: response?.data?.error || response?.data?.message || 'Something went wrong',
+        })
         return redirect('/my-courses');
     }
 }
@@ -59,8 +61,8 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                     <div className="">
                                         <div className="bg-white rounded-lg h-2 mb-2">
                                             <div
-                                                className="bg-[#315E8B] h-2 rounded-lg"
-                                                style={{ width: `${progressPercentage}%` }}
+                                                className="progress-bar"
+                                                style={{ '--progress-width': `${progressPercentage}%` } as React.CSSProperties}
                                             />
                                         </div>
                                         <p className="text-xs text-gray-500 mt-1">
@@ -75,7 +77,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                     </div>
                 </div>
 
-                <div className=" items-start mb-5">
+                <div className="items-start mb-5">
                     <div className='text-sm my-4'>
                         <Dialog>
                             <DialogTrigger asChild>
@@ -97,22 +99,35 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                             <CustomAvatar name={course.creator?.name} styles='h-12 w-12' />
                                             <div className='text-start'>
                                                 <div>{course.creator?.name}</div>
-                                                <div className='text-primary-theme font-light text-sm'>
+                                                <div className='text-primary font-light text-sm'>
                                                     @{course.creator?.username}
                                                 </div>
                                             </div>
                                         </section>
                                     </DialogTitle>
                                     <DialogDescription className='text-start mt-2'>
-                                        {course.creator?.biography}
+                                        <div className="p-3 rounded  border-s-2 border border-sky-800 bg-sky-100 text-sky-800 text-sm mt-2">
+                                            <ul className='!m-0 '>
+                                                <li className='list-disc mb-1 list-item'>
+                                                    Keep your message brief and to the point.
+                                                </li>
+                                                <li className='list-disc mb-1 list-item'>
+                                                    Ensure to be polite and respectful in your communication.
+                                                </li>
+                                                <li className='list-disc mb-1 list-item'>
+                                                    Avoid using jargon or overly complex language.
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </DialogDescription>
                                 </DialogHeader>
 
                                 <DialogFooter>
-                                    <Button type="button" variant={'secondary'}>
+                                    <Button className='rounded flex items-center gap-2' type="button" variant={'outline'}>
                                         <a href="mailto:ernestharuna1@gmail.com">
                                             Send an Email
                                         </a>
+                                        <Send size={16} />
                                     </Button>
                                 </DialogFooter>
                             </DialogContent>

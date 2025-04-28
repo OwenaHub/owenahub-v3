@@ -75,7 +75,7 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                 Try personal plan today
                             </Button>
                             <div className="text-center text-xs max-w-xl font-light">
-                                Starting at ₦5,500 per month after trial  <BrMd />
+                                Starting at ₦2,500 per month after trial  <BrMd />
                                 Cancel anytime
                             </div>
 
@@ -185,7 +185,7 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                             Try personal plan today
                         </Button>
                         <div className="text-center text-xs max-w-xl font-light">
-                            Starting at ₦7,500 per month after trial
+                            Starting at ₦2,500 per month after trial
                             Cancel anytime
                         </div>
 

@@ -13,13 +13,14 @@ export async function clientAction({ params, request }: Route.ClientActionArgs) 
         });
 
         toast.success("Congratulations!", {
-            description: "You have enrolled in a new course"
-        })
+            description: "You have successfully enrolled"
+        });
+
         return redirect(`/my-courses/${params.ulid}`);
     } catch ({ response: { data } }: any) {
         toast.error("Enrollment failed", {
             description: `${data.error}`
         });
-        return redirect(`/courses/${params.ulid}`)
+        return redirect(`/courses/${params.ulid}`);
     }
 }
