@@ -150,13 +150,17 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                     </div>
                                 </AccordionTrigger>
                                 <AccordionContent className="flex flex-col gap-4 animated fadeIn">
-                                    {module.lessons.map((lesson: Lesson) => {
+                                    {module.lessons.map((lesson: Lesson, lessonIdx: number) => {
                                         const wordsPerMinute = 150; // Average reading speed
                                         const wordCount = lesson.content?.split(' ').length || 0;
                                         const estimatedMinutes = Math.ceil(wordCount / wordsPerMinute);
 
+                                        // Find the index of the last completed lesson
+                                        const lastCompletedIdx = module.lessons.map(l => l.completed).lastIndexOf(true);
+                                        const isNextAfterCompleted = lessonIdx === lastCompletedIdx + 1 && !lesson.completed;
+
                                         return (
-                                            <div key={lesson.id} className="text-sm rounded p-4 bg-gray-50 border border-gray-100 flex items-start justify-between">
+                                            <div key={lesson.id} className="text-sm rounded p-4 bg-gray-50 border border-gray-100">
                                                 <div className="flex justify-between w-full gap-3">
                                                     <Link to={`modules/${module.id}/lessons/${lesson.id}`}>
                                                         <div className="font-light text-xs mb-1">Lesson {lesson.position}</div>
@@ -194,6 +198,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                                         </div>
                                                                     )}
                                                                 </div>
+
                                                             </>
                                                         )}
 
@@ -205,6 +210,15 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                         }
                                                     </div>
                                                 </div>
+                                                {isNextAfterCompleted && (
+                                                    <Link to={`modules/${module.id}/lessons/${lesson.id}`}>
+                                                        <Button
+                                                            className="mt-3 px-8 w-full md:w-max bg-primary-bg border border-primary-theme hover:bg-white text-amber-800 font-semibold"
+                                                        >
+                                                            Start lesson
+                                                        </Button>
+                                                    </Link>
+                                                )}
                                             </div>
                                         )
                                     }
