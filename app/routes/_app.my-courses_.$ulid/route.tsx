@@ -1,8 +1,8 @@
 import type { Route } from '../_app.my-courses_.$ulid/+types/route';
 import { getCourse } from './get-course';
 import { toast } from 'sonner';
-import { Link, redirect, useSearchParams } from 'react-router';
-import { ChevronLeft, CircleCheck, Clock, Send, SquarePlay, Star, Text, Zap } from 'lucide-react';
+import { Link, redirect } from 'react-router';
+import { CheckCheck, ChevronLeft, Clock, Send, SquarePlay, Text, Zap } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion';
 import { Button } from "~/components/ui/button"
 import {
@@ -16,16 +16,7 @@ import {
 } from "~/components/ui/dialog"
 import CustomAvatar from '~/components/custom/custom-avatar';
 import CerticateCard from '~/components/cards/certificate-card';
-
-import {
-    AlertDialog,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-} from "~/components/ui/alert-dialog"
+import LessonCompleteModal from './lesson-complete-modal';
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
@@ -43,44 +34,10 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
 
 export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
     const { course }: { course: Course } = loaderData;
-    const [params, setParams] = useSearchParams();
 
     return (
         <div className='mb-20'>
-            <>
-                {String(params.get('completed')) === 'true' && (
-                    <AlertDialog open={true} onOpenChange={() => {
-                        const newParams = new URLSearchParams(params);
-                        newParams.delete('completed');
-                        setParams(newParams);
-                    }}>
-                        <AlertDialogContent className='bg-primary-bg border border-primary-theme'>
-                            <AlertDialogHeader>
-                                <AlertDialogTitle>
-                                    Lesson completed 🎉
-                                </AlertDialogTitle>
-                                <AlertDialogDescription>
-                                    <div className='flex flex-col gap-2'>
-                                        <p className='text-sm font-light'>You have completed this lesson.</p>
-                                        <p className='text-sm font-light'>Keep up the great work!</p>
-                                    </div>
-                                </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                                <AlertDialogCancel
-                                    className='bg-[#315E8B] text-white hover:bg-[#315E8B] hover:text-white'
-                                    onClick={() => setParams((prev) => {
-                                        prev.delete('completed');
-                                        return prev;
-                                    })}
-                                >
-                                    Continue
-                                </AlertDialogCancel>
-                            </AlertDialogFooter>
-                        </AlertDialogContent>
-                    </AlertDialog>
-                )}
-            </>
+            <LessonCompleteModal />
 
             <div className='flex text-sm items-center gap-2 tex-sm mb-3 mt-10 md:px-5'>
                 <Link to="/my-courses" className='flex text-nowrap items-center gap-2 hover:underline underline-offset-1'>
@@ -203,61 +160,49 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                 <div className="flex justify-between w-full gap-3">
                                                     <Link to={`modules/${module.id}/lessons/${lesson.id}`}>
                                                         <div className="font-light text-xs mb-1">Lesson {lesson.position}</div>
-                                                        <h5 className='leading-4 mb-2'>{lesson.title}</h5>
-
-                                                        <div className='flex gap-2 items-center text-xs mb-2.5'>
-                                                            <p className='flex items-center gap-1 mr-4 text-gray-500'>
-                                                                {lesson.videoUrl
-                                                                    ? (<>
-                                                                        <SquarePlay strokeWidth={1} size={18} />
-                                                                        <span>Video lesson</span>
-                                                                    </>
-                                                                    )
-                                                                    : (<>
-                                                                        <Text strokeWidth={1} size={18} />
-                                                                        <span>Text lesson</span>
-                                                                    </>)
-                                                                }
-                                                            </p>
-                                                        </div>
-
-                                                        <div className='flex gap-2 items-center text-xs'>
-                                                            <div className='flex items-center gap-2 px-2 py-0.5 border border-gray-600 bg-gray-100 text-xs text-gray-600 rounded-full'>
-                                                                <Clock size={14} />
-                                                                <span>{estimatedMinutes}:00</span>
-                                                            </div>
-                                                            {(lesson.tasks && lesson.tasks?.length > 0) && (
-                                                                <div className='flex items-center gap-1 px-2 py-0.5 border border-sky-800 bg-sky-100 text-xs text-sky-800 rounded-full'>
-                                                                    <span>Task</span>
-                                                                    <Zap size={14} />
-                                                                    <span>
-                                                                        ({lesson.tasks?.length})
-                                                                    </span>
+                                                        <h5 className='leading-4'>{lesson.title}</h5>
+                                                        {!lesson.completed && (
+                                                            <>
+                                                                <div className='flex gap-2 items-center text-xs my-2.5'>
+                                                                    <p className='flex items-center gap-1 mr-4 text-gray-500'>
+                                                                        {lesson.videoUrl
+                                                                            ? (<>
+                                                                                <SquarePlay strokeWidth={1} size={18} />
+                                                                                <span>Video lesson</span>
+                                                                            </>
+                                                                            )
+                                                                            : (<>
+                                                                                <Text strokeWidth={1} size={18} />
+                                                                                <span>Text lesson</span>
+                                                                            </>)
+                                                                        }
+                                                                    </p>
                                                                 </div>
-                                                            )}
-                                                        </div>
+
+                                                                <div className='flex gap-2 items-center text-xs'>
+                                                                    <div className='flex items-center gap-2 px-2 py-0.5 border border-gray-600 bg-gray-100 text-xs text-gray-600 rounded-full'>
+                                                                        <Clock size={14} />
+                                                                        <span>{estimatedMinutes}:00</span>
+                                                                    </div>
+                                                                    {(lesson.tasks && lesson.tasks?.length > 0) && (
+                                                                        <div className='flex items-center gap-1 px-2 py-0.5 border border-sky-800 bg-sky-100 text-xs text-sky-800 rounded-full'>
+                                                                            <span>Task</span>
+                                                                            <Zap size={14} />
+                                                                            <span>
+                                                                                ({lesson.tasks?.length})
+                                                                            </span>
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+                                                            </>
+                                                        )}
+
                                                     </Link>
 
                                                     <div className="">
                                                         {lesson.completed
-                                                            ? <div className=''>
-                                                                {/* <CircleCheck
-                                                                    className="text-white bg-green-0 fill-green-500 rounded-full p-0.5 animate-pulse"
-                                                                    strokeWidth={1}
-                                                                    size={50}
-                                                                /> */}
-                                                                <span className="relative flex size-10">
-                                                                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-100 opacity-75"></span>
-                                                                    <span className="relative inline-flex size-10 rounded-full bg-primary-bg border border-primary-theme">
-                                                                        <Star className='mx-auto my-auto text-primary-theme fill-current' strokeWidth={1} />
-                                                                    </span>
-                                                                </span>
-                                                            </div>
-                                                            : <CircleCheck
-                                                                className="text-muted-foreground rounded-full"
-                                                                strokeWidth={0.5}
-                                                                size={45}
-                                                            />}
+                                                            && <CheckCheck className='text-green-500' strokeWidth={3} />
+                                                        }
                                                     </div>
                                                 </div>
                                             </div>
@@ -275,6 +220,6 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                 </div>
             </div>
 
-        </div>
+        </div >
     )
 }
