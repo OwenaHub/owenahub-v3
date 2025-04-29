@@ -14,7 +14,7 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
             {/* Desktop banner */}
             <section className="bg-[#fff7eb] max-h-[55dvh] py-20 hidden lg:block">
                 <div className="container flex mt-20 gap-10 h-screen">
-                    <div className="flex basis-2/3 flex-col gap-4 items-start overflow-auto">
+                    <div className="flex basis-2/3 md:pe-30 flex-col gap-4 items-start overflow-auto">
                         <h1 className="text-xl md:text-5xl font-bold">
                             {course.title}
                         </h1>
