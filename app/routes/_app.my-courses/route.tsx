@@ -53,7 +53,7 @@ export default function Courses({ loaderData }: Route.ComponentProps) {
                             {enrolledCourses.length
                                 ? (enrolledCourses.map((course: any) => (
                                     <div
-                                        className="grid grid-cols-4 shadow-xs bg-gray-50x gap-3 border-b py-3.5 px-1 h-full rounded group relative transition animated fadeIn"
+                                        className="grid grid-cols-4 shadow-xs bg-gray-50 gap-3 border-b py-3.5 px-1 h-full rounded group relative transition animated fadeIn"
                                         key={course.id}
                                     >
                                         <div className="flex flex-col col-span-4 px-3 flex-grow justify-between">
