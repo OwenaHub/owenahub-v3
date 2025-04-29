@@ -100,7 +100,7 @@ export default function HomePage() {
             </h1>
 
             <section className="flex flex-col gap-5 my-10">
-              <span className="hidden md:block text-xl text-gray-700">
+              <span className="hidden md:block text-xl text-gray-700 z-10">
                 We offer comprehensive courses and dedicated <BrMd />
                 mentorship to ensure you never get stuck.
               </span>

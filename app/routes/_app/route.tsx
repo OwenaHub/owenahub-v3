@@ -33,7 +33,6 @@ export async function clientLoader() {
                 },
             })
         }
-        // * Registers users intended route in sessionStorage
         intendedRoute(window.location.pathname);
         return redirect('/login');
     }
@@ -49,8 +48,8 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
         <>
             <div className="container">
                 <section className="flex flex-col md:flex-row min-h-screen">
-                    <aside className="border-e hidden max-h-screen md:basis-1/5 md:block pr-5 py-6 sticky top-0">
-                        <div className="flex flex-col justify-between">
+                    <aside className="border-e hidden max-h-screen md:basis-1/5 md:block pr-4 py-6 sticky top-0">
+                        <div className="flex flex-col justify-between h-full max-h-screen">
                             <div id='nav-container'>
                                 <div className="flex justify-between items-center">
                                     <Link to={"/"} className='flex gap-1 items-center'>
@@ -96,7 +95,7 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                                     </div>
                                 </section>
 
-                                <div className="p-3 rounded text-sm mb-4 bg-primary-bg border border-primary-theme">
+                                {/* <div className="p-3 rounded text-sm mb-4 bg-primary-bg border border-primary-theme">
                                     <div className="text-base font-bold pb-2">Upgrade to premium</div>
                                     <p className="text-xs pb-3">
                                         Get full access to all courses offered on OwenaHub with a one time payment.
@@ -104,7 +103,7 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                                     <button className="bg-primary-theme rounded text-muted text-xs w-full font-bold px-4 py-2 uppercase cursor-pointer">
                                         Subscribe
                                     </button>
-                                </div>
+                                </div> */}
 
                                 <div className="rounded-md text-sm py-3">
                                     <div className="flex gap-2 items-center">
