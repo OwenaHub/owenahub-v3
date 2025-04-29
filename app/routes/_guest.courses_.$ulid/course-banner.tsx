@@ -12,13 +12,13 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
     return (
         <>
             {/* Desktop banner */}
-            <section className="bg-[#fff7eb] max-h-[55vh] py-20 hidden md:block">
+            <section className="bg-[#fff7eb] max-h-[55dvh] py-20 hidden lg:block">
                 <div className="container flex mt-20 gap-10 h-screen">
                     <div className="flex basis-2/3 flex-col gap-4 items-start overflow-auto">
-                        <h1 className="text-xl md:text-4xl font-bold">
+                        <h1 className="text-xl md:text-5xl font-bold">
                             {course.title}
                         </h1>
-                        <p>{course.about}</p>
+                        <p className='text-lg'>{course.about}</p>
                         <div className="flex items-center gap-2 font-semibold">
                             <span className="text-primary-theme">5.0</span>
                             <Rating />
@@ -46,9 +46,6 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                 <span>English</span>
                             </div>
                         </div>
-                        <div className='mt-5'>
-                            <SharePage />
-                        </div>
                     </div>
 
                     {/* Sticky Image Section */}
@@ -70,6 +67,9 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                 <p className="text-sm font-light">
                                     Get this course, plus all of our top-rated courses, <BrMd /> with Personal Plan.
                                 </p>
+                            </div>
+                            <div className='my-5 !text-lg'>
+                                <SharePage />
                             </div>
                             <Button className="w-full rounded py-6 text-lg mb-2">
                                 Try personal plan today
@@ -116,7 +116,7 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
             </section>
 
             {/* Mobile Banner */}
-            <section className='md:hidden'>
+            <section className='lg:hidden'>
                 <div className="bg-slate-100 col-span-1 md:col-span-4 h-60 w-full aspect-video group-hover:opacity-75 lg:h-auto overflow-hidden">
                     <img
                         src={course.thumbnail
@@ -164,10 +164,6 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                     English
                                 </span>
                             </div>
-                        </div>
-
-                        <div className='mt-5'>
-                            <SharePage />
                         </div>
                     </div>
 
@@ -221,6 +217,10 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
 
                             : <EnrollCourse course={course} />
                         }
+
+                        <div className='my-3 !text-lg'>
+                            <SharePage />
+                        </div>
                     </div>
                 </div>
             </section>

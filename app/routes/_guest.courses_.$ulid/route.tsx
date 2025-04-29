@@ -31,7 +31,7 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
         <div>
             <CourseBanner course={course} isEnrolled={isEnrolled} />
 
-            <div className="container flex flex-col gap-10 mt-8">
+            <div className="container flex flex-col gap-10 mt-8 md:pe-30">
                 <section className="mt-8 md:w-2/3 inline-block">
                     <div className="border border-gray-300 p-4">
                         <h4 className="font-bold text-xl mb-3">What you'll learn</h4>

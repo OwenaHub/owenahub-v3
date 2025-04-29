@@ -54,7 +54,7 @@ function CourseCard({ course }: { course: Course }) {
           <div className="flex gap-2 items-center text-xs mb-2">
             <p className="text-yellow-800 font-extrabold">4.7</p>
             <div className="flex gap-1">
-              <Rating rating={4.7} />
+              <Rating rating={5.0} />
             </div>
             <p className="text-gray-400">(99+)</p>
           </div>

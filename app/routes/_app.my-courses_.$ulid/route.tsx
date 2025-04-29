@@ -2,7 +2,7 @@ import type { Route } from '../_app.my-courses_.$ulid/+types/route';
 import { getCourse } from './get-course';
 import { toast } from 'sonner';
 import { Link, redirect, useSearchParams } from 'react-router';
-import { ChevronLeft, CircleCheck, Clock, Send, SquarePlay, Text, Zap } from 'lucide-react';
+import { ChevronLeft, CircleCheck, Clock, Send, SquarePlay, Star, Text, Zap } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion';
 import { Button } from "~/components/ui/button"
 import {
@@ -19,14 +19,12 @@ import CerticateCard from '~/components/cards/certificate-card';
 
 import {
     AlertDialog,
-    AlertDialogAction,
     AlertDialogCancel,
     AlertDialogContent,
     AlertDialogDescription,
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
-    AlertDialogTrigger,
 } from "~/components/ui/alert-dialog"
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
@@ -156,7 +154,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                     </DialogTitle>
                                     <DialogDescription className='text-start mt-2'>
                                         <div className="p-3 rounded  border-s-2 border border-sky-800 bg-sky-100 text-sky-800 text-sm mt-2">
-                                            <ul className='!m-0 '>
+                                            <ul>
                                                 <li className='list-disc mb-1 list-item'>
                                                     Keep your message brief and to the point.
                                                 </li>
@@ -243,16 +241,22 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                     <div className="">
                                                         {lesson.completed
                                                             ? <div className=''>
-                                                                <CircleCheck
+                                                                {/* <CircleCheck
                                                                     className="text-white bg-green-0 fill-green-500 rounded-full p-0.5 animate-pulse"
                                                                     strokeWidth={1}
                                                                     size={50}
-                                                                />
+                                                                /> */}
+                                                                <span className="relative flex size-10">
+                                                                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-100 opacity-75"></span>
+                                                                    <span className="relative inline-flex size-10 rounded-full bg-primary-bg border border-primary-theme">
+                                                                        <Star className='mx-auto my-auto text-primary-theme fill-current' strokeWidth={1} />
+                                                                    </span>
+                                                                </span>
                                                             </div>
                                                             : <CircleCheck
-                                                                className="text-muted-foreground rounded-full p-1"
+                                                                className="text-muted-foreground rounded-full"
                                                                 strokeWidth={0.5}
-                                                                size={50}
+                                                                size={45}
                                                             />}
                                                     </div>
                                                 </div>

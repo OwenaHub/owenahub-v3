@@ -47,7 +47,7 @@ export default function GuestCourses({ loaderData }: Route.ComponentProps) {
                         />
                         <div className="text-gray-500 bg-primary-bg group-focus-within:text-primary-theme h-full p-2 rounded-full">
                             <Search
-                                strokeWidth={1.3}
+                                strokeWidth={2}
                                 size={27}
                                 className=""
                             />

@@ -3,7 +3,7 @@ import type { Route } from "../_app.my-courses/+types/route";
 import { getEnrolledCourses } from "./course";
 import { Suspense } from "react";
 import CardSkeleton from "~/components/skeletons/card-skeleton-2";
-import { BookMarked, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 export const meta: MetaFunction = () => {
     return [
@@ -49,56 +49,53 @@ export default function Courses({ loaderData }: Route.ComponentProps) {
             <Suspense fallback={<CardSkeleton type='course' />}>
                 <Await resolve={enrolledCourses}>
                     {(enrolledCourses) =>
-                        <div className="grid grid-cols-1 gap-x-3 gap-y-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-3 mb-10">
+                        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-10">
                             {enrolledCourses.length
                                 ? (enrolledCourses.map((course: any) => (
                                     <div
-                                        className="grid grid-cols-4 shadow-xs bg-gray-50 gap-3 border-b py-3.5 px-1 h-full rounded group relative transition animated fadeIn"
+                                        className="grid grid-cols-4 shadow-xs hover:shadow-md bg-gray-50 gap-3 border-b py-3.5 px-1 h-full rounded group relative transition animated fadeIn"
                                         key={course.id}
                                     >
                                         <div className="flex flex-col col-span-4 px-3 flex-grow justify-between">
-                                            <section className="flex items-start gap-3">
-                                                <BookMarked className="h-10 w-10" strokeWidth={1} />
-                                                <div>
-                                                    <div className="flex flex-col gap-1.5 mb-3">
-                                                        <div className="flex items-center">
-                                                            <h3 className="text-gray-600 font-bold leading-5">
-                                                                <span className="leading-[-5px]">{course.title}</span>
-                                                                <Link to={`/my-courses/${course.id}`}>
-                                                                    <span aria-hidden="true" className="absolute inset-0" />
-                                                                </Link>
-                                                            </h3>
-                                                        </div>
+                                            <section className="flex flex-col justify-between min-h-full gap-">
+                                                <div className="flex flex-col gap-1.5 mb-3">
+                                                    <div className="flex items-center">
+                                                        <h3 className="text-gray-600 font-medium leading-5">
+                                                            <span className="leading-[-5px]">{course.title}</span>
+                                                            <Link to={`/my-courses/${course.id}`}>
+                                                                <span aria-hidden="true" className="absolute inset-0" />
+                                                            </Link>
+                                                        </h3>
                                                     </div>
+                                                </div>
 
-                                                    <div className="mt-auto">
-                                                        {course.modules && course.modules.length ? (
-                                                            (() => {
-                                                                const totalLessons = course.modules.reduce((total: number, module: any) => total + module.lessons.length, 0);
+                                                <div className="mt-auto">
+                                                    {course.modules && course.modules.length ? (
+                                                        (() => {
+                                                            const totalLessons = course.modules.reduce((total: number, module: any) => total + module.lessons.length, 0);
 
-                                                                const completedLessons = course.modules.reduce((total: number, module: any) =>
-                                                                    total + module.lessons.filter((lesson: any) => lesson.completed).length, 0);
+                                                            const completedLessons = course.modules.reduce((total: number, module: any) =>
+                                                                total + module.lessons.filter((lesson: any) => lesson.completed).length, 0);
 
-                                                                const progressPercentage = Math.round((completedLessons / totalLessons) * 100);
+                                                            const progressPercentage = Math.round((completedLessons / totalLessons) * 100);
 
-                                                                return (
-                                                                    <div className="">
-                                                                        <div className="bg-white rounded-lg h-1.5 mb-2">
-                                                                            <div
-                                                                                className="bg-[#315E8B] h-1.5 rounded-lg"
-                                                                                style={{ width: `${progressPercentage}%` }}
-                                                                            />
-                                                                        </div>
-                                                                        <p className="text-xs text-gray-500 mt-1">
-                                                                            {completedLessons} of {totalLessons} lessons completed ({progressPercentage}%)
-                                                                        </p>
+                                                            return (
+                                                                <div className="">
+                                                                    <div className="bg-white rounded-lg h-1.5 mb-2">
+                                                                        <div
+                                                                            className="bg-[#315E8B] h-1.5 rounded-lg"
+                                                                            style={{ width: `${progressPercentage}%` }}
+                                                                        />
                                                                     </div>
-                                                                );
-                                                            })()
-                                                        ) : (
-                                                            <p className="text-xs text-gray-500 mt-1">No lessons available</p>
-                                                        )}
-                                                    </div>
+                                                                    <p className="text-xs text-gray-500 mt-1">
+                                                                        {completedLessons} of {totalLessons} lessons completed ({progressPercentage}%)
+                                                                    </p>
+                                                                </div>
+                                                            );
+                                                        })()
+                                                    ) : (
+                                                        <p className="text-xs text-gray-500 mt-1">No lessons available</p>
+                                                    )}
                                                 </div>
                                             </section>
                                         </div>

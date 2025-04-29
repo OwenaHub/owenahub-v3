@@ -17,32 +17,40 @@ import useSession from '~/lib/session';
 
 export default function EnrollCourse({ course }: { course: Course }) {
     let session;
+    
     const [userSession, setUserSession] = useState(false)
 
     useEffect(() => {
         const { getUser } = useSession();
 
-        try {
-            const user = getUser();
+        const checkUser = async () => {
+            try {
+                const user = await getUser();
 
-            if (user)
-                session = true;
-            else
-                session = false;
+                if (user.id)
+                    session = true;
+                else
+                    session = false;
 
-            setUserSession(session)
-        } catch ({ response }: any) {
-            console.log(response);
-        }
+                setUserSession(session);
+            } catch ({ response }: any) {
+                throw response;
+            }
+        };
+
+        checkUser();
     }, []);
 
     return (
         <>
             {userSession
-                ? (<EnrollDialog course={course} />)
-                : (<Link to={"/register"} className="bg-primary-theme hover:opacity-65 hover:bg-amber-500 text-primary font-semibold rounded py-3 px-1.5 text-center text-lg">
+                ? <EnrollDialog course={course} />
+                : <Link
+                    to={"/register"}
+                    className="bg-primary-theme hover:opacity-65 hover:bg-amber-500 text-primary font-semibold rounded py-3 px-1.5 text-center text-lg"
+                >
                     Enroll now
-                </Link>)
+                </Link>
             }
         </>
     )
@@ -51,7 +59,7 @@ export default function EnrollCourse({ course }: { course: Course }) {
 function EnrollDialog({ course }: { course: Course }) {
     const navigation = useNavigation();
     const busy = navigation.formAction === `/courses/enroll/${course.id}`;
-    
+
     return (
         <>
             {course.price !== "0.00"
@@ -101,7 +109,7 @@ function EnrollDialog({ course }: { course: Course }) {
                 ) : (
                     <Dialog>
                         <DialogTrigger asChild>
-                            <Button className="bg-primary-theme hover:opacity-65 hover:bg-amber-500 text-primary uppercase rounded py-6 text-lg">
+                            <Button className="bg-primary-theme hover:opacity-65 hover:bg-amber-500 text-primary font-bold rounded py-6 text-lg">
                                 Enroll now
                             </Button>
                         </DialogTrigger>

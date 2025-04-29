@@ -19,7 +19,8 @@ export default function useSession() {
         try {
             const user: User = await getUser();
 
-            if (!user) return null;
+            if (!user)
+                return null;
 
             return user.accountType;
         } catch (error) {
@@ -30,16 +31,20 @@ export default function useSession() {
     async function storeUser(user: User) {
         try {
             const data = JSON.stringify(user);
-            Cookies.set(storageKeys.user, data, { expires: 1, sameSite: 'Lax', secure: true });
+            Cookies.set(storageKeys.user, data, { expires: 1 });
         } catch (error) {
             throw error;
         }
     }
 
-    function getUser() {
+    async function getUser() {
         try {
             const data = Cookies.get(storageKeys.user);
-            const user = data ? JSON.parse(data) : validateSession();
+
+            const user: User = data
+                ? JSON.parse(data)
+                : await validateSession();
+
             return user;
         } catch (error) {
             throw error;
@@ -48,7 +53,7 @@ export default function useSession() {
 
     async function intendedRoute(path: string) {
         if (path === "/") path = "/dashboard";
-        Cookies.set(storageKeys.route, path, { expires: 1, sameSite: 'Lax', secure: true });
+        Cookies.set(storageKeys.route, path);
     }
 
     async function getIntentedRoute(): Promise<string> {
