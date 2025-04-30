@@ -5,8 +5,9 @@ import dayjs from "dayjs";
 import { Button } from '~/components/ui/button';
 import { Link } from 'react-router';
 import EnrollCourse from './enroll-course';
-import { BrMd } from '~/components/utility/line-break';
 import SharePage from '~/components/navigation/share-page';
+import AvatarGroup from '~/components/custom/avatar-group';
+import { dummyNames } from './dummy-names';
 
 export default function CourseBanner({ course, isEnrolled }: { course: Course, isEnrolled: boolean }) {
     let image = course.thumbnail
@@ -34,7 +35,13 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                         <div className="flex items-center gap-2 font-semibold">
                             <span className="text-primary-theme">5.0</span>
                             <Rating />
-                            <span>(99+ ratings) 2,394 students</span>
+                            <span>(99+ ratings) 200+ students</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <AvatarGroup
+                                names={dummyNames}
+                                max={4}
+                            />
                         </div>
                         <div>
                             Created by {" "}
@@ -98,7 +105,13 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                         <div className="mt-3 flex text-sm items-center gap-2 font-semibold">
                             <span className="text-primary-theme">5.0</span>
                             <Rating />
-                            <span>(99+ ratings) 2,394 students</span>
+                            <span>(99+ ratings) 200+ students</span>
+                        </div>
+                        <div className='flex items-center gap-3'>
+                            <AvatarGroup
+                                names={dummyNames}
+                                max={4}
+                            />
                         </div>
                         <div className='text-sm mb-4'>
                             Created by {" "}
@@ -198,11 +211,6 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                             Starting at ₦2,500 per month after trial
                             Cancel anytime
                         </div>
-
-
-
-
-
                         <div className='my-3 !text-lg'>
                             <SharePage />
                         </div>

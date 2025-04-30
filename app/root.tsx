@@ -103,14 +103,13 @@ export function HydrateFallback() {
           <img src="/images/logos/logo.png" alt="OwenaHub" width={40} />
           <div className="text-end leading-3">
             <AppName size="text-base" />
-            <span className="text-gray-700 text-xs font-light animate-pulse">Learn by doing</span>
+            <span className="text-gray-700 text-xs font-normal animate-pulse">Learn by doing</span>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "Oops!";
