@@ -101,7 +101,7 @@ export function HydrateFallback() {
       <div>
         <div className="flex flex-row gap-3 mb-7 items-center">
           <img src="/images/logos/logo.png" alt="OwenaHub" width={40} />
-          <div className="text-center leading-3">
+          <div className="text-end leading-3">
             <AppName size="text-base" />
             <span className="text-gray-700 text-xs font-light animate-pulse">Learn by doing</span>
           </div>
