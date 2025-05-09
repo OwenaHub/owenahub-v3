@@ -2,21 +2,12 @@ import type { Route } from '../_app.my-courses_.$ulid/+types/route';
 import { getCourse } from './get-course';
 import { toast } from 'sonner';
 import { Link, redirect } from 'react-router';
-import { CheckCheck, ChevronLeft, Clock, Send, SquarePlay, Text, Zap } from 'lucide-react';
+import { CheckCheck, ChevronLeft, Clock, SquarePlay, Text, Youtube, Zap } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion';
 import { Button } from "~/components/ui/button"
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "~/components/ui/dialog"
-import CustomAvatar from '~/components/custom/custom-avatar';
 import CerticateCard from '~/components/cards/certificate-card';
 import LessonCompleteModal from './lesson-complete-modal';
+import MentorCard from './mentor-card';
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
@@ -65,7 +56,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                     <div className="">
                                         <div className="bg-white rounded h-3 mb-3">
                                             <div
-                                                className="bg-[#315E8B] h-3 rounded"
+                                                className={`h-3 rounded ${progressPercentage === 100 ? 'bg-green-500' : 'bg-[#315E8B]'}`}
                                                 style={{ width: `${progressPercentage}%` }}
                                             />
                                         </div>
@@ -81,68 +72,14 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                     </div>
                 </div>
 
-                <div className="items-start mb-5">
-                    <div className='text-sm my-4'>
-                        <Dialog>
-                            <DialogTrigger asChild>
-                                <div className='flex items-center gap-2'>
-                                    <CustomAvatar name={course.creator?.name} styles='h-12 w-12' />
-                                    <div className="">
-                                        <div className='font-light text-xs'>Course mentor</div>
-                                        <div className='text-[#315E8B] font-bold underline underline-offset-2'>
-                                            {course.creator?.name}
-                                        </div>
-                                    </div>
-                                </div>
-                            </DialogTrigger>
-
-                            <DialogContent className="sm:max-w-[425px]">
-                                <DialogHeader>
-                                    <DialogTitle>
-                                        <section className='flex gap-2 items-center'>
-                                            <CustomAvatar name={course.creator?.name} styles='h-12 w-12' />
-                                            <div className='text-start'>
-                                                <div>{course.creator?.name}</div>
-                                                <div className='text-primary font-light text-sm'>
-                                                    @{course.creator?.username}
-                                                </div>
-                                            </div>
-                                        </section>
-                                    </DialogTitle>
-                                    <DialogDescription className='text-start mt-2'>
-                                        <div className="p-3 rounded  border-s-2 border border-sky-800 bg-sky-100 text-sky-800 text-sm mt-2">
-                                            <ul>
-                                                <li className='list-disc mb-1 list-item'>
-                                                    Keep your message brief and to the point.
-                                                </li>
-                                                <li className='list-disc mb-1 list-item'>
-                                                    Ensure to be polite and respectful in your communication.
-                                                </li>
-                                                <li className='list-disc mb-1 list-item'>
-                                                    Avoid using jargon or overly complex language.
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </DialogDescription>
-                                </DialogHeader>
-
-                                <DialogFooter>
-                                    <Button className='rounded flex items-center gap-2' type="button" variant={'outline'}>
-                                        <a href="mailto:ernestharuna1@gmail.com">
-                                            Send an Email
-                                        </a>
-                                        <Send size={16} />
-                                    </Button>
-                                </DialogFooter>
-                            </DialogContent>
-                        </Dialog>
-                    </div>
+                <div className="items-start my-5">
+                    {course?.creator && <MentorCard user={course.creator} />}
                 </div>
 
                 <div className="">
                     <Accordion type="multiple" className="w-full" defaultValue={course.modules.map((_, index) => `item-${index + 1}`)}>
                         {course.modules.map((module: Module, index) => (
-                            <AccordionItem value={`item-${index + 1}`} key={module.id} className='mb-5 border-0 border-b pb-5'>
+                            <AccordionItem id={module.id} value={`item-${index + 1}`} key={module.id} className='mb-5 border-0 border-b pb-5'>
                                 <AccordionTrigger className="rounded-none">
                                     <div>
                                         <div className="text-sm font-light">Module {module.position}</div>
@@ -171,12 +108,16 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                                     <p className='flex items-center gap-1 mr-4 text-gray-500'>
                                                                         {lesson.videoUrl
                                                                             ? (<>
-                                                                                <SquarePlay strokeWidth={1} size={18} />
+                                                                                <Youtube
+                                                                                    strokeWidth={1}
+                                                                                    size={20}
+                                                                                    className='text-red-600'
+                                                                                />
                                                                                 <span>Video lesson</span>
                                                                             </>
                                                                             )
                                                                             : (<>
-                                                                                <Text strokeWidth={1} size={18} />
+                                                                                <Text strokeWidth={1} size={20} />
                                                                                 <span>Text lesson</span>
                                                                             </>)
                                                                         }

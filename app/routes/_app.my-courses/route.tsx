@@ -46,14 +46,14 @@ export default function Courses({ loaderData }: Route.ComponentProps) {
                 </Link>
             </section>
 
-            <Suspense fallback={<CardSkeleton type='course' />}>
+            <Suspense fallback={<CardSkeleton type='card' />}>
                 <Await resolve={enrolledCourses}>
                     {(enrolledCourses) =>
                         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-10">
                             {enrolledCourses.length
                                 ? (enrolledCourses.map((course: any) => (
                                     <div
-                                        className="grid grid-cols-4 shadow-xs hover:shadow-md bg-gray-50 gap-3 border-b py-3.5 px-1 h-full rounded group relative transition animated fadeIn"
+                                        className="grid grid-cols-4 shadow-xs hover:shadow-md border border-gray-100 bg-gray-50 gap-3 border-b py-3.5 px-1 h-full rounded group relative transition animated fadeIn"
                                         key={course.id}
                                     >
                                         <div className="flex flex-col col-span-4 px-3 flex-grow justify-between">
@@ -80,17 +80,17 @@ export default function Courses({ loaderData }: Route.ComponentProps) {
                                                             const progressPercentage = Math.round((completedLessons / totalLessons) * 100);
 
                                                             return (
-                                                                <div className="">
+                                                                <>
                                                                     <div className="bg-white rounded-lg h-1.5 mb-2">
                                                                         <div
-                                                                            className="bg-[#315E8B] h-1.5 rounded-lg"
+                                                                            className={`h-1.5 rounded ${progressPercentage === 100 ? 'bg-green-500' : 'bg-[#315E8B]'}`}
                                                                             style={{ width: `${progressPercentage}%` }}
                                                                         />
                                                                     </div>
                                                                     <p className="text-xs text-gray-500 mt-1">
                                                                         {completedLessons} of {totalLessons} lessons completed ({progressPercentage}%)
                                                                     </p>
-                                                                </div>
+                                                                </>
                                                             );
                                                         })()
                                                     ) : (

@@ -1,6 +1,7 @@
 export const storageKeys = {
     user: "@owenahub:user",
     route: "@owenahub:intended_route",
+    course: "@owenahub:course",
 };
 
 export const BASE_URL = import.meta.env.BASE_URL;

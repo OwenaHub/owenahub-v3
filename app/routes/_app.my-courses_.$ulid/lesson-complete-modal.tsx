@@ -1,5 +1,8 @@
 import { AlertDialog } from '@radix-ui/react-alert-dialog';
 import { useSearchParams } from 'react-router';
+
+import { useEffect, useMemo } from 'react';
+
 import {
     AlertDialogCancel,
     AlertDialogContent,
@@ -9,8 +12,58 @@ import {
     AlertDialogTitle
 } from '~/components/ui/alert-dialog';
 
+const TITLES = [
+    "Lesson completed 🎉",
+    "Great job! 🚀",
+    "You did it! 🌟",
+    "Awesome work! 🙌",
+    "Congratulations! 🏆"
+];
+
+const DESCRIPTIONS = [
+    [
+        "You crushed this lesson! 🎊",
+        "Keep the energy going—you're unstoppable!"
+    ],
+    [
+        "Another lesson bites the dust! 😎",
+        "Your progress is on fire—keep blazing ahead!"
+    ],
+    [
+        "High five for finishing this lesson! ✋",
+        "Stay curious and let the adventure continue!"
+    ],
+    [
+        "Lesson complete—you're leveling up! 🕹️",
+        "Ready for the next epic quest?"
+    ],
+    [
+        "You totally rocked it! 🤘",
+        "Let’s ride this wave of awesomeness to the next lesson!"
+    ]
+];
+
 export default function LessonCompleteModal() {
     const [params, setParams] = useSearchParams();
+
+    const randomIndex = useMemo(() => {
+        if (String(params.get('completed')) === 'true') {
+            return Math.floor(Math.random() * TITLES.length);
+        }
+        return 0;
+    }, [params.get('completed')]);
+
+    useEffect(() => {
+        if (params.get('completed') !== 'true') {
+            const moduleId = params.get('moduleId');
+            if (moduleId) {
+                const el = document.getElementById(moduleId);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        }
+    }, [params.get('completed'), params.get('moduleId')]);
 
     return (
         <>
@@ -23,22 +76,25 @@ export default function LessonCompleteModal() {
                     <AlertDialogContent className='bg-primary-bg border border-primary-theme'>
                         <AlertDialogHeader>
                             <AlertDialogTitle>
-                                Lesson completed 🎉
+                                {TITLES[randomIndex]}
                             </AlertDialogTitle>
                             <AlertDialogDescription>
                                 <div className='flex flex-col gap-2'>
-                                    <p className='text-sm font-light'>You have completed this lesson.</p>
-                                    <p className='text-sm font-light'>Keep up the great work!</p>
+                                    {DESCRIPTIONS[randomIndex].map((line, i) => (
+                                        <p key={i} className='text-sm font-light'>{line}</p>
+                                    ))}
                                 </div>
                             </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
                             <AlertDialogCancel
                                 className='bg-[#315E8B] text-white hover:bg-[#315E8B] hover:text-white'
-                                onClick={() => setParams((prev) => {
-                                    prev.delete('completed');
-                                    return prev;
-                                })}
+                                onClick={() => {
+                                    setParams((prev) => {
+                                        prev.delete('completed');
+                                        return prev;
+                                    });
+                                }}
                             >
                                 Continue
                             </AlertDialogCancel>
