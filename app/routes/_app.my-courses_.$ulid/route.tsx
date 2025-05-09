@@ -80,7 +80,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                 <div className="">
                     <Accordion type="multiple" className="w-full" defaultValue={course.modules.map((_, index) => `item-${index + 1}`)}>
                         {course.modules.map((module: Module, index) => (
-                            <AccordionItem id={module.id} value={`item-${index + 1}`} key={module.id} className='mb-5 border-0 border-b pb-5'>
+                            <AccordionItem value={`item-${index + 1}`} key={module.id} className='mb-5 border-0 border-b pb-5'>
                                 <AccordionTrigger className="rounded-none">
                                     <div>
                                         <div className="text-sm font-light">Module {module.position}</div>
@@ -98,7 +98,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                         const isNextAfterCompleted = lessonIdx === lastCompletedIdx + 1 && !lesson.completed;
 
                                         return (
-                                            <div key={lesson.id} className="text-sm rounded p-4 bg-gray-50 border border-gray-100">
+                                            <div key={lesson.id} id={`lesson-${lesson.id}`} className="text-sm rounded p-4 bg-gray-50 border border-gray-100">
                                                 <div className="flex justify-between w-full gap-3">
                                                     <Link
                                                         to={`modules/${module.id}/lessons/${lesson.id}`}

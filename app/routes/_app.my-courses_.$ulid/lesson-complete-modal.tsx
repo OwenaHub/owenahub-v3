@@ -55,15 +55,15 @@ export default function LessonCompleteModal() {
 
     useEffect(() => {
         if (params.get('completed') !== 'true') {
-            const moduleId = params.get('moduleId');
-            if (moduleId) {
-                const el = document.getElementById(moduleId);
+            const lessonId = params.get('lessonId');
+            if (lessonId) {
+                const el = document.getElementById(`lesson-${lessonId}`);
                 if (el) {
                     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             }
         }
-    }, [params.get('completed'), params.get('moduleId')]);
+    }, [params.get('completed')]);
 
     return (
         <>
@@ -74,14 +74,14 @@ export default function LessonCompleteModal() {
                     setParams(newParams);
                 }}>
                     <AlertDialogContent className='bg-primary-bg border border-primary-theme'>
-                        <AlertDialogHeader>
+                        <AlertDialogHeader className='text-start'>
                             <AlertDialogTitle>
                                 {TITLES[randomIndex]}
                             </AlertDialogTitle>
                             <AlertDialogDescription>
                                 <div className='flex flex-col gap-2'>
                                     {DESCRIPTIONS[randomIndex].map((line, i) => (
-                                        <p key={i} className='text-sm font-light'>{line}</p>
+                                        <p key={i} className='text-sm'>{line}</p>
                                     ))}
                                 </div>
                             </AlertDialogDescription>
