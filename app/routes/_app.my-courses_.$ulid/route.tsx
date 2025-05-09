@@ -2,17 +2,18 @@ import type { Route } from '../_app.my-courses_.$ulid/+types/route';
 import { getCourse } from './get-course';
 import { toast } from 'sonner';
 import { Link, redirect } from 'react-router';
-import { CheckCheck, ChevronLeft, Clock, SquarePlay, Text, Youtube, Zap } from 'lucide-react';
+import { CheckCheck, ChevronLeft, Clock, Text, Youtube, Zap } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion';
 import { Button } from "~/components/ui/button"
 import CerticateCard from '~/components/cards/certificate-card';
 import LessonCompleteModal from './lesson-complete-modal';
 import MentorCard from './mentor-card';
+import { storeLessonActivity } from '~/lib/user-activity';
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
         if (!params.ulid) throw new Error("Bad Request");
-        const course = await getCourse(params.ulid);
+        const course: Course = await getCourse(params.ulid);
         return { course }
     } catch ({ response }: any) {
         console.log(response)
@@ -99,7 +100,16 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                         return (
                                             <div key={lesson.id} className="text-sm rounded p-4 bg-gray-50 border border-gray-100">
                                                 <div className="flex justify-between w-full gap-3">
-                                                    <Link to={`modules/${module.id}/lessons/${lesson.id}`}>
+                                                    <Link
+                                                        to={`modules/${module.id}/lessons/${lesson.id}`}
+                                                        onClick={() => {
+                                                            storeLessonActivity({
+                                                                path: `/my-courses/${course.id}/modules/${module.id}/lessons/${lesson.id}`,
+                                                                module: module,
+                                                                lesson: lesson
+                                                            });
+                                                        }}
+                                                    >
                                                         <div className="font-light text-xs mb-1">Lesson {lesson.position}</div>
                                                         <h5 className='leading-4'>{lesson.title}</h5>
                                                         {!lesson.completed && (
@@ -139,7 +149,6 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                                         </div>
                                                                     )}
                                                                 </div>
-
                                                             </>
                                                         )}
 

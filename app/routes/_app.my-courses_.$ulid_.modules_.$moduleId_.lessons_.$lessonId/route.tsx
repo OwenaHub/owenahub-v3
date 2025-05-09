@@ -25,7 +25,7 @@ import NavigateBack from '~/components/navigation/navigate-back'
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
-        const lesson = await getLesson(params.ulid, params.moduleId, params.lessonId);
+        const lesson: Lesson = await getLesson(params.ulid, params.moduleId, params.lessonId);        
         return lesson;
     } catch ({ response }: any) {
         console.log(response);
@@ -46,7 +46,6 @@ export async function clientAction({ request, params }: Route.ClientActionArgs) 
         const error: any = response?.data?.errors;
         return error;
     }
-
 }
 
 export default function ViewLesson({ loaderData }: Route.ComponentProps) {
@@ -167,8 +166,6 @@ export default function ViewLesson({ loaderData }: Route.ComponentProps) {
                                     </Button>
                                 </Form>
                             }
-
-
                         </AlertDialogFooter>
                     </AlertDialogContent>
                 </AlertDialog>
