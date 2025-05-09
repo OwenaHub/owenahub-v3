@@ -31,7 +31,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
         <div className='mb-20'>
             <LessonCompleteModal />
 
-            <div className='flex text-sm items-center gap-2 tex-sm mb-3 mt-10 md:px-5'>
+            <div className='flex text-sm uppercase items-center gap-2 tex-sm mb-3 mt-10 md:px-5'>
                 <Link to="/my-courses" className='flex text-nowrap items-center gap-2 hover:underline underline-offset-1'>
                     <ChevronLeft size={16} />
                     <span>My courses</span>

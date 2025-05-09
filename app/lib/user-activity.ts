@@ -9,6 +9,7 @@ export function storeLessonActivity({ path, module, lesson }:
         lessonPosition: lesson.position,
         modulePosition: module.position,
     });
+    console.log(cookieData);
 
     Cookies.set(storageKeys.lessonActivity, cookieData);
 };

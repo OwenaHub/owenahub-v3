@@ -1,5 +1,5 @@
-import { Check, RotateCw, X, Zap } from 'lucide-react'
-import { Form, redirect } from 'react-router'
+import { Check, ChevronLeft, RotateCw, X, Zap } from 'lucide-react'
+import { Form, Link, redirect } from 'react-router'
 import type { Route } from '../_app.my-courses_.$ulid_.modules_.$moduleId_.lessons_.$lessonId/+types/route'
 import { toast } from 'sonner'
 import { getLesson, markDone } from './get-lesson'
@@ -21,11 +21,10 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "~/components/ui/accordion"
-import NavigateBack from '~/components/navigation/navigate-back'
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     try {
-        const lesson: Lesson = await getLesson(params.ulid, params.moduleId, params.lessonId);        
+        const lesson: Lesson = await getLesson(params.ulid, params.moduleId, params.lessonId);
         return lesson;
     } catch ({ response }: any) {
         console.log(response);
@@ -48,14 +47,18 @@ export async function clientAction({ request, params }: Route.ClientActionArgs) 
     }
 }
 
-export default function ViewLesson({ loaderData }: Route.ComponentProps) {
+export default function ViewLesson({ loaderData, params }: Route.ComponentProps) {
     const lesson: Lesson = loaderData;
 
     return (
         <div className='md:px-6 mb-20'>
             <div className='mb-10'>
                 <div className='mb-5 mt-10'>
-                    <NavigateBack />
+                    <div className="mb-4">
+                        <Link to={`/my-courses/${params.ulid}`} aria-label="Go back" className="flex gap-1 text-xs items-center uppercase hover:underline hover:underline-offset-2">
+                            <ChevronLeft size={18} strokeWidth={2} /> <span>Go back</span>
+                        </Link>
+                    </div>
                 </div>
 
                 {lesson.videoUrl && (
@@ -98,7 +101,7 @@ export default function ViewLesson({ loaderData }: Route.ComponentProps) {
             <div className="my-8">
                 <AlertDialog>
                     <AlertDialogTrigger asChild>
-                        <Button className='bg-[#315E8B] border border-[#1d3c5a] border-b-4 py-6 mx-auto w-full md:w-xs'>
+                        <Button className='bg-[#315E8B] border border-[#1d3c5a] border-b-4 py-5 mx-auto w-full md:w-xs'>
                             <span className='uppercase font-light'>Finish lesson</span>
                             <Zap size={20} />
                         </Button>
