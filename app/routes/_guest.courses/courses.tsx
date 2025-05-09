@@ -21,7 +21,7 @@ export default function Courses({ courses }: { courses: Course[] }) {
 
 function CourseCard({ course }: { course: Course }) {
   return (
-    <div className="grid grid-cols-4 shadow bg-white h-full rounded group relative transition">
+    <div className="grid grid-cols-4 border border-b-2 bg-white h-full rounded group relative transition">
       <div className="bg-slate-100 ms-2 mt-2 md:ms-0 md:mt-0 col-span-1 md:col-span-4 md:rounded-t w-full aspect-square group-hover:opacity-75 lg:aspect-auto lg:h-44 overflow-hidden">
         <img
           src={course.thumbnail

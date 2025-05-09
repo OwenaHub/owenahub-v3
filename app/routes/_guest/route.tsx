@@ -9,7 +9,7 @@ export async function clientLoader(_: Route.ClientLoaderArgs) {
     const { getUser } = useSession();
 
     try {
-        const user: User = getUser();
+        const user: User = await getUser();
         let session: boolean;
 
         if (user.name)

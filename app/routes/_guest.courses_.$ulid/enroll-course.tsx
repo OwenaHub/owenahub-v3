@@ -10,6 +10,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "~/components/ui/dialog"
+import { Checkbox } from "~/components/ui/checkbox"
 import { Input } from "~/components/ui/input"
 import { Label } from "~/components/ui/label"
 import useSession from '~/lib/session';
@@ -17,7 +18,7 @@ import useSession from '~/lib/session';
 
 export default function EnrollCourse({ course }: { course: Course }) {
     let session;
-    
+
     const [userSession, setUserSession] = useState(false)
 
     useEffect(() => {
@@ -59,6 +60,7 @@ export default function EnrollCourse({ course }: { course: Course }) {
 function EnrollDialog({ course }: { course: Course }) {
     const navigation = useNavigation();
     const busy = navigation.formAction === `/courses/enroll/${course.id}`;
+    const [checked, setChecked] = useState(false);
 
     return (
         <>
@@ -118,14 +120,39 @@ function EnrollDialog({ course }: { course: Course }) {
                                 <DialogTitle>Are you sure?</DialogTitle>
                                 <DialogDescription>
                                     <p className='mb-2'>
-                                        Enroll to <span className="font-semibold">{course.title}</span> ?
+                                        Enroll to <span className="font-semibold">{course.title}</span>?
                                     </p>
 
                                     <div className="border text-sm px-2.5 py-2 bg-sky-100 border-sky-600 text-sky-900 rounded-md">
                                         Ensure you have spoken with a mentor from OwenaHub before you enroll in this course. {" "}
-                                        <br />
-                                        <br />
-                                        <a href="mailto:ernestharuna1@gmail.com" className='font-bold underline underline-offset-1'>Email mentor</a>{" "}
+
+                                        <p className="my-3 font-bold">
+                                            Message Mentor via;
+                                        </p>
+                                        <div className="flex items-center gap-3">
+                                            <a
+                                                href="https://wa.me/message/YTN3LW4BSF6DC1"
+                                                rel="noopener"
+                                                target='_blank'
+                                                className="p-2 flex-1 !text-center rounded bg-[#25D366] text-white flex items-center gap-1"
+                                            >
+                                                WhatsApp
+                                            </a>
+                                            <a href="mailto:ernestharuna1@gmail.com" className="p-2 flex-1 !text-center rounded bg-white border border-gray-500 text-black flex items-center gap-1">
+                                                E-mail
+                                            </a>
+                                        </div>
+
+                                    </div>
+
+                                    <div className="flex items-center space-x-2 mt-5">
+                                        <Checkbox id="terms" checked={checked} onCheckedChange={() => setChecked(!checked)} />
+                                        <label
+                                            htmlFor="terms"
+                                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                        >
+                                            Yes, I have contacted the mentor
+                                        </label>
                                     </div>
                                 </DialogDescription>
                             </DialogHeader>
@@ -133,7 +160,10 @@ function EnrollDialog({ course }: { course: Course }) {
                                 action={`/courses/enroll/${course.id}`}
                                 method="POST"
                             >
-                                <Button className='rounded font-bold bg-[#fff7eb] border border-primary-theme text-secondary-foreground hover:bg-white transition uppercase w-full disabled:cursor-not-allowed' disabled={busy}>
+                                <Button
+                                    className='rounded font-bold bg-[#fff7eb] border border-primary-theme text-secondary-foreground hover:bg-white transition uppercase w-full disabled:cursor-not-allowed'
+                                    disabled={busy || !checked}
+                                >
                                     {busy
                                         ? <Loader size={18} className='animate-spin' />
                                         : "Yes, enroll"

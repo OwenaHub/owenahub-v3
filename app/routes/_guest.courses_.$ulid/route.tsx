@@ -153,7 +153,9 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
                         </div>
                     </div>
                 </section>
-                <div className="hidden md:block w-1.8/3">
+
+                {/* Aside info for larger screens */}
+                <aside className="hidden md:block w-1.8/3">
                     <div className="border border-b-4 rounded border-primary-theme bg-primary-bg sticky top-28 mb-8 shadow-lg text-xl p-5 flex flex-col gap-2">
                         <h4 className="text-2xl mb-3">
                             {course.price !== "0.00"
@@ -228,7 +230,7 @@ export default function GuestViewCourse({ loaderData }: Route.ComponentProps) {
                             <SharePage />
                         </div>
                     </div>
-                </div>
+                </aside>
             </div>
         </div>
     )

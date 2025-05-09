@@ -39,10 +39,10 @@ export default function useSession() {
 
     async function getUser() {
         try {
-            const data = Cookies.get(storageKeys.user);
+            const cookieData = Cookies.get(storageKeys.user);
 
-            const user: User = data
-                ? JSON.parse(data)
+            const user: User = cookieData
+                ? JSON.parse(cookieData)
                 : await validateSession();
 
             return user;

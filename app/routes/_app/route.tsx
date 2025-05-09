@@ -119,15 +119,17 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                     </aside>
 
                     <main className="flex-1 w-full transition">
-                        <header className='flex justify-between items-center md:hidden py-3 sticky top-0 bg-white/80 backdrop-blur-md z-50'>
-                            <Link to={'/dashboard'} className='flex gap-1 items-center'>
-                                <img src='/images/logos/logo.png' width={25} title='OwenaHub' /> <AppName size='base' />
-                            </Link>
-                            <div className='flex gap-1 items-center'>
-                                <AppNotification notifications={notifications} />
+                        <header className='flex justify-between items-center md:hidden py-2.5 sticky top-0 bg-white/80 backdrop-blur-md z-50'>
+                            <div className="flex items-center gap-1">
                                 <Link to="/account">
                                     <CustomAvatar name={user?.name} styles="w-10 h-10" />
                                 </Link>
+                                <p className='text-primary text-sm capitalize font-light'>
+                                    {user?.name.split(" ")[0]}
+                                </p>
+                            </div>
+                            <div className='flex gap-1 items-center'>
+                                <AppNotification notifications={notifications} />
                             </div>
                         </header>
                         <div className={`${busy && "opacity-35"} transition overflow-x-hidden`}>
