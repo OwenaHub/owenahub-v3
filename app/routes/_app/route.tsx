@@ -124,8 +124,8 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                                 <Link to="/account">
                                     <CustomAvatar name={user?.name} styles="w-10 h-10" />
                                 </Link>
-                                <p className='text-primary text-sm capitalize font-light'>
-                                    {user?.name.split(" ")[0]}
+                                <p className='text-primary text-sm capitalize font-medium'>
+                                    {user?.name.split(" ")[0]} •
                                 </p>
                             </div>
                             <div className='flex gap-1 items-center'>

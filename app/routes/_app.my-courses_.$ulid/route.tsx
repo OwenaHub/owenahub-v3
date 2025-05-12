@@ -111,7 +111,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                         }}
                                                     >
                                                         <div className="font-light text-xs mb-1">Lesson {lesson.position}</div>
-                                                        <h5 className='leading-4'>{lesson.title}</h5>
+                                                        <h5 className='leading-4 font-medium'>{lesson.title}</h5>
                                                         {!lesson.completed && (
                                                             <>
                                                                 <div className='flex gap-2 items-center text-xs my-2.5'>

@@ -9,9 +9,9 @@ export default function CardSkeleton({ type }: { type?: "course" | "card" }) {
         )
     } else {
         return (
-            <div className="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-3 sm:grid-cols-2 xl:gap-x-6 mb-5 animated fadeIn">
+            <div className="grid grid-cols-1 gap-x-4 gap-y-4 lg:grid-cols-3 sm:grid-cols-2 xl:gap-x-6 mb-5 animated fadeIn">
                 {Array.from({ length: 3 }).map((_, index) => (
-                    <div key={index} className="flex-1 h-24 bg-gray-100 animate-pulse rounded-lg mb-2" />
+                    <div key={index} className="flex-1 h-28 bg-gray-100 animate-pulse rounded-lg mb-2" />
                 ))}
             </div>
         )

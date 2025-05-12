@@ -31,19 +31,18 @@
 }
 
 .ql-code-block-container {
-    background-color: #1e1e1e;
+    background-color: #222221;
     color: #fff;
     padding: 1rem;
     overflow-x: auto;
     border-radius: 10px;
     font-family: monospace;
-    white-space: pre;
-    font-size: 14px;
-    border: 1px solid #333;
-    margin: 1.5rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: max-content;
-    max-width: 90vw;
+    white-space: pre-wrap;
+    word-break: break-all;
+    font-size: 12px;
+    outline: 0.5px solid #222;
+    outline-offset: 3px;
+    margin: 1.5rem 5px;
 }
 
 .ql-font-serif {

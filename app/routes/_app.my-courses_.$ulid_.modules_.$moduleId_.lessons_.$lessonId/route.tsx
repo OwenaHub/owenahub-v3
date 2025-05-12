@@ -55,7 +55,7 @@ export default function ViewLesson({ loaderData, params }: Route.ComponentProps)
             <div className='mb-10'>
                 <div className='mb-5 mt-10'>
                     <div className="mb-4">
-                        <Link to={`/my-courses/${params.ulid}`} aria-label="Go back" className="flex gap-1 text-xs items-center uppercase hover:underline hover:underline-offset-2">
+                        <Link to={`/my-courses/${params.ulid}/?lessonId=${params.lessonId}`} aria-label="Go back" className="flex gap-1 text-xs items-center uppercase hover:underline hover:underline-offset-2">
                             <ChevronLeft size={18} strokeWidth={2} /> <span>Go back</span>
                         </Link>
                     </div>

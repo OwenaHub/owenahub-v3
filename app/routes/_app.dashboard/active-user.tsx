@@ -23,8 +23,8 @@ export default function ActiveUser({ user, activity }: { user: User, activity: L
     return (
         <>
             <div className="mb-10">
-                <h1 className="text-primary text-2xl font-extrabold mb-3 md:mt-20 md:text-4xl">
-                    {greeting}, <br />
+                <h1 className="text-primary text-3xl text-pretty font-extrabold mb-3 md:mt-20 md:text-4xl">
+                    {greeting}, <br className='block md:hidden' />
                     <span className="text-[#F6A700]">{user.name.split(" ")[0]}</span> 💛
                 </h1>
                 <p className="text-sm leading-7">

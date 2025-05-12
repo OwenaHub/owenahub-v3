@@ -54,7 +54,7 @@ export default function LessonCompleteModal() {
     }, [params.get('completed')]);
 
     useEffect(() => {
-        if (params.get('completed') !== 'true') {
+        if (!params.get('completed')) {
             const lessonId = params.get('lessonId');
             if (lessonId) {
                 const el = document.getElementById(`lesson-${lessonId}`);
@@ -63,7 +63,7 @@ export default function LessonCompleteModal() {
                 }
             }
         }
-    }, [params.get('completed')]);
+    }, [params]);
 
     return (
         <>

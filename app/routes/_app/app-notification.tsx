@@ -42,8 +42,8 @@ export default function AppNotification({ className, notifications, ...props }: 
             <PopoverTrigger asChild>
                 <div className="p-2 rounded-full hover:bg-gray-100 cursor-pointer">
                     <div className='relative'>
-                        <Bell className="" strokeWidth={1} size={30}  />
-                        <span className="h-2.5 w-2.5 absolute top-0 right-0.5 rounded-full bg-destructive border border-white" />
+                        <Bell className="text-[#0f243a]" size={28}  />
+                        <span className="h-2.5 w-2.5 absolute top-0 right-0.5 rounded-full bg-primary-theme border border-white" />
                     </div>
                 </div>
             </PopoverTrigger>

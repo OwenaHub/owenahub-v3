@@ -25,7 +25,6 @@ export async function clientLoader({ }: Route.ClientLoaderArgs) {
 export default function Courses({ loaderData }: Route.ComponentProps) {
     const { enrolledCourses } = loaderData;
 
-
     return (
         <section className="md:px-10 mt-10">
             <div className="md:mt-20 mb-8 flex gap-8 justify-between items-start">
