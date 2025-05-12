@@ -161,7 +161,16 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                     </div>
                                                 </div>
                                                 {isNextAfterCompleted && (
-                                                    <Link to={`modules/${module.id}/lessons/${lesson.id}`}>
+                                                    <Link
+                                                        to={`modules/${module.id}/lessons/${lesson.id}`}
+                                                        onClick={() => {
+                                                            storeLessonActivity({
+                                                                path: `/my-courses/${course.id}/modules/${module.id}/lessons/${lesson.id}`,
+                                                                module: module,
+                                                                lesson: lesson
+                                                            });
+                                                        }}
+                                                    >
                                                         <Button
                                                             className="mt-3 px-8 w-full md:w-max bg-primary-bg border border-primary-theme hover:bg-white text-amber-800 font-semibold"
                                                         >
