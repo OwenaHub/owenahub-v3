@@ -29,7 +29,7 @@ export default function AccountLayout() {
                     </p>
                 </div>
             </div>
-<hr className="mb-5"/>
+            <hr className="mb-5" />
             <section className="flex flex-row md:gap-10 justify-between gap-8 items-center pb-5">
                 <div className="flex gap-4 items-center justify-between w-full">
                     <div className="pe-4">
@@ -41,7 +41,7 @@ export default function AccountLayout() {
                         </p>
                     </div>
 
-                    <div className="bg-primary-bg border border-primary-theme cursor-pointer hover:bg-white p-1.5 rounded-full">
+                    <div className="bg-primary-bg border border-primary-theme cursor-pointer hover:bg-white p-1 rounded-md">
                         <Popover>
                             <PopoverTrigger asChild>
                                 <EllipsisVertical />
