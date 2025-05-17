@@ -31,17 +31,17 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
         <div className='mb-20'>
             <LessonCompleteModal />
 
-            <div className='flex text-sm uppercase items-center gap-2 tex-sm mb-3 mt-10 md:px-5'>
-                <Link to="/my-courses" className='flex text-nowrap items-center gap-2 hover:underline underline-offset-1'>
-                    <ChevronLeft size={16} />
-                    <span>My courses</span>
-                </Link>
-            </div>
+            <div className='md:px-[1.5rem] mt-10'>
+                <div className='text-xs px-1.5 py-1 text-white rounded-md inline-block uppercase bg-primary-theme items-center gap-2 tex-sm'>
+                    <Link to="/my-courses" className='flex text-nowrap items-center gap-1 hover:opacity-50 underline-offset-1'>
+                        <ChevronLeft size={16} strokeWidth={3}/>
+                        <span>Courses</span>
+                    </Link>
+                </div>
 
-            <div className='md:px-[1.5rem] mt-7'>
-                <div className='bg-muted rounded text-muted-foreground px-4 py-6 sticky'>
+                <div className='bg-muted rounded text-muted-foreground px-4 py-6 sticky mt-3'>
                     <h1 className="text-xl md:text-3xl font-bold mb-5">
-                        {course.title}
+                        <span>{course.title}</span>
                     </h1>
                     <div className="">
                         {course.modules && course.modules.length ? (
@@ -98,7 +98,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                         const isNextAfterCompleted = lessonIdx === lastCompletedIdx + 1 && !lesson.completed;
 
                                         return (
-                                            <div key={lesson.id} id={`lesson-${lesson.id}`} className="text-sm rounded p-4 bg-gray-50 border border-gray-100">
+                                            <div key={lesson.id} id={`lesson-${lesson.id}`} className="text-sm rounded-md p-4 bg-gray-50 border-2 border-gray-100">
                                                 <div className="flex justify-between w-full gap-3">
                                                     <Link
                                                         to={`modules/${module.id}/lessons/${lesson.id}`}
@@ -154,7 +154,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
 
                                                     </Link>
 
-                                                    <div className="">
+                                                    <div>
                                                         {lesson.completed
                                                             && <CheckCheck className='text-green-500' strokeWidth={3} />
                                                         }
@@ -172,7 +172,7 @@ export default function GetUserCourse({ loaderData }: Route.ComponentProps) {
                                                         }}
                                                     >
                                                         <Button
-                                                            className="mt-3 px-8 w-full md:w-max bg-primary-bg border border-primary-theme hover:bg-white text-amber-800 font-semibold"
+                                                            className="mt-5 px-8 py-5 w-full bg-primary-bg rounded-sm border border-primary-theme uppercase hover:bg-white text-amber-700 font-bold"
                                                         >
                                                             Start lesson
                                                         </Button>

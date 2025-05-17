@@ -21,8 +21,8 @@ export default function Courses({ courses }: { courses: Course[] }) {
 
 function CourseCard({ course }: { course: Course }) {
   return (
-    <div className="grid grid-cols-4 border border-b-2 bg-white h-full rounded group relative transition">
-      <div className="bg-slate-100 ms-2 mt-2 md:ms-0 md:mt-0 col-span-1 md:col-span-4 md:rounded-t w-full aspect-square group-hover:opacity-75 lg:aspect-auto lg:h-44 overflow-hidden">
+    <div className="grid grid-cols-4 gap-2 p-1 md:p-2 border-2 border-gray-100 bg-white h-full rounded-lg group relative transition">
+      <div className="bg-slate-100 col-span-1 md:col-span-4 rounded-md w-full aspect-square group-hover:opacity-75 lg:aspect-auto lg:h-44 overflow-hidden">
         <img
           src={course.thumbnail
             ? `${STORAGE_URL}/${course.thumbnail}`
@@ -33,7 +33,7 @@ function CourseCard({ course }: { course: Course }) {
       </div>
 
       {/* Content Wrapper */}
-      <div className="flex flex-col col-span-3 flex-grow justify-between px-4 py-2">
+      <div className="flex flex-col col-span-3 flex-grow justify-between pb-2">
         {/* Title & Description */}
         <div className="flex flex-col gap-1.5 mb-5">
           <div className="flex items-center">

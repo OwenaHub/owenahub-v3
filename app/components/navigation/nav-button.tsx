@@ -26,7 +26,7 @@ export default function NavButton({ href, label, icon }: {
                             </span>)
                         }
                     </span>
-                    <span className={`hidden md:inline-block ${isActive ? "font-bold" : "font-medium"}`}>
+                    <span className={`hidden tracking-wide md:inline-block ${isActive ? "font-bold" : "font-medium"}`}>
                         {label}
                     </span>
                 </div>

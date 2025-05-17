@@ -51,17 +51,15 @@ export default function ViewLesson({ loaderData, params }: Route.ComponentProps)
     const lesson: Lesson = loaderData;
 
     return (
-        <div className='md:px-6 mb-20'>
-            <div className='mb-10'>
-                <div className='mb-5 mt-10'>
-                    <div className="mb-4">
-                        <Link to={`/my-courses/${params.ulid}/?lessonId=${params.lessonId}`} aria-label="Go back" className="flex gap-1 text-xs items-center uppercase hover:underline hover:underline-offset-2">
-                            <ChevronLeft size={18} strokeWidth={2} /> <span>Go back</span>
-                        </Link>
-                    </div>
-                </div>
-
-                {lesson.videoUrl && (
+        <div className='md:px-6 mt-5 md:mt-10 mb-20'>
+            <div className='text-xs px-1.5 py-1 text-white rounded-md inline-block uppercase bg-primary-theme items-center gap-2'>
+                <Link to={`/my-courses/${params.ulid}/?lessonId=${params.lessonId}`} aria-label="Go back" className='flex text-nowrap items-center gap-1 hover:opacity-50 underline-offset-1'>
+                    <ChevronLeft size={16} strokeWidth={3} />
+                    <span>Lessons</span>
+                </Link>
+            </div>
+            {lesson.videoUrl && (
+                <div className='mb-10'>
                     <div className="bg-slate-100 col-span-1 md:col-span-4 w-full aspect-video group-hover:opacity-75 lg:aspect-video lg:h-full overflow-hidden">
                         {lesson.videoUrl.includes("youtube.com") || lesson.videoUrl.includes("youtu.be") ? (
                             <iframe
@@ -84,10 +82,10 @@ export default function ViewLesson({ loaderData, params }: Route.ComponentProps)
                             />
                         ) : ("Video unavailable — report this to support@owenahub.com")}
                     </div>
-                )}
-            </div>
+                </div>
+            )}
 
-            <div className="flex flex-col gap-2 items-start mb-10">
+            <div className="flex flex-col gap-2 items-start mb-10 mt-5">
                 <p>Lesson {lesson.position}</p>
                 <h1 className="text-2xl md:text-3xl font-bold mb-5">
                     {lesson.title}
@@ -101,7 +99,7 @@ export default function ViewLesson({ loaderData, params }: Route.ComponentProps)
             <div className="my-8">
                 <AlertDialog>
                     <AlertDialogTrigger asChild>
-                        <Button className='bg-[#315E8B] border border-[#1d3c5a] border-b-4 py-5 mx-auto w-full md:w-xs'>
+                        <Button className='bg-[#315E8B] border border-[#1d3c5a] border-b-2 py-5 mx-auto w-full md:w-xs'>
                             <span className='uppercase font-light'>Finish lesson</span>
                             <Zap size={20} />
                         </Button>

@@ -29,9 +29,18 @@ export default function AccountLayout() {
                     </p>
                 </div>
             </div>
-
+<hr className="mb-5"/>
             <section className="flex flex-row md:gap-10 justify-between gap-8 items-center pb-5">
-                <div className="flex gap-4 items-center">
+                <div className="flex gap-4 items-center justify-between w-full">
+                    <div className="pe-4">
+                        <h5 className="text-sm text-secondary-foreground font-bold">
+                            {user.name}
+                        </h5>
+                        <p className="text-sm leading-7">
+                            {user.email}
+                        </p>
+                    </div>
+
                     <div className="bg-primary-bg border border-primary-theme cursor-pointer hover:bg-white p-1.5 rounded-full">
                         <Popover>
                             <PopoverTrigger asChild>
@@ -46,15 +55,6 @@ export default function AccountLayout() {
                                 </Form>
                             </PopoverContent>
                         </Popover>
-                    </div>
-
-                    <div className="pe-4">
-                        <h5 className="text-sm text-secondary-foreground font-bold">
-                            {user.name}
-                        </h5>
-                        <p className="text-sm leading-7">
-                            {user.email}
-                        </p>
                     </div>
                 </div>
 

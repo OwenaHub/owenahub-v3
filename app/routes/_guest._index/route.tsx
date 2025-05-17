@@ -107,38 +107,38 @@ export default function HomePage() {
 
               <div className="md:hidden mb-5 flex flex-col gap-5">
                 <div className="flex items-center gap-3">
-                  <div className="rounded -rotate-6 p-1 shadow opacity-70 bg-primary-theme">
-                    <Check size={14} strokeWidth={4} className="text-white" />
+                  <div className="rounded-sm -rotate-6 p-1 shadow bg-primary-bg border border-primary-theme">
+                    <Check size={14} strokeWidth={4} className="text-primary-theme" />
                   </div>
                   <h2 className="text-gray-700">Learn online, from professionals</h2>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="rounded -rotate-6 p-1 shadow opacity-70 bg-primary-theme">
-                    <Check size={14} strokeWidth={4} className="text-white" />
+                  <div className="rounded-sm -rotate-6 p-1 shadow bg-primary-bg border border-primary-theme">
+                    <Check size={14} strokeWidth={4} className="text-primary-theme" />
                   </div>
                   <h2 className="text-gray-700">Get results in 3 months</h2>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="rounded -rotate-6 p-1 shadow opacity-70 bg-primary-theme">
-                    <Check size={14} strokeWidth={4} className="text-white" />
+                  <div className="rounded-sm -rotate-6 p-1 shadow bg-primary-bg border border-primary-theme">
+                    <Check size={14} strokeWidth={4} className="text-primary-theme" />
                   </div>
                   <h2 className="text-gray-700">A fraction of the cost of other platforms</h2>
                 </div>
               </div>
             </section>
 
-            <div className="flex flex-col gap-5 justify-center items-center md:flex-row z-10">
+            <div className="flex flex-col gap-6 justify-center items-center md:flex-row z-10">
               <Link
                 to="/register"
-                className="z-10 bg-[#083156] font- tracking-wide uppercase text-center text-[#fbe56d] rounded text-base w-full block hover:opacity-90 md:inline-block md:w-max px-18 py-2.5 relative transition"
+                className="z-10 bg-primary-theme tracking-wide outline outline-primary-theme font-medium text-center text-black rounded-md text-base w-full block hover:opacity-90 md:inline-block md:w-max px-18 py-2.5 relative transition"
               >
-                Get started
+                <span>Join For Free</span>
               </Link>
               <Link
                 to="/courses"
-                className="z-10 rounded text-muted-foreground border-gray-300 relative text-center text-base w-full block font-medium bg-white hover:opacity-70 md:inline-block md:w-max outline outline-gray-300 px-10 py-2.5"
+                className="z-10 rounded-md font-semibold tracking-wide outline-1 text-amber-700 outline-primary-theme relative text-center text-base w-full block bg-primary-bg hover:opacity-70 md:inline-block md:w-max px-10 py-2.5"
               >
-                See courses
+                Courses
               </Link>
             </div>
           </div>

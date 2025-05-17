@@ -172,7 +172,7 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                         </h4>
 
                         {isEnrolled
-                            ? <div className='px-2'>
+                            ? <div>
                                 <Button
                                     disabled
                                     variant="secondary"
