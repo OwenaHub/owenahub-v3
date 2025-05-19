@@ -2,11 +2,11 @@ import { CheckCheck, Loader } from "lucide-react";
 import { Form, Link, redirect, useNavigation, type MetaFunction } from "react-router";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
-import type { Route } from "../../+types/root";
 import registerUser from "./register";
 import InputError from "~/components/forms/input-error";
 import { toast } from "sonner";
 import { API_URL } from "~/lib/keys";
+import type { Route } from "../_auth.register/+types/route";
 
 export const meta: MetaFunction = () => {
     return [

@@ -13,8 +13,7 @@ import {
 import { Checkbox } from "~/components/ui/checkbox"
 import { Input } from "~/components/ui/input"
 import { Label } from "~/components/ui/label"
-import useSession from '~/lib/session';
-
+import useSession from '~/hooks/use-session';
 
 export default function EnrollCourse({ course }: { course: Course }) {
     let session;

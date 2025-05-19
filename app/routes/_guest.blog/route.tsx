@@ -3,7 +3,6 @@ import { posts } from "~/content";
 import PostCard from "./post-card";
 
 export default function Blog() {
-
     return (
         <div className="py-[4rem] mt-8">
             <div className="container mb-8">

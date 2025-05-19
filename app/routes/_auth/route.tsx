@@ -1,6 +1,6 @@
 import { Link, Outlet, redirect } from "react-router";
 import type { Route } from "./+types/route";
-import useSession from "~/lib/session";
+import useSession from "~/hooks/use-session";
 
 export async function clientLoader(_: Route.ClientLoaderArgs) {
     const { validateSession } = useSession();

@@ -1,4 +1,4 @@
-import { Book, LibraryBig, ScrollText, Star } from 'lucide-react'
+import { Book, LibraryBig, ScrollText } from 'lucide-react'
 import { Link } from 'react-router'
 
 type CardProps = {

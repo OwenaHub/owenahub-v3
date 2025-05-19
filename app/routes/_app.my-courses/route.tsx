@@ -2,7 +2,7 @@ import { Await, Link, type MetaFunction } from "react-router";
 import type { Route } from "../_app.my-courses/+types/route";
 import { getEnrolledCourses } from "./course";
 import { Suspense } from "react";
-import CardSkeleton from "~/components/skeletons/card-skeleton-2";
+import CardSkeleton from "~/components/skeletons/card-skeleton";
 import { ChevronRight } from "lucide-react";
 
 export const meta: MetaFunction = () => {

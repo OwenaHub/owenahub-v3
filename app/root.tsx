@@ -79,7 +79,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Toaster
           richColors
           closeButton
-          position="top-center"
+          position="top-right"
           toastOptions={{
             classNames: {
               actionButton: '!px-2 !rounded-full !text-white',

@@ -6,9 +6,9 @@ import type { Route } from "../../+types/root";
 import loginUser from "./login";
 import { Loader } from "lucide-react";
 import InputError from "~/components/forms/input-error";
-import useSession from "~/lib/session";
 import { toast } from "sonner";
 import { API_URL } from "~/lib/keys";
+import useSession from "~/hooks/use-session";
 
 export const meta: MetaFunction = () => {
     return [

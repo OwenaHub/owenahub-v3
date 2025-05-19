@@ -1,6 +1,6 @@
 import { redirect } from "react-router";
 import client from "~/lib/interceptor";
-import type { Route } from "../_app.account/+types/route";
+import type { Route } from "../_app.account.logout/+types/route";
 import { toast } from "sonner";
 
 export async function clientAction({ }: Route.ClientActionArgs) {

@@ -11,7 +11,7 @@ import {
 } from "~/components/ui/accordion"
 import { MonitorSmartphone, SquarePlay, Text, Trophy, TvMinimalPlay, Users, Wrench } from "lucide-react";
 import CustomAvatar from "~/components/custom/custom-avatar";
-import { FormatLineBreaks } from "~/components/utility/format-text";
+import { FormatLineBreaks } from "~/components/utility/format-line-break";
 import { Button } from "~/components/ui/button";
 import EnrollCourse from "./enroll-course";
 import SharePage from "~/components/navigation/share-page";

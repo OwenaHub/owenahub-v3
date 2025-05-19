@@ -1,4 +1,4 @@
-export default function CardSkeleton({ type }: { type?: "course" | "card" }) {
+export default function CardSkeleton2({ type }: { type?: "course" | "card" }) {
     if (type === "course") {
         return (
             <div className="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-4 sm:grid-cols-2 xl:gap-x-6 mb-5 animated fadeIn">

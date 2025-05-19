@@ -34,7 +34,6 @@ import dayjs from "dayjs";
 
 dayjs.extend(relativeTime);
 
-
 export default function AppNotification({ className, notifications, ...props }: CardProps) {
 
     return (

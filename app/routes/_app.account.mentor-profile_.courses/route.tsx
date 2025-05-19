@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { Await } from "react-router";
 import type { Route } from "./+types/route";
 import Course from "./course";
-import CardSkeleton from "~/components/skeletons/card-skeleton";
+import CardSkeleton2 from "~/components/skeletons/card-skeleton-2";
 
 export async function clientLoader({ }: Route.ClientLoaderArgs) {
     try {
@@ -24,7 +24,7 @@ export default function MentorProfileCourses({ loaderData }: Route.ComponentProp
             <NavigateBack to="mentor profile" />
             <div className="pb-4">
                 <TableCard header="Courses" cta="Create course" ctaLink="create">
-                    <Suspense fallback={<CardSkeleton />}>
+                    <Suspense fallback={<CardSkeleton2 />}>
                         <Await resolve={courses}>
                             {(courses: any) => <Course courses={courses} />}
                         </Await>
