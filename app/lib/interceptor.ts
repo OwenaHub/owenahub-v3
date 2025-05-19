@@ -27,7 +27,7 @@ client.interceptors.response.use((response) => response,
             }
 
             if (error.response?.status === 419) {
-                toast.warning("Session expired", {
+                toast.warning("Page expired", {
                     description: "Session timed out due to inactivity",
                     action: {
                         label: "Refresh",
@@ -35,7 +35,6 @@ client.interceptors.response.use((response) => response,
                     },
                 })
             }
-
 
             if (error.code === "ERR_NETWORK") {
                 toast.warning("No internet connection", {

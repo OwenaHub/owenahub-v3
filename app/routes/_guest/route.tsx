@@ -1,9 +1,9 @@
 import { Await, Link, NavLink, Outlet, useNavigation } from "react-router";
 import { ChevronRight, Facebook, Instagram, Menu, Twitter, X } from "lucide-react";
 import { Suspense, useEffect, useState } from "react";
-import useSession from "~/lib/session";
 import type { Route } from "../_guest/+types/route";
 import CustomAvatar from "~/components/custom/custom-avatar";
+import useSession from "~/hooks/use-session";
 
 export async function clientLoader(_: Route.ClientLoaderArgs) {
     const { getUser } = useSession();

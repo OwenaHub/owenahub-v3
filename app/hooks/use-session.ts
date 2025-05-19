@@ -20,7 +20,7 @@ export default function useSession() {
 
             if (!user)
                 return null;
-
+            
             return user.accountType;
         } catch (error) {
             throw error;
@@ -36,18 +36,18 @@ export default function useSession() {
         }
     }
 
-    async function getUser() {
-        try {
-            const cookieData = Cookies.get(storageKeys.user);
+    async function getUser(): Promise<User> {
+        const cookieData = Cookies.get(storageKeys.user);
 
-            const user: User = cookieData
-                ? JSON.parse(cookieData)
-                : await validateSession();
+        if (cookieData)
+            try {
+                return JSON.parse(cookieData) as User;
+            } catch {
+                Cookies.remove(storageKeys.user);
+            }
+        ;
 
-            return user;
-        } catch (error) {
-            throw error;
-        }
+        return await validateSession();
     }
 
     async function intendedRoute(path: string) {

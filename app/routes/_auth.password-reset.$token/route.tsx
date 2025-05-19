@@ -54,7 +54,7 @@ export default function Login({ actionData, params }: Route.ComponentProps) {
                                 Reset Your Password
                             </p>
                             <p className="text-sm font-light mt-2 text-secondary-foreground">
-                                Password reset for <span className="font-medium">{searchParams.get("email")}</span>.
+                                Password reset for <span className="font-semibold">{searchParams.get("email")}</span>.
                             </p>
                         </div>
                         <Form method="POST">
@@ -95,7 +95,7 @@ export default function Login({ actionData, params }: Route.ComponentProps) {
                                     disabled={busy}
                                     className="bg-[#fff7eb] border border-primary-theme hover:bg-white text-primary w-full font-semibold py-5 uppercase"
                                 >
-                                    {busy ? (<Loader className="animate-spin" />) : "Send email"}
+                                    {busy ? (<Loader className="animate-spin" />) : "Reset Password"}
                                 </Button>
                             </div>
                         </Form>

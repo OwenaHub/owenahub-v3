@@ -3,13 +3,12 @@ import AppName from '~/components/custom/app-name'
 import MobileNav from '~/components/navigation/mobile-nav'
 import NavButton from '~/components/navigation/nav-button'
 import APP_TABS from '~/components/navigation/app-tabs'
-import useSession from '~/lib/session'
 import type { Route } from './+types/route'
 import { toast } from 'sonner'
 import CustomAvatar from '~/components/custom/custom-avatar'
 import AppNotification from './app-notification'
 import { getNotifications } from './app'
-import { ArrowRight } from 'lucide-react'
+import useSession from '~/hooks/use-session'
 
 export async function clientLoader() {
     const { validateSession, intendedRoute } = useSession();
@@ -67,7 +66,7 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
 
                             {/* Lower section */}
                             <section>
-                                <section>
+                                {/* <section>
                                     <div className="bg-slate-100 col-span-1 md:col-span-4 rounded-t w-full aspect-square group-hover:opacity-75 lg:aspect-auto lg:h-44 overflow-hidden">
                                         <img
                                             src="/images/banners/owenahub-community-banner.png"
@@ -93,9 +92,9 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                                             </button>
                                         </a>
                                     </div>
-                                </section>
+                                </section> */}
 
-                                {/* <div className="p-3 rounded text-sm mb-4 bg-primary-bg border border-primary-theme">
+                                <div className="p-3 rounded text-sm mb-4 bg-primary-bg border border-primary-theme">
                                     <div className="text-base font-bold pb-2">Upgrade to premium</div>
                                     <p className="text-xs pb-3">
                                         Get full access to all courses offered on OwenaHub with a one time payment.
@@ -103,7 +102,7 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
                                     <button className="bg-primary-theme rounded text-muted text-xs w-full font-bold px-4 py-2 uppercase cursor-pointer">
                                         Subscribe
                                     </button>
-                                </div> */}
+                                </div>
 
                                 <div className="rounded-md text-sm py-3">
                                     <div className="flex gap-2 items-center">
