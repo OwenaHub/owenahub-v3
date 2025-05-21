@@ -48,7 +48,7 @@ export default function GuestLayout({ loaderData }: Route.ComponentProps) {
                         } border-gray-200 rounded flex justify-between items-center gap-2`}
                 >
                     <div className="flex gap-6 items-center">
-                        <div className="flex gap-1 items-center">
+                        <div className="flex gap-2 items-center">
                             <img src="/images/logos/logo.png" alt="logo" width={30} />
                             <Link to="/" className="text-gray-900 font-bold">
                                 <span>OwenaHub</span>

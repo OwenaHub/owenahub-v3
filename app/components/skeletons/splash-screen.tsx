@@ -22,7 +22,7 @@ export default function SplashScreen() {
             <div className="flex flex-col gap-3 mb-7 items-center">
                 <img src="/images/logos/logo.png" alt="OwenaHub" width={50} className='' />
                 <div className="text-center leading-3 flex flex-row items-center text-gray-700">
-                    <span className="text-xs font-normal animate-pulse">LOADING</span>
+                    <span className="ms-2 text-xs font-normal animate-pulse">LOADING</span>
                     <span className="animate-spin p-1">
                         <LoaderCircle size={12} strokeWidth={3} />
                     </span>

@@ -101,8 +101,8 @@ export default function HomePage() {
 
             <section className="flex flex-col gap-5 my-10">
               <span className="hidden md:block text-xl text-gray-700 z-10">
-                We offer comprehensive courses and dedicated <BrMd />
-                mentorship to ensure you never get stuck.
+                We offer comprehensive <span className="bg-[#FDE8C0] rounded-md px-1">courses</span> and dedicated <BrMd />
+                <span className="bg-[#FDE8C0] rounded-md px-1">mentorship</span> to ensure you never get stuck.
               </span>
 
               <div className="md:hidden mb-5 flex flex-col gap-5">
@@ -127,16 +127,16 @@ export default function HomePage() {
               </div>
             </section>
 
-            <div className="flex flex-col gap-6 justify-center items-center md:flex-row z-10">
+            <div className="flex flex-col md:flex-row gap-6 justify-center items-center z-10">
               <Link
                 to="/register"
-                className="z-10 bg-primary-theme tracking-wide outline outline-primary-theme font-semibold text-center text-black rounded-md text-base w-full block hover:opacity-90 md:inline-block md:w-max px-18 py-2.5 relative transition"
+                className="z-10 uppercase bg-primary-theme tracking-wide font-semibold text-center text-white rounded-md text-sm w-full block hover:bg-amber-600 md:inline-block md:w-max px-18 py-2.5 relative transition"
               >
                 <span>Start Free</span>
               </Link>
               <Link
                 to="/courses"
-                className="z-10 rounded-md font-semibold tracking-wide outline-1 text-amber-700 outline-primary-theme relative text-center text-base w-full block bg-primary-bg hover:opacity-70 md:inline-block md:w-max px-10 py-2.5"
+                className="z-10 uppercase rounded-md font-semibold tracking-wide text-amber-700 outline-primary-theme relative text-center text-sm w-full block bg-[#FDE8C0] hover:opacity-50 transition md:inline-block md:w-max px-10 py-2.5"
               >
                 Courses
               </Link>
