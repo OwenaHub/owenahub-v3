@@ -3,7 +3,7 @@ import AppName from '~/components/custom/app-name'
 import MobileNav from '~/components/navigation/mobile-nav'
 import NavButton from '~/components/navigation/nav-button'
 import APP_TABS from '~/components/navigation/app-tabs'
-import type { Route } from './+types/route'
+import type { Route } from '../_app/+types/route'
 import { toast } from 'sonner'
 import CustomAvatar from '~/components/custom/custom-avatar'
 import AppNotification from './app-notification'
@@ -46,9 +46,9 @@ export default function ProtectedLayout({ loaderData }: Route.ComponentProps) {
     return (
         <>
             <div className="container">
-                <section className="flex flex-col md:flex-row min-h-screen">
-                    <aside className="border-e hidden max-h-screen md:basis-1/5 md:block pr-4 py-6 sticky top-0">
-                        <div className="flex flex-col justify-between h-full max-h-screen">
+                <section className="flex flex-col md:flex-row min-h-[100dvh]">
+                    <aside className="border-e hidden max-h-[100dvh] md:basis-1/5 md:block pr-4 py-6 sticky top-0">
+                        <div className="flex flex-col justify-between h-full max-h-[100dvh]">
                             <div id='nav-container'>
                                 <div className="flex justify-between items-center">
                                     <Link to={"/"} className='flex gap-1 items-center'>
