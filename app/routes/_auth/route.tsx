@@ -16,7 +16,7 @@ export async function clientLoader(_: Route.ClientLoaderArgs) {
 export default function AuthLayout(_: Route.ComponentProps) {
     return (
         <main>
-            <header className="container flex justify-center py-4">
+            <header className="container flex justify-center py-6">
                 <div className="flex gap-2 items-center">
                     <img width="30" className="inline-block" src="/images/logos/logo.png" title="OwenaHub" />
                     <Link to="/" className="text-popover-foreground">

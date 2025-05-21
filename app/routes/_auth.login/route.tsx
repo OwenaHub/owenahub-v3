@@ -116,8 +116,9 @@ export default function Login({ actionData }: Route.ComponentProps) {
                             </p>
                         </div>
                     </div>
-                    <div className="text-center text-foreground text-sm font-semibold py-5 uppercase">
-                        Need an account? <Link to="/register" className="text-gray-600 underline underline-offset-1" viewTransition>sign up</Link>
+                    <div className="text-foreground text-sm py-5 flex items-center gap-1 justify-center">
+                        <span>Need an account? </span>
+                        <Link to="/register" className="text-gray-600 underline underline-offset-2 font-semibold" viewTransition>Register</Link>
                     </div>
                 </div>
             </div>

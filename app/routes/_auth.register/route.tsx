@@ -154,10 +154,9 @@ export default function Register({ actionData }: Route.ComponentProps) {
                             <Link to="/privacy-policy">Privacy Policy</Link>.
                         </p>
                     </div>
-                    <div className="text-center text-foreground text-sm font-semibold py-5 uppercase">
-                        Have an account? <Link to="/login" className="text-gray-600 underline underline-offset-1" viewTransition>
-                            Log in
-                        </Link>
+                    <div className="text-foreground text-sm py-5 flex items-center gap-1 justify-center">
+                        <span>Have an account?</span>{" "}
+                        <Link to="/login" className="text-gray-600 underline underline-offset-2 font-semibold" viewTransition>Log in</Link>
                     </div>
                 </div>
             </div>

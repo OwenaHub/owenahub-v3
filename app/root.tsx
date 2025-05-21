@@ -14,8 +14,8 @@ import "~/styles/shared.css";
 import { Toaster } from "sonner"
 import ProgressBar from "./components/navigation/progress-bar";
 import { Button } from "./components/ui/button";
-import AppName from "./components/custom/app-name";
 import { ArrowLeft, RotateCw } from "lucide-react";
+import SplashScreen from "./components/skeletons/splash-screen";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -97,19 +97,7 @@ export default function App() {
 }
 
 export function HydrateFallback() {
-  return (
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-      <div>
-        <div className="flex flex-row gap-3 mb-7 items-center">
-          <img src="/images/logos/logo.png" alt="OwenaHub" width={40} />
-          <div className="text-end leading-3">
-            <AppName size="text-base" />
-            <span className="text-gray-700 text-xs font-normal animate-pulse">Learn by doing</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  return <SplashScreen />;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
