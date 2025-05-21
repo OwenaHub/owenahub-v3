@@ -130,13 +130,13 @@ export default function HomePage() {
             <div className="flex flex-col md:flex-row gap-6 justify-center items-center z-10">
               <Link
                 to="/register"
-                className="z-10 uppercase bg-primary-theme tracking-wide font-semibold text-center text-white rounded-md text-sm w-full block hover:bg-amber-600 md:inline-block md:w-max px-18 py-2.5 relative transition"
+                className="z-10 uppercase bg-primary-theme tracking-wide font-semibold text-center text-white rounded-md text-sm w-full block hover:bg-amber-600 md:inline-block md:w-max px-18 py-3 relative transition"
               >
                 <span>Start Free</span>
               </Link>
               <Link
                 to="/courses"
-                className="z-10 uppercase rounded-md font-semibold tracking-wide text-amber-700 outline-primary-theme relative text-center text-sm w-full block bg-[#FDE8C0] hover:opacity-50 transition md:inline-block md:w-max px-10 py-2.5"
+                className="z-10 uppercase rounded-md font-semibold tracking-wide text-amber-700 outline-primary-theme relative text-center text-sm w-full block bg-[#FDE8C0] hover:opacity-50 transition md:inline-block md:w-max px-10 py-3"
               >
                 Courses
               </Link>

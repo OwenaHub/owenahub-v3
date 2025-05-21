@@ -151,7 +151,7 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                         <p className="font-light text-gray-500 text-base line-through">₦{(parseInt(course.price) + 12000).toLocaleString()}</p>
                                     </div>
                                     <p className="text-destructive text-sm">
-                                        <span className='font-bold'>Limited offer,</span>{" "}
+                                        <span className='font-bold uppercase'>Limited offer,</span>{" "}
                                         <span className='font-light'>
                                             expiring soon
                                         </span>
@@ -162,7 +162,7 @@ export default function CourseBanner({ course, isEnrolled }: { course: Course, i
                                         FREE COURSE
                                     </span>
                                     <p className="text-destructive text-sm leading-4">
-                                        <div className='font-bold'>Limited offer</div>
+                                        <div className='font-bold uppercase'>Limited offer</div>
                                         <div className='font-light'>
                                             Expiring soon
                                         </div>
